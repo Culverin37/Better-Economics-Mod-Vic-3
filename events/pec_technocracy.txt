@@ -1,0 +1,75 @@
+﻿namespace = pectechnocracy
+
+pectechnocracy.1 = {
+	type = country_event
+	placement = root
+	title = pectechnocracy.1.t
+	desc = pectechnocracy.1.d
+	flavor = pectechnocracy.1.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	immediate = {
+	}
+
+	trigger = {
+		# triggered by journal entry
+	}
+
+	option = {
+		name = pectechnocracy.1.a
+		default_option = yes
+		ai_chance = {
+			base = 6
+		}
+		ig:ig_intelligentsia = {
+			remove_ideology= ideology_republican
+			add_ideology = ideology_technocratic
+		}
+		add_modifier = {
+			name = pec_technocracy_intellectuals_modifier
+			months = 120
+		}
+	}
+
+	option = {
+		name = pectechnocracy.1.b
+		ai_chance = {
+			base = 3
+		}
+		ig:ig_industrialists = {
+			remove_ideology= ideology_plutocratic
+			add_ideology = ideology_technocratic_industrialists
+		}
+		add_modifier = {
+			name = pec_technocracy_industrialists_modifier
+			months = 120
+		}
+	}
+
+	option = {
+		name = pectechnocracy.1.c
+		ai_chance = {
+			base = 1
+		}
+		ig:ig_armed_forces = {
+			remove_ideology = ideology_caudillismo
+			remove_ideology = ideology_bakufu
+			add_ideology = ideology_technocratic
+		}
+		add_modifier = {
+			name = pec_technocracy_armed_forces_modifier
+			months = 120
+		}
+	}
+}

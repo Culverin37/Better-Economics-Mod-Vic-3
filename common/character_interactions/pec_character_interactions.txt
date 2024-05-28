@@ -1,0 +1,762 @@
+﻿pec_assassinate = {
+	potential = {
+		owner = scope:actor
+		is_ruler = no
+		OR = {
+			has_role = politician
+			has_role = agitator
+		}
+	}
+
+	possible = {
+		owner = {
+			OR = {
+				custom_tooltip = {
+					text = pec_assassinate_cooldown_text
+					NOT = { has_variable = pec_assassinate_cooldown }
+				}
+				has_modifier = pec_political_purge_mod
+			}
+			OR = {
+				has_law = law_type:law_secret_police
+				AND = {
+					has_law = law_type:law_national_guard
+					NOR = {
+						has_law = law_type:law_landed_voting
+						has_law = law_type:law_wealth_voting
+						has_law = law_type:law_census_voting
+						has_law = law_type:law_universal_suffrage
+						has_law = law_type:law_anarchy
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		this.interest_group = {
+			save_scope_as = pec_assassinate_ig
+		}
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_modifier = pec_political_purge_mod }
+				}
+			}
+			owner = {
+				set_variable = {
+					name = pec_assassinate_cooldown
+					months = 36
+				}
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_national_guard
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 1
+					}
+				}
+			}
+			random_list = {
+				60 = { kill_character = yes }
+				40 = { }
+			}
+			random_list = {
+				45 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				55 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_national_guard
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 2
+					}
+				}
+			}
+			random_list = {
+				70 = { kill_character = yes }
+				30 = { }
+			}
+			random_list = {
+				40 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				60 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_national_guard
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 3
+					}
+				}
+			}
+			random_list = {
+				80 = { kill_character = yes }
+				20 = { }
+			}
+			random_list = {
+				35 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				65 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_national_guard
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 4
+					}
+				}
+			}
+			random_list = {
+				90 = { kill_character = yes }
+				10 = { }
+			}
+			random_list = {
+				30 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				70 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_national_guard
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 5
+					}
+				}
+			}
+			random_list = {
+				95 = { kill_character = yes }
+				5 = { }
+			}
+			random_list = {
+				25 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				75 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_secret_police
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 1
+					}
+				}
+			}
+			random_list = {
+				50 = { kill_character = yes }
+				50 = { }
+			}
+			random_list = {
+				25 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				75 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_secret_police
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 2
+					}
+				}
+			}
+			random_list = {
+				60 = { kill_character = yes }
+				40 = { }
+			}
+			random_list = {
+				20 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				80 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_secret_police
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 3
+					}
+				}
+			}
+			random_list = {
+				70 = { kill_character = yes }
+				30 = { }
+			}
+			random_list = {
+				15 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				85 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_secret_police
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 4
+					}
+				}
+			}
+			random_list = {
+				80 = { kill_character = yes }
+				20 = { }
+			}
+			random_list = {
+				10 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				90 = { }
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_secret_police
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 5
+					}
+				}
+			}
+			random_list = {
+				90 = { kill_character = yes }
+				10 = { }
+			}
+			random_list = {
+				5 = { scope:pec_assassinate_ig = { add_modifier = { name = pec_politican_assassinated_ig months = 60 } } owner = { add_radicals = { interest_group = scope:pec_assassinate_ig value = 0.10 } } }
+				95 = { }
+			}
+		}
+	}
+
+	show_confirmation_box = yes
+
+	ai_chance = {
+		value = -50
+
+		if = {
+			limit = {	
+				owner = {
+					has_law = law_type:law_single_party_state
+				}
+				has_ideology = ideology:ideology_pec_dissident
+			}
+			add = 55
+		}
+
+		if = {
+			limit = {	
+				owner = {
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value = 1
+					}
+				}
+			}
+			add = -25
+		}
+
+		if = {
+			limit = {	
+				owner = {
+					institution_investment_level = {
+						institution = institution_home_affairs
+						value >= 4
+					}
+				}
+			}
+			add = 25
+		}
+
+		if = {
+			limit = {	
+				owner = {
+					any_scope_character = {
+						is_ruler = yes
+						OR = {
+							has_ideology = ideology:ideology_fascist
+							has_ideology = ideology:ideology_ethno_nationalist
+						}
+					}
+				}
+				OR = {
+					has_ideology = ideology:ideology_vanguardist
+					has_ideology = ideology:ideology_communist
+					has_ideology = ideology:ideology_anarchist
+					has_ideology = ideology:ideology_pacifist
+				}
+			}
+			add = 50
+		}
+
+		if = {
+			limit = {	
+				owner = {
+					any_scope_character = {
+						is_ruler = yes
+						has_ideology = ideology:ideology_abolitionist
+					}
+				}
+				has_ideology = ideology:ideology_slaver
+			}
+			add = 50
+		}
+
+		if = {
+			limit = {	
+				owner = {
+					any_scope_character = {
+						is_ruler = yes
+						has_ideology = ideology:ideology_slaver
+					}
+				}
+				has_ideology = ideology:ideology_abolitionist
+			}
+			add = 50
+		}
+		if = {
+			limit = {	
+				owner = {
+					any_scope_character = {
+						is_ruler = yes
+						OR = {
+							has_ideology = ideology:ideology_vanguardist
+							has_ideology = ideology:ideology_communist
+							has_ideology = ideology:ideology_anarchist
+						}
+					}
+				}
+				OR = {
+					has_ideology = ideology:ideology_fascist
+					has_ideology = ideology:ideology_ethno_nationalist
+					has_ideology = ideology:ideology_royalist
+					has_ideology = ideology:ideology_theocrat
+				}
+			}
+			add = 50
+		}
+		if = {
+			limit = {	
+				owner = {
+					any_scope_character = {
+						is_ruler = yes
+						OR = {
+							has_ideology = ideology:ideology_vanguardist
+							has_ideology = ideology:ideology_communist
+							has_ideology = ideology:ideology_fascist
+							has_ideology = ideology:ideology_ethno_nationalist
+							has_ideology = ideology:ideology_authoritarian
+							has_ideology = ideology:ideology_bonapartist
+							has_ideology = ideology:ideology_radical
+							has_ideology = ideology:ideology_positivist
+						}
+					}
+				}
+			}
+			add = 15
+		}
+		if = {
+			limit = {	
+				interest_group = {
+					ig_approval <= angry
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {	
+				interest_group = {
+					is_insurrectionary = yes
+				}
+			}
+			add = 25
+		}	
+		if = {
+			limit = {	
+				interest_group = {
+					is_in_government = yes
+				}
+			}
+			add = -25
+		}	
+		if = {
+			limit = {
+				interest_group = {
+					is_marginal = yes
+				}				
+			}
+			add = -100
+		}
+	}
+}
+
+arrange_accident = {
+	clicksound = "event:/SFX/DLC/1.3_ip1/UI/exile_character"
+
+	potential = {
+		always = no
+	}
+
+	show_requirements = yes
+
+	possible = {
+		always = no
+	}
+
+	effect = {
+		this.interest_group = {
+			save_scope_as = relevant_ig
+		}
+		this = {
+			save_scope_as = assassinated_scope
+		}
+		random_list = {
+			25 = {
+				kill_character = yes
+			}
+			50 = {
+				owner = {
+					post_notification = arranged_accident_failed
+				}
+				custom_tooltip = assassination_attempt_failed_tt
+			}
+			25 = {
+				custom_tooltip = assassination_attempt_failed_loud_tt
+				owner = {
+					add_radicals = {
+						value = very_large_radicals
+						interest_group = scope:relevant_ig
+					}
+				}
+				if = {
+					limit = {
+						character_supports_political_movement = yes
+					}
+					this.political_movement = {
+						add_modifier = {
+							name = modifier_government_accident_attempt
+							months = long_modifier_time
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_role = politician
+						THIS.interest_group = {
+							interest_group_supports_political_movement = yes
+						}
+					}
+					owner = {
+						random_political_movement = {
+							limit = {
+								any_supporting_interest_group = {
+									this = scope:relevant_ig
+								}
+							}
+							add_modifier = {
+								name = modifier_government_accident_attempt
+								months = long_modifier_time
+							}
+						}
+					}
+				}
+				owner = {
+					post_notification = arranged_accident_failed_incrimination
+				}
+			}
+		}
+	}
+
+	cooldown = { months = normal_modifier_time }
+	show_confirmation_box = yes
+
+	ai_chance = {
+		value = -50
+		if = {
+			limit = {
+				interest_group = {
+					ig_approval <= -5
+				}		
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				interest_group = {
+					ig_approval <= -10
+				}		
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					NOR = {
+						has_law = law_type:law_autocracy
+						has_law = law_type:law_oligarchy
+						has_law = law_type:law_single_party_state
+					}
+				}			
+			}
+			add = -25
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_outlawed_dissent
+				}			
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_censorship
+				}			
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_right_of_assembly
+				}			
+			}
+			add = -10
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_protected_speech
+				}			
+			}
+			add = -20
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					any_interest_group = {
+						is_insurrectionary = yes
+					}
+				}			
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					ruler = {
+						OR = {
+							has_trait = cruel
+						}
+					}
+				}			
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					ruler = {
+						OR = {
+							has_trait = imperious
+						}
+					}
+				}			
+			}
+			add = 10
+		}
+	}
+}
+
+
+pec_influence_politics = {
+	clicksound = "event:/SFX/DLC/1.3_ip1/UI/exile_character"
+
+	potential = {
+		owner = scope:actor
+		is_ruler = no
+		OR = {
+			is_heir = yes
+			has_role = politician
+		}
+		AND = {
+			NOT = { owner = { has_journal_entry = je_divided_monarchists } }
+			NOR = {
+				has_ideology = ideology:ideology_bonapartist
+				has_ideology = ideology:ideology_legitimist
+				has_ideology = ideology:ideology_orleanist
+			}
+		}
+	}
+
+	show_requirements = yes
+
+	possible = {
+		owner = {
+			authority >= 150
+			government_legitimacy >= 75
+		}
+		this = {
+			interest_group = {
+				is_insurrectionary = no
+			}
+			NOR = {
+				has_trait = firebrand
+				has_trait = brave		
+			}
+		}
+	}
+
+	effect = {
+		this = {
+			add_modifier = {
+				name = pec_influenced_character_mod
+				months = 6
+			}
+		}
+		owner = {
+			if = {
+				limit = {
+					NOR = {
+						has_law = law_type:law_autocracy
+						has_law = law_type:law_oligarchy
+						has_law = law_type:law_technocracy
+						has_law = law_type:law_single_party_state
+					}
+				}
+				add_modifier = {
+					name = pec_influenced_character_democratic_penalty
+					months = 37
+				}
+			}
+			else = {
+				add_modifier = {
+					name = pec_influenced_character_authoritarian_penalty
+					months = 37
+				}
+			}
+			trigger_event = {
+				id = pec_character_influence.1
+				days = 5
+			}
+		}
+	}
+
+	cooldown = { months = 37 }
+	show_confirmation_box = yes
+
+	ai_chance = {
+		value = -50
+		if = {
+			limit = {
+				interest_group = {
+					ig_approval <= -5
+				}		
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				interest_group = {
+					ig_approval <= -10
+				}		
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					NOR = {
+						has_law = law_type:law_autocracy
+						has_law = law_type:law_oligarchy
+						has_law = law_type:law_technocracy
+						has_law = law_type:law_single_party_state
+					}
+				}			
+			}
+			add = -25
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_outlawed_dissent
+				}			
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_censorship
+				}			
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_right_of_assembly
+				}			
+			}
+			add = -10
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					has_law = law_type:law_protected_speech
+				}			
+			}
+			add = -20
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					ruler = {
+						OR = {
+							has_trait = ambitious
+						}
+					}
+				}			
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					ruler = {
+						OR = {
+							has_trait = charismatic
+						}
+					}
+				}			
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				scope:actor ?= {
+					ruler = {
+						OR = {
+							has_trait = imperious
+						}
+					}
+				}			
+			}
+			add = 30
+		}
+	}
+}

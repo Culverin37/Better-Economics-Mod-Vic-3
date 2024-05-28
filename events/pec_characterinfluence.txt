@@ -1,0 +1,1501 @@
+﻿namespace = pec_character_influence
+
+pec_character_influence.1 = {
+	type = country_event
+	placement = root
+	title = pec_character_influence.1.t
+	desc = pec_character_influence.1.d
+	flavor = pec_character_influence.1.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	gui_window = event_window_1char_tabloid
+	left_icon = scope:pec_influenced_character_scope
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/misc/1Character_Banner"
+
+	immediate = {
+		random_scope_politician = {
+			limit = {
+				has_modifier = pec_influenced_character_mod
+			}
+			save_scope_as = pec_influenced_character_scope
+			interest_group = {
+				save_scope_as = pec_influenced_ig_scope
+			}
+		}
+		ruler = {
+			ideology = {
+				save_scope_as = pec_influenced_ruler_ideology
+			}
+		}
+	}
+
+	trigger = {
+		# Triggered by character interaction
+		any_scope_politician = {
+			has_modifier = pec_influenced_character_mod
+		}
+	}
+
+	option = {
+		name = pec_character_influence.1.a # influence to ruler ideology
+		default_option = yes
+		ai_chance = {
+			base = 75
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						set_ideology = scope:pec_influenced_ruler_ideology
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						set_ideology = scope:pec_influenced_ruler_ideology
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						set_ideology = scope:pec_influenced_ruler_ideology
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						set_ideology = scope:pec_influenced_ruler_ideology
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						set_ideology = scope:pec_influenced_ruler_ideology
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						set_ideology = scope:pec_influenced_ruler_ideology
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_character_influence.1.b # conservative
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_landowners
+						is_interest_group_type = ig_devout
+						is_interest_group_type = ig_rural_folk
+						is_interest_group_type = ig_pec_unorganized_labour
+						AND = {
+							is_interest_group_type = ig_armed_forces
+							NOT = {
+								has_ideology = ideology:ideology_proletarian
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_conservative = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_conservative = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_conservative = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_conservative = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_conservative = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_conservative = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_character_influence.1.c # pro-business
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_landowners
+						is_interest_group_type = ig_industrialists
+						is_interest_group_type = ig_petty_bourgeoisie
+						is_interest_group_type = ig_pec_unorganized_labour
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_business = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_business = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_business = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_business = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_business = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_business = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_character_influence.1.e # militarist
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_landowners
+						is_interest_group_type = ig_armed_forces
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_militarist = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_militarist = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_militarist = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_militarist = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_militarist = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_militarist = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_character_influence.1.g # liberal radical
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				is_heir = no
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_industrialists
+						is_interest_group_type = ig_petty_bourgeoisie
+						is_interest_group_type = ig_intelligentsia
+						is_interest_group_type = ig_trade_unions
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_liberal = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_liberal = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_liberal = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_liberal = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_liberal = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_liberal = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_character_influence.1.h # liberal moderate
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_industrialists
+						is_interest_group_type = ig_petty_bourgeoisie
+						is_interest_group_type = ig_intelligentsia
+						is_interest_group_type = ig_trade_unions
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_liberal = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_liberal = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_liberal = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_liberal = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_liberal = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_liberal = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_character_influence.1.i # social moderate
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_devout
+						is_interest_group_type = ig_rural_folk
+						is_interest_group_type = ig_pec_unorganized_labour
+						is_interest_group_type = ig_trade_unions
+						AND = {
+							is_interest_group_type = ig_intelligentsia
+							OR = {
+								has_ideology = ideology:ideology_liberal
+								has_ideology = ideology:ideology_pec_oldworld_liberal_reformed
+							}
+						}
+						AND = {
+							is_interest_group_type = ig_armed_forces
+							has_ideology = ideology:ideology_proletarian
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_social = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_social = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_social = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_social = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_social = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_moderate_social = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_character_influence.1.j # social radical
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				is_heir = no
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_rural_folk
+						is_interest_group_type = ig_pec_unorganized_labour
+						is_interest_group_type = ig_trade_unions
+						AND = {
+							is_interest_group_type = ig_intelligentsia
+							OR = {
+								has_ideology = ideology:ideology_liberal
+								has_ideology = ideology:ideology_pec_oldworld_liberal_reformed
+							}
+						}
+						AND = {
+							is_interest_group_type = ig_armed_forces
+							has_ideology = ideology:ideology_proletarian
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_social = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_social = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_social = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_social = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_social = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_radical_social = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_character_influence.1.k # nationalist
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_petty_bourgeoisie
+						is_interest_group_type = ig_pec_unorganized_labour
+						is_interest_group_type = ig_armed_forces
+						AND = {
+							is_interest_group_type = ig_intelligentsia
+							NOR = {
+								has_ideology = ideology:ideology_liberal
+								has_ideology = ideology:ideology_pec_oldworld_liberal_reformed
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_nationalist = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_nationalist = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_nationalist = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_nationalist = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_nationalist = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_nationalist = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_character_influence.1.l # rural
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_rural_folk
+						is_interest_group_type = ig_devout
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_rural = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_rural = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_rural = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_rural = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_rural = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_rural = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_character_influence.1.m # anticlerical
+		trigger = {
+			scope:pec_influenced_character_scope = {
+				is_heir = no
+				interest_group = {
+					OR = {
+						is_interest_group_type = ig_trade_unions
+						is_interest_group_type = ig_intelligentsia
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval >= 10
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_anticlerical = yes
+					}
+				}
+				20 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 10
+						ig_approval >= 5
+					}
+				}
+			}
+			random_list = {
+				67 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_anticlerical = yes
+					}
+				}
+				33 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 5
+						ig_approval >= 0
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_anticlerical = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < 0
+						ig_approval >= -5
+					}
+				}
+			}
+			random_list = {
+				33 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_anticlerical = yes
+					}
+				}
+				67 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -5
+						ig_approval >= -10
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_anticlerical = yes
+					}
+				}
+				80 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:pec_influenced_character_scope = {
+					interest_group = {
+						ig_approval < -10
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					scope:pec_influenced_character_scope = {
+						pec_influence_anticlerical = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+	}
+
+}

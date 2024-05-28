@@ -1,0 +1,72 @@
+﻿namespace = pec_stateautonomyevents
+
+pec_stateautonomyevents.1 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		has_law = law_type:law_pec_unitarism	
+		any_scope_state = {
+			is_capital = yes
+			NOT = { has_modifier = pec_unitary_capital }
+		}					
+	}	
+		
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_capital = yes
+				NOT = { has_modifier = pec_unitary_capital }
+			}
+			add_modifier = {
+				name = pec_unitary_capital
+				months = -1
+			}
+		}
+	}		
+}
+
+pec_stateautonomyevents.2 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		has_law = law_type:law_pec_federalism		
+		any_scope_state = {
+			is_capital = yes
+			has_modifier = pec_unitary_capital
+		}			
+	}	
+		
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_capital = yes
+				has_modifier = pec_unitary_capital
+			}
+			remove_modifier = pec_unitary_capital
+		}
+	}		
+}
+
+pec_stateautonomyevents.3 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		any_scope_state = {
+			is_capital = no
+			has_modifier = pec_unitary_capital
+		}			
+	}	
+		
+	immediate = {
+		every_scope_state = {
+			limit = {
+				is_capital = no
+				has_modifier = pec_unitary_capital
+			}
+			remove_modifier = pec_unitary_capital
+		}
+	}		
+}

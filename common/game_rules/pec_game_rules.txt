@@ -1,0 +1,45 @@
+﻿#pec_intro_tutorial = {
+#	default = pec_intro_enabled
+#
+#	pec_intro_enabled = {
+#	}
+#
+#	pec_intro_disabled = {
+#	}
+#}
+
+pec_boombust_gamerule = {
+	default = pec_boombust_possible
+
+	pec_boombust_possible = {
+	}
+
+	pec_boombust_playeronly = {
+	}
+
+	pec_boombust_impossible = {
+	}
+}
+
+pec_atheismgrowth_gamerule = {
+	default = pec_atheismgrowth_possible
+
+	pec_atheismgrowth_possible = {
+	}
+
+	pec_atheismgrowth_impossible = {
+	}
+}
+
+pec_nationalism_gamerule = {
+	default = pec_nationalism_possible
+
+	pec_nationalism_possible = {
+	}
+
+	pec_nationalism_impossible = {
+	}
+
+	pec_nationalism_relaxed_req = {
+	}
+}

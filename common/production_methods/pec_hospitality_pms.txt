@@ -1,0 +1,267 @@
+﻿pm_pec_hosp_inns = {
+	texture = "gfx/interface/icons/production_method_icons/market_squares.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_pec_entertainment_add = 10 # 300
+			goods_output_pec_hospitality_add = 12 # 720 - profit of 420
+		}
+		level_scaled = {
+			building_employment_laborers_add = 3250
+			building_employment_clerks_add = 250
+			building_employment_shopkeepers_add = 500
+		}
+	}
+	state_modifiers = {
+		workforce_scaled = {
+			state_migration_pull_mult = 0.01
+		}
+	}
+}
+
+pm_pec_hosp_hotels = {
+	texture = "gfx/interface/icons/production_method_icons/unused/stock_exchange.dds"
+
+	unlocking_technologies = {
+		pec_tourism
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_pec_entertainment_add = 20 # 600
+			goods_input_transportation_add = 5 # 150
+			goods_output_pec_hospitality_add = 25 # 1500 - profit of 750
+		}
+		level_scaled = {
+			building_employment_laborers_add = 2750
+			building_employment_machinists_add = 250
+			building_employment_clerks_add = 750
+			building_employment_shopkeepers_add = 250
+		}
+	}
+	state_modifiers = {
+		workforce_scaled = {
+			state_migration_pull_mult = 0.02
+		}
+	}
+}
+
+pm_pec_hosp_modern_hotels = {
+	texture = "gfx/interface/icons/production_method_icons/unused/financial_district.dds"
+
+	unlocking_technologies = {
+		elevator
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_pec_entertainment_add = 30 # 900
+			goods_input_transportation_add = 15 # 450
+			goods_input_electricity_add = 5 # 150
+			goods_input_telephones_add = 5 # 350
+			goods_output_pec_hospitality_add = 50 # 3000 - profit of 1150
+		}
+		level_scaled = {
+			building_employment_laborers_add = 2000
+			building_employment_machinists_add = 500
+			building_employment_engineers_add = 250
+			building_employment_clerks_add = 1000
+			building_employment_shopkeepers_add = 250
+		}
+	}
+	state_modifiers = {
+		workforce_scaled = {
+			state_migration_pull_mult = 0.03
+		}
+	}
+	required_input_goods = electricity
+}
+
+
+# Service
+pm_pec_hosp_no_additional = {
+	texture = "gfx/interface/icons/production_method_icons/no_ceramics.dds"
+}
+
+pm_pec_hosp_alcohol = {
+	texture = "gfx/interface/icons/production_method_icons/patent_stills.dds"
+
+	unlocking_technologies = {
+		modern_sewerage
+	}
+
+	disallowing_laws = {
+		law_pec_prohibition
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_liquor_add = 20 # 600
+			goods_output_pec_hospitality_add = 15 # 900 - profit of 300
+		}
+		level_scaled = {
+			building_employment_clerks_add = 800
+			building_employment_shopkeepers_add = 200
+		}
+	}
+}
+
+pm_pec_hosp_stimulant = {
+	texture = "gfx/interface/icons/production_method_icons/unused/apothecaries.dds"
+
+	unlocking_technologies = {
+		modern_sewerage
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_coffee_add = 4 #50 - 200
+			goods_input_tobacco_add = 5 #40 - 200
+			goods_input_tea_add = 4 #50 - 200
+
+			goods_output_pec_hospitality_add = 15 # 900 - profit of 300
+		}
+		level_scaled = {
+			building_employment_clerks_add = 800
+			building_employment_shopkeepers_add = 200
+		}
+	}
+}
+
+pm_pec_hosp_luxury = {
+	texture = "gfx/interface/icons/production_method_icons/vineyards.dds"
+
+	unlocking_technologies = {
+		steel_frame_buildings
+	}
+
+	disallowing_laws = {
+		law_pec_prohibition
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_wine_add = 5 #50 - 250
+			goods_input_meat_add = 10 #30 - 300
+			goods_input_coffee_add = 5 #50 - 250
+			goods_input_tea_add = 5 #50 - 250
+			goods_input_tobacco_add = 5 #40 - 200
+			goods_output_pec_hospitality_add = 35 # 2100 - profit of 850
+		}
+		level_scaled = {
+			building_employment_clerks_add = 500
+			building_employment_shopkeepers_add = 500
+		}
+	}
+}
+
+# Labor saving
+
+pm_pec_hosp_adhoc_shifts = {
+	texture = "gfx/interface/icons/production_method_icons/no_automation.dds"
+}
+
+pm_pec_hosp_shift_work = {
+	texture = "gfx/interface/icons/production_method_icons/automated_bottle_blowers.dds"
+
+	unlocking_technologies = {
+		shift_work
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_services_add = 5 #50 - 250
+		}
+		level_scaled = {
+			building_employment_laborers_add = -1000
+		}
+	}
+}
+
+# Ownership
+
+pm_pec_merchant_guilds_building_hospitality = {
+	texture = "gfx/interface/icons/production_method_icons/merchant_guilds.dds"
+
+	unlocking_production_methods = {
+		pm_pec_hosp_inns
+		pm_pec_hosp_hotels
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_technocracy
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_shopkeepers_add = 400
+		}
+		unscaled = {
+			building_shopkeepers_shares_add = 10
+		}
+	}
+}
+
+pm_pec_privately_owned_building_hospitality = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+
+	unlocking_production_methods = {
+		pm_pec_hosp_hotels
+		pm_pec_hosp_modern_hotels
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_technocracy
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 100
+		}
+		workforce_scaled = {
+			goods_input_pec_financial_services_add = 0.25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 0.5
+			building_throughput_add = 0.03
+		}
+	}
+}
+
+pm_pec_publicly_traded_building_hospitality = {
+	texture = "gfx/interface/icons/production_method_icons/publicly_traded.dds"
+
+	unlocking_production_methods = {
+		pm_pec_hosp_hotels
+		pm_pec_hosp_modern_hotels
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_technocracy
+	}
+
+	unlocking_technologies = {
+		mutual_funds
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 150
+		}
+		workforce_scaled = {
+			goods_input_pec_financial_services_add = 1
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 0.5
+			building_throughput_add = 0.12
+		}
+	}
+}

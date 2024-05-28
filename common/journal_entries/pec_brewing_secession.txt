@@ -1,0 +1,565 @@
+﻿pec_je_secessionist_movement = {
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	group = je_group_crises
+    
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				name = pec_secession_brewing_var
+				value = 0
+			}
+		}
+		random_scope_culture = {
+			limit = {
+				is_primary_culture_of = ROOT
+			}
+			save_scope_as = pec_primary_culture
+		}
+		random_scope_state = {
+			limit = {
+				OR = {
+					is_incorporated = yes
+					AND = {
+						pec_state_is_in_europe = yes
+						owner = {
+							pec_country_is_in_europe = yes
+						}
+					}
+					AND = {
+						state_is_in_east_asia = yes
+						owner = {
+							country_is_in_east_asia = yes
+						}
+					}
+					AND = {
+						state_is_in_north_america = yes
+						owner = {
+							country_is_in_north_america = yes
+						}
+					}
+					AND = {
+						state_is_in_central_america = yes
+						owner = {
+							country_is_in_central_america = yes
+						}
+					}
+					AND = {
+						state_is_in_south_america = yes
+						owner = {
+							country_is_in_south_america = yes
+						}
+					}
+					AND = {
+						state_is_in_africa = yes
+						owner = {
+							country_is_in_africa = yes
+						}
+					}
+					AND = {
+						state_is_in_southeast_asia = yes
+						owner = {
+							country_is_in_southeast_asia = yes
+						}
+					}
+				}
+				turmoil > 0.15
+				state_population > 1000000
+				NOR = {
+					has_modifier = pec_nationalism_crushed_state
+					has_modifier = pec_concessions_accepted_state
+					has_modifier = pec_isolated_nationalist_home_rule
+				}
+				OR = {
+					NOT = { is_homeland_of_country_cultures = ROOT }
+					has_game_rule = pec_nationalism_relaxed_req
+				}
+				save_temporary_scope_as = pec_potential_secessionist_state
+				any_scope_culture = {
+					NOT = { is_primary_culture_of = ROOT }
+					has_homeland = scope:pec_potential_secessionist_state
+					save_temporary_scope_as = pec_potential_secessionist_culture
+				}
+				culture_percent_state = {
+				    target = scope:pec_potential_secessionist_culture
+				    value >= 0.5
+				}
+			}
+			save_scope_as = pec_secessionistbrewing_state
+			set_variable = pec_secessionistbrewing_state_var
+			random_scope_culture = {
+				limit = {
+					NOT = { is_primary_culture_of = ROOT }
+					has_homeland = scope:pec_secessionistbrewing_state
+					scope:pec_secessionistbrewing_state = {
+						culture_percent_state = {
+							target = PREV
+							value >= 0.5
+						}
+					}
+				}
+				save_scope_as = pec_secessionistbrewing_culture
+			}
+		}
+		trigger_event = { id = pec_secession_brewing.2 popup = yes }
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			80 = 0
+			20 = pec_secession_brewing.100 # Forced Assimilation (from suppression strategy)
+			5 = pec_secession_brewing.3 # Radicalism spread from university students
+			5 = pec_secession_brewing.4 # Organic Work: Education
+			5 = pec_secession_brewing.5 # Organic Work: Industry
+			5 = pec_secession_brewing.6 # Local riots in main state
+			3 = pec_secession_brewing.7 # Riots spread to other culture state
+			5 = pec_secession_brewing.8 # Nationalism spreads to other minority-majority culture
+			5 = pec_secession_brewing.9 # Underground press
+			5 = pec_secession_brewing.10 # Assassination of local official
+			1 = pec_secession_brewing.11 # Assassination of government politician or heir
+			10 = pec_secession_brewing.12 # Protest in main state
+		}
+		effect = {
+			if = {
+				limit = {
+					has_modifier = pec_brewingnationalists_strategy_concession
+					scope:pec_secessionistbrewing_state = {
+						turmoil < 0.10
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1.5
+				}
+			}
+			if = {
+				limit = {
+					has_modifier = pec_brewingnationalists_strategy_suppression
+					scope:pec_secessionistbrewing_state = {
+						devastation > 0.10
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1.0
+				}
+			}
+			if = {
+				limit = {
+					has_modifier = pec_brewingnationalists_strategy_suppression
+					scope:pec_secessionistbrewing_state = {
+						has_decree = decree_violent_suppression
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 0.5
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_secessionistbrewing_state = {
+						has_modifier = pec_nationalism_encourage_settlement_mod
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 0.5
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_secessionistbrewing_state = {
+						has_modifier = pec_nationalism_forced_assimilation_mod
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 0.5
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_secessionistbrewing_state = {
+						has_modifier = pec_nationalism_target_nationalists_mod
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1.00
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_secessionistbrewing_state = {
+						has_modifier = pec_nationalism_local_customs_mod
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1.00
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_secessionistbrewing_state = {
+						has_modifier = pec_nationalism_local_language_mod
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1.00
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_secessionistbrewing_state = {
+						has_modifier = pec_nationalism_tax_relief_mod
+					}
+				}
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 0.5
+				}
+			}
+		}
+	}
+
+	scripted_button = pec_nationalism_encourage_settlement_button
+	scripted_button = pec_nationalism_forced_assimilation_button
+	scripted_button = pec_nationalism_target_nationalists_button
+	scripted_button = pec_nationalism_local_language_button
+	scripted_button = pec_nationalism_local_customs_button
+	scripted_button = pec_nationalism_tax_relief_button
+	scripted_button = pec_nationalism_minority_officials_button
+	scripted_button = pec_nationalism_minority_ministers_button
+	scripted_button = pec_nationalism_support_culture_button
+	scripted_button = pec_nationalism_recognize_language_button
+
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+	}
+
+	on_complete = {
+		add_modifier = {
+			name = pec_suppressed_brewing_nationalists
+			months = 61
+		}
+		set_variable = {
+			name = pec_completed_brewing_secession_je
+			months = 121
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_suppression
+			}
+			add_loyalists = {
+				value = 0.03
+				culture = scope:pec_primary_culture
+			}
+			scope:pec_secessionistbrewing_state = {
+				add_modifier = {
+					name = pec_nationalism_crushed_state
+					months = 121
+				}
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_suppression
+				remove_modifier = pec_suppression_authority_cost
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			add_loyalists = {
+				value = 0.05
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			scope:pec_secessionistbrewing_state = {
+				add_modifier = {
+					name = pec_concessions_accepted_state
+					months = -1
+				}
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_concession
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_modifier = pec_nationalism_local_customs_mod
+					remove_modifier = pec_nationalism_local_language_mod
+					remove_modifier = pec_nationalism_tax_relief_mod
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_integration
+			}
+			add_primary_culture = scope:pec_secessionistbrewing_culture
+			add_loyalists = {
+				value = 0.1
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_integration
+				remove_modifier = pec_nationalism_recognize_language_mod
+				remove_modifier = pec_nationalism_minority_officials_mod
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}			
+			}
+		}
+	}
+
+	invalid = {
+	}
+
+	fail = {
+		custom_tooltip = {
+			text = pec_secessionist_movement_fail_desc
+			NOT = {
+				any_scope_state = {
+					has_variable = pec_secessionistbrewing_state_var
+				}
+			}
+		}
+	}
+
+	on_timeout = {
+		add_radicals = {
+			value = 0.15
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_radicals_in_state = {
+				value = 0.25
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_suppression
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_suppression
+				remove_modifier = pec_suppression_authority_cost
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_concession
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_modifier = pec_nationalism_local_customs_mod
+					remove_modifier = pec_nationalism_local_language_mod
+					remove_modifier = pec_nationalism_tax_relief_mod
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_integration
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_integration
+				remove_modifier = pec_nationalism_recognize_language_mod
+				remove_modifier = pec_nationalism_minority_officials_mod
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}			
+			}
+		}
+	}
+
+	on_fail = {
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_suppression
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_suppression
+				remove_modifier = pec_suppression_authority_cost
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_concession
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_modifier = pec_nationalism_local_customs_mod
+					remove_modifier = pec_nationalism_local_language_mod
+					remove_modifier = pec_nationalism_tax_relief_mod
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_integration
+			}
+			custom_tooltip = {
+				text = pec_nationalism_finish_je_clearing
+			}
+			hidden_effect = {
+				remove_modifier = pec_brewingnationalists_strategy_integration
+				remove_modifier = pec_nationalism_recognize_language_mod
+				remove_modifier = pec_nationalism_minority_officials_mod
+				scope:pec_secessionistbrewing_culture = {
+					clear_saved_scope = pec_secessionistbrewing_culture
+				}
+				scope:pec_primary_culture = {
+					clear_saved_scope = pec_primary_culture
+				}
+				scope:pec_secessionistbrewing_state = {
+					remove_variable = pec_secessionistbrewing_state_var
+					clear_saved_scope = pec_secessionistbrewing_state
+				}			
+			}
+		}
+	}
+
+	on_invalid = {
+	}
+
+	timeout = 1280
+
+	current_value = {
+		value = root.var:pec_secession_brewing_var
+	}
+
+	goal_add_value = {
+		add = 100
+	}
+
+	progressbar = yes
+
+	weight = 100
+
+	should_be_pinned_by_default = yes
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = pec_nationalism_suppression_strat_desc
+				trigger = {
+					has_modifier = pec_brewingnationalists_strategy_suppression
+				}
+			}
+			triggered_desc = {
+				desc = pec_nationalism_concession_strat_desc
+				trigger = {
+					has_modifier = pec_brewingnationalists_strategy_concession
+				}
+			}
+			triggered_desc = {
+				desc = pec_nationalism_integration_strat_desc
+				trigger = {
+					has_modifier = pec_brewingnationalists_strategy_integration
+				}
+			}
+			triggered_desc = {
+				desc = pec_nationalism_no_strat_desc
+				trigger = {
+					always = yes
+				}
+			}
+		}
+	}
+}

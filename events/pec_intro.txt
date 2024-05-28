@@ -1,0 +1,273 @@
+﻿namespace = pec_intro
+
+pec_intro.1 = {
+	type = country_event
+	placement = root
+	title = pec_intro.1.t
+	desc = pec_intro.1.d
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_intro.1.a # more about the Business Cycle
+		trigger_event = { id = pec_intro.2 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.1.b # more about changes to interest group attraction
+		trigger_event = { id = pec_intro.5 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.1.c # more about the new character interactions
+		trigger_event = { id = pec_intro.7 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.1.e # I'm good!
+		default_option = yes
+	}
+}
+
+#Business Cycle: General
+pec_intro.2 = {
+	type = country_event
+	placement = root
+	title = pec_intro.2.t
+	desc = pec_intro.2.d
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_intro.2.a # more about Market Volatility
+		trigger_event = { id = pec_intro.3 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.2.b # more about Market Confidence
+		trigger_event = { id = pec_intro.4 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.2.c # return to General Intro
+		trigger_event = { id = pec_intro.1 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.2.e # I'm good!
+		default_option = yes
+	}
+}
+
+#Business Cycle: Volatility
+pec_intro.3 = {
+	type = country_event
+	placement = root
+	title = pec_intro.3.t
+	desc = pec_intro.3.d
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_intro.3.a # return to Business Cycle
+		trigger_event = { id = pec_intro.2 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.3.b # return to General Intro
+		trigger_event = { id = pec_intro.1 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.3.c # I'm good!
+		default_option = yes
+	}
+}
+
+#Business Cycle: Confidence
+pec_intro.4 = {
+	type = country_event
+	placement = root
+	title = pec_intro.4.t
+	desc = pec_intro.4.d
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_intro.4.a # return to Business Cycle
+		trigger_event = { id = pec_intro.2 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.4.b # return to General Intro
+		trigger_event = { id = pec_intro.1 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.4.c # I'm good!
+		default_option = yes
+	}
+}
+
+# IG Attraction
+pec_intro.5 = {
+	type = country_event
+	placement = root
+	title = pec_intro.5.t
+	desc = pec_intro.5.d
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_intro.5.a # how different buildings affect pop attraction
+		trigger_event = { id = pec_intro.6 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.5.b # return to General Intro
+		trigger_event = { id = pec_intro.1 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.5.c # I'm good!
+		default_option = yes
+	}
+}
+
+#buildings affect pop attraction
+pec_intro.6 = {
+	type = country_event
+	placement = root
+	title = pec_intro.6.t
+	desc = pec_intro.6.d
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_intro.6.a # return to main screen
+		trigger_event = { id = pec_intro.1 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.6.b # I'm good!
+		default_option = yes
+	}
+}
+
+# character interactions
+pec_intro.7 = {
+	type = country_event
+	placement = root
+	title = pec_intro.7.t
+	desc = pec_intro.7.d
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_intro.7.a # return to main intro
+		trigger_event = { id = pec_intro.1 popup = yes }
+	}
+
+	option = {
+		name = pec_intro.6.b # I'm good!
+		default_option = yes
+	}
+}

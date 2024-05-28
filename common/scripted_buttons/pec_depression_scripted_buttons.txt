@@ -1,0 +1,224 @@
+﻿pec_depression_stimulus_button = {
+	name = "pec_depression_stimulus_button"
+	desc = "pec_depression_stimulus_button_desc"
+
+	visible = {
+		always = yes
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+			trigger = {
+				in_default = yes
+			}
+			add = -50
+		}
+		modifier = {
+			trigger = {
+				gold_reserves > 1000000
+			}
+			add = 25
+		}
+		modifier = {
+			trigger = {
+				var:pec_market_confidence < 0
+			}
+			add = 25
+		}
+		modifier = {
+			trigger = {
+				var:pec_market_confidence < -5
+			}
+			add = 25
+		}
+		modifier = {
+			trigger = {
+				var:pec_market_confidence < -10
+			}
+			add = 10
+		}
+		modifier = {
+			trigger = {
+				var:pec_market_confidence > 10
+			}
+			add = -10
+		}
+		modifier = {
+			trigger = {
+				var:pec_market_confidence > 5
+			}
+			add = -15
+		}
+		modifier = {
+			trigger = {
+				ig:ig_industrialists = {
+					OR = {
+						is_in_government = no
+						leader = { has_ideology = ideology:ideology_pec_metallist }
+						leader = { has_ideology = ideology:ideology_pec_centralbanker }
+					}
+				}
+			}
+			add = 5
+		}
+		modifier = {
+			trigger = {
+				ig:ig_industrialists = {
+					is_in_government = yes
+					NOT = {	leader = { has_ideology = ideology:ideology_pec_centralbanker } }
+				}
+			}
+			add = -10
+		}
+	}
+
+	possible = {
+		has_technology_researched = macroeconomics
+		OR = {
+			has_law = law_type:law_pec_central_bank_metallic
+			has_law = law_type:law_pec_central_bank_fiat
+		}
+		NOT = { has_law = law_type:law_laissez_faire }
+		NOT = { has_modifier = pec_stimulus_spending }
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = pec_stimulus_button_tt
+		}
+		random_list = {
+			20 = {
+				custom_tooltip = {
+					text = pec_depression_progress_add_10
+					change_variable = { name = pec_depression_progress add = 10 }
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_depression_progress_add_5
+					change_variable = { name = pec_depression_progress add = 5 }
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_depression_progress_add_3
+					change_variable = { name = pec_depression_progress add = 3 }
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_depression_progress_add_1
+					change_variable = { name = pec_depression_progress add = 1 }
+				}
+			}
+		}
+		add_modifier = {
+			name = pec_stimulus_spending
+			months = 25
+		}
+		add_modifier = {
+			name = pec_stimulus_spending_cost
+			multiplier = money_amount_multiplier_large
+			months = 25
+		}
+	}
+}
+
+pec_found_a_central_bank_button = {
+	name = "pec_found_central_bank_button"
+	desc = "pec_found_central_bank_button_desc"
+
+	visible = {
+		NOR = {
+			has_law = law_type:law_pec_central_bank_metallic
+			has_law = law_type:law_pec_central_bank_fiat
+		}
+	}
+
+	ai_chance = {
+		base = 10
+	}
+
+	possible = {
+		has_technology_researched = central_banking
+		ig:ig_industrialists = {
+			OR = {
+				is_in_government = no
+				leader = { has_ideology = ideology:ideology_pec_metallist }
+				leader = { has_ideology = ideology:ideology_pec_centralbanker }
+			}
+		}
+	}
+
+	effect = {
+		activate_law = law_type:law_pec_central_bank_fiat
+		add_modifier = {
+			name = pec_depression_forced_law
+			months = 37
+		}
+		if = {
+			limit = {
+				ig:ig_industrialists = {
+					NOR = {
+						leader = { has_ideology = ideology:ideology_pec_metallist }
+						leader = { has_ideology = ideology:ideology_pec_centralbanker }
+					}
+				}
+			}
+			add_radicals = {
+				value = 0.20
+				interest_group = ig:ig_industrialists
+			}
+		}
+	}
+}
+
+pec_abandon_laissez_faire = {
+	name = "pec_abandon_laissez_faire_button"
+	desc = "pec_abandon_laissez_faire_button_desc"
+
+	visible = {
+		has_law = law_type:law_laissez_faire
+	}
+
+	ai_chance = {
+		base = 10
+	}
+
+	possible = {
+		has_technology_researched = macroeconomics
+		ig:ig_industrialists = {
+			OR = {
+				AND = {
+					is_in_government = no
+					is_powerful = no
+				}
+				leader = { has_ideology = ideology:ideology_protectionist }
+				leader = { has_ideology = ideology:ideology_pec_centralbanker }
+			}
+		}
+	}
+
+	effect = {
+		activate_law = law_type:law_interventionism
+		add_modifier = {
+			name = pec_depression_forced_law
+			months = 37
+		}
+		if = {
+			limit = {
+				ig:ig_industrialists = {
+					NOR = {
+						leader = { has_ideology = ideology:ideology_protectionist }
+						leader = { has_ideology = ideology:ideology_pec_centralbanker }
+					}
+				}
+			}
+			add_radicals = {
+				value = 0.20
+				interest_group = ig:ig_industrialists
+			}
+		}
+	}
+}

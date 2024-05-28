@@ -1,0 +1,41 @@
+pec_gdp_baseline = {
+	set_variable = {
+		name = pec_gdp_previous
+		value = root.gdp
+	}
+	set_variable = {
+		name = pec_gdp_current
+		value = root.gdp
+	}
+	set_variable = {
+		name = pec_gdp_growth
+		value = 0
+	}
+}
+
+pec_gdp_growth = {
+	set_variable = {
+		name = pec_gdp_current
+		value = root.gdp
+	}
+	set_variable = {
+		name = pec_gdp_growth
+		value = var:pec_gdp_current
+	}
+	change_variable = {
+		name = pec_gdp_growth
+		subtract = var:pec_gdp_previous
+	}
+	change_variable = {
+		name = pec_gdp_growth
+		divide = var:pec_gdp_current
+	}
+	change_variable = {
+		name = pec_gdp_growth
+		multiply = 100
+	}
+	set_variable = {
+		name = pec_gdp_previous
+		value = root.gdp
+	}
+}

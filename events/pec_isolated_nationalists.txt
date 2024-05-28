@@ -1,0 +1,243 @@
+﻿namespace = pec_isolated_nationalists
+
+
+pec_isolated_nationalists.1 = {
+	type = country_event
+	placement = scope:pec_isolated_nationalists_state
+	title = pec_isolated_nationalists.1.t
+	desc = pec_isolated_nationalists.1.d
+	flavor = pec_isolated_nationalists.1.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_springtime_of_nations"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+		random_scope_culture = {
+			limit = {
+				is_primary_culture_of = ROOT
+			}
+			save_scope_as = pec_primary_culture_isonat
+		}
+		random_scope_state = {
+			limit = {
+				is_isolated_from_market = yes
+				OR = {
+					AND = {
+						pec_state_is_in_europe = yes
+						owner = {
+							pec_country_is_in_europe = yes
+						}
+					}
+					AND = {
+						state_is_in_east_asia = yes
+						owner = {
+							country_is_in_east_asia = yes
+						}
+					}
+					AND = {
+						state_is_in_north_america = yes
+						owner = {
+							country_is_in_north_america = yes
+						}
+					}
+					AND = {
+						state_is_in_central_america = yes
+						owner = {
+							country_is_in_central_america = yes
+						}
+					}
+					AND = {
+						state_is_in_south_america = yes
+						owner = {
+							country_is_in_south_america = yes
+						}
+					}
+					AND = {
+						state_is_in_africa = yes
+						owner = {
+							country_is_in_africa = yes
+						}
+					}
+					AND = {
+						state_is_in_southeast_asia = yes
+						owner = {
+							country_is_in_southeast_asia = yes
+						}
+					}
+				}
+				state_population > 1000000
+				NOR = {
+					has_modifier = pec_nationalism_crushed_state
+					has_modifier = pec_concessions_accepted_state
+					has_modifier = pec_isolated_nationalist_home_rule
+				}
+				save_temporary_scope_as = pec_potential_isolated_nationalist_state
+				any_scope_culture = {
+					NOT = { is_primary_culture_of = ROOT }
+					has_homeland = scope:pec_potential_isolated_nationalist_state
+					save_temporary_scope_as = pec_potential_isolated_nationalist_culture
+				}
+				culture_percent_state = {
+				    target = scope:pec_potential_isolated_nationalist_culture
+				    value >= 0.45
+				}
+			}
+			save_scope_as = pec_isolated_nationalists_state
+			random_scope_culture = {
+				limit = {
+					NOT = { is_primary_culture_of = ROOT }
+					has_homeland = scope:pec_potential_isolated_nationalist_state
+					scope:pec_potential_isolated_nationalist_state = {
+						culture_percent_state = {
+							target = PREV
+							value >= 0.5
+						}
+					}
+				}
+				save_scope_as = pec_isolated_nationalist_culture
+			}
+		}
+	}
+
+	trigger = {
+		NOT = { has_game_rule = pec_nationalism_impossible }
+		has_technology_researched = nationalism
+		highest_secession_progress = 0
+		NOR = {
+			has_modifier = pec_suppressed_brewing_nationalists
+			has_variable = pec_completed_brewing_secession_je
+			is_revolutionary = yes
+			is_secessionist = yes
+		}
+		any_scope_state = {
+			is_isolated_from_market = yes
+			OR = {
+				AND = {
+					pec_state_is_in_europe = yes
+					owner = {
+						pec_country_is_in_europe = yes
+					}
+				}
+				AND = {
+					state_is_in_east_asia = yes
+					owner = {
+						country_is_in_east_asia = yes
+					}
+				}
+				AND = {
+					state_is_in_north_america = yes
+					owner = {
+						country_is_in_north_america = yes
+					}
+				}
+				AND = {
+					state_is_in_central_america = yes
+					owner = {
+						country_is_in_central_america = yes
+					}
+				}
+				AND = {
+					state_is_in_south_america = yes
+					owner = {
+						country_is_in_south_america = yes
+					}
+				}
+				AND = {
+					state_is_in_africa = yes
+					owner = {
+						country_is_in_africa = yes
+					}
+				}
+				AND = {
+					state_is_in_southeast_asia = yes
+					owner = {
+						country_is_in_southeast_asia = yes
+					}
+				}
+			}
+			state_population > 1000000
+			NOR = {
+				has_modifier = pec_nationalism_crushed_state
+				has_modifier = pec_concessions_accepted_state
+				has_modifier = pec_isolated_nationalist_home_rule
+			}
+			save_temporary_scope_as = pec_potential_isolated_nationalist_state
+			any_scope_culture = {
+				NOT = { is_primary_culture_of = ROOT }
+				has_homeland = scope:pec_potential_isolated_nationalist_state
+				save_temporary_scope_as = pec_potential_isolated_nationalist_culture
+			}
+			culture_percent_state = {
+				target = scope:pec_potential_isolated_nationalist_culture
+				value >= 0.5
+			}
+		}
+	}
+
+	option = {
+		name = pec_isolated_nationalists.1.a
+		ai_chance = {
+			base = 50
+		}
+		default_option = yes
+		scope:pec_isolated_nationalists_state = {
+			add_radicals_in_state = {
+				value = 0.55
+				culture = scope:pec_isolated_nationalist_culture
+			}
+		}
+	}
+
+	option = {
+		name = pec_isolated_nationalists.1.b
+		ai_chance = {
+			base = 25
+		}
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_federalism
+				has_law = law_type:law_pec_confederation
+			}
+		}
+		scope:pec_isolated_nationalists_state = {
+			add_radicals_in_state = {
+				value = 0.25
+				culture = scope:pec_isolated_nationalist_culture
+			}
+		}
+		add_radicals = {
+			value = 0.04
+			culture = scope:pec_primary_culture_isonat
+		}
+		every_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_pec_unitarism
+					value > neutral
+				}
+			}
+			add_modifier = {
+				name = pec_isonat_igmod_neg
+				months = 61
+			}
+		}
+		scope:pec_isolated_nationalists_state = {
+			add_radicals_in_state = {
+				value = 0.10
+				culture = scope:pec_isolated_nationalist_culture
+			}
+			add_modifier = {
+				name = pec_isolated_nationalist_home_rule
+				months = 61
+			}
+		}
+	}
+}

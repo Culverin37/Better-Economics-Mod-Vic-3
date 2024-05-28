@@ -1,0 +1,68 @@
+﻿namespace = pec_confederation_secession
+
+pec_confederation_secession.1 = {
+	type = country_event
+	placement = ROOT
+
+	title = pec_confederation_secession.1.t
+	desc = pec_confederation_secession.1.d
+	flavor = pec_confederation_secession.1.f
+
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	duration = 1
+
+	trigger = {
+		has_law = law_type:law_pec_confederation
+	}
+
+	immediate = {
+		random_country = {
+			limit = {
+				is_secessionist = yes
+				any_diplomatic_play = {
+					target = prev
+					initiator = root
+				}
+			}
+			save_scope_as = pec_secessionist_confederal_country
+		}
+	}
+
+	option = {
+		name = pec_confederation_secession.1.a
+		default_option = yes
+		ai_chance = {
+			base = 95
+		}
+		random_diplomatic_play = {
+			limit = {
+				target = {
+					is_secessionist = yes
+				}
+				initiator = root
+			}
+			end_play = yes
+		}
+		create_truce = {
+			country = scope:pec_secessionist_confederal_country
+			months = 61
+		}
+	}
+
+	option = {
+		name = pec_confederation_secession.1.b
+		ai_chance = {
+			base = 5
+		}
+		add_radicals = {
+			value = 0.10
+		}
+	}
+}

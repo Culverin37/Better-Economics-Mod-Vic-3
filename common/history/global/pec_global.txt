@@ -1,0 +1,212 @@
+﻿# This is executed last among all history
+GLOBAL = {
+	every_state = {
+		limit = {
+			OR = {
+				state_region = s:STATE_NORRLAND
+				state_region = s:STATE_EASTERN_NORWAY
+				state_region = s:STATE_SVEALAND
+				state_region = s:STATE_GOTALAND
+				state_region = s:STATE_WESTERN_NORWAY
+				state_region = s:STATE_NORTHERN_NORWAY
+				state_region = s:STATE_SOUTHERN_FINLAND
+				state_region = s:STATE_WEST_KARELIA
+				state_region = s:STATE_LEINSTER
+				state_region = s:STATE_ULSTER
+				state_region = s:STATE_PICARDY
+				state_region = s:STATE_GUYENNE
+				state_region = s:STATE_CHAMPAGNE
+				state_region = s:STATE_LORRAINE
+				state_region = s:STATE_MORAVIA
+				state_region = s:STATE_WURTTEMBERG
+				state_region = s:STATE_HANNOVER
+				state_region = s:STATE_FRANCONIA
+				state_region = s:STATE_LAZIO
+				state_region = s:STATE_CAMPANIA
+				state_region = s:STATE_APULIA
+				state_region = s:STATE_TOLEDO
+				state_region = s:STATE_CASTILE
+				state_region = s:STATE_ARAGON
+				state_region = s:STATE_EASTERN_THRACE
+				state_region = s:STATE_BOSNIA
+				state_region = s:STATE_INGRIA
+				state_region = s:STATE_BRYANSK
+				state_region = s:STATE_SMOLENSK
+				state_region = s:STATE_GALICH
+				state_region = s:STATE_ROSTOV
+				state_region = s:STATE_PERM
+				state_region = s:STATE_MAZOVIA
+				state_region = s:STATE_GREATER_POLAND
+				state_region = s:STATE_LESSER_POLAND
+				state_region = s:STATE_WEST_PRUSSIA
+				state_region = s:STATE_POSEN
+				state_region = s:STATE_EAST_GALICIA
+				state_region = s:STATE_SOUTHERN_TRANSYLVANIA
+				state_region = s:STATE_NORTHERN_TRANSYLVANIA
+				state_region = s:STATE_MOLDAVIA
+				state_region = s:STATE_BESSARABIA
+				state_region = s:STATE_MARRAKECH
+				state_region = s:STATE_AL_RIF
+				state_region = s:STATE_INNER_MOROCCO
+				state_region = s:STATE_TUNISIA
+				state_region = s:STATE_SENEGAL
+				state_region = s:STATE_GAMBIA
+				state_region = s:STATE_NIGERIA
+				state_region = s:STATE_GHANA
+				state_region = s:STATE_OROMIA
+				state_region = s:STATE_AMHARA
+				state_region = s:STATE_GONDER
+				state_region = s:STATE_COLORADO
+				state_region = s:STATE_MONTANA
+				state_region = s:STATE_OKLAHOMA
+				state_region = s:STATE_GEORGIA
+				state_region = s:STATE_NEW_HAMPSHIRE
+				state_region = s:STATE_VERMONT
+				state_region = s:STATE_UTAH
+				state_region = s:STATE_SASKATCHEWAN
+				state_region = s:STATE_MANITOBA
+				state_region = s:STATE_TEXAS
+				state_region = s:STATE_SONORA
+				state_region = s:STATE_CHIHUAHUA
+				state_region = s:STATE_RIO_GRANDE
+				state_region = s:STATE_SINALOA
+				state_region = s:STATE_MEXICO
+				state_region = s:STATE_GUERRERO
+				state_region = s:STATE_OAXACA
+				state_region = s:STATE_JALISCO
+				state_region = s:STATE_GUATEMALA
+				state_region = s:STATE_HONDURAS
+				state_region = s:STATE_NICARAGUA
+				state_region = s:STATE_ANTIOQUIA
+				state_region = s:STATE_CUNDINAMARCA
+				state_region = s:STATE_CAJAMARCA
+				state_region = s:STATE_ICA
+				state_region = s:STATE_DAGESTAN
+				state_region = s:STATE_URALSK
+				state_region = s:STATE_KHIVA
+				state_region = s:STATE_AKMOLINSK
+				state_region = s:STATE_URAL
+				state_region = s:STATE_TUVA
+				state_region = s:STATE_OKHOTSK
+				state_region = s:STATE_TRANS_BAIKAL
+				state_region = s:STATE_IRKUTSK
+				state_region = s:STATE_PYONGYANG
+				state_region = s:STATE_BUSAN
+				state_region = s:STATE_YANGHO
+				state_region = s:STATE_TOHOKU
+				state_region = s:STATE_CHUBU
+				state_region = s:STATE_CHUGOKU
+				state_region = s:STATE_SOUTH_SUMATRA
+				state_region = s:STATE_WEST_JAVA
+				state_region = s:STATE_NORTH_SUMATRA
+				state_region = s:STATE_NEW_SOUTH_WALES
+				state_region = s:STATE_QUEENSLAND
+				state_region = s:STATE_VICTORIA
+				state_region = s:STATE_WESTERN_AUSTRALIA
+
+			}
+		}
+		state_region = {
+			add_state_trait = state_trait_pec_minor_river
+		}
+	}
+
+	every_state = {
+		limit = {
+			OR = {
+				state_region = s:STATE_JIANGSU
+				state_region = s:STATE_BEIJING
+				state_region = s:STATE_OUTER_MANCHURIA
+				state_region = s:STATE_SEOUL
+				state_region = s:STATE_KANTO
+				state_region = s:STATE_KURSK
+				state_region = s:STATE_NOVGOROD
+				state_region = s:STATE_CALIFORNIA
+				state_region = s:STATE_BUENOS_AIRES
+				state_region = s:STATE_LIMA
+			}
+		}
+		state_region = {
+			add_state_trait = state_trait_pec_major_river
+		}
+	}
+
+	every_state = {
+		limit = {
+			OR = {
+				state_region = s:STATE_WEST_AEGEAN_ISLANDS
+				state_region = s:STATE_EAST_AEGEAN_ISLANDS
+				state_region = s:STATE_IONIAN_ISLANDS
+				state_region = s:STATE_PROVENCE
+				state_region = s:STATE_CRETE
+				state_region = s:STATE_CYPRUS
+				state_region = s:STATE_HEDJAZ
+				state_region = s:STATE_BERMUDA
+				state_region = s:STATE_WEST_INDIES
+				state_region = s:STATE_CUBA
+				state_region = s:STATE_JAMAICA
+				state_region = s:STATE_BAHAMAS
+				state_region = s:STATE_PUERTO_RICO
+				state_region = s:STATE_SANTO_DOMINGO
+				state_region = s:STATE_HAITI
+				state_region = s:STATE_LANGUEDOC
+				state_region = s:STATE_LOWER_EGYPT
+				state_region = s:STATE_MIDDLE_EGYPT
+				state_region = s:STATE_EASTERN_THRACE
+				state_region = s:STATE_FRANCONIA
+				state_region = s:STATE_LAZIO
+				state_region = s:STATE_ANDALUSIA
+				state_region = s:STATE_WEST_PRUSSIA
+				state_region = s:STATE_POMERANIA
+				state_region = s:STATE_MARRAKECH
+				state_region = s:STATE_CALIFORNIA
+				state_region = s:STATE_SOUTH_SUMATRA
+				state_region = s:STATE_WEST_JAVA
+				state_region = s:STATE_BEIJING
+				state_region = s:STATE_CRIMEA
+				state_region = s:STATE_HAWAIIAN_ISLANDS
+				state_region = s:STATE_BALEARES
+				state_region = s:STATE_ONTARIO
+				state_region = s:STATE_BALEARES
+				state_region = s:STATE_NEW_YORK
+				state_region = s:STATE_PALESTINE
+				state_region = s:STATE_KANTO
+				state_region = s:STATE_RAJPUTANA
+			}
+		}
+		state_region = {
+			add_state_trait = state_trait_pec_tourist_site
+		}
+	}
+
+	every_state = {
+		limit = {
+			OR = {
+				state_region = s:STATE_HOME_COUNTIES
+				state_region = s:STATE_LANCASHIRE
+				state_region = s:STATE_YORKSHIRE
+				state_region = s:STATE_MIDLANDS
+			}
+		}
+		state_region = {
+			add_state_trait = state_trait_pec_english_canals
+		}
+	}
+
+	every_state = {
+		limit = {
+			OR = {
+				state_region = s:STATE_HOME_COUNTIES
+				state_region = s:STATE_ILE_DE_FRANCE
+				state_region = s:STATE_NEW_YORK
+				state_region = s:STATE_SHANXI
+				state_region = s:STATE_SVEALAND
+				state_region = s:STATE_HOLLAND
+			}
+		}
+		add_modifier = {
+			name = pec_financial_centre_modifier_state
+			months = -1
+		}
+	}
+}

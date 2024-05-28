@@ -1,0 +1,62 @@
+﻿namespace = pec_finances
+
+pec_finances.1 = {
+	type = country_event
+	placement = root
+	title = pec_finances.1.t
+	desc = pec_finances.1.d
+	flavor = pec_finances.1.f
+
+	duration = 3
+
+	cooldown = { months = 60 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					is_building_type = building_pec_banks
+					occupancy > 0.9
+					level >= 3
+					NOT = { has_active_production_method = pm_pec_banks_simple }
+				}
+			}
+			save_scope_as = pec_financial_state
+		}
+	}
+
+	trigger = {
+		NOT = {
+			any_scope_state = {
+				has_modifier = pec_financial_centre_modifier_state
+			}
+		}
+		any_scope_building = {
+			is_building_type = building_pec_banks
+			occupancy > 0.9
+			level >= 3
+			NOT = { has_active_production_method = pm_pec_banks_simple }
+		}
+	}
+
+	option = {
+		name = pec_finances.1.a
+		default_option = yes
+		scope:pec_financial_state = {
+			add_modifier = {
+				name = pec_financial_centre_modifier_state
+				months = -1
+			}
+		}
+	}
+}

@@ -1,0 +1,57 @@
+﻿pmg_pec_bank_lending = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_pec_banks_simple
+		pm_pec_banks_fractional_reserve_banking
+		pm_pec_banks_securitiestrade
+		pm_pec_banks_hedgefunds
+		pm_pec_banks_planning
+	}
+}
+
+pmg_pec_bank_investment = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_pec_banks_inv_none
+		pm_pec_banks_banknotes
+		pm_pec_banks_banknotes_coins
+		pm_pec_banks_mutual_funds
+		pm_pec_banks_mutual_funds_coins
+	}
+}
+
+pmg_ownership_capital_building_pec_banks = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_merchant_banks
+		pm_private_bank
+		pm_mutualfundown
+		pm_mixed_ownership_bank
+		pm_credit_union
+		pm_government_run_bank
+	}
+}
+
+pmg_pec_central_bank = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_pec_central_bank
+	}
+}
+
+pmg_pec_central_bank_ownership = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+
+	production_methods = {
+		pm_central_bank_private
+		pm_central_bank_mixed
+		pm_central_bank_government
+
+	}
+}

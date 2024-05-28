@@ -1,0 +1,30 @@
+﻿NPops = {
+	CONVERSION_RATE = 0.0007						# Percentage of pops who will Convert into a different Religion each month, if eligible
+	MIN_CONVERSION = 5							# If there is any conversion at least this many people will convert
+	MIGRATION_PULL_FROM_AVAILABLE_EMPLOYMENT_MAX = 10
+}
+
+NPolitics = {
+	INCOHERENCE_FROM_SECONDARY_PARTY_MEMBERS = 0.80		# The amount to multiply the approval value with if the interest group is in a party but is not the party whip
+	IG_APPROVAL_FROM_LOYALISTS = 10		# If 100% of the political strength of the IG is loyalist, change approval by this amount
+	IG_APPROVAL_FROM_RADICALS = -15		# If 100% of the political strength of the IG is radical, change approval by this amount
+	MIN_IG_APPROVAL_FROM_LAWS = -8		# IG cannot have approval lower than this as a total from laws 'on the book'
+	MAX_IG_APPROVAL_FROM_LAWS = 8		# IG cannot have approval higher than this as a total from laws 'on the book'
+
+	IG_APPROVAL_FROM_LAW_STRONG_STANCE = 3 		# IG approval/disapproval for laws that are strongly for/against their ideologies
+
+	NUM_REVOLUTIONARY_LAW_CHANGES = 4
+}
+
+NEconomy = {
+	REINVESTMENT_EFFICIENCY_MIN = 0.5					# Minimum conversion of reinvestment to investment pool
+	
+	GOVERNMENT_DIVIDENDS_EFFICIENCY_MIN = 0.5			# Minimum dividend fraction from buildings with government shares that will reach the treasury - the rest will be wasted
+	COMPANY_PRODUCTIVITY_ABSOLUTE_HIGH_THRESHOLD = 20	# Companies whose productivity exceeds this amount will ALWAYS be considered high-productivity companies
+	COMPANY_PRODUCTIVITY_ABSOLUTE_LOW_THRESHOLD = 8		# Companies whose productivity is below this amount will ALWAYS be considered low-productivity companies
+}
+
+NAI = {
+	DIPLO_PLAY_SECESSION_OWN_SECESSION_RISK_FACTOR = -10 # Add this amount of reluctance for AI to back a secession of a culture that has enough pops in their own country to secede
+
+}

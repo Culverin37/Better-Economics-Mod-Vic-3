@@ -1,0 +1,58 @@
+﻿pec_abolish_serf_payments_decision = {
+	is_shown = {
+		has_modifier = pec_modifier_russerf_compromise
+	}
+
+	possible = {
+		OR = {
+			country_turmoil > 0.25
+			AND = {
+				ruler.interest_group = {
+					NOT = { is_interest_group_type = ig_landowners }
+				}
+				ruler.interest_group = {
+					NOT = { is_interest_group_type = ig_devout }
+				}
+			}
+		}
+		gold_reserves > 1000000
+		NOT = {
+			any_interest_group = {
+				has_modifier = pec_modifier_russerf_compromise_igmod
+			}
+		}
+	}
+	
+	when_taken = {
+		add_treasury = -1000000
+		add_loyalists = {
+			value = 0.07
+			pop_type = peasants
+		}
+		add_loyalists = {
+			value = 0.03
+			strata = poor
+		}
+		remove_modifier = pec_modifier_russerf_compromise
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+			trigger = {
+				OR = {
+					has_strategy = ai_strategy_industrial_expansion
+					has_strategy = ai_strategy_progressive_agenda
+					has_strategy = ai_strategy_egalitarian_agenda
+				}
+			}
+			add = 10
+		}
+		modifier = {
+			trigger = {
+				country_turmoil > 0.3
+			}
+			add = 10
+		}
+	}
+}

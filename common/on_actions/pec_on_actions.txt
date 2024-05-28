@@ -1,0 +1,81 @@
+﻿on_monthly_pulse_country = {
+	events = {
+		pec_twoparty.1
+		pec_twoparty.2
+		pec_twoparty.8
+		pec_stateautonomyevents.1
+		pec_stateautonomyevents.2
+		pec_stateautonomyevents.3
+		pec_singlepartystate_event.1
+		pec_finances.1
+		pec_secession_army.1
+		pec_updates.1
+		pec_updates.2
+		pec_council_republic_economy.1
+	}
+}
+
+on_yearly_pulse_country = {
+	events = {
+		pec_secession_brewing.1
+		pec_isolated_nationalists.1
+	}
+}
+
+on_election_campaign_start = {
+	events = {
+		pec_twoparty.3 # workaround until on_election_campaign_end works
+		pec_twoparty.4 # workaround
+		pec_twoparty.6 # american president has served 2 terms
+		pec_corporatelection.1 # Money buying elections
+	}
+}
+
+on_country_formed = {
+	on_actions = {
+		pec_on_country_formed_effects
+	}
+}
+
+pec_on_country_formed_effects = {
+	effect = {
+		if = {
+			limit = {
+				c:GER ?= ROOT
+			}
+			trigger_event = {  id = pec_unification_fed.1 popup = yes days = 30 }
+		}
+		else_if = {
+			limit = {
+				c:ITA ?= ROOT
+			}
+			trigger_event = {  id = pec_unification_fed.2 popup = yes days = 30 }
+		}
+		else_if = {
+			limit = {
+				c:SCA ?= ROOT
+			}
+			trigger_event = {  id = pec_unification_fed.3 popup = yes days = 30 }
+		}
+	}
+}
+
+on_secession_start = {
+	on_actions = {
+		pec_secession_start_effects
+	}
+}
+pec_secession_start_effects = {
+	effect = {
+		if = {
+			limit = {
+				ROOT = {
+					has_law = law_type:law_pec_confederation
+				}
+			}
+			root = {
+				trigger_event = { id = pec_confederation_secession.1 popup = yes days = 5 }
+			}
+		}
+	}
+}

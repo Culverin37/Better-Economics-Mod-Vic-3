@@ -1,0 +1,328 @@
+﻿pm_pec_naturalriver = {
+	texture = "gfx/interface/icons/production_method_icons/unused/no_cargo_handling.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_fish_add = 15 # 300 - profit of 300
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1250
+			building_employment_farmers_add = 250
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			building_group_bg_logging_throughput_add = 0.01
+			building_group_bg_agriculture_throughput_add = 0.01
+			state_infrastructure_add = 5
+		}
+		unscaled = {
+			state_market_access_price_impact = 0.01
+		}
+	}
+}
+
+pm_pec_canals = {
+	texture = "gfx/interface/icons/production_method_icons/canals.dds"
+
+	unlocking_technologies = {
+		prospecting
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_wood_add = 10 # 200
+			goods_output_fish_add = 15 # 300
+			goods_output_transportation_add = 10 # 300 - profit of 400
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1000
+			building_employment_machinists_add = 400
+			building_employment_engineers_add = 100
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_infrastructure_add = 10
+			building_group_bg_logging_throughput_add = 0.02
+			building_group_bg_agriculture_throughput_add = 0.02
+			building_group_bg_plantations_throughput_add = 0.02
+		}
+		unscaled = {
+			state_market_access_price_impact = 0.025
+		}
+	}
+}
+
+pm_pec_canals_modern = {
+	texture = "gfx/interface/icons/production_method_icons/nitroglycerin.dds"
+
+	unlocking_technologies = {
+		dynamite
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_explosives_add = 5 # 250
+			goods_output_fish_add = 15 # 300
+			goods_output_transportation_add = 20 # 600 - profit of 650
+		}
+		level_scaled = {
+			building_employment_laborers_add = 500
+			building_employment_machinists_add = 700
+			building_employment_engineers_add = 300
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_infrastructure_add = 20
+			building_group_bg_logging_throughput_add = 0.04
+			building_group_bg_agriculture_throughput_add = 0.04
+			building_group_bg_plantations_throughput_add = 0.04
+			state_pollution_generation_add = 5
+		}
+		unscaled = {
+			state_market_access_price_impact = 0.05
+		}
+	}
+}
+
+
+pm_pec_simpleboats = {
+	texture = "gfx/interface/icons/production_method_icons/wooden_ships.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_wood_add = 10 # 200
+			goods_input_fabric_add = 10 # 200
+			goods_output_fish_add = 10 # 200
+			goods_output_transportation_add = 10 #300 - profit of 100
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1300
+			building_employment_farmers_add = 200
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_infrastructure_add = 2
+			building_group_bg_logging_throughput_add = 0.01
+			building_group_bg_mining_throughput_add = 0.01
+		}
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			market_land_trade_capacity_add = 2
+		}
+	}
+}
+
+pm_pec_riverboats = {
+	texture = "gfx/interface/icons/production_method_icons/basic_port.dds"
+
+	unlocking_technologies = {
+		paddle_steamer
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_clippers_add = 15 # 750
+			goods_output_fish_add = 20 # 400
+			goods_output_transportation_add = 20 # 600 - profit of 250
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1000
+			building_employment_machinists_add = 500
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_infrastructure_add = 5
+			building_group_bg_logging_throughput_add = 0.02
+			building_group_bg_mining_throughput_add = 0.02
+		}
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			market_land_trade_capacity_add = 4
+		}
+	}
+}
+
+pm_pec_steamboats = {
+	texture = "gfx/interface/icons/production_method_icons/arc_welded_steam_ships.dds"
+
+	unlocking_technologies = {
+		ironclad_tech
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_steamers_add = 10 # 700
+			goods_input_coal_add = 20 # 600
+			goods_output_fish_add = 40 # 800
+			goods_output_transportation_add = 40 # 1200 - profit of 700
+		}
+		level_scaled = {
+			building_employment_laborers_add = 500
+			building_employment_machinists_add = 800
+			building_employment_engineers_add = 200
+		}
+	}
+
+	state_modifiers = {
+		workforce_scaled = {
+			state_infrastructure_add = 10
+			building_group_bg_mining_throughput_add = 0.04
+			building_group_bg_logging_throughput_add = 0.04
+			state_pollution_generation_add = 20
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			market_land_trade_capacity_add = 6
+		}
+	}
+}
+
+pm_pec_nohydropower = {
+	texture = "gfx/interface/icons/production_method_icons/no_explosives.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+		}
+		level_scaled = {
+		}
+	}
+}
+
+pm_pec_hydropower = {
+	texture = "gfx/interface/icons/production_method_icons/unused/maintained_sewers.dds"
+
+	unlocking_technologies = {
+		electrical_generation
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_engines_add = 5 # 300
+			goods_output_electricity_add = 40 # 1500 # profit 900
+		}
+		level_scaled = {
+			building_employment_machinists_add = 500
+			building_employment_engineers_add = 500
+		}
+	}
+}
+
+# ownership pms
+
+pm_pec_riverdev_own_merchant = {
+	texture = "gfx/interface/icons/production_method_icons/merchant_guilds.dds"
+
+	unlocking_production_methods = {
+		pm_pec_simpleboats
+		pm_pec_riverboats
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_shopkeepers_add = 250
+		}
+		unscaled = {
+			building_shopkeepers_shares_add = 10
+		}
+	}
+}
+
+pm_pec_riverdev_own_private = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+
+	unlocking_production_methods = {
+		pm_pec_riverboats
+		pm_pec_steamboats
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 75
+			building_employment_aristocrats_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_aristocrats_shares_add = 5
+			building_shopkeepers_shares_add = 1
+		}
+	}
+}
+
+pm_pec_riverdev_own_mixed = {
+	texture = "gfx/interface/icons/production_method_icons/mixed_ownership.dds"
+
+	unlocking_laws = {
+		law_pec_mixed_market
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 50
+			building_employment_bureaucrats_add = 100
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 1
+			building_government_shares_add = 0.1
+		}
+	}
+}
+
+pm_pec_riverdev_own_commons = {
+	texture = "gfx/interface/icons/production_method_icons/worker_cooperative.dds"
+
+	unlocking_laws = {
+		law_cooperative_ownership
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_shopkeepers_add = 250
+		}
+		unscaled = {
+			building_workforce_shares_add = 1
+		}
+	}
+}
+
+pm_pec_riverdev_own_government = {
+	texture = "gfx/interface/icons/production_method_icons/government_run.dds"
+	
+	unlocking_laws = {
+		law_command_economy
+	}
+	
+	building_modifiers = {
+		level_scaled = {
+			building_employment_bureaucrats_add = 150
+		}
+		unscaled = {
+			building_government_shares_add = 1
+		}
+	}
+}

@@ -1,0 +1,413 @@
+﻿pm_pec_ent_simple = {
+	texture = "gfx/interface/icons/production_method_icons/covered_markets.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_wood_add = 10 # 200
+			goods_input_fabric_add = 10 # 200
+			goods_output_pec_entertainment_add = 30 # 900 - profit of 500
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1900
+			building_employment_shopkeepers_add = 500
+			building_employment_academics_add = 100
+		}
+	}
+}
+
+pm_pec_ent_theatre = {
+	texture = "gfx/interface/icons/production_method_icons/unused/propaganda_posters.dds"
+
+	unlocking_technologies = {
+		realism
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_clothes_add = 15 # 450
+			goods_input_glass_add = 5 # 200
+			goods_input_tools_add = 5 # 200
+			goods_output_pec_entertainment_add = 55 # 1650 - profit of 800
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1500
+			building_employment_clerks_add = 500
+			building_employment_shopkeepers_add = 250
+			building_employment_academics_add = 250
+		}
+	}
+}
+
+pm_pec_ent_cinemas = {
+	texture = "gfx/interface/icons/production_method_icons/unused/propaganda_films.dds"
+
+	unlocking_technologies = {
+		film
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_fine_art_add = 2 # 400
+			goods_input_electricity_add = 10 # 300
+			goods_input_clothes_add = 15 # 450
+			goods_input_tools_add = 10 # 400
+			goods_output_pec_entertainment_add = 90 # 2700 - profit of 1150
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1000
+			building_employment_machinists_add = 250
+			building_employment_clerks_add = 750
+			building_employment_academics_add = 500
+		}
+	}
+	required_input_goods = electricity
+}
+
+
+# Eateries
+pm_pec_ent_no_dining_industry = {
+	texture = "gfx/interface/icons/production_method_icons/no_canning.dds"
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_grain_add = 5
+			goods_output_pec_entertainment_add = 10 # 300 - profit of 200
+		}
+		level_scaled = {
+			building_employment_laborers_add = 2500
+		}
+	}
+}
+
+pm_pec_ent_public_houses = {
+	texture = "gfx/interface/icons/production_method_icons/bakeries.dds"
+
+	unlocking_technologies = {
+		distillation
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_groceries_add = 5 # 150
+			goods_output_pec_entertainment_add = 20 # 600 - profit of 450
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1750
+			building_employment_clerks_add = 500
+			building_employment_shopkeepers_add = 250
+		}
+	}
+}
+
+pm_pec_ent_restaurants = {
+	texture = "gfx/interface/icons/production_method_icons/leaded_glass.dds"
+
+	unlocking_technologies = {
+		pec_tourism
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_groceries_add = 15 #30 450
+			goods_input_meat_add = 5 #30 150
+			goods_input_fruit_add = 5 #30 150
+			goods_input_sugar_add = 5 #30 150
+			goods_output_pec_entertainment_add = 50 # 1500 - profit of 600
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1250
+			building_employment_clerks_add = 750
+			building_employment_shopkeepers_add = 500
+		}
+	}
+}
+
+pm_pec_ent_luxury_restaurants = {
+	texture = "gfx/interface/icons/production_method_icons/crystal_glass.dds"
+
+	unlocking_technologies = {
+		elevator
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_groceries_add = 20 #30 600
+			goods_input_meat_add = 10 #30 300
+			goods_input_fruit_add = 10 #30 300
+			goods_input_sugar_add = 10 #30 300
+			goods_output_pec_entertainment_add = 80 # 2400 - profit of 900
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1000
+			building_employment_clerks_add = 1000
+			building_employment_shopkeepers_add = 500
+		}
+	}
+}
+
+# Alcohol Service
+pm_pec_ent_no_alcohol = {
+	texture = "gfx/interface/icons/production_method_icons/no_distillery.dds"
+}
+
+pm_pec_ent_liquor_service = {
+	texture = "gfx/interface/icons/production_method_icons/pot_stills.dds"
+
+	unlocking_production_methods = {
+		pm_pec_ent_public_houses
+		pm_pec_ent_restaurants
+		pm_pec_ent_luxury_restaurants
+	}
+
+	disallowing_laws = {
+		law_pec_prohibition
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_liquor_add = 15 # 450
+			goods_output_pec_entertainment_add = 25 # 750 - profit of 300
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_expected_sol_from_literacy = -1
+		}
+	}
+}
+
+pm_pec_ent_wine_service = {
+	texture = "gfx/interface/icons/production_method_icons/vineyards.dds"
+
+	unlocking_production_methods = {
+		pm_pec_ent_public_houses
+		pm_pec_ent_restaurants
+		pm_pec_ent_luxury_restaurants
+	}
+
+	disallowing_laws = {
+		law_pec_prohibition
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_wine_add = 9 # 450
+			goods_output_pec_entertainment_add = 25 # 750 - profit of 300
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_expected_sol_from_literacy = -1
+		}
+	}
+}
+
+pm_pec_ent_opium_service = {
+	texture = "gfx/interface/icons/production_method_icons/unused/apothecaries.dds"
+
+	unlocking_production_methods = {
+		pm_pec_ent_public_houses
+		pm_pec_ent_restaurants
+		pm_pec_ent_luxury_restaurants
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_opium_add = 9 # 450
+			goods_output_pec_entertainment_add = 25 # 750 - profit of 300
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_expected_sol_from_literacy = -1
+		}
+	}
+}
+
+pm_pec_ent_coffee_houses_service = {
+	texture = "gfx/interface/icons/production_method_icons/bone_china.dds"
+
+	unlocking_production_methods = {
+		pm_pec_ent_public_houses
+		pm_pec_ent_restaurants
+		pm_pec_ent_luxury_restaurants
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_coffee_add = 9 # 450
+			goods_output_pec_entertainment_add = 25 # 750 - profit of 300
+		}
+	}
+}
+
+pm_pec_ent_tea_houses_service = {
+	texture = "gfx/interface/icons/production_method_icons/ceramics.dds"
+
+	unlocking_production_methods = {
+		pm_pec_ent_public_houses
+		pm_pec_ent_restaurants
+		pm_pec_ent_luxury_restaurants
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_tea_add = 9 # 450
+			goods_output_pec_entertainment_add = 25 # 750 - profit of 300
+		}
+	}
+}
+
+# Speech
+
+pm_pec_ent_propaganda = {
+	texture = "gfx/interface/icons/law_icons/outlawed_dissent.dds"
+
+	unlocking_laws = {
+		law_outlawed_dissent
+	}
+
+	building_modifiers = {
+		unscaled = {
+			building_throughput_add = -0.10
+		}
+		level_scaled = {
+			building_employment_academics_add = -100
+			building_employment_bureaucrats_add = 200
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_radicals_from_sol_change_mult = -0.10
+			state_turmoil_effects_mult = -0.10
+		}
+	}
+}
+
+pm_pec_ent_censorship = {
+	texture = "gfx/interface/icons/law_icons/censorship.dds"
+
+	unlocking_laws = {
+		law_censorship
+	}
+
+	building_modifiers = {
+		unscaled = {
+			building_throughput_add = -0.05
+		}
+		level_scaled = {
+			building_employment_academics_add = -50
+			building_employment_bureaucrats_add = 100
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_radicals_from_sol_change_mult = -0.05
+			state_turmoil_effects_mult = -0.05
+		}
+	}
+}
+
+pm_pec_ent_free_speech = {
+	texture = "gfx/interface/icons/law_icons/right_of_assembly.dds"
+
+	disallowing_laws = {
+		law_outlawed_dissent
+		law_censorship
+	}
+
+	state_modifiers = {
+		unscaled = {
+			state_radicals_from_sol_change_mult = 0.05
+			state_education_access_add = 0.025
+		}
+	}
+}
+
+
+# Ownership
+
+pm_pec_merchant_guilds_building_entertainment = {
+	texture = "gfx/interface/icons/production_method_icons/merchant_guilds.dds"
+
+	unlocking_production_methods = {
+		pm_pec_ent_simple
+		pm_pec_ent_theatre
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_technocracy
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_shopkeepers_add = 500
+		}
+		unscaled = {
+			building_shopkeepers_shares_add = 10
+		}
+	}
+}
+
+pm_pec_privately_owned_building_entertainment = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+
+	unlocking_production_methods = {
+		pm_pec_ent_theatre
+		pm_pec_ent_cinemas
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_technocracy
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 100
+		}
+		workforce_scaled = {
+			goods_input_pec_financial_services_add = 0.25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 0.5
+			building_throughput_add = 0.03
+		}
+	}
+}
+
+pm_pec_publicly_traded_building_entertainment = {
+	texture = "gfx/interface/icons/production_method_icons/publicly_traded.dds"
+
+	unlocking_production_methods = {
+		pm_pec_ent_theatre
+		pm_pec_ent_cinemas
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_technocracy
+	}
+
+	unlocking_technologies = {
+		mutual_funds
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 150
+		}
+		workforce_scaled = {
+			goods_input_pec_financial_services_add = 1
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 0.5
+			building_throughput_add = 0.12
+		}
+	}
+}

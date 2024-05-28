@@ -1,0 +1,705 @@
+﻿pec_nationalism_encourage_settlement_button = {
+	name = "pec_nationalism_encourage_settlement_button"
+	desc = "pec_nationalism_encourage_settlement_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_suppression
+	}
+
+	ai_chance = {
+		base = 1
+	}
+
+	possible = {
+		authority >= 100
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_desc
+			NOT = {
+				any_scope_state = {
+					has_modifier = pec_nationalism_encourage_settlement_mod
+				}
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = pec_encourage_settlement_cost
+			multiplier = money_amount_multiplier_medium
+			months = 25
+		}
+		add_modifier = {
+			name = pec_suppression_authority_cost
+			months = 25
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_radicals_in_state = {
+				value = 0.05
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_modifier = {
+				name = pec_nationalism_encourage_settlement_mod
+				months = 25
+			}
+		}
+	}
+}
+
+pec_nationalism_forced_assimilation_button = {
+	name = "pec_nationalism_forced_assimilation_button"
+	desc = "pec_nationalism_forced_assimilation_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_suppression
+	}
+
+	ai_chance = {
+		base = 1
+	}
+
+	possible = {
+		authority >= 100
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_desc
+			NOT = {
+				any_scope_state = {
+					has_modifier = pec_nationalism_forced_assimilation_mod
+				}
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = pec_forced_assimilation_cost
+			multiplier = money_amount_multiplier_medium
+			months = 25
+		}
+		add_modifier = {
+			name = pec_suppression_authority_cost
+			months = 25
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalism_forced_assimilation_mod
+				months = 25
+			}
+			add_radicals_in_state = {
+				value = 0.10
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		custom_tooltip = {
+			text = pec_forced_assimilation_passive_tt
+		}
+		custom_tooltip = {
+			text = pec_forced_assimilation_two_percent_tt
+			scope:pec_secessionistbrewing_state = {
+				every_scope_pop = {
+					limit = {
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					change_pop_culture = {
+						target = scope:pec_primary_culture
+						value = 0.02
+					}
+				}
+			}
+		}
+	}
+}
+
+pec_nationalism_target_nationalists_button = {
+	name = "pec_nationalism_target_nationalists_button"
+	desc = "pec_nationalism_target_nationalists_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_suppression
+	}
+
+	ai_chance = {
+		base = 5
+	}
+
+	possible = {
+		authority >= 100
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_desc
+			NOT = {
+				any_scope_state = {
+					has_modifier = pec_nationalism_target_nationalists_mod
+				}
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = pec_target_nationalists_cost
+			multiplier = money_amount_multiplier_medium
+			months = 25
+		}
+		add_modifier = {
+			name = pec_suppression_authority_cost
+			months = 25
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalism_target_nationalists_mod
+				months = 25
+			}
+			add_loyalists_in_state = {
+				value = 0.1
+				culture = scope:pec_primary_culture
+			}
+			random_list = {
+				40 = {
+					add_radicals_in_state = {
+						value = 0.05
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+				20 = {
+				}
+				40 = {
+					add_loyalists_in_state = {
+						value = 0.05
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+		}
+	}
+}
+
+pec_nationalism_local_language_button = {
+	name = "pec_nationalism_local_language_button"
+	desc = "pec_nationalism_local_language_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_concession
+	}
+
+	ai_chance = {
+		base = 2
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_concession_desc
+			NOT = {
+				any_scope_state = {
+					has_modifier = pec_nationalism_local_language_mod
+				}
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = pec_local_language_cost
+			multiplier = money_amount_multiplier_small
+			months = 25
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalism_local_language_mod
+				months = 121
+			}
+			add_loyalists_in_state = {
+				value = 0.025
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+	}
+}
+
+pec_nationalism_local_customs_button = {
+	name = "pec_nationalism_local_customs_button"
+	desc = "pec_nationalism_local_customs_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_concession
+	}
+
+	ai_chance = {
+		base = 2
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_concession_desc
+			NOT = {
+				any_scope_state = {
+					has_modifier = pec_nationalism_local_customs_mod
+				}
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = pec_local_customs_cost
+			multiplier = money_amount_multiplier_small
+			months = 25
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalism_local_customs_mod
+				months = 121
+			}
+			add_loyalists_in_state = {
+				value = 0.025
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+	}
+}
+
+pec_nationalism_tax_relief_button = {
+	name = "pec_nationalism_tax_relief_button"
+	desc = "pec_nationalism_tax_relief_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_concession
+	}
+
+	ai_chance = {
+		base = 1
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_concession_desc
+			NOT = {
+				any_scope_state = {
+					has_modifier = pec_nationalism_tax_relief_mod
+				}
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = pec_tax_relief_cost
+			multiplier = money_amount_multiplier_small
+			months = 25
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalism_tax_relief_mod
+				months = 121
+			}
+			add_loyalists_in_state = {
+				value = 0.025
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+	}
+}
+
+pec_nationalism_minority_ministers_button = {
+	name = "pec_nationalism_minority_ministers_button"
+	desc = "pec_nationalism_minority_ministers_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_integration
+	}
+
+	ai_chance = {
+		base = 5
+	}
+
+	possible = {
+		authority >= 50
+		any_interest_group = {
+			is_in_government = yes
+			leader = {
+				is_ruler = no
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_minority_ministers_desc
+			NOT = {
+				has_modifier = pec_nationalism_minority_ministers_mod
+			}
+		}
+	}
+
+	effect = {
+		random_interest_group = {
+			limit = {
+				is_in_government = yes
+				leader = {
+					is_ruler = no
+				}
+			}
+			save_scope_as = pec_minority_minister_ig
+			leader = {
+				kill_character = yes
+			}
+		}
+		create_character = {
+			ig_leader = yes
+			interest_group = scope:pec_minority_minister_ig
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		add_modifier = {
+			name = pec_nationalism_minority_ministers_mod
+			months = 61
+		}
+		add_radicals = {
+			value = 0.015
+			culture = scope:pec_primary_culture
+		}
+		add_loyalists = {
+			value = 0.01
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_loyalists_in_state = {
+				value = 0.04
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		random_list = {
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			40 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+pec_nationalism_minority_officials_button = {
+	name = "pec_nationalism_minority_officials_button"
+	desc = "pec_nationalism_minority_officials_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_integration
+	}
+
+	ai_chance = {
+		base = 2
+	}
+
+	possible = {
+		authority >= 50
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_minority_officials_desc
+			NOT = {
+				has_modifier = pec_nationalism_minority_officials_mod
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = pec_nationalism_minority_officials_mod
+			months = 61
+		}
+		add_radicals = {
+			value = 0.15
+			pop_type = bureaucrats
+			culture = scope:pec_primary_culture
+		}
+		add_radicals = {
+			value = 0.15
+			pop_type = officers
+			culture = scope:pec_primary_culture
+		}
+		add_radicals = {
+			value = 0.01
+			culture = scope:pec_primary_culture
+		}
+		add_loyalists = {
+			value = 0.01
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		custom_tooltip = {
+			text = pec_minority_officials_country_qual
+			every_scope_pop = {
+				limit = {
+					culture = scope:pec_secessionistbrewing_culture
+					NOT = { is_pop_type = peasants }
+				}
+				set_pop_qualifications = {
+					pop_type = bureaucrats
+					qualifications = 0.01
+				}
+				set_pop_qualifications = {
+					pop_type = officers
+					qualifications = 0.005
+				}
+			}
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_loyalists_in_state = {
+				value = 0.04
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			custom_tooltip = {
+				text = pec_minority_officials_state_qual
+				every_scope_pop = {
+					limit = {
+						culture = scope:pec_secessionistbrewing_culture
+						NOT = { is_pop_type = peasants }
+					}
+					set_pop_qualifications = {
+						pop_type = bureaucrats
+						qualifications = 0.02
+					}
+					set_pop_qualifications = {
+						pop_type = officers
+						qualifications = 0.01
+					}
+				}
+			}
+		}
+		random_list = {
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			40 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+pec_nationalism_support_culture_button = {
+	name = "pec_nationalism_support_culture_button"
+	desc = "pec_nationalism_support_culture_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_integration
+	}
+
+	ai_chance = {
+		base = 2
+	}
+
+	possible = {
+		authority >= 50
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_support_culture_desc
+			NOR = {
+				has_modifier = pec_nationalism_support_culture_mod_success
+				has_modifier = pec_nationalism_support_culture_mod_failed
+			}
+		}
+	}
+
+	effect = {
+		random_list = {
+			34 = {
+				add_modifier = {
+					name = pec_nationalism_support_culture_mod_success
+					months = 61
+				}
+			}
+			66 = {
+				add_modifier = {
+					name = pec_nationalism_support_culture_mod_failed
+					months = 61
+				}
+			}
+		}
+		add_radicals = {
+			value = 0.01
+			culture = scope:pec_primary_culture
+		}
+		add_loyalists = {
+			value = 0.01
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_loyalists_in_state = {
+				value = 0.05
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		random_list = {
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			40 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+pec_nationalism_recognize_language_button = {
+	name = "pec_nationalism_recognize_language_button"
+	desc = "pec_nationalism_recognize_language_button_desc"
+
+	visible = {
+		has_modifier = pec_brewingnationalists_strategy_integration
+	}
+
+	ai_chance = {
+		base = 2
+	}
+
+	possible = {
+		authority >= 50
+		custom_tooltip = {
+			text = pec_nationalism_button_modifier_recognize_language_desc
+			NOT = {
+				has_modifier = pec_nationalism_recognize_language_mod
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = pec_nationalism_recognize_language_mod
+			months = 61
+		}
+		add_radicals = {
+			value = 0.025
+			culture = scope:pec_primary_culture
+		}
+		add_loyalists = {
+			value = 0.01
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_loyalists_in_state = {
+				value = 0.05
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		random_list = {
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			40 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}

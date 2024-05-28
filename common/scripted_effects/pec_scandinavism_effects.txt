@@ -1,0 +1,167 @@
+﻿pec_set_scandinavian_identity_vars = {
+	set_variable = { name = pec_scandinavianism_progress_from_rank value = 0 }
+	set_variable = { name = pec_scandinavianism_progress_from_buildings value = 0 }
+	set_variable = { name = pec_scandinavianism_progress_from_laws value = 0 }
+	set_variable = { name = pec_scandinavianism_progress_from_characters value = 0 }
+	set_variable = { name = pec_scandinavianism_progress_from_turmoil value = 0 }
+	set_variable = { name = pec_scandinavian_identity_progress_var value = 0 }
+	set_variable = { name = pec_scandinavism_progress_var_next value = 0 }
+}
+
+clear_scandinavian_identity_vars = {
+	remove_variable = pec_scandinavianism_progress_from_rank
+	remove_variable = pec_scandinavianism_progress_from_buildings
+	remove_variable = pec_scandinavianism_progress_from_laws
+	remove_variable = pec_scandinavianism_progress_from_characters
+	remove_variable = pec_scandinavianism_progress_from_turmoil
+	remove_variable = pec_scandinavism_progress_var_next
+	remove_variable = pec_scandinavian_identity_progress_var
+}
+
+pec_calculate_scandinavian_identity_progress = {
+	set_variable = { name = pec_scandinavianism_progress_from_rank value = 0 }
+	set_variable = { name = pec_scandinavianism_progress_from_buildings value = 0 }
+	set_variable = { name = pec_scandinavianism_progress_from_laws value = 0 }
+	set_variable = { name = pec_scandinavianism_progress_from_characters value = 0 }
+	set_variable = { name = pec_scandinavianism_progress_from_turmoil value = 0 }
+	set_variable = { name = pec_scandinavism_progress_var_next value = 0 }
+
+
+	# From rank
+	if = {
+		limit = {
+			country_rank >= rank_value:great_power
+		}
+		set_variable = { name = pec_scandinavianism_progress_from_rank value = 0.25 }
+	}
+	else_if = {
+		limit = {
+			country_rank = rank_value:major_power
+		}
+		set_variable = { name = pec_scandinavianism_progress_from_rank value = 0 }
+	}
+	else_if = {
+		limit = {
+			country_rank < rank_value:major_power
+		}
+		set_variable = { name = pec_scandinavianism_progress_from_rank value = -0.33 }
+	}
+
+	# From buildings
+	every_scope_building = {
+		limit = {
+			is_building_type = building_university
+			occupancy >= 0.75
+		}
+		ROOT = {
+			change_variable = { name = pec_scandinavianism_progress_from_buildings add = prev.level }
+		}
+	}
+	change_variable = { name = pec_scandinavianism_progress_from_buildings divide = 25 }
+
+	# From Laws
+	if = {
+		limit = {
+			OR = {
+				has_law = law_type:law_ethnostate
+				has_law = law_type:law_national_supremacy
+			}
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws add = 0.33 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_law = law_type:law_racial_segregation
+				has_law = law_type:law_cultural_exclusion
+			}
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws subtract = 0.20 }
+	}
+	else_if = {
+		limit = {
+			has_law = law_type:law_multicultural
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws subtract = 0.40 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_pec_unitarism
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws add = 0.25 }
+	}
+	else_if = {
+		limit = {
+			has_law = law_type:law_pec_federalism
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws subtract = 0.10 }
+	}
+	else_if = {
+		limit = {
+			has_law = law_type:law_pec_nobility
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws subtract = 0.20 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_traditionalism
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws subtract = 0.20 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_serfdom
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws subtract = 0.20 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_mercantilism
+		}
+		change_variable = { name = pec_scandinavianism_progress_from_laws subtract = 0.20 }
+	}
+
+	# from popular nationalists
+	every_scope_character = {
+		limit = {
+			has_ideology = ideology:ideology_pec_liberal_nationalist
+		}
+		ROOT = {
+			change_variable = { name = pec_scandinavianism_progress_from_characters add = prev.popularity }
+		}
+	}
+	change_variable = { name = pec_scandinavianism_progress_from_characters divide = 200 }
+
+	# from turmoil in homeland states
+	every_scope_state = {
+		limit = {
+			is_incorporated = yes
+			turmoil >= 0.25
+			state_region = {
+				OR = {
+					is_homeland = cu:norwegian
+					is_homeland = cu:danish
+					is_homeland = cu:swedish
+					is_homeland = cu:icelandic
+				}
+			}
+		}
+		ROOT = {
+			change_variable = { name = pec_scandinavianism_progress_from_turmoil add = prev.turmoil }
+		}
+	}
+	change_variable = { name = pec_scandinavianism_progress_from_turmoil divide = 5 }
+	change_variable = { name = pec_scandinavianism_progress_from_turmoil multiply = -1 }
+
+
+	change_variable = { name = pec_scandinavism_progress_var_next add = var:pec_scandinavianism_progress_from_rank }
+	change_variable = { name = pec_scandinavism_progress_var_next add = var:pec_scandinavianism_progress_from_buildings }
+	change_variable = { name = pec_scandinavism_progress_var_next add = var:pec_scandinavianism_progress_from_laws }
+	change_variable = { name = pec_scandinavism_progress_var_next add = var:pec_scandinavianism_progress_from_characters }
+	change_variable = { name = pec_scandinavism_progress_var_next add = var:pec_scandinavianism_progress_from_turmoil }
+}
+
+pec_add_scandinavian_identity_progress = {
+	change_variable = { name = pec_scandinavian_identity_progress_var add = var:pec_scandinavism_progress_var_next }
+	clamp_variable = { name = pec_scandinavian_identity_progress_var max = 100 min = 0 }
+}

@@ -1,0 +1,564 @@
+﻿pec_singleparty_stab_progress = {
+	set_variable = { name = pec_singleparty_stability_progress_var value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_trend value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_legitimacy value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_sol value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_institutions value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_busts value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_loyalists value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_dissidents value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_dissident_popularity value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_institutions value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_liberalism value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_actions value = 0 }
+
+	# trend
+	set_variable = { name = pec_singleparty_stability_from_trend value = root.var:pec_singlepartystability_je_var } # value 0 to 100
+	change_variable = { name = pec_singleparty_stability_from_trend subtract = 50 } # value -50 to 50
+	change_variable = { name = pec_singleparty_stability_from_trend divide = 25 } # value -2 to 2
+	change_variable = { name = pec_singleparty_stability_from_trend multiply = -1 } # flips value
+
+	# legitimacy
+	if = {
+		limit = {
+			government_legitimacy >= 90
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_legitimacy
+			add = 0.25
+		}
+	}
+	else_if = {
+		limit = {
+			government_legitimacy < 90
+			government_legitimacy >= 75
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_legitimacy
+			subtract = 0.25
+		}
+	}
+	else_if = {
+		limit = {
+			government_legitimacy < 75
+			government_legitimacy >= 50
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_legitimacy
+			subtract = 0.5
+		}
+	}
+	else_if = {
+		limit = {
+			government_legitimacy < 50
+			government_legitimacy >= 25
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_legitimacy
+			subtract = 1.0
+		}
+	}
+	else_if = {
+		limit = {
+			government_legitimacy < 25
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_legitimacy
+			subtract = 1.5
+		}
+	}
+
+	# standard of living
+	set_variable = { name = pec_singleparty_stability_from_sol value = root.average_sol }
+	change_variable = { name = pec_singleparty_stability_from_sol subtract = 15 }
+	change_variable = { name = pec_singleparty_stability_from_sol divide = 10 }
+
+
+	# Institutions
+	set_variable = { name = pec_police_inst_var value = institution:institution_police.investment }
+	set_variable = { name = pec_homeaffair_inst_var value = institution:institution_home_affairs.investment }
+	if = {
+		limit = {
+			has_law = law_type:law_secret_police
+		}
+		change_variable = { name = pec_homeaffair_inst_var multiply = 0.2 }
+	}
+	else_if = {
+		limit = {
+			has_law = law_type:law_national_guard
+		}
+		change_variable = { name = pec_homeaffair_inst_var multiply = 0.1 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_law = law_type:law_dedicated_police
+				has_law = law_type:law_militarized_police
+			}
+		}
+		change_variable = { name = pec_police_inst_var multiply = 0.1 }
+	}
+
+	change_variable = { name = pec_singleparty_stability_from_institutions add = var:pec_homeaffair_inst_var }
+	change_variable = { name = pec_singleparty_stability_from_institutions add = var:pec_police_inst_var }
+	remove_variable = pec_homeaffair_inst_var
+	remove_variable = pec_police_inst_var
+
+	# Economic Busts
+	if = {
+		limit = {
+			has_modifier = pec_boombust_recession
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_busts
+			subtract = 0.25
+		}
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_boombust_depression
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_busts
+			subtract = 0.5
+		}
+	}
+
+	# Loyalists vs Radicals
+
+	set_variable = { name = pec_singleparty_stability_from_loyalists value = root.loyalist_fraction }
+	change_variable = { name = pec_singleparty_stability_from_loyalists subtract = root.radical_fraction }
+	change_variable = { name = pec_singleparty_stability_from_loyalists subtract = 0.2 }
+
+	# Dissident popular IGs
+	if = {
+		limit = {
+			any_interest_group = {
+				is_in_government = no
+				is_marginal = no
+				ig_approval < 5
+				leader = {
+					popularity >= 25
+				}
+			}
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_dissidents
+			subtract = 0.5
+		}
+	}
+
+	# Dissident Characters
+	every_scope_character = {
+		limit = {
+			has_ideology = ideology:ideology_pec_dissident
+		}
+		ROOT = {
+			change_variable = { name = pec_singleparty_stability_from_dissident_popularity add = prev.popularity }
+		}
+	}
+	change_variable = { name = pec_singleparty_stability_from_dissident_popularity divide = 100 } # each dissident will give -1 to 1.
+	clamp_variable = { name = pec_singleparty_stability_from_dissident_popularity max = 3 min = 0.25 } # having dissidents will always reduce regime stability even if they are unpopular
+	change_variable = { name = pec_singleparty_stability_from_dissident_popularity multiply = -1 } # flip value
+	if = {
+		limit = {
+			NOT = {
+				any_scope_character = {
+					has_ideology = ideology:ideology_pec_dissident
+				}
+			}
+		}
+		set_variable = { name = pec_singleparty_stability_from_dissident_popularity value = 0 } # having no dissidents sets it to 0
+	}
+
+	# Actions & Events
+	if = {
+		limit = {
+			has_variable = pec_force_law_cooldown
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.3
+		}
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_great_leap_cooldown
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.3
+		}
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_political_purge_cooldown
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.3
+		}
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_natalist_campaign_cooldown
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.3
+		}
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_forced_secret_police
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.15
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_censuringdissident
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.15
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_wellknownassassin
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.15
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_combatingundergroundpress
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.15
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_undergroundpress
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.3
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_undergroundpress_concession
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.5
+		}
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_singleparty_strike_crackdown
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.15
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_strike_token
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.30
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_strike_concession
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.5
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_factionalism_5
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.15
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_factionalism_10
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.30
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_popularleader_5
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			add = 0.15
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_popularleader_10
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			add = 0.30
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_unpopularleader_10
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			subtract = 0.30
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_cop_allowed
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			add = 0.15
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pec_singleparty_cop_supported
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_actions
+			add = 0.30
+		}
+	}
+
+
+	# Liberal Laws
+	if = {
+		limit = {
+			has_law = law_type:law_pec_free_unions
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_liberalism
+			subtract = 0.25
+		}
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_pec_federalism
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_liberalism
+			subtract = 0.1
+		}
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_right_of_assembly
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_liberalism
+			subtract = 0.25
+		}
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_protected_speech
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_liberalism
+			subtract = 0.4
+		}
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_no_home_affairs
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_liberalism
+			subtract = 0.2
+		}
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_guaranteed_liberties
+		}
+		change_variable = {
+			name = pec_singleparty_stability_from_liberalism
+			subtract = 0.5
+		}
+	}
+
+	# Final Progress
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_trend }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_legitimacy }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_sol }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_institutions }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_busts }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_loyalists }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_dissidents }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_dissident_popularity }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_liberalism }
+	change_variable = { name = pec_singleparty_stability_progress_var add = var:pec_singleparty_stability_from_actions }
+}
+
+pec_change_stability_single_party = {
+	change_variable = { name = pec_singlepartystability_je_var add = var:pec_singleparty_stability_progress_var }
+	clamp_variable = { name = pec_singlepartystability_je_var max = 100 min = 0 }
+
+	# update modifier
+		if = {
+			limit = {
+				var:pec_singlepartystability_je_var < 10
+				NOT = { has_modifier = pec_singleparty_lowstab_3 }
+			}
+			add_modifier = pec_singleparty_lowstab_3
+			remove_modifier = pec_singleparty_lowstab_2
+			remove_modifier = pec_singleparty_lowstab_1
+			remove_modifier = pec_singleparty_highstab_1
+			remove_modifier = pec_singleparty_highstab_2
+			remove_modifier = pec_singleparty_highstab_3
+		}
+		else_if = {
+			limit = {
+				var:pec_singlepartystability_je_var < 25
+				var:pec_singlepartystability_je_var >= 10
+				NOT = { has_modifier = pec_singleparty_lowstab_2 }
+			}
+			remove_modifier = pec_singleparty_lowstab_3
+			add_modifier = pec_singleparty_lowstab_2
+			remove_modifier = pec_singleparty_lowstab_1
+			remove_modifier = pec_singleparty_highstab_1
+			remove_modifier = pec_singleparty_highstab_2
+			remove_modifier = pec_singleparty_highstab_3
+		}
+		else_if = {
+			limit = {
+				var:pec_singlepartystability_je_var < 40
+				var:pec_singlepartystability_je_var >= 25
+				NOT = { has_modifier = pec_singleparty_lowstab_1 }
+			}
+			remove_modifier = pec_singleparty_lowstab_3
+			remove_modifier = pec_singleparty_lowstab_2
+			add_modifier = pec_singleparty_lowstab_1
+			remove_modifier = pec_singleparty_highstab_1
+			remove_modifier = pec_singleparty_highstab_2
+			remove_modifier = pec_singleparty_highstab_3
+		}
+		else_if = {
+			limit = {
+				var:pec_singlepartystability_je_var < 60
+				var:pec_singlepartystability_je_var >= 40
+				OR = {
+					has_modifier = pec_singleparty_lowstab_1
+					has_modifier = pec_singleparty_lowstab_2
+					has_modifier = pec_singleparty_lowstab_3
+					has_modifier = pec_singleparty_highstab_1
+					has_modifier = pec_singleparty_highstab_2
+					has_modifier = pec_singleparty_highstab_3
+				}
+			}
+			remove_modifier = pec_singleparty_lowstab_3
+			remove_modifier = pec_singleparty_lowstab_2
+			remove_modifier = pec_singleparty_lowstab_1
+			remove_modifier = pec_singleparty_highstab_1
+			remove_modifier = pec_singleparty_highstab_2
+			remove_modifier = pec_singleparty_highstab_3
+		}
+		else_if = {
+			limit = {
+				var:pec_singlepartystability_je_var < 75
+				var:pec_singlepartystability_je_var >= 60
+				NOT = { has_modifier = pec_singleparty_highstab_1 }
+			}
+			remove_modifier = pec_singleparty_lowstab_3
+			remove_modifier = pec_singleparty_lowstab_2
+			remove_modifier = pec_singleparty_lowstab_1
+			add_modifier = pec_singleparty_highstab_1
+			remove_modifier = pec_singleparty_highstab_2
+			remove_modifier = pec_singleparty_highstab_3
+		}
+		else_if = {
+			limit = {
+				var:pec_singlepartystability_je_var < 90
+				var:pec_singlepartystability_je_var >= 75
+				NOT = { has_modifier = pec_singleparty_highstab_2 }
+			}
+			remove_modifier = pec_singleparty_lowstab_3
+			remove_modifier = pec_singleparty_lowstab_2
+			remove_modifier = pec_singleparty_lowstab_1
+			remove_modifier = pec_singleparty_highstab_1
+			add_modifier = pec_singleparty_highstab_2
+			remove_modifier = pec_singleparty_highstab_3
+		}
+		else_if = {
+			limit = {
+				var:pec_singlepartystability_je_var >= 90
+				NOT = { has_modifier = pec_singleparty_highstab_3 }
+			}
+			remove_modifier = pec_singleparty_lowstab_3
+			remove_modifier = pec_singleparty_lowstab_2
+			remove_modifier = pec_singleparty_lowstab_1
+			remove_modifier = pec_singleparty_highstab_1
+			remove_modifier = pec_singleparty_highstab_2
+			add_modifier = pec_singleparty_highstab_3
+		}
+}
+
+pec_set_singleparty_stab_vars = {
+	set_variable = { name = pec_singlepartystability_je_var value = 50 }
+	set_variable = { name = pec_singleparty_stability_progress_var value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_trend value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_legitimacy value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_sol value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_institutions value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_busts value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_loyalists value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_dissidents value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_dissident_popularity value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_institutions value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_liberalism value = 0 }
+	set_variable = { name = pec_singleparty_stability_from_actions value = 0 }
+}
+
+pec_clear_singleparty_stab_vars = {
+	remove_variable = pec_singlepartystability_je_var
+	remove_variable = pec_singleparty_stability_progress_var
+	remove_variable = pec_singleparty_stability_from_trend
+	remove_variable = pec_singleparty_stability_from_legitimacy
+	remove_variable = pec_singleparty_stability_from_sol
+	remove_variable = pec_singleparty_stability_from_institutions
+	remove_variable = pec_singleparty_stability_from_busts
+	remove_variable = pec_singleparty_stability_from_loyalists
+	remove_variable = pec_singleparty_stability_from_dissidents
+	remove_variable = pec_singleparty_stability_from_dissident_popularity
+	remove_variable = pec_singleparty_stability_from_institutions
+	remove_variable = pec_singleparty_stability_from_liberalism
+	remove_variable = pec_singleparty_stability_from_actions
+}

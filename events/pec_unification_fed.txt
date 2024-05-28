@@ -1,0 +1,312 @@
+﻿namespace = pec_unification_fed
+
+pec_unification_fed.1 = {
+	type = country_event
+	placement = root
+	title = pec_unification_fed.1.t
+	desc = pec_unification_fed.1.d
+	flavor = pec_unification_fed.1.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "unspecific_ruler_speaking_to_people"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+		set_global_variable = pec_german_federalism
+	}
+
+	trigger = {
+		c:GER ?= THIS
+		NOT = { has_global_variable = pec_german_federalism }
+	}
+
+	option = {
+		name = pec_unification_fed.1.a # adopt/retain federalism
+		default_option = yes
+		ai_chance = {
+			base = 80
+			modifier = {
+				trigger = {
+					has_law = law_type:law_pec_federalism
+				}
+				add = 19
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_federalism }
+			}
+			activate_law = law_type:law_pec_federalism
+			add_loyalists = {
+				value = 0.04
+			}
+		}
+		else = {
+			add_loyalists = {
+				value = 0.02
+			}
+		}
+	}
+
+	option = {
+		name = pec_unification_fed.1.b # adopt/retain unitarism
+		ai_chance = {
+			base = 19
+			modifier = {
+				trigger = {
+					has_law = law_type:law_pec_federalism
+				}
+				add = -19
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_unitarism }
+			}
+			activate_law = law_type:law_pec_unitarism
+			add_radicals = {
+				value = 0.05
+			}
+		}
+		else = {
+			add_radicals = {
+				value = 0.025
+			}
+		}
+	}
+
+	option = {
+		name = pec_unification_fed.1.c # adopt/retain confederation
+		ai_chance = {
+			base = 1
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_confederation }
+			}
+			activate_law = law_type:law_pec_confederation
+			add_loyalists = {
+				value = 0.07
+			}
+		}
+		else = {
+			add_loyalists = {
+				value = 0.035
+			}
+		}
+	}
+}
+
+pec_unification_fed.2 = {
+	type = country_event
+	placement = root
+	title = pec_unification_fed.2.t
+	desc = pec_unification_fed.2.d
+	flavor = pec_unification_fed.2.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "unspecific_ruler_speaking_to_people"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+		set_global_variable = pec_italian_federalism
+	}
+
+	trigger = {
+		c:ITA ?= THIS
+		NOT = { has_global_variable = pec_italian_federalism }
+	}
+
+	option = {
+		name = pec_unification_fed.2.a # adopt/retain federalism
+		default_option = yes
+		ai_chance = {
+			base = 40
+			modifier = {
+				trigger = {
+					has_law = law_type:law_pec_federalism
+				}
+				add = 49
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_federalism }
+			}
+			activate_law = law_type:law_pec_federalism
+			add_loyalists = {
+				value = 0.04
+			}
+		}
+		else = {
+			add_loyalists = {
+				value = 0.02
+			}
+		}
+	}
+
+	option = {
+		name = pec_unification_fed.2.b # adopt/retain unitarism
+		ai_chance = {
+			base = 59
+			modifier = {
+				trigger = {
+					has_law = law_type:law_pec_federalism
+				}
+				add = -49
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_unitarism }
+			}
+			activate_law = law_type:law_pec_unitarism
+			add_radicals = {
+				value = 0.05
+			}
+		}
+		else = {
+			add_radicals = {
+				value = 0.025
+			}
+		}
+	}
+
+	option = {
+		name = pec_unification_fed.2.c # adopt/retain confederation
+		ai_chance = {
+			base = 1
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_confederation }
+			}
+			activate_law = law_type:law_pec_confederation
+			add_loyalists = {
+				value = 0.07
+			}
+		}
+		else = {
+			add_loyalists = {
+				value = 0.035
+			}
+		}
+	}
+}
+
+pec_unification_fed.3 = {
+	type = country_event
+	placement = root
+	title = pec_unification_fed.3.t
+	desc = pec_unification_fed.3.d
+	flavor = pec_unification_fed.3.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "unspecific_ruler_speaking_to_people"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	immediate = {
+		set_global_variable = pec_scandinavian_federalism
+	}
+
+	trigger = {
+		c:SCA ?= THIS
+		NOT = { has_global_variable = pec_scandinavian_federalism }
+	}
+
+	option = {
+		name = pec_unification_fed.3.a # adopt/retain federalism
+		default_option = yes
+		ai_chance = {
+			base = 80
+			modifier = {
+				trigger = {
+					has_law = law_type:law_pec_federalism
+				}
+				add = 19
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_federalism }
+			}
+			activate_law = law_type:law_pec_federalism
+			add_loyalists = {
+				value = 0.04
+			}
+		}
+		else = {
+			add_loyalists = {
+				value = 0.02
+			}
+		}
+	}
+
+	option = {
+		name = pec_unification_fed.3.b # adopt/retain unitarism
+		ai_chance = {
+			base = 19
+			modifier = {
+				trigger = {
+					has_law = law_type:law_pec_federalism
+				}
+				add = -19
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_unitarism }
+			}
+			activate_law = law_type:law_pec_unitarism
+			add_radicals = {
+				value = 0.05
+			}
+		}
+		else = {
+			add_radicals = {
+				value = 0.025
+			}
+		}
+	}
+
+	option = {
+		name = pec_unification_fed.3.c # adopt/retain confederation
+		ai_chance = {
+			base = 1
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_pec_confederation }
+			}
+			activate_law = law_type:law_pec_confederation
+			add_loyalists = {
+				value = 0.07
+			}
+		}
+		else = {
+			add_loyalists = {
+				value = 0.035
+			}
+		}
+	}
+}

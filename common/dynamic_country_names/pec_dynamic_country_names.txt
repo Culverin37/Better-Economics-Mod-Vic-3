@@ -1,0 +1,18 @@
+﻿RSM = { # Republic of San Marco
+	dynamic_country_name = {
+		name = dyn_c_republic_of_san_marco
+		adjective = RSM_ADJ
+		
+		is_main_tag_only = yes
+		priority = 5
+		
+		trigger = {
+			exists = scope:actor
+			OR = {
+				scope:actor = { has_law = law_type:law_parliamentary_republic }
+				scope:actor = { has_law = law_type:law_presidential_republic }
+				scope:actor = { has_law = law_type:law_council_republic }
+			}
+		}
+	}
+}

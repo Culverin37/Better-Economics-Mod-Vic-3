@@ -1,0 +1,54 @@
+﻿single_party_decision = {
+	is_shown = {
+		has_law = law_type:law_single_party_state
+		NOT = {
+			any_active_party = {
+				NAND = {
+					is_party_type = agrarian_party
+					is_party_type = anarchist_party
+					is_party_type = communist_party
+					is_party_type = conservative_party
+					is_party_type = fascist_party
+					is_party_type = free_trade_party
+					is_party_type = liberal_party
+					is_party_type = military_party
+					is_party_type = radical_party
+					is_party_type = religious_party
+					is_party_type = social_democrat_party
+				}
+			}
+		}
+	}
+
+	possible = {
+		NOT = {
+			any_active_party = {
+				NAND = {
+					is_party_type = agrarian_party
+					is_party_type = anarchist_party
+					is_party_type = communist_party
+					is_party_type = conservative_party
+					is_party_type = fascist_party
+					is_party_type = free_trade_party
+					is_party_type = liberal_party
+					is_party_type = military_party
+					is_party_type = radical_party
+					is_party_type = religious_party
+					is_party_type = social_democrat_party
+				}
+			}
+		}
+	}
+	
+	when_taken = {
+		root = { gen_ruler_party = yes }
+		update_party_support = yes
+		call_election = {
+			months = 1
+		}
+	}
+
+	ai_chance = {
+		base = 1	
+	}
+}

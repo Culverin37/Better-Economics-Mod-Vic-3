@@ -1,0 +1,122 @@
+﻿namespace = pec_igideologychange_pulse
+
+
+# Nationalism in the intelligentsia
+pec_igideologychange_pulse.1 = {
+	type = country_event
+	placement = root
+	title = pec_igideologychange_pulse.1.t
+	desc = pec_igideologychange_pulse.1.d
+	flavor = pec_igideologychange_pulse.1.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	event_image = {
+		video = "europenorthamerica_london_center"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	immediate = {
+		ig:ig_intelligentsia = {
+			save_scope_as = pec_intellectual_igichange5_ig
+			leader = {
+				save_scope_as = pec_intellectual_igichange5_leader
+			}
+		}
+	}
+
+	trigger = {
+		ig:ig_intelligentsia = {
+			leader = {
+				NOR = {
+					has_ideology = ideology:ideology_fascist
+					has_ideology = ideology:ideology_ethno_nationalist
+					has_ideology = ideology:ideology_pec_liberal_nationalist
+					has_ideology = ideology:ideology_reformer
+					has_ideology = ideology:ideology_humanitarian
+					has_ideology = ideology:ideology_anarchist
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_igideologychange_pulse.1.a # accept new nationalist leader
+		default_option = yes
+		ai_chance = {
+			base = 30
+		}
+		create_character = {
+			ig_leader = yes
+			interest_group = ig_intelligentsia
+			ideology = ideology_pec_liberal_nationalist
+		}
+		ig:ig_intelligentsia = {
+			add_modifier = {
+				name = pec_igmod_intelligentsia_nationalist_leader
+				months = 61
+			}
+		}
+	}
+	option = {
+		name = pec_igideologychange_pulse.1.b # stay with the old leader
+		ai_chance = {
+			base = 60
+		}
+		ig:ig_intelligentsia = {
+			add_modifier = {
+				name = pec_igmod_intelligentsia_nationalist_debates
+				months = 61
+			}
+		}
+		scope:pec_intellectual_igichange5_leader = {
+			add_modifier = {
+				name = pec_charmod_intelligentsiaoldleader_debates
+				months = 121
+			}
+		}
+		add_radicals = {
+			value = 0.1
+			interest_group = ig:ig_intelligentsia
+		}
+	}
+
+	option = {
+		name = pec_igideologychange_pulse.1.c # reformist or humanitarian leader wins
+		ai_chance = {
+			base = 10
+		}
+		ig:ig_intelligentsia = {
+			add_modifier = {
+				name = pec_igmod_intelligentsia_reject_nationalism
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.05
+			interest_group = ig:ig_intelligentsia
+		}
+		if = {
+			limit = {
+				has_technology_researched = feminism
+			}
+			create_character = {
+				ig_leader = yes
+				interest_group = ig_intelligentsia
+				ideology = ideology_humanitarian
+			}
+		}
+		else = {
+			create_character = {
+				ig_leader = yes
+				interest_group = ig_intelligentsia
+				ideology = ideology_reformer
+			}
+		}
+	}
+}

@@ -1,0 +1,11 @@
+﻿pec_usa_bankwar_aftermath = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	building_group_bg_pec_banks_throughput_add = -0.2
+}
+
+pec_vladivostok_mod = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	state_migration_pull_mult = 1.0
+	state_migration_pull_add = 10
+	state_infrastructure_add = 25
+}

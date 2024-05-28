@@ -1,0 +1,46 @@
+﻿pec_financial_services = {
+	texture = "gfx/interface/icons/goods_icons/pec_financial_services.dds"
+	cost = 30
+	category = luxury
+	
+	obsession_chance = 0.1
+	prestige_factor = 40
+	
+	traded_quantity = 10
+	convoy_cost_multiplier = 0.00
+}
+
+
+pec_hospitality = {
+	texture = "gfx/interface/icons/goods_icons/pec_hospitality.dds"
+	cost = 60
+	category = luxury
+	
+	obsession_chance = 0.5
+	prestige_factor = 20
+	
+	traded_quantity = 10
+	convoy_cost_multiplier = 0.25
+}
+
+pec_entertainment = {
+	texture = "gfx/interface/icons/goods_icons/pec_entertainment.dds"
+	cost = 30
+	category = luxury
+	tradeable = no
+	
+	obsession_chance = 0.5
+	prestige_factor = 20
+}
+
+pec_media = {
+	texture = "gfx/interface/icons/goods_icons/pec_media.dds"
+	cost = 50
+	category = luxury
+	
+	obsession_chance = 0.5
+	prestige_factor = 40
+
+	traded_quantity = 10
+	convoy_cost_multiplier = 0.10
+}

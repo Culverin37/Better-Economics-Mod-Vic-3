@@ -1,0 +1,261 @@
+﻿# Triggers for government worker attraction to authoritarian IGs
+pec_in_gov_authoritarian_attraction_multi_ig_bureau = {
+	scope:interest_group = {
+		is_in_government = yes
+	}
+	is_pop_type = bureaucrats
+	owner = {
+		has_ruling_interest_group_count > 1
+		OR = {
+			has_law = law_type:law_autocracy
+			has_law = law_type:law_oligarchy
+			has_law = law_type:law_technocracy
+			has_law = law_type:law_single_party_state
+		}
+	}
+}
+
+pec_in_gov_authoritarian_attraction_single_ig_bureau = {
+	scope:interest_group = {
+		is_in_government = yes
+	}
+	is_pop_type = bureaucrats
+	owner = {
+		has_ruling_interest_group_count = 1
+		OR = {
+			has_law = law_type:law_autocracy
+			has_law = law_type:law_oligarchy
+			has_law = law_type:law_technocracy
+			has_law = law_type:law_single_party_state
+		}
+	}
+}
+
+pec_in_gov_authoritarian_attraction_multi_ig_nonbureau = {
+	scope:interest_group = {
+		is_in_government = yes
+	}
+	NOT = { is_pop_type = bureaucrats }
+	pop_employment_building = building_government_administration
+	owner = {
+		has_ruling_interest_group_count > 1
+		OR = {
+			has_law = law_type:law_autocracy
+			has_law = law_type:law_oligarchy
+			has_law = law_type:law_technocracy
+			has_law = law_type:law_single_party_state
+		}
+	}
+}
+
+pec_in_gov_authoritarian_attraction_single_ig_nonbureau = {
+	scope:interest_group = {
+		is_in_government = yes
+	}
+	NOT = { is_pop_type = bureaucrats }
+	pop_employment_building = building_government_administration
+	owner = {
+		has_ruling_interest_group_count = 1
+		OR = {
+			has_law = law_type:law_autocracy
+			has_law = law_type:law_oligarchy
+			has_law = law_type:law_technocracy
+			has_law = law_type:law_single_party_state
+		}
+	}
+}
+
+
+# IG Leader pop attraction
+
+pec_social_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_social_ideology = yes }
+	}
+	pop_loyalist_fraction > 0.10
+	OR = {
+		is_pop_type = laborers
+		is_pop_type = machinists
+	}
+}
+
+pec_radical_social_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_radical_social_ideology = yes }
+	}
+	pop_radical_fraction > 0.10
+	OR = {
+		is_pop_type = laborers
+		is_pop_type = machinists
+	}
+}
+
+pec_social_leader_neg_trigger = {
+	scope:interest_group = {
+		OR = {
+			leader = { pec_character_has_social_ideology = yes }
+			leader = { pec_character_has_radical_social_ideology = yes }
+		}
+	}
+	OR = {
+		is_pop_type = capitalists
+		is_pop_type = shopkeepers
+	}
+}
+
+pec_liberal_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_liberal_ideology = yes }
+	}
+	literacy_rate >= 0.60
+	pop_loyalist_fraction > 0.10
+	NOR = {
+	is_pop_type = aristocrats
+	is_pop_type = clergymen
+	is_pop_type = officers
+	}
+}
+
+pec_radical_liberal_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_radical_liberal_ideology = yes }
+	}
+	literacy_rate >= 0.60
+	pop_radical_fraction > 0.10
+	NOR = {
+		is_pop_type = aristocrats
+		is_pop_type = clergymen
+		is_pop_type = officers
+	}
+}
+
+pec_liberal_leader_neg_trigger = {
+	scope:interest_group = {
+		OR = {
+			leader = { pec_character_has_liberal_ideology = yes }
+			leader = { pec_character_has_radical_liberal_ideology = yes }
+		}
+	}
+	OR = {
+		is_pop_type = aristocrats
+		is_pop_type = clergymen
+		literacy_rate < 0.25
+	}
+}
+
+pec_nationalist_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_nationalist_ideology = yes }
+	}
+	pop_has_primary_culture = yes
+}
+
+pec_nationalist_leader_neg_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_nationalist_ideology = yes }
+	}
+	pop_has_primary_culture = no
+}
+
+pec_militarist_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_militarist_ideology = yes }
+	}
+	OR = {
+		is_pop_type = officers
+		is_pop_type = soldiers
+	}
+}
+pec_conservative_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_conservative_ideology = yes }
+	}
+	OR = {
+		is_pop_type = aristocrats
+		is_pop_type = peasants
+		is_pop_type = clergymen
+	}
+}
+
+pec_conservative_leader_neg_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_conservative_ideology = yes }
+	}
+	OR = {
+		is_pop_type = academics
+		is_pop_type = engineers
+		is_pop_type = capitalists
+	}
+}
+
+pec_rural_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_rural_ideology = yes }
+	}
+	NOT = { is_pop_type = aristocrats }
+	OR = {
+		pop_employment_building_group = bg_agriculture
+		pop_employment_building_group = bg_ranching
+		pop_employment_building_group = bg_plantations
+		pop_employment_building = building_pec_riverdevelopment
+	}
+}
+
+pec_rural_leader_neg_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_rural_ideology = yes }
+	}
+	OR = {
+		is_pop_type = machinists
+		is_pop_type = engineers
+		is_pop_type = shopkeepers
+	}
+}
+
+pec_anticlerical_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_anticlerical_ideology = yes }
+	}
+	OR = {
+		has_state_religion = no
+		is_pop_type = academics
+	}
+	owner = {
+		 NOT = { has_law = law_type:law_state_atheism }
+	}
+}
+
+pec_anticlerical_leader_neg_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_anticlerical_ideology = yes }
+	}
+	has_state_religion = yes
+	OR = {
+		is_pop_type = clergymen
+		is_pop_type = aristocrats
+		is_pop_type = peasants
+	}
+	owner = {
+		 NOT = { has_law = law_type:law_state_atheism }
+	}
+}
+
+pec_business_leader_pos_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_business_ideology = yes }
+	}
+	OR = {
+		is_pop_type = shopkeepers
+		is_pop_type = capitalists
+	}
+}
+
+pec_business_leader_neg_trigger = {
+	scope:interest_group = {
+		leader = { pec_character_has_business_ideology = yes }
+	}
+	OR = {
+		is_pop_type = aristocrats
+		is_pop_type = machinists
+	}
+}

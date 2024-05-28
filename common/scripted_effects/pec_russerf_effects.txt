@@ -1,0 +1,168 @@
+﻿pec_set_russerf_vars = {
+	set_variable = { name = pec_russerf_progress_from_rank value = 0 }
+	set_variable = { name = pec_russerf_progress_from_laws value = 0 }
+	set_variable = { name = pec_russerf_progress_from_igs_pos value = 0 }
+	set_variable = { name = pec_russerf_progress_from_igs_neg value = 0 }
+	set_variable = { name = pec_russerf_progress_from_agitators value = 0 }
+	set_variable = { name = pec_russerf_progress_from_ruler value = 0 }
+	set_variable = { name = pec_russerf_progress_var value = 0 }
+	set_variable = { name = pec_russerf_progress_var_next value = 0 }
+}
+
+clear_russerf_vars = {
+	remove_variable = pec_russerf_progress_from_rank
+	remove_variable = pec_russerf_progress_from_laws
+	remove_variable = pec_russerf_progress_from_igs_pos
+	remove_variable = pec_russerf_progress_from_igs_neg
+	remove_variable = pec_russerf_progress_from_agitators
+	remove_variable = pec_russerf_progress_from_ruler
+	remove_variable = pec_russerf_progress_var_next
+	remove_variable = pec_russerf_progress_var
+	remove_variable = pec_russerf_initial_progress_set
+}
+
+pec_calculate_russerf_progress = {
+	set_variable = { name = pec_russerf_progress_from_rank value = 0 }
+	set_variable = { name = pec_russerf_progress_from_laws value = 0 }
+	set_variable = { name = pec_russerf_progress_from_igs_pos value = 0 }
+	set_variable = { name = pec_russerf_progress_from_igs_neg value = 0 }
+	set_variable = { name = pec_russerf_progress_from_agitators value = 0 }
+	set_variable = { name = pec_russerf_progress_from_ruler value = 0 }
+	set_variable = { name = pec_russerf_progress_var_next value = 0 }
+
+	# From rank
+	if = {
+		limit = {
+			global_country_ranking > 4
+		}
+		set_variable = { name = pec_russerf_progress_from_rank value = 0.5 }
+	}
+
+	# From Laws
+	if = {
+		limit = {
+			has_law = law_type:law_pec_nobility
+		}
+		change_variable = { name = pec_russerf_progress_from_laws subtract = 0.5 }
+	}
+
+
+	# from igs
+	every_interest_group = {
+		limit = {
+			leader = {
+				OR = {
+					has_ideology = ideology:ideology_market_liberal
+					has_ideology = ideology:ideology_abolitionist
+					has_ideology = ideology:ideology_land_reformer
+					has_ideology = ideology:ideology_distributist
+					has_ideology = ideology:ideology_pec_liberal_nationalist
+					has_ideology = ideology:ideology_pec_metallist
+					has_ideology = ideology:ideology_pec_centralbanker
+					has_ideology = ideology:ideology_vanguardist
+					has_ideology = ideology:ideology_communist
+					has_ideology = ideology:ideology_anarchist
+					interest_group = {
+						is_interest_group_type = ig_rural_folk
+					}
+					has_modifier = pec_russerf_charmod_oppose_serfdom
+				}
+			}
+			OR = {
+				is_in_government = yes
+				is_powerful = yes
+			}
+		}
+		ROOT = {
+			change_variable = { name = pec_russerf_progress_from_igs_pos add = prev.ig_clout }
+		}
+	}
+	change_variable = { name = pec_russerf_progress_from_igs_pos multiply = 1.25 }
+
+	every_interest_group = {
+		limit = {
+			leader = {
+				NOR = {
+					has_ideology = ideology:ideology_market_liberal
+					has_ideology = ideology:ideology_abolitionist
+					has_ideology = ideology:ideology_land_reformer
+					has_ideology = ideology:ideology_distributist
+					has_ideology = ideology:ideology_pec_liberal_nationalist
+					has_ideology = ideology:ideology_pec_metallist
+					has_ideology = ideology:ideology_pec_centralbanker
+					has_ideology = ideology:ideology_vanguardist
+					has_ideology = ideology:ideology_communist
+					has_ideology = ideology:ideology_anarchist
+				}
+			}
+			OR = {
+				is_in_government = yes
+				is_powerful = yes
+			}
+			OR = {
+				is_interest_group_type = ig_devout
+				is_interest_group_type = ig_landowners
+				AND = {
+					NOT = { is_interest_group_type = ig_rural_folk }
+					NOT = { is_interest_group_type = ig_intelligentsia }
+					leader = { has_ideology = ideology:ideology_traditionalist }
+				}
+			}
+		}
+		ROOT = {
+			change_variable = { name = pec_russerf_progress_from_igs_neg subtract = prev.ig_clout }
+		}
+	}
+	change_variable = { name = pec_russerf_progress_from_igs_neg multiply = 1.25 }
+
+	# narodnik agitators
+	every_scope_character = {
+		limit = {
+			has_role = agitator
+			OR = {
+				has_ideology = ideology:ideology_pec_agrarian_socialist
+				has_ideology = ideology:ideology_land_reformer
+			}
+		}
+		ROOT = {
+			change_variable = { name = pec_russerf_progress_from_agitators add = prev.popularity }
+		}
+	}
+	change_variable = { name = pec_russerf_progress_from_agitators divide = 200 }
+	clamp_variable = { name = pec_russerf_progress_from_agitators max = 0.5 min = -0.5 }
+
+	# the tsar
+	if = {
+		limit = {
+			ruler = {
+				OR = {
+					has_ideology = ideology:ideology_market_liberal
+					has_ideology = ideology:ideology_abolitionist
+					has_ideology = ideology:ideology_land_reformer
+					has_ideology = ideology:ideology_distributist
+					has_ideology = ideology:ideology_pec_liberal_nationalist
+					has_ideology = ideology:ideology_pec_metallist
+					has_ideology = ideology:ideology_pec_centralbanker
+					has_ideology = ideology:ideology_vanguardist
+					has_ideology = ideology:ideology_communist
+					has_ideology = ideology:ideology_anarchist
+				}
+			}
+		}
+		change_variable = { name = pec_russerf_progress_from_ruler add = 0.75 }
+	}
+	else = {
+		change_variable = { name = pec_russerf_progress_from_ruler subtract = 0.25 }
+	}
+
+	change_variable = { name = pec_russerf_progress_var_next add = var:pec_russerf_progress_from_rank }
+	change_variable = { name = pec_russerf_progress_var_next add = var:pec_russerf_progress_from_laws }
+	change_variable = { name = pec_russerf_progress_var_next add = var:pec_russerf_progress_from_igs_pos }
+	change_variable = { name = pec_russerf_progress_var_next add = var:pec_russerf_progress_from_igs_neg }
+	change_variable = { name = pec_russerf_progress_var_next add = var:pec_russerf_progress_from_agitators }
+	change_variable = { name = pec_russerf_progress_var_next add = var:pec_russerf_progress_from_ruler }
+}
+
+pec_add_russerf_progress = {
+	change_variable = { name = pec_russerf_progress_var add = var:pec_russerf_progress_var_next }
+}

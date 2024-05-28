@@ -1,0 +1,290 @@
+﻿pm_market_stalls = {
+	texture = "gfx/interface/icons/production_method_icons/market_stalls.dds"
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_services_add = 15
+			goods_output_pec_financial_services_add = 0.5
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 3500
+			building_employment_clerks_add = 900
+			building_employment_shopkeepers_add = 400
+		}
+
+		unscaled = {
+			building_shopkeepers_shares_add = 10
+		}
+	}
+}
+
+pm_market_squares = {
+	texture = "gfx/interface/icons/production_method_icons/market_squares.dds"
+
+	unlocking_technologies = { urban_planning }
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_wood_add = 1
+			goods_input_glass_add = 1
+			goods_output_services_add = 20
+			goods_output_pec_financial_services_add = 1
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 3000
+			building_employment_clerks_add = 1400
+			building_employment_shopkeepers_add = 400
+		}
+
+		unscaled = {
+			building_shopkeepers_shares_add = 10
+		}
+	}
+}
+
+pm_covered_markets = {
+	texture = "gfx/interface/icons/production_method_icons/covered_markets.dds"
+	unlocking_technologies = {
+		steel_frame_buildings
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_glass_add = 2
+			goods_input_steel_add = 1
+			goods_output_services_add = 25
+			goods_output_pec_financial_services_add = 1
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 2500
+			building_employment_clerks_add = 1900
+			building_employment_shopkeepers_add = 400
+		}
+
+		unscaled = {
+			building_shopkeepers_shares_add = 10
+		}
+	}
+}
+
+pm_arcades = {
+	texture = "gfx/interface/icons/production_method_icons/arcades.dds"
+	unlocking_technologies = {
+		elevator
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_glass_add = 2
+			goods_input_steel_add = 2
+			goods_input_electricity_add = 1
+			goods_output_services_add = 30
+			goods_output_pec_financial_services_add = 1
+		}
+
+		level_scaled = {
+			building_employment_laborers_add = 1000
+			building_employment_clerks_add = 3000
+			building_employment_shopkeepers_add = 1000
+		}
+
+		unscaled = {
+			building_shopkeepers_shares_add = 10
+		}
+	}
+
+	required_input_goods = electricity
+}				
+
+pm_traditional_art = {
+	texture = "gfx/interface/icons/production_method_icons/traditional_art.dds"
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 0.5
+		}
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_paper_add = 10 # 300
+			goods_input_services_add = 10 # 300
+			goods_output_fine_art_add = 5 # 1000 - profit of 400
+		}
+	}
+}
+
+pm_realist_art = {
+	texture = "gfx/interface/icons/production_method_icons/realist_art.dds"
+
+	unlocking_technologies = {
+		realism
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 1
+		}
+	}
+
+	building_modifiers = {		
+	
+		workforce_scaled = {
+			goods_input_paper_add = 10 # 300
+			goods_input_services_add = 15 # 450
+			goods_output_fine_art_add = 7 # 1400 - profit of 650
+		}				
+	}
+}
+
+pm_photographic_art = {
+	texture = "gfx/interface/icons/production_method_icons/photographic_art.dds"
+
+	unlocking_technologies = {
+		camera
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 1.5
+		}
+	}
+
+	building_modifiers = {		
+	
+		workforce_scaled = {
+			goods_input_paper_add = 10 # 300
+			goods_input_tools_add = 8 # 320
+			goods_input_services_add = 20 # 600
+
+			goods_output_fine_art_add = 11 # 2200 - profit of 980
+		}					
+	}
+}
+
+pm_film_art = {
+	texture = "gfx/interface/icons/production_method_icons/film_art.dds"
+
+	unlocking_technologies = {
+		film
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			country_prestige_add = 2
+		}
+	}
+
+	building_modifiers = {		
+	
+		workforce_scaled = {
+			goods_input_tools_add = 15 # 600
+			goods_input_paper_add = 10 # 300
+			goods_input_electricity_add = 2 # 60
+			goods_input_services_add = 30 # 900
+			
+			goods_output_fine_art_add = 15 # 3000 - profit of 1140
+		}					
+	}
+}
+
+pm_traditional_patronage = {
+	texture = "gfx/interface/icons/production_method_icons/ownership_aristocrats.dds"
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+	building_modifiers = {		
+		level_scaled = {
+			building_employment_aristocrats_add = 100
+			building_employment_academics_add = 900
+			building_employment_clerks_add = 3000
+			building_employment_laborers_add = 1000
+		}		
+
+		unscaled = {
+			building_aristocrats_shares_add = 10
+			building_academics_shares_add = 2
+		}
+	}
+}
+
+pm_bourgeoisie_patronage = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+
+	unlocking_technologies = {
+		realism
+	}
+	
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+	building_modifiers = {		
+		level_scaled = {
+			building_employment_capitalists_add = 100
+			building_employment_academics_add = 900
+			building_employment_clerks_add = 3000
+			building_employment_laborers_add = 1000
+		}		
+
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_academics_shares_add = 2
+		}
+	}
+}
+
+pm_independent_artists = {
+	texture = "gfx/interface/icons/production_method_icons/independent_artists.dds"
+
+	unlocking_technologies = {
+		realism
+	}
+
+	building_modifiers = {		
+		level_scaled = {
+			building_employment_academics_add = 2000
+			building_employment_clerks_add = 2000
+			building_employment_laborers_add = 1000	
+		}		
+
+		unscaled = {
+			building_academics_shares_add = 10
+			building_clerks_shares_add = 2
+		}
+	}
+}
+
+pm_publicly_traded_building_power_plant = {
+	texture = "gfx/interface/icons/production_method_icons/publicly_traded.dds"
+	
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+	unlocking_technologies = {
+		mutual_funds
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 150
+		}
+		workforce_scaled = {
+			goods_input_pec_financial_services_add = 1
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 0.5
+			building_throughput_add = 0.12
+		}
+	}
+}

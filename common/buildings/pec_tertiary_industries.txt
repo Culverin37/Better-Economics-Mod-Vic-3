@@ -1,0 +1,68 @@
+pec_building_hospitality = {
+	building_group = bg_pec_tertiary_sector
+	texture = "gfx/interface/icons/building_icons/pec_hospitality.dds"
+	
+	unlocking_technologies = {
+		pec_leisure
+	}
+
+	production_method_groups = {
+		pmg_pec_hospitality
+		pmg_pec_hospitality_service
+		pmg_pec_hospitality_automation
+		pmg_pec_ownership_hospitality
+	}
+
+	required_construction = construction_cost_high
+}
+
+pec_building_entertainment = {
+	building_group = bg_pec_tertiary_sector
+	texture = "gfx/interface/icons/building_icons/pec_entertainment.dds"
+	
+	unlocking_technologies = {
+		pec_leisure
+	}
+
+	production_method_groups = {
+		pmg_pec_entertainment_venues
+		pmg_pec_eateries
+		pmg_pec_alcohol_service
+		pmg_pec_speech
+		pmg_pec_ownership_entertainment
+	}
+
+	required_construction = construction_cost_medium
+}
+
+pec_building_media = {
+	building_group = bg_pec_tertiary_sector
+	texture = "gfx/interface/icons/building_icons/pec_media.dds"
+
+	production_method_groups = {
+		pmg_pec_publishing
+		pmg_pec_journalism
+		pmg_pec_propaganda
+		pmg_pec_hospitality_automation
+		pmg_pec_ownership_media
+	}
+
+	required_construction = construction_cost_medium
+}
+
+building_arts_academy = {
+	building_group = bg_arts
+
+	city_type = city
+	
+	levels_per_mesh = 5
+
+	production_method_groups = {
+		pmg_base_building_arts_academy
+		pmg_ownership_building_arts_academy
+	}
+	
+	texture = "gfx/interface/icons/building_icons/building_arts_academy.dds"
+
+	required_construction = construction_cost_medium
+}

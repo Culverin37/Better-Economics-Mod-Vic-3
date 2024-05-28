@@ -1,0 +1,99 @@
+﻿pec_depression_je = {
+	icon = "gfx/interface/icons/event_icons/pec_event_graph.dds"
+
+	group = je_group_internal_affairs
+
+	immediate = {
+		pec_set_depression_vars = yes
+	}
+
+	scripted_button = pec_depression_stimulus_button
+	scripted_button = pec_found_a_central_bank_button
+
+	on_weekly_pulse = {
+		effect = {
+			pec_depression_progress_calculate = yes
+		}
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			100 = 0
+			30 = pec_depression.3 # breadlines (average sol low in state)
+			10 = pec_depression.4 # demands for protectionism (free trade)
+			10 = pec_depression.5 # demands for welfare (no social security)
+			10 = pec_depression.6 # socialism rising (capitalist economy + socialism researched)
+			10 = pec_depression.7 # fascism rising (political agitation researched)
+			10 = pec_depression.8 # keynesianism (macroeconomics researched)
+			30 = pec_depression.9 # farms struggling (size 5+ farm is unprofitable, can't be simplest farming PMs)
+			30 = pec_depression.10 # wave of heavy industry bankruptcies (5+ size industries unprofitable)
+			10 = pec_depression.11 # minorities blamed (significant discriminated minorities exist)
+			10 = pec_depression.12 # shopkeepers blamed (petite-bourgeoisie are not marginalized)
+			10 = pec_depression.13 # trade unions blamed (trade unions are not marginalized)
+			10 = pec_depression.14 # capital blamed (capitalist economy + industrialists are not marginalized)
+			10 = pec_depression.15 # aristocracy blamed (agrarian or traditionalist economy + landowners are not marginalized)
+			10 = pec_depression.16 # the government blamed
+			30 = pec_depression.17 # crisis spreads (is member of a customs union with high GDP)
+			30 = pec_depression.19 # wave of light industry bankruptcies (5+ size light industries unprofitable)
+			30 = pec_depression.20 # wave of tertiary industry bankruptcies (5+ size tertiary industries unprofitable)
+		}
+		effect = {
+			pec_add_depression_progress = yes
+			trigger_event = { id = pec_depression.1 } # reduce maluses at certain progress thresholds
+		}
+	}
+
+	on_yearly_pulse = {
+	}
+
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+	}
+
+	on_complete = {
+		trigger_event = { id = pec_depression.2 popup = yes }
+		remove_modifier = pec_boombust_depression
+		add_modifier = {
+			name = pec_boombust_depression
+			multiplier = 0.25
+			months = 6
+			is_decaying = yes
+		}
+		add_modifier = {
+			name = pec_had_bust
+			months = 30
+		}
+		clear_depression_vars = yes
+	}
+
+	fail = {
+		has_law = law_type:law_command_economy
+	}
+
+	on_fail = {
+		remove_modifier = pec_boombust_depression
+		clear_depression_vars = yes
+	}
+
+	invalid = {
+	}
+
+	current_value = {
+		value = root.var:pec_depression_progress
+	}
+
+	goal_add_value = {
+		add = 100
+	}
+
+	progressbar = yes
+
+	weight = 100
+
+	should_be_pinned_by_default = yes
+
+	status_desc = {
+	}
+}

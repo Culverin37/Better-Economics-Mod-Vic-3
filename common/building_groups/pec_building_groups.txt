@@ -1,0 +1,84 @@
+﻿bg_pec_financial = {
+	category = urban
+
+	always_possible = yes
+	
+	economy_of_scale = yes
+	
+	cash_reserves_max = 100000
+	
+	should_auto_expand = { 
+		default_auto_expand_rule = yes
+	}
+	
+	economy_of_scale_ai_factor = 6.0
+}
+
+bg_pec_tertiary_sector = {
+	category = urban
+	lens = urban
+
+	always_possible = yes
+	
+	economy_of_scale = yes
+	
+	cash_reserves_max = 50000
+
+	urbanization = 25
+	infrastructure_usage_per_level = 1
+	
+	should_auto_expand = { 
+		default_auto_expand_rule = yes
+	}
+	
+	economy_of_scale_ai_factor = 1
+}
+
+bg_pec_banks = {
+	parent_group = bg_pec_tertiary_sector
+
+	lens = urban
+
+	cash_reserves_max = 100000
+	
+	urbanization = 30
+	infrastructure_usage_per_level = 1
+	economy_of_scale_ai_factor = 6.0
+}
+
+bg_pec_central_bank = {
+	category = development
+
+	always_possible = yes
+
+	cash_reserves_max = 100000
+
+	lens = infrastructure
+
+	urbanization = 100
+	infrastructure_usage_per_level = 2
+}
+
+bg_pec_river_development = {
+	category = development
+
+	always_possible = yes
+
+	lens = infrastructure
+
+	stateregion_max_level = yes
+	
+	should_auto_expand = { 
+		default_auto_expand_rule = yes
+	}
+	
+	economy_of_scale_ai_factor = 4.0
+}
+
+bg_pec_river_development2 = {
+	parent_group = bg_pec_river_development
+
+	lens = urban
+	
+	urbanization = 5
+}

@@ -1,0 +1,325 @@
+﻿pec_boombust_volatility_button = {
+	name = "pec_volatility_button"
+	desc = "pec_volatility_button_desc"
+
+	visible = {
+	}
+
+	possible = {
+		hidden_trigger = {
+			always = no
+		}
+	}
+
+	effect = {
+	}
+}
+
+pec_boombust_confidence_button = {
+	name = "pec_confidence_button"
+	desc = "pec_confidence_button_desc"
+
+	visible = {
+	}
+
+	ai_chance = {
+		base = 0
+	}
+
+	possible = {
+		hidden_trigger = {
+			always = no
+		}
+	}
+
+	effect = {
+	}
+}
+
+pec_boombust_interest_decrease_button = {
+	name = "pec_interest_decrease_button"
+	desc = "pec_interest_decrease_button_desc"
+
+	visible = {
+	}
+
+	ai_chance = {
+		base = 0
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = pecdecreaseinterest_tt
+			OR = {
+				AND = {
+					var:pec_interest_rate > -1
+					NOT = { has_law = law_type:law_pec_central_bank_metallic }
+				}
+				var:pec_interest_rate > -0.5
+				NOT = { has_variable = pec_interest_rate }
+			}
+		}
+		has_technology_researched = central_banking
+		OR = {
+			has_law = law_type:law_pec_central_bank_metallic
+			has_law = law_type:law_pec_central_bank_fiat
+		}
+		any_scope_state = {
+			has_building = building_pec_central_bank
+		}
+		NOT = { has_modifier = pec_recent_interest_rate_change }
+	}
+
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_variable = pec_interest_rate }
+			}
+			set_variable = { name = pec_interest_rate value = 0 }
+		}
+		change_variable = { name = pec_interest_rate subtract = 0.25 }
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_metallic
+			}
+			add_modifier = {
+				name = pec_recent_interest_rate_change
+				months = 12
+			}
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			add_modifier = {
+				name = pec_recent_interest_rate_change
+				months = 6
+			}
+		}
+	}
+}
+
+pec_boombust_interest_increase_button = {
+	name = "pec_interest_increase_button"
+	desc = "pec_interest_increase_button_desc"
+
+	visible = {
+	}
+
+	ai_chance = {
+		base = 0
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = pecincreaseinterest_tt
+			OR = {
+				AND = {
+					var:pec_interest_rate < 1
+					NOT = { has_law = law_type:law_pec_central_bank_metallic }
+				}
+				var:pec_interest_rate < 0.5
+				NOT = { has_variable = pec_interest_rate }
+			}
+		}
+		has_technology_researched = central_banking
+		OR = {
+			has_law = law_type:law_pec_central_bank_metallic
+			has_law = law_type:law_pec_central_bank_fiat
+		}
+		any_scope_state = {
+			has_building = building_pec_central_bank
+		}
+		NOT = { has_modifier = pec_recent_interest_rate_change }
+	}
+
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_variable = pec_interest_rate }
+			}
+			set_variable = { name = pec_interest_rate value = 0 }
+		}
+		change_variable = { name = pec_interest_rate add = 0.25 }
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_metallic
+			}
+			add_modifier = {
+				name = pec_recent_interest_rate_change
+				months = 12
+			}
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			add_modifier = {
+				name = pec_recent_interest_rate_change
+				months = 6
+			}
+		}
+	}
+}
+
+
+pec_boombust_minting_decrease_button = {
+	name = "pec_minting_decrease_button"
+	desc = "pec_minting_decrease_button_desc"
+
+	visible = {
+	}
+
+	ai_chance = {
+		base = 0
+	}
+
+	possible = {
+		has_law = law_type:law_pec_central_bank_fiat
+		has_technology_researched = mutual_funds
+		any_scope_state = {
+			has_building = building_pec_central_bank
+		}
+		NOT = { has_modifier = pec_minting_low }
+		NOT = { has_modifier = pec_recent_minting_change }
+	}
+
+	effect = {
+		if = {
+			limit = {
+				NOR = {
+					has_modifier = pec_minting_low
+					has_modifier = pec_minting_high
+					has_modifier = pec_minting_very_high
+					has_modifier = pec_minting_extremely_high
+				}
+			}
+			add_modifier = {
+				name = pec_minting_low
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_high
+			}
+			custom_tooltip = {
+				text = pec_minting_decrease_high
+			}
+			remove_modifier = pec_minting_high
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_very_high
+			}
+			custom_tooltip = {
+				text = pec_minting_decrease_very_high
+			}
+			remove_modifier = pec_minting_very_high
+			add_modifier = {
+				name = pec_minting_high
+				months = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_extremely_high
+			}
+			custom_tooltip = {
+				text = pec_minting_decrease_extremely_high
+			}
+			remove_modifier = pec_minting_extremely_high
+			add_modifier = {
+				name = pec_minting_very_high
+				months = -1
+			}
+		}
+		add_modifier = {
+			name = pec_recent_minting_change
+			months = 12
+		}
+	}
+}
+
+pec_boombust_minting_increase_button = {
+	name = "pec_minting_increase_button"
+	desc = "pec_minting_increase_button_desc"
+
+	visible = {
+	}
+
+	ai_chance = {
+		base = 0
+	}
+
+	possible = {
+		has_law = law_type:law_pec_central_bank_fiat
+		has_technology_researched = mutual_funds
+		any_scope_state = {
+			has_building = building_pec_central_bank
+		}
+		NOT = { has_modifier = pec_minting_extremely_high }
+		NOT = { has_modifier = pec_recent_minting_change }
+	}
+
+	effect = {
+		if = {
+			limit = {
+				NOR = {
+					has_modifier = pec_minting_low
+					has_modifier = pec_minting_high
+					has_modifier = pec_minting_very_high
+					has_modifier = pec_minting_extremely_high
+				}
+			}
+			custom_tooltip = {
+				text = pec_minting_increase_none
+			}
+			add_modifier = {
+				name = pec_minting_high
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_low
+			}
+			remove_modifier = pec_minting_low
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_high
+			}
+			custom_tooltip = {
+				text = pec_minting_increase_high
+			}
+			remove_modifier = pec_minting_high
+			add_modifier = {
+				name = pec_minting_very_high
+				months = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_very_high
+			}
+			custom_tooltip = {
+				text = pec_minting_increase_very_high
+			}
+			remove_modifier = pec_minting_very_high
+			add_modifier = {
+				name = pec_minting_extremely_high
+				months = -1
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_recent_minting_increase_igmod
+				months = 25
+			}
+		}
+		add_modifier = {
+			name = pec_recent_minting_change
+			months = 12
+		}
+	}
+}
+

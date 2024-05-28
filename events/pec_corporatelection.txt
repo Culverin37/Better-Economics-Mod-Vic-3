@@ -1,0 +1,223 @@
+﻿namespace = pec_corporatelection
+
+pec_corporatelection.1 = {
+	type = country_event
+	placement = root
+	title = pec_corporatelection.1.t
+	desc = pec_corporatelection.1.d
+	flavor = pec_corporatelection.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	immediate = {
+		ig:ig_industrialists = {
+			save_scope_as = pec_corporate_ig
+		}
+	}
+
+	trigger = {
+		NOR = {
+			has_law = law_type:law_council_republic
+			has_law = law_type:law_cooperative_ownership
+			has_law = law_type:law_command_economy
+		}
+		OR = {
+			has_law = law_type:law_census_voting
+			has_law = law_type:law_universal_suffrage
+		}
+		ig:ig_industrialists = {
+			is_marginal = no
+		}
+	}
+
+	option = {
+		name = pec_corporatelection.1.a
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+ 		if = {
+ 			limit = {
+				has_law = law_type:law_census_voting
+ 				has_technology_researched = macroeconomics
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_1
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_census_voting
+ 				has_technology_researched = corporate_management
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_2
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_census_voting
+ 				has_technology_researched = investment_banks
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_3
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_census_voting
+ 				has_technology_researched = joint_stock_companies
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_4
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_census_voting
+ 				has_technology_researched = corporate_charters
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_5
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_census_voting
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_6
+				months = 9
+			}
+ 		}
+ 		if = {
+ 			limit = {
+				has_law = law_type:law_universal_suffrage
+ 				has_technology_researched = macroeconomics
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_1
+				multiplier = 1.5
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_universal_suffrage
+ 				has_technology_researched = corporate_management
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_2
+				multiplier = 1.5
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_universal_suffrage
+ 				has_technology_researched = investment_banks
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_3
+				multiplier = 1.5
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_universal_suffrage
+ 				has_technology_researched = joint_stock_companies
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_4
+				multiplier = 1.5
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_universal_suffrage
+ 				has_technology_researched = corporate_charters
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_5
+				multiplier = 1.5
+				months = 9
+			}
+ 		}
+ 		else_if = {
+ 			limit = {
+				has_law = law_type:law_universal_suffrage
+ 			}
+			add_modifier = {
+				name = pec_corporate_electioninfluence_6
+				multiplier = 1.5
+				months = 9
+			}
+ 		}
+	}
+	option = {
+		name = pec_corporatelection.1.b
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_outlawed_dissent
+				has_law = law_type:law_censorship
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				trigger = {
+					has_law = law_type:law_laissez_faire
+				}
+				add = -10
+			}
+			modifier = {
+				trigger = {
+					ig:ig_industrialists = {
+						is_in_government  = no
+					}
+				}
+				add = 10
+			}
+			modifier = {
+				trigger = {
+					any_interest_group = {
+						is_in_government = yes
+						leader = {
+							OR = {
+								has_ideology = ideology:ideology_communist
+								has_ideology = ideology:ideology_vanguardist
+							}
+						}
+					}
+				}
+				add = 100
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_industrialists_nocorpinfluence
+				months = 49
+			}
+		}
+		add_radicals = {
+			value = 0.2
+			interest_group = ig:ig_industrialists
+		}
+	}
+}

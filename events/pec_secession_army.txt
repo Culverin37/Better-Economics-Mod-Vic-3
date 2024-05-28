@@ -1,0 +1,221 @@
+﻿namespace = pec_secession_army
+
+pec_secession_army.1 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		is_secessionist = yes
+		total_population > 1000000
+		NOT = { has_variable = pec_secessionist_army_formed }
+	}
+		
+	immediate = {
+		root = { save_scope_as = pec_secessionist_country }
+		random_country = {
+			limit = {
+				any_diplomatic_play = {
+					target = root
+					initiator = prev
+				}
+			}
+			save_scope_as = pec_secessionist_unwantedmotherland
+		}
+		if = {
+			limit = {
+				any_country = {
+					has_diplomatic_pact = {
+						who = scope:pec_secessionist_unwantedmotherland
+						type = rivalry
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					has_diplomatic_pact = {
+						who = scope:pec_secessionist_unwantedmotherland
+						type = rivalry
+					}
+				}
+				set_secret_goal = {
+					country = root
+					secret_goal = protect
+				}
+				change_relations = {
+					country = scope:pec_secessionist_country
+					value = 50
+				}
+			}
+			every_country = {
+				limit = {
+					any_primary_culture = {
+						is_primary_culture_of = scope:pec_secessionist_country
+					}
+				}
+				set_secret_goal = {
+					country = root
+					secret_goal = protect
+				}
+				change_relations = {
+					country = scope:pec_secessionist_country
+					value = 80
+				}
+				change_relations = {
+					country = scope:pec_secessionist_unwantedmotherland
+					value = -15
+				}
+			}
+		}
+		set_variable = {
+			name = pec_secessionist_army_formed
+			months = 120
+		}
+		random_scope_state = {
+			limit = {
+				is_capital = yes
+			}
+			save_scope_as = pec_secessionist_state
+		}
+		add_modifier = {
+			name = pec_secessionist_fervor
+			months = 37
+		}
+		if = {
+			limit = {
+				total_population > 25000000
+			}
+			create_military_formation = {
+				type = army
+				hq_region = scope:pec_secessionist_state.region
+				combat_unit = {
+					type = unit_type:combat_unit_type_irregular_infantry
+					state_region = scope:pec_secessionist_state.state_region
+					count = 80
+				}
+		
+				combat_unit = {
+					type = unit_type:combat_unit_type_cannon_artillery
+					state_region = scope:pec_secessionist_state.state_region
+					count = 35
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				total_population > 15000000
+			}
+			create_military_formation = {
+				type = army
+				hq_region = scope:pec_secessionist_state.region
+				combat_unit = {
+					type = unit_type:combat_unit_type_irregular_infantry
+					state_region = scope:pec_secessionist_state.state_region
+					count = 50
+				}
+		
+				combat_unit = {
+					type = unit_type:combat_unit_type_cannon_artillery
+					state_region = scope:pec_secessionist_state.state_region
+					count = 25
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				total_population > 10000000
+			}
+			create_military_formation = {
+				type = army
+				hq_region = scope:pec_secessionist_state.region
+				combat_unit = {
+					type = unit_type:combat_unit_type_irregular_infantry
+					state_region = scope:pec_secessionist_state.state_region
+					count = 30
+				}
+		
+				combat_unit = {
+					type = unit_type:combat_unit_type_cannon_artillery
+					state_region = scope:pec_secessionist_state.state_region
+					count = 15
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				total_population > 7500000
+			}
+			create_military_formation = {
+				type = army
+				hq_region = scope:pec_secessionist_state.region
+				combat_unit = {
+					type = unit_type:combat_unit_type_irregular_infantry
+					state_region = scope:pec_secessionist_state.state_region
+					count = 20
+				}
+		
+				combat_unit = {
+					type = unit_type:combat_unit_type_cannon_artillery
+					state_region = scope:pec_secessionist_state.state_region
+					count = 10
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				total_population > 4000000
+			}
+			create_military_formation = {
+				type = army
+				hq_region = scope:pec_secessionist_state.region
+				combat_unit = {
+					type = unit_type:combat_unit_type_irregular_infantry
+					state_region = scope:pec_secessionist_state.state_region
+					count = 16
+				}
+		
+				combat_unit = {
+					type = unit_type:combat_unit_type_cannon_artillery
+					state_region = scope:pec_secessionist_state.state_region
+					count = 8
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				total_population > 2000000
+			}
+			create_military_formation = {
+				type = army
+				hq_region = scope:pec_secessionist_state.region
+				combat_unit = {
+					type = unit_type:combat_unit_type_irregular_infantry
+					state_region = scope:pec_secessionist_state.state_region
+					count = 12
+				}
+		
+				combat_unit = {
+					type = unit_type:combat_unit_type_cannon_artillery
+					state_region = scope:pec_secessionist_state.state_region
+					count = 6
+				}
+			}
+		}
+		else = {
+			create_military_formation = {
+				type = army
+				hq_region = scope:pec_secessionist_state.region
+				combat_unit = {
+					type = unit_type:combat_unit_type_irregular_infantry
+					state_region = scope:pec_secessionist_state.state_region
+					count = 8
+				}
+		
+				combat_unit = {
+					type = unit_type:combat_unit_type_cannon_artillery
+					state_region = scope:pec_secessionist_state.state_region
+					count = 4
+				}
+			}
+		}
+	}
+}

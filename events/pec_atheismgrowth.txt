@@ -1,0 +1,1753 @@
+﻿namespace = pec_atheismgrowth
+
+pec_atheismgrowth.1 = {
+	type = country_event
+	placement = root
+	title = pec_atheismgrowth.1.t
+	desc = pec_atheismgrowth.1.d
+	flavor = pec_atheismgrowth.1.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+	}
+
+	trigger = {
+		# triggered by journal entry
+	}
+
+	option = {
+		name = pec_atheismgrowth.1.a # watch and wait
+		default_option = yes
+		custom_tooltip = {
+			text = pec_atheismgrowth_university_spread_moderate
+			every_scope_pop = {
+				limit = {
+					is_pop_type = academics
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.40
+				}
+			}
+			every_scope_pop = {
+				limit = {
+					NOT = { is_pop_type = academics }
+					NOT = { is_pop_type = clergymen }
+					pop_employment_building = building_university
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.20
+				}
+			}
+		}
+		add_radicals = {
+			pop_type = clergymen
+			value = 0.05
+		}
+		add_radicals = {
+			pop_type = academics
+			value = 0.05
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.1.b # support
+		custom_tooltip = {
+			text = pec_atheismgrowth_university_spread_high
+		}
+		hidden_effect = {
+			every_scope_pop = {
+				limit = {
+					is_pop_type = academics
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.60
+				}
+			}
+			every_scope_pop = {
+				limit = {
+					NOT = { is_pop_type = academics }
+					NOT = { is_pop_type = clergymen }
+					pop_employment_building = building_university
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.35
+				}
+			}
+		}
+		add_radicals = {
+			pop_type = clergymen
+			value = 0.1
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_supported_atheism_negative
+				months = 60
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.1.c # suppress
+		custom_tooltip = {
+			text = pec_atheismgrowth_university_spread_low
+		}
+		hidden_effect = {
+			every_scope_pop = {
+				limit = {
+					is_pop_type = academics
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.15
+				}
+			}
+			every_scope_pop = {
+				limit = {
+					NOT = { is_pop_type = academics }
+					NOT = { is_pop_type = clergymen }
+					pop_employment_building = building_university
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.05
+				}
+			}
+		}
+		add_radicals = {
+			pop_type = academics
+			value = 0.1
+		}
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_opposed_atheism_positive
+				months = 60
+			}
+		}
+	}
+}
+
+pec_atheismgrowth.2 = {
+	type = country_event
+	placement = root
+	title = pec_atheismgrowth.2.t
+	desc = pec_atheismgrowth.2.d
+	flavor = pec_atheismgrowth.2.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		video = "europenorthamerica_london_center"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+	}
+
+	trigger = {
+		# triggered by journal entry
+	}
+
+	option = {
+		name = pec_atheismgrowth.2.a
+		default_option = yes
+		custom_tooltip = {
+			text = pec_atheismgrowth2_tt
+			every_scope_pop = {
+				limit = {
+					NOT = { is_pop_type = clergymen }
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.03
+				}
+			}
+		}
+		add_modifier = {
+			name = pec_successful_atheism_entrenched
+			months = 61
+		}
+	}
+}
+
+pec_atheismgrowth.3 = {
+	type = country_event
+	placement = root
+	title = pec_atheismgrowth.3.t
+	desc = pec_atheismgrowth.3.d
+	flavor = pec_atheismgrowth.3.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		trigger = {
+			religion = rel:jewish
+		}
+		video = "europenorthamerica_judaism"
+	}
+	event_image = {
+		trigger = {
+			OR = {
+				religion = rel:protestant
+				religion = rel:catholic
+				religion = rel:orthodox
+				religion = rel:oriental_orthodox
+			}
+		}
+		video = "southamerica_christianity"
+	}
+	event_image = {
+		trigger = {
+			OR = {
+				religion = rel:hindu
+				religion = rel:sikh
+			}
+		}
+		video = "asia_hinduism_sikhism"
+	}
+	event_image = {
+		trigger = {
+			religion = rel:shinto
+		}
+		video = "asia_confucianism_shinto"
+	}
+	event_image = {
+		trigger = {
+			OR = {
+				religion = rel:mahayana
+				religion = rel:gelugpa
+				religion = rel:theravada
+			}
+		}
+		video = "asia_buddhism"
+	}
+	event_image = {
+		trigger = {
+			OR = {
+				religion = rel:sunni
+				religion = rel:shiite
+			}
+		}
+		video = "middleeast_islam"
+	}
+	event_image = {
+		trigger = {
+			NOR = {
+				religion = rel:jewish
+				religion = rel:protestant
+				religion = rel:catholic
+				religion = rel:orthodox
+				religion = rel:oriental_orthodox
+				religion = rel:mahayana
+				religion = rel:gelugpa
+				religion = rel:theravada
+				religion = rel:shinto
+				religion = rel:hindu
+				religion = rel:sikh
+				religion = rel:sunni
+				religion = rel:shiite
+			}
+		}
+		video = "africa_animism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+	}
+
+	trigger = {
+		# triggered by journal entry
+	}
+
+	option = {
+		name = pec_atheismgrowth.3.a
+		default_option = yes
+		add_loyalists = {
+			pop_type = clergymen
+			value = 0.2
+		}
+		add_loyalists = {
+			value = 0.02
+		}
+		add_modifier = {
+			name = pec_successful_atheism_suppressed
+			months = 61
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_suppressed_atheism_success
+				months = 61
+			}
+		}
+	}
+}
+
+pec_atheismgrowth.4 = {
+	type = country_event
+	placement = root
+	title = pec_atheismgrowth.4.t
+	desc = pec_atheismgrowth.4.d
+	flavor = pec_atheismgrowth.4.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		video = "middleeast_middleclass_cafe"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+	}
+
+	cooldown = { months = 18 }
+
+	trigger = {
+		# triggered by journal entry
+	}
+
+	option = {
+		name = pec_atheismgrowth.4.a
+		default_option = yes
+		custom_tooltip = {
+			text = pec_atheismgrowth_national_spread_low
+			every_scope_pop = {
+				limit = {
+					NOT = { is_pop_type = clergymen }
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.01
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.4.b
+		custom_tooltip = {
+			text = pec_atheismgrowth_national_spread_high
+			every_scope_pop = {
+				limit = {
+					NOT = { is_pop_type = clergymen }
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.02
+				}
+			}
+		}
+		add_modifier = {
+			name = pec_atheist_pamphlets
+			multiplier = money_amount_multiplier_small
+			months = 25
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_supported_atheism_negative
+				months = 24
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.4.c
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+		add_radicals = {
+			religion = rel:atheist
+			value = 0.05
+		}
+		if = {
+			limit = {
+				NOT = { has_law = law_type:law_outlawed_dissent }
+				NOT = { has_law = law_type:law_censorship }
+			}
+			add_radicals = {
+				value = 0.01
+			}
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_opposed_atheism_positive
+				months = 24
+			}
+		}
+	}
+}
+
+pec_atheismgrowth.5 = {
+	type = country_event
+	placement = scope:pec_atheismgrowth5_state
+	title = pec_atheismgrowth.5.t
+	desc = pec_atheismgrowth.5.d
+	flavor = pec_atheismgrowth.5.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					is_building_type = building_university
+					occupancy > 0.9
+					level >= 3
+				}
+			}
+			save_scope_as = pec_atheismgrowth5_state
+		}
+	}
+
+	cooldown = { months = 6 }
+
+	trigger = {
+		# triggered by journal entry
+		any_scope_building = {
+			is_building_type = building_university
+			occupancy > 0.9
+			level >= 3
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.5.a # keep it contained
+		default_option = yes
+		scope:pec_atheismgrowth5_state = {
+			add_radicals_in_state = {
+				pop_type = academics
+				value = medium_radicals
+			}
+			add_radicals_in_state = {
+				religion = rel:atheist
+				value = medium_radicals
+			}
+			convert_population = {
+				target = rel:atheist
+				value = 0.10
+			}
+		}
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.5.b # see it flourish
+		every_scope_state = {
+			limit = {
+				any_scope_building = {
+					is_building_type = building_university
+				}
+			}
+			convert_population = {
+				target = rel:atheist
+				value = 0.10
+			}
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_supported_atheism_negative
+				months = 24
+			}
+		}
+	}
+}
+
+pec_atheismgrowth.6 = {
+	type = country_event
+	placement = scope:pec_atheismgrowth6_state
+	title = pec_atheismgrowth.6.t
+	desc = pec_atheismgrowth.6.d
+	flavor = pec_atheismgrowth.6.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		video = "asia_union_leader"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_pop = {
+					OR = {
+						pop_employment_building_group = bg_manufacturing
+						pop_employment_building_group = bg_mining
+					}
+				}
+			}
+			save_scope_as = pec_atheismgrowth6_state
+		}
+	}
+
+	cooldown = { months = 6 }
+
+	trigger = {
+		# triggered by journal entry
+	}
+
+	option = {
+		name = pec_atheismgrowth.6.a # ignore it
+		default_option = yes
+
+		custom_tooltip = {
+			text = pec_atheismgrowth_local_industry_spread
+			scope:pec_atheismgrowth6_state = {
+				every_scope_pop = {
+					limit = {
+						OR = {
+							pop_employment_building_group = bg_manufacturing
+							pop_employment_building_group = bg_mining
+						}
+						NOT = { strata = rich }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.25
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						NOR = {
+							pop_employment_building_group = bg_manufacturing
+							pop_employment_building_group = bg_mining
+							pop_employment_building_group = bg_agriculture
+							pop_employment_building_group = bg_plantations
+						}
+						NOT = { strata = rich }
+						NOT = { is_pop_type = clergymen }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.6.b # suppress it
+		custom_tooltip = {
+			text = pec_atheismgrowth_local_industry_spread_low
+			scope:pec_atheismgrowth6_state = {
+				every_scope_pop = {
+					limit = {
+						OR = {
+							pop_employment_building_group = bg_manufacturing
+							pop_employment_building_group = bg_mining
+						}
+						NOT = { strata = rich }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						NOR = {
+							pop_employment_building_group = bg_manufacturing
+							pop_employment_building_group = bg_mining
+							pop_employment_building_group = bg_agriculture
+							pop_employment_building_group = bg_plantations
+						}
+						NOT = { strata = rich }
+						NOT = { is_pop_type = clergymen }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.01
+					}
+				}
+			}
+		}
+		scope:pec_atheismgrowth6_state = {
+			add_radicals_in_state = {
+				pop_type = laborers
+				value = medium_radicals
+			}
+			add_radicals_in_state = {
+				pop_type = machinists
+				value = medium_radicals
+			}
+			add_radicals_in_state = {
+				pop_type = engineers
+				value = 0.02
+			}
+		}
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.6.c # support it
+
+		custom_tooltip = {
+			text = pec_atheismgrowth_national_industry_spread
+			scope:pec_atheismgrowth6_state = {
+				every_scope_pop = {
+					limit = {
+						OR = {
+							pop_employment_building_group = bg_manufacturing
+							pop_employment_building_group = bg_mining
+						}
+						NOT = { strata = rich }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.15
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						NOR = {
+							pop_employment_building_group = bg_manufacturing
+							pop_employment_building_group = bg_mining
+							pop_employment_building_group = bg_agriculture
+							pop_employment_building_group = bg_plantations
+						}
+						NOT = { strata = rich }
+						NOT = { is_pop_type = clergymen }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.05
+					}
+				}
+			}
+			every_scope_pop = {
+				limit = {
+					OR = {
+						pop_employment_building_group = bg_manufacturing
+						pop_employment_building_group = bg_mining
+					}
+					NOT = { strata = rich }
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.15
+				}
+			}
+			every_scope_pop = {
+				limit = {
+					NOR = {
+						pop_employment_building_group = bg_manufacturing
+						pop_employment_building_group = bg_mining
+						pop_employment_building_group = bg_agriculture
+						pop_employment_building_group = bg_plantations
+					}
+					NOT = { strata = rich }
+					NOT = { is_pop_type = clergymen }
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.05
+				}
+			}
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_supported_atheism_negative
+				months = 36
+			}
+		}
+		add_radicals = {
+			interest_group = ig:ig_devout
+			value = 0.03
+		}
+		add_radicals = {
+			interest_group = ig:ig_industrialists
+			value = 0.03
+		}
+	}
+}
+
+pec_atheismgrowth.7 = {
+	type = country_event
+	placement = root
+	title = pec_atheismgrowth.7.t
+	desc = pec_atheismgrowth.7.d
+	flavor = pec_atheismgrowth.7.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		video = "asia_farmers_market"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+	}
+
+	cooldown = { months = normal_modifier_time }
+
+	trigger = {
+		# triggered by journal entry
+		religion_percent_country = {
+			target = rel:atheist
+			value >= 0.04
+		}
+		NOT = { has_variable = pec_atheism_growth_event7 }
+	}
+
+	option = {
+		name = pec_atheismgrowth.7.a # this is only natural
+		default_option = yes
+		custom_tooltip = {
+			text = pec_atheismgrowth7_natural
+			every_scope_pop = {
+				limit = {
+					NOR = {
+						pop_employment_building_group = bg_agriculture
+						pop_employment_building_group = bg_plantations
+					}
+					NOT = { is_pop_type = clergymen }
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.01
+				}
+			}
+			
+		}
+		add_radicals = {
+			interest_group = ig:ig_rural_folk
+			value = 0.01
+		}
+		add_radicals = {
+			interest_group = ig:ig_devout
+			value = 0.01
+		}
+		add_radicals = {
+			interest_group = ig:ig_landowners
+			value = 0.01
+		}
+		set_variable = pec_atheism_growth_event7
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.7.b # spread atheism to the countryside
+		custom_tooltip = {
+			text = pec_atheismgrowth7_spread
+			every_scope_pop = {
+				limit = {
+					OR = {
+						pop_employment_building_group = bg_agriculture
+						pop_employment_building_group = bg_plantations
+					}
+					NOT = { is_pop_type = clergymen }
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.04
+				}
+			}
+			
+		}
+		add_modifier = {
+			name =  pec_atheist_countryside_spread
+			multiplier = money_amount_multiplier_small
+			months = 25
+		}
+		add_radicals = {
+			interest_group = ig:ig_rural_folk
+			value = 0.05
+		}
+		add_radicals = {
+			interest_group = ig:ig_devout
+			value = 0.05
+		}
+		add_radicals = {
+			interest_group = ig:ig_landowners
+			value = 0.05
+		}
+		set_variable = pec_atheism_growth_event7
+	}
+
+	option = {
+		name = pec_atheismgrowth.7.c # rally the countryside against the godless cities
+		add_radicals = {
+			interest_group = ig:ig_trade_unions
+			value = 0.02
+		}
+		add_radicals = {
+			interest_group = ig:ig_intelligentsia
+			value = 0.02
+		}
+		add_radicals = {
+			interest_group = ig:ig_industrialists
+			value = 0.02
+		}
+		add_radicals = {
+			interest_group = ig:ig_petty_bourgeoisie
+			value = 0.02
+		}
+		set_variable = pec_atheism_growth_event7
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression_high
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 2
+			}
+		}
+	}
+}
+
+pec_atheismgrowth.8 = {
+	type = country_event
+	placement = root
+	title = pec_atheismgrowth.8.t
+	desc = pec_atheismgrowth.8.d
+	flavor = pec_atheismgrowth.8.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		random_interest_group = {
+			limit = {
+				is_marginal = no
+				leader = {
+					OR = {
+						has_ideology = ideology:ideology_communist
+						has_ideology = ideology:ideology_positivist
+					}
+				}
+			}
+			save_scope_as = pec_atheist8_ig
+			leader = {
+				save_scope_as = pec_atheist8_leader
+			}
+		}
+	}
+
+	cooldown = { months = 12 }
+
+	trigger = {
+		# triggered by journal entry
+		any_interest_group = {
+			is_marginal = no
+			leader = {
+				OR = {
+					has_ideology = ideology:ideology_communist
+					has_ideology = ideology:ideology_positivist
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.8.a # no law
+		default_option = yes
+		trigger = {
+			OR = {
+				AND = {
+					has_law = law_type:law_freedom_of_conscience
+					NOR = {
+						has_law = law_type:law_outlawed_dissent
+						has_law = law_type:law_censorship
+					}
+				}
+				has_law = law_type:law_total_separation
+			}
+		}
+		custom_tooltip = {
+			text = pec_atheismgrowth8_nolaw
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_industrialists
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = capitalists
+							is_pop_type = engineers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_armed_forces
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = officers
+							is_pop_type = soldiers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_intelligentsia
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = academics
+							is_pop_type = clerks
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_trade_unions
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = machinists
+							is_pop_type = engineers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_rural_folk
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = farmers
+							is_pop_type = peasants
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_petty_bourgeoisie
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = shopkeepers
+							is_pop_type = clerks
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.8.b # condemn
+		trigger = {
+			OR = {
+				AND = {
+					has_law = law_type:law_freedom_of_conscience
+					NOR = {
+						has_law = law_type:law_outlawed_dissent
+						has_law = law_type:law_censorship
+					}
+				}
+				has_law = law_type:law_total_separation
+			}
+		}
+		custom_tooltip = {
+			text = pec_atheismgrowth8_condemn
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_industrialists
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = capitalists
+							is_pop_type = engineers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.02
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_armed_forces
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = officers
+							is_pop_type = soldiers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.02
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_intelligentsia
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = academics
+							is_pop_type = clerks
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.02
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_trade_unions
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = machinists
+							is_pop_type = engineers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.02
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_rural_folk
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = farmers
+							is_pop_type = peasants
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.02
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_petty_bourgeoisie
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = shopkeepers
+							is_pop_type = clerks
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.02
+					}
+				}
+			}
+		}
+
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.8.c # arrest
+		default_option = yes
+		trigger = {
+			OR = {
+				AND = {
+					has_law = law_type:law_freedom_of_conscience
+					OR = {
+						has_law = law_type:law_outlawed_dissent
+						has_law = law_type:law_censorship
+					}
+				}
+				has_law = law_type:law_state_religion
+			}
+		}
+		custom_tooltip = pec_atheismgrowth8_arrest_tt
+		scope:pec_atheist8_leader = {
+			kill_character = {
+				hidden = yes
+			}
+		}
+		scope:pec_atheist8_ig = {
+			add_modifier = {
+				name = pec_leader_arrested_blasphemy
+				months = normal_modifier_time
+			}
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_opposed_atheism_positive
+				months = normal_modifier_time
+			}
+		}
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.8.e # pardon
+		trigger = {
+			OR = {
+				AND = {
+					has_law = law_type:law_freedom_of_conscience
+					OR = {
+						has_law = law_type:law_outlawed_dissent
+						has_law = law_type:law_censorship
+					}
+				}
+				has_law = law_type:law_state_religion
+			}
+		}
+
+		custom_tooltip = {
+			text = pec_atheismgrowth8_pardon
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_industrialists
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = capitalists
+							is_pop_type = engineers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.05
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_armed_forces
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = officers
+							is_pop_type = soldiers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.05
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_intelligentsia
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = academics
+							is_pop_type = clerks
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.05
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_trade_unions
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = machinists
+							is_pop_type = engineers
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.05
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_rural_folk
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = farmers
+							is_pop_type = peasants
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.05
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:pec_atheist8_ig = {
+						is_interest_group_type = ig_petty_bourgeoisie
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						OR = {
+							is_pop_type = shopkeepers
+							is_pop_type = clerks
+						}
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.05
+					}
+				}
+			}
+		}
+
+		add_radicals = {
+			pop_type = clergymen
+			value = 0.10
+		}
+
+		add_radicals = {
+			pop_type = aristocrats
+			value = 0.05
+		}
+
+		add_radicals = {
+			pop_type = bureaucrats
+			value = 0.05
+		}
+
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_supported_atheism_negative
+				months = 60
+			}
+		}
+
+		scope:pec_atheist8_ig = {
+			add_modifier = {
+				name = pec_leader_pardoned_blasphemy
+				months = normal_modifier_time
+			}
+		}
+	}
+}
+
+
+pec_atheismgrowth.9 = {
+	type = country_event
+	placement = scope:pec_atheismgrowth9_state
+	title = pec_atheismgrowth.9.t
+	desc = pec_atheismgrowth.9.d
+	flavor = pec_atheismgrowth.9.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		video = "europenorthamerica_before_the_battle"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_pop = {
+					pop_employment_building = building_barracks
+				}
+			}
+			save_scope_as = pec_atheismgrowth9_state
+		}
+	}
+
+	cooldown = { months = 12 }
+
+	trigger = {
+		# triggered by journal entry
+		any_scope_pop = {
+			pop_employment_building = building_barracks
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.9.a # the soldiers flock to atheism
+		default_option = yes
+
+		custom_tooltip = {
+			text = pec_atheismgrowth9_local_soldiers
+			every_scope_pop = {
+				limit = {
+					is_pop_type = soldiers
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.05
+				}
+			}
+			scope:pec_atheismgrowth9_state = {
+				every_scope_pop = {
+					limit = {
+						is_pop_type = soldiers
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.50
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						is_pop_type = officers
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.9.b # the local officers lead the way
+		custom_tooltip = {
+			text = pec_atheismgrowth9_local_officers
+			every_scope_pop = {
+				limit = {
+					is_pop_type = officers
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.15
+				}
+			}
+			scope:pec_atheismgrowth9_state = {
+				every_scope_pop = {
+					limit = {
+						is_pop_type = soldiers
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.20
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						is_pop_type = officers
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.50
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.9.c # support it nationwide
+		custom_tooltip = {
+			text = pec_atheismgrowth9_support_nationwide
+			every_scope_pop = {
+				limit = {
+					is_pop_type = soldiers
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.25
+				}
+			}
+			every_scope_pop = {
+				limit = {
+					is_pop_type = officers
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.25
+				}
+			}
+			scope:pec_atheismgrowth9_state = {
+				every_scope_pop = {
+					limit = {
+						is_pop_type = soldiers
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.25
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						is_pop_type = officers
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.25
+					}
+				}
+			}
+		}
+		add_modifier = {
+			name = pec_spreading_atheism_army
+			multiplier = money_amount_multiplier_small
+			months = 37
+		}
+
+		add_radicals = {
+			pop_type = clergymen
+			value = 0.1
+		}
+		add_radicals = {
+			pop_type = aristocrats
+			value = 0.05
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = pec_igmod_supported_atheism_negative
+				months = 37
+			}
+		}
+
+	}
+
+	option = {
+		name = pec_atheismgrowth.9.e # suppress it
+		custom_tooltip = {
+			text = pec_atheismgrowth9_suppress
+			scope:pec_atheismgrowth9_state = {
+				every_scope_pop = {
+					limit = {
+						is_pop_type = soldiers
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+				every_scope_pop = {
+					limit = {
+						is_pop_type = officers
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.10
+					}
+				}
+			}
+		}
+		add_radicals = {
+			pop_type = soldiers
+			value = 0.08
+		}
+		add_radicals = {
+			pop_type = officers
+			value = 0.03
+		}
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+
+	}
+}
+
+pec_atheismgrowth.10 = {
+	type = country_event
+	placement = scope:pec_atheismgrowth10_state
+	title = pec_atheismgrowth.10.t
+	desc = pec_atheismgrowth.10.d
+	flavor = pec_atheismgrowth.10.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+			}
+			save_scope_as = pec_atheismgrowth10_state
+		}
+	}
+
+	cooldown = { months = 6 }
+
+	trigger = {
+		# triggered by journal entry
+	}
+
+	option = {
+		name = pec_atheismgrowth.10.a # clerical arguments are favored
+		default_option = yes
+
+		custom_tooltip = {
+			text = pec_atheismgrowth10_clerical_wins
+			scope:pec_atheismgrowth10_state = {
+				every_scope_pop = {
+					limit = {
+						NOT = { is_pop_type = clergymen }
+						NOT = { is_pop_type = aristocrats }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.02
+					}
+				}
+			}
+		}
+
+		scope:pec_atheismgrowth10_state = {
+			add_radicals_in_state = {
+				value = 0.01
+			}
+		}
+		custom_tooltip = {
+			text = pec_atheismgrowth_add_suppression
+			change_variable = {
+				name = pec_atheism_suppression_var
+				add = 1
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.10.b # anti-clerical arguments are favored
+		custom_tooltip = {
+			text = pec_atheismgrowth10_anticlerical_wins
+			every_scope_pop = {
+				limit = {
+					NOT = { is_pop_type = clergymen }
+					NOT = { is_pop_type = aristocrats }
+				}
+				change_pop_religion = {
+					target = rel:atheist
+					value = 0.01
+				}
+			}
+			scope:pec_atheismgrowth10_state = {
+				every_scope_pop = {
+					limit = {
+						NOT = { is_pop_type = clergymen }
+						NOT = { is_pop_type = aristocrats }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.15
+					}
+				}
+			}
+		}
+		scope:pec_atheismgrowth10_state = {
+			add_radicals_in_state = {
+				value = 0.02
+			}
+		}
+	}
+
+	option = {
+		name = pec_atheismgrowth.10.c # no-one winds the debate
+		custom_tooltip = {
+			text = pec_atheismgrowth10_none_win
+			scope:pec_atheismgrowth10_state = {
+				every_scope_pop = {
+					limit = {
+						NOT = { is_pop_type = clergymen }
+						NOT = { is_pop_type = aristocrats }
+					}
+					change_pop_religion = {
+						target = rel:atheist
+						value = 0.06
+					}
+				}
+			}
+		}
+	}
+}

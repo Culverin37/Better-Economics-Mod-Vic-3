@@ -1,0 +1,40 @@
+﻿pmg_riverdev_canals = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_pec_naturalriver
+		pm_pec_canals
+		pm_pec_canals_modern
+	}
+}
+
+pmg_riverdev_boats = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_pec_simpleboats
+		pm_pec_riverboats
+		pm_pec_steamboats
+	}
+}
+
+pmg_riverdev_hydropower = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_refining.dds"
+	production_methods = {
+		pm_pec_nohydropower
+		pm_pec_hydropower
+	}
+}
+
+pmg_ownership_capital_building_riverdev = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_pec_riverdev_own_merchant
+		pm_pec_riverdev_own_private
+		pm_pec_riverdev_own_commons
+		pm_pec_riverdev_own_mixed
+		pm_pec_riverdev_own_government
+	}
+}

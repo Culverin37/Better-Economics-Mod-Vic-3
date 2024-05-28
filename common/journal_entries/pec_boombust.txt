@@ -1,0 +1,157 @@
+﻿pec_boombust_je_1 = {
+	icon = "gfx/interface/icons/event_icons/pec_event_graph.dds"
+
+	group = je_group_internal_affairs
+
+	is_shown_when_inactive = {
+		OR = {
+			has_game_rule = pec_boombust_possible
+			AND = {
+				has_game_rule = pec_boombust_playeronly
+				is_player = yes
+			}
+		}
+	}
+
+	possible = {
+		OR = {
+			has_game_rule = pec_boombust_possible
+			AND = {
+				has_game_rule = pec_boombust_playeronly
+				is_player = yes
+			}
+		}
+		has_technology_researched = banking
+		NOT = { has_law = law_type:law_command_economy }
+	}
+
+	immediate = {
+		pec_gdp_baseline = yes
+		pec_set_boombust_variables = yes
+		pec_boombust_monthly_pulse_population = yes
+	}
+
+	scripted_button = pec_boombust_interest_decrease_button
+	scripted_button = pec_boombust_interest_increase_button
+	scripted_button = pec_boombust_minting_decrease_button
+	scripted_button = pec_boombust_minting_increase_button
+
+	on_weekly_pulse = {
+		effect = {
+			pec_boombust_weekly_pulse_volatility_progress = yes
+			pec_boombust_weekly_pulse_confidence_progress = yes
+		}
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			1000 = 0
+			12 = pec_boombust_pulse.1 # Negative: bank panic in state
+			4 = pec_boombust_pulse.2 # Negative: nationwide bank panic
+			10 = pec_boombust_pulse.3 # Positive: confidence high
+			10 = pec_boombust_pulse.4 # Positive: investment trust established (mutual funds)
+			1 = pec_boombust_pulse.5 # Negative: investment trust bankrupt (mutual funds)
+			10 = pec_boombust_pulse.6 # Negative: mom and pop stores out of business (8+ urbanization in a state)
+			10 = pec_boombust_pulse.7 # Negative: local strike (labor movement)
+			10 = pec_boombust_pulse.8 # Positive: business booming
+			10 = pec_boombust_pulse.9 # Negative: markets cool from general strike JE
+			25 = pec_boombust_pulse.10 #Negative: fear of revolution disrupts market
+			5 = pec_boombust_pulse.11 #Positive: philantropic societies
+			10 = pec_boombust_pulse.12 #Negative: high grain price (grain +15% of base price)
+			10 = pec_boombust_pulse.13 #Negative: local drought (prevented by chemical fertilizer)
+			1 = pec_boombust_pulse.14 #Negative: regional drought (prevented by chemical fertilizer)
+			25 = pec_boombust_pulse.15 #Positive: Speculation spurs investment (GDP growth 15%+)
+			15 = pec_boombust_pulse.16 #Negative: Bubble bursts (has speculative investments)
+			10 = pec_boombust_pulse.18 #Positive: Bull Market (has financial sector with Securities Trade or Hedge Funds, market volatility above 5, confidence above -3)
+			10 = pec_boombust_pulse.19 #Negative: Bear Market (has financial sector with Securities Trade or Hedge Funds, market volatility above 5, confidence below 3)
+			3 = pec_boombust_pulse.20 #Negative: Stock Market Crash (has 7+ financial sector with Securities Trade or Hedge Funds, market volatility above 10, confidence below 0, has a Bear Market)
+			25 = pec_boombust_pulse.21 #Negative: Stagnation (volatility below -10, growth below 5 and relatively industrialized)
+		}
+		effect = {
+			change_variable = { name = pec_market_volatility add = var:pec_market_volatility_progress }
+			change_variable = { name = pec_market_confidence add = var:pec_market_confidence_progress }
+			clamp_variable = { name = pec_market_volatility max = 25 min = -25 } 
+			clamp_variable = { name = pec_market_confidence max = 25 min = -25 }
+			pec_boombust_hyperinflation_check = yes
+			if = {
+				limit = {
+					NOR = {
+						has_modifier = pec_boombust_depression
+						has_modifier = pec_boombust_recession
+						has_modifier = pec_boombust_boom_small
+						has_modifier = pec_boombust_boom
+					}
+					var:pec_market_volatility > -20
+				}
+				trigger_event = { id = pec_boombust.1 }
+			}
+			if = {
+				limit = {
+					has_modifier = pec_stagnation
+					var:pec_market_volatility > 0
+				}
+				trigger_event = { id = pec_boombust_pulse.22 }
+			}
+		}
+	}
+
+	on_yearly_pulse = {
+		effect = {
+			pec_boombust_monthly_pulse_population = yes
+			pec_gdp_growth = yes
+		}
+	}
+
+	complete = {
+	}
+
+	on_complete = {
+	}
+
+	fail = {
+	}
+
+	on_fail = {
+	}
+
+	invalid = {
+		has_law = law_type:law_command_economy
+	}
+
+	current_value = {
+	}
+
+	goal_add_value = {
+	}
+
+	should_be_pinned_by_default = yes
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = pec_boombust_status_in_bust_desc
+				trigger = {
+					OR = {
+						has_modifier = pec_boombust_depression
+						has_modifier = pec_boombust_recession
+					}
+				}
+			}
+			triggered_desc = {
+				desc = pec_boombust_status_in_boom_desc
+				trigger = {
+					OR = {
+						has_modifier = pec_boombust_boom
+						has_modifier = pec_boombust_boom_small
+					}
+				}
+			}
+			triggered_desc = {
+				desc = pec_boombust_status_volcon_desc
+				trigger = {
+					always = yes
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,73 @@
+﻿ideology_technocratic = {
+	icon = "gfx/interface/icons/ideology_icons/technocratic.dds"
+
+	lawgroup_governance_principles = {	
+		law_presidential_republic = strongly_approve
+		law_parliamentary_republic = neutral
+		law_council_republic = disapprove
+		law_monarchy = strongly_disapprove	
+		law_theocracy = strongly_disapprove
+	}
+	
+	lawgroup_distribution_of_power = {
+		law_technocracy = strongly_approve
+		law_oligarchy = approve
+		law_single_party_state = approve
+		law_wealth_voting = neutral
+		law_census_voting = disapprove
+		law_autocracy = disapprove
+		law_landed_voting = strongly_disapprove
+		law_universal_suffrage = strongly_disapprove
+		law_anarchy = strongly_disapprove
+	}
+
+	lawgroup_economic_system = {
+		law_industry_banned = strongly_disapprove
+		law_interventionism = disapprove
+		law_command_economy = approve
+		law_pec_mixed_market = neutral
+		law_cooperative_ownership = strongly_disapprove
+		law_agrarianism = strongly_disapprove
+		law_traditionalism = strongly_disapprove
+		law_laissez_faire = strongly_disapprove
+	}
+}
+
+ideology_technocratic_industrialists = {
+	icon = "gfx/interface/icons/ideology_icons/technocratic.dds"
+	
+	lawgroup_governance_principles = {	
+		law_presidential_republic = strongly_approve
+		law_parliamentary_republic = neutral
+		law_council_republic = strongly_disapprove
+		law_monarchy = strongly_disapprove	
+		law_theocracy = strongly_disapprove
+	}
+	
+	lawgroup_distribution_of_power = {
+		law_technocracy = strongly_approve
+		law_oligarchy = approve
+		law_single_party_state = approve
+		law_wealth_voting = neutral
+		law_census_voting = disapprove
+		law_autocracy = disapprove
+		law_landed_voting = strongly_disapprove
+		law_universal_suffrage = strongly_disapprove
+		law_anarchy = strongly_disapprove
+	}
+	
+	lawgroup_taxation = {
+		law_per_capita_based_taxation = approve
+		law_consumption_based_taxation = neutral
+		law_land_based_taxation = neutral
+		law_proportional_taxation = neutral
+		law_graduated_taxation = disapprove
+	}	
+	
+	lawgroup_colonization = {
+		law_colonial_exploitation = approve
+		law_no_colonial_affairs = neutral
+		law_colonial_resettlement = neutral
+		law_frontier_colonization = neutral
+	}
+}

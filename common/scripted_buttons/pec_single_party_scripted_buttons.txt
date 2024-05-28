@@ -1,0 +1,318 @@
+﻿pec_singleparty_secret_police_button = {
+	name = "pec_secret_police_button"
+	desc = "pec_interest_increase_button_desc"
+
+	visible = {
+		NOT = { has_law = law_type:law_secret_police }
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+			trigger = { 
+				any_interest_group = {
+					is_in_government = yes
+					law_stance = {
+						law = law_type:law_secret_police
+						value > neutral
+					}
+				}
+			}
+			add = 20
+		}
+		modifier = {
+			trigger = { 
+				any_interest_group = {
+					is_in_government = yes
+					leader = {
+						OR = {
+							has_ideology = ideology:ideology_vanguardist
+							has_ideology = ideology:ideology_fascist
+							has_ideology = ideology:ideology_authoritarian
+						}
+					}
+				}
+			}
+			add = 20
+		}
+	}
+
+	possible = {
+		NOT = { has_law = law_type:law_secret_police }
+		government_legitimacy >= 95
+		loyalist_fraction = {
+			value >= 0.10
+		}
+	}
+
+	effect = {
+		activate_law = law_type:law_secret_police
+		custom_tooltip = {
+			text = pec_regimestab_lose_5_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 5 }
+		}
+		every_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_secret_police
+					value < neutral
+				}
+			}
+			add_modifier = {
+				name = pec_forced_secretpolice
+				months = normal_modifier_time
+			}
+		}
+		add_radicals = {
+			value = 0.10
+		}
+		set_variable = {
+			name = pec_forced_secret_police
+			months = 60
+		}
+	}
+}
+
+pec_singleparty_political_purge_button = {
+	name = "pec_political_purge_button"
+	desc = "pec_political_purge_button_desc"
+
+	visible = {
+		always = yes
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+			trigger = { 
+				any_interest_group = {
+					is_in_government = yes
+					leader = {
+						OR = {
+							has_ideology = ideology:ideology_vanguardist
+							has_ideology = ideology:ideology_fascist
+							has_ideology = ideology:ideology_pec_totalitarian
+						}
+					}
+				}
+			}
+			add = 5
+		}
+	}
+
+	possible = {
+		authority >= 250
+		custom_tooltip = {
+			text = pec_political_purge_cooldown_text
+			NOT = { has_variable = pec_political_purge_cooldown }
+		}
+		has_law = law_type:law_secret_police
+		government_legitimacy >= 90
+		OR = {
+			radical_fraction = {
+				value >= 0.1
+			}
+			any_scope_character = {
+				has_ideology = ideology:ideology_pec_dissident
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+		}
+		custom_tooltip = {
+			text = pec_political_purge_freeassassins_text
+		}
+		add_modifier = {
+			name = pec_political_purge_mod
+			months = 25
+		}
+		custom_tooltip = {
+			text = pec_purge_igs_text
+			every_interest_group = {
+				limit = {
+					is_in_government = no
+				}
+				add_modifier = {
+					name = pec_igmod_political_purge
+					months = 25
+				}
+			}
+		}
+		kill_population_percent = {
+			percent = 0.01
+			pop_type = bureaucrats
+		}
+		kill_population_percent = {
+			percent = 0.01
+			pop_type = academics
+		}
+		set_variable = {
+			name = pec_political_purge_cooldown
+			months = 60
+		}
+	}
+}
+
+pec_singleparty_great_leap_button = {
+	name = "pec_great_leap_button"
+	desc = "pec_great_leap_button_desc"
+
+	visible = {
+		always = yes
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+			trigger = { 
+				NOT = { has_variable = pec_great_leap_has_done }
+				any_interest_group = {
+					is_in_government = yes
+					leader = {
+						OR = {
+							has_ideology = ideology:ideology_vanguardist
+							has_ideology = ideology:ideology_communist
+							has_ideology = ideology:ideology_market_liberal
+							has_ideology = ideology:ideology_protectionist
+						}
+					}
+				}
+			}
+			add = 5
+		}
+	}
+
+	possible = {
+		authority >= 250
+		custom_tooltip = {
+			text = pec_great_leap_cooldown_text
+			NOT = { has_variable = pec_great_leap_cooldown }
+		}
+		NOT = { has_law = law_type:law_laissez_faire }
+		NOT = { has_law = law_type:law_traditionalism }
+		government_legitimacy >= 90
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+		}
+		add_modifier = {
+			name = pec_great_leap_mod
+			months = 37
+		}
+		add_radicals = {
+			value = 0.10
+		}
+		kill_population_percent = {
+			percent = 0.005
+			strata = middle
+		}
+		kill_population_percent = {
+			percent = 0.005
+			strata = poor
+		}
+		set_variable = {
+			name = pec_great_leap_cooldown
+			months = 60
+		}
+		set_variable = {
+			name = pec_great_leap_has_done
+		}
+	}
+}
+
+pec_singleparty_natalist_campaign_button = {
+	name = "pec_natalist_campaign_button"
+	desc = "pec_natalist_campaign_button_desc"
+
+	visible = {
+		always = yes
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+			trigger = { 
+				any_interest_group = {
+					is_in_government = yes
+					leader = {
+						OR = {
+							has_ideology = ideology:ideology_ethno_nationalist
+							has_ideology = ideology:ideology_fascist
+						}
+					}
+				}
+			}
+			add = 2
+		}
+	}
+
+	possible = {
+		authority >= 250
+		custom_tooltip = {
+			text = pec_natalist_campaign_cooldown_text
+			NOT = { has_variable = pec_natalist_campaign_cooldown }
+		}
+		government_legitimacy >= 90
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+		}
+		add_modifier = {
+			name = pec_natalist_campaign_mod
+			months = 37
+		}
+		set_variable = {
+			name = pec_natalist_campaign_cooldown
+			months = 60
+		}
+		add_radicals = {
+			value = 0.05
+		}
+	}
+}
+
+pec_singleparty_force_law_button = {
+	name = "pec_force_law_button"
+	desc = "pec_force_law_button_desc"
+
+	visible = {
+		enacting_any_law = yes
+	}
+
+	ai_chance = {
+		base = 0
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = pec_force_law_cooldown_text
+			NOT = { has_variable = pec_force_law_cooldown }
+		}
+		government_legitimacy >= 95
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+		}
+		activate_law = currently_enacting_law.type
+		add_radicals = {
+			value = 0.03
+		}
+		set_variable = {
+			name = pec_force_law_cooldown
+			months = 60
+		}
+	}
+}

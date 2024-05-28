@@ -1,0 +1,59 @@
+﻿pec_set_depression_vars = {
+	set_variable = { name = pec_depression_progress_from_baseline value = 0 }
+	set_variable = { name = pec_depression_progress_from_laws value = 0 }
+	set_variable = { name = pec_depression_progress_from_confidence value = 0 }
+	set_variable = { name = pec_depression_progress_from_growth value = 0 }
+	set_variable = { name = pec_depression_progress value = 0 }
+	set_variable = { name = pec_depression_progress_next value = 0 }
+}
+
+clear_depression_vars = {
+	remove_variable = pec_depression_progress_from_baseline
+	remove_variable = pec_depression_progress_from_laws
+	remove_variable = pec_depression_progress_from_confidence
+	remove_variable = pec_depression_progress_from_growth
+	remove_variable = pec_depression_progress
+	remove_variable = pec_depression_progress_next
+}
+
+pec_depression_progress_calculate = {
+	set_variable = { name = pec_depression_progress_from_baseline value = 0 }
+	set_variable = { name = pec_depression_progress_from_laws value = 0 }
+	set_variable = { name = pec_depression_progress_from_confidence value = 0 }
+	set_variable = { name = pec_depression_progress_from_growth value = 0 }
+	set_variable = { name = pec_depression_progress_next value = 0 }
+
+
+	# From Baseline
+	set_variable = { name = pec_depression_progress_from_baseline value = 1.0 }
+
+	# From Laws
+	if = {
+		limit = {
+			has_law = law_type:law_pec_merchant_banks
+		}
+		change_variable = { name = pec_depression_progress_from_laws subtract = 0.10 }
+	}
+
+
+	# From Confidence
+	set_variable = { name = pec_depression_progress_from_confidence value = root.var:pec_market_confidence }
+	change_variable = { name = pec_depression_progress_from_confidence  divide = 25 } # value -1 to 1
+	clamp_variable = { name = pec_depression_progress_from_confidence  max = 1 min = -0.25 }
+
+
+	# From Growth
+	set_variable = { name = pec_depression_progress_from_growth value = root.var:pec_gdp_growth }
+	change_variable = { name = pec_depression_progress_from_growth  divide = 10 } # shouldn't be too high
+	clamp_variable = { name = pec_depression_progress_from_growth  max = 2 min = -0.25 }
+
+
+	change_variable = { name = pec_depression_progress_next add = var:pec_depression_progress_from_baseline }
+	change_variable = { name = pec_depression_progress_next add = var:pec_depression_progress_from_laws }
+	change_variable = { name = pec_depression_progress_next add = var:pec_depression_progress_from_confidence }
+	change_variable = { name = pec_depression_progress_next add = var:pec_depression_progress_from_growth }
+}
+
+pec_add_depression_progress = {
+	change_variable = { name = pec_depression_progress add = var:pec_depression_progress_next }
+}

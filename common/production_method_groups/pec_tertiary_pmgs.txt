@@ -1,0 +1,142 @@
+﻿# Hospitality
+pmg_pec_hospitality = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+
+	production_methods = {
+		pm_pec_hosp_inns
+		pm_pec_hosp_hotels
+		pm_pec_hosp_modern_hotels
+	}
+}
+
+pmg_pec_hospitality_service = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_refining.dds"
+
+	production_methods = {
+		pm_pec_hosp_no_additional
+		pm_pec_hosp_alcohol
+		pm_pec_hosp_stimulant
+		pm_pec_hosp_luxury
+	}
+}
+
+pmg_pec_hospitality_automation = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_automation.dds"
+	production_methods = {
+		pm_pec_hosp_adhoc_shifts
+		pm_pec_hosp_shift_work
+	}
+}
+
+pmg_pec_ownership_hospitality = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_pec_merchant_guilds_building_hospitality
+		pm_pec_privately_owned_building_hospitality
+		pm_pec_publicly_traded_building_hospitality
+		pm_technocratic_light_industry
+		pm_government_run_industry
+		pm_worker_cooperative_industry
+	}
+}
+
+# Entertainment
+pmg_pec_entertainment_venues = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+
+	production_methods = {
+		pm_pec_ent_simple
+		pm_pec_ent_theatre
+		pm_pec_ent_cinemas
+	}
+}
+
+pmg_pec_eateries = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+
+	production_methods = {
+		pm_pec_ent_no_dining_industry
+		pm_pec_ent_public_houses
+		pm_pec_ent_restaurants
+		pm_pec_ent_luxury_restaurants
+	}
+}
+
+pmg_pec_alcohol_service = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+
+	production_methods = {
+		pm_pec_ent_no_alcohol
+		pm_pec_ent_liquor_service
+		pm_pec_ent_wine_service
+		pm_pec_ent_opium_service
+		pm_pec_ent_coffee_houses_service
+		pm_pec_ent_tea_houses_service
+	}
+}
+
+pmg_pec_speech = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+
+	production_methods = {
+		pm_pec_ent_propaganda
+		pm_pec_ent_censorship
+		pm_pec_ent_free_speech
+	}
+}
+
+pmg_pec_ownership_entertainment = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_pec_merchant_guilds_building_entertainment
+		pm_pec_privately_owned_building_entertainment
+		pm_pec_publicly_traded_building_entertainment
+		pm_technocratic_light_industry
+		pm_government_run_industry
+		pm_worker_cooperative_industry
+	}
+}
+
+# Media
+pmg_pec_publishing = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+
+	production_methods = {
+		pm_pec_publ_books
+		pm_pec_publ_penny_press
+		pm_pec_publ_mass_production
+	}
+}
+
+pmg_pec_journalism = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+
+	production_methods = {
+		pm_pec_publ_town_criers
+		pm_pec_publ_newspapers
+		pm_pec_publ_broadcasting
+	}
+}
+
+pmg_pec_propaganda = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_refining.dds"
+
+	production_methods = {
+		pm_pec_publ_no_political_control
+		pm_pec_publ_propaganda
+	}
+}
+
+pmg_pec_ownership_media = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_pec_merchant_guilds_building_media
+		pm_pec_privately_owned_building_media
+		pm_pec_publicly_traded_building_media
+		pm_pec_independent_publishing_building_media
+		pm_technocratic_light_industry
+		pm_mixed_ownership_industry
+		pm_government_run_industry
+		pm_worker_cooperative_industry
+	}
+}

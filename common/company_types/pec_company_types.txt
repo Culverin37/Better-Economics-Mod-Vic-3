@@ -1,0 +1,94 @@
+﻿pec_company_financial = {
+	icon = "gfx/interface/icons/company_icons/pec_bank_company.dds"
+	background = "gfx/interface/icons/company_icons/company_backgrounds/comp_illu_harbor_shipbuilding.dds"
+	
+	uses_dynamic_naming = yes
+	
+	dynamic_company_type_names = {
+		"dynamic_company_type_company"
+		"dynamic_company_type_syndicate"
+		"dynamic_company_type_conglomerate"
+		"dynamic_company_type_corporation"
+	}
+	
+	building_types = {
+		building_pec_banks
+	}
+
+	possible = {
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = building_pec_banks
+				level >= 3
+			}
+		}
+	}
+
+	prosperity_modifier = {
+		state_capitalists_investment_pool_efficiency_mult = 0.05
+		building_group_bg_construction_throughput_add = 0.05
+	}	
+}
+
+pec_company_entertainment = {
+	icon = "gfx/interface/icons/company_icons/pec_entertainment_company.dds"
+	background = "gfx/interface/icons/company_icons/company_backgrounds/comp_illu_harbor_shipbuilding.dds"
+	
+	uses_dynamic_naming = yes
+	
+	dynamic_company_type_names = {
+		"dynamic_company_type_company"
+		"dynamic_company_type_consortium"
+		"dynamic_company_type_conglomerate"
+		"dynamic_company_type_corporation"
+	}
+	
+	building_types = {
+		pec_building_hospitality
+		pec_building_entertainment
+	}
+
+	possible = {
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = pec_building_hospitality
+				level >= 3
+			}
+		}
+	}
+
+	prosperity_modifier = {
+		state_migration_pull_mult = 0.1
+	}	
+}
+
+pec_company_publishing_house = {
+	icon = "gfx/interface/icons/company_icons/pec_media_company.dds"
+	background = "gfx/interface/icons/company_icons/company_backgrounds/comp_illu_harbor_shipbuilding.dds"
+	
+	uses_dynamic_naming = yes
+	
+	dynamic_company_type_names = {
+		"dynamic_company_type_pec_publisher"
+		"dynamic_company_type_company"
+		"dynamic_company_type_consortium"
+	}
+	
+	building_types = {
+		pec_building_media
+		building_paper_mills
+	}
+
+	possible = {
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = pec_building_media
+				level >= 3
+			}
+		}
+	}
+
+	prosperity_modifier = {
+		state_radicals_from_sol_change_mult = -0.05
+	}	
+}

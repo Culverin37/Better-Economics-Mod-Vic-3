@@ -1,0 +1,3205 @@
+﻿namespace = pec_secession_brewing
+
+pec_secession_brewing.1 = {
+	type = country_event
+	hidden = yes
+	
+
+	trigger = {
+		NOT = { has_game_rule = pec_nationalism_impossible }
+		has_technology_researched = nationalism
+		highest_secession_progress = 0
+		NOR = {
+			has_modifier = pec_suppressed_brewing_nationalists
+			has_variable = pec_completed_brewing_secession_je
+			has_journal_entry = pec_je_secessionist_movement
+			is_revolutionary = yes
+			is_secessionist = yes
+		}
+		any_scope_state = {
+			OR = {
+				is_incorporated = yes
+				AND = {
+					pec_state_is_in_europe = yes
+					owner = {
+						pec_country_is_in_europe = yes
+					}
+				}
+				AND = {
+					state_is_in_east_asia = yes
+					owner = {
+						country_is_in_east_asia = yes
+					}
+				}
+				AND = {
+					state_is_in_north_america = yes
+					owner = {
+						country_is_in_north_america = yes
+					}
+				}
+				AND = {
+					state_is_in_central_america = yes
+					owner = {
+						country_is_in_central_america = yes
+					}
+				}
+				AND = {
+					state_is_in_south_america = yes
+					owner = {
+						country_is_in_south_america = yes
+					}
+				}
+				AND = {
+					state_is_in_africa = yes
+					owner = {
+						country_is_in_africa = yes
+					}
+				}
+				AND = {
+					state_is_in_southeast_asia = yes
+					owner = {
+						country_is_in_southeast_asia = yes
+					}
+				}
+			}
+			turmoil > 0.15
+			state_population > 1000000
+			NOR = {
+				has_modifier = pec_nationalism_crushed_state
+				has_modifier = pec_concessions_accepted_state
+				has_modifier = pec_isolated_nationalist_home_rule
+			}
+			OR = {
+				NOT = { is_homeland_of_country_cultures = ROOT }
+				has_game_rule = pec_nationalism_relaxed_req
+			}
+			save_temporary_scope_as = pec_potential_secessionist_state
+			any_scope_culture = {
+				NOT = { is_primary_culture_of = ROOT }
+				has_homeland = scope:pec_potential_secessionist_state
+				save_temporary_scope_as = pec_potential_secessionist_culture
+			}
+			culture_percent_state = {
+				target = scope:pec_potential_secessionist_culture
+				value >= 0.5
+			}
+		}
+	}
+	immediate = {
+		random_list = {
+			1 = {
+				modifier = {
+					if = {
+						limit = {
+							has_journal_entry = je_springtime_of_the_peoples
+						}
+					}
+					add = 8
+				}
+				modifier = {
+					if = {
+						limit = {
+							has_law = law_type:law_pec_unitarism
+						}
+					}
+					add = 1
+				}
+				modifier = {
+					if = {
+						limit = {
+							government_legitimacy < 75
+						}
+					}
+					add = 1
+				}
+				modifier = {
+					if = {
+						limit = {
+							government_legitimacy < 50
+						}
+					}
+					add = 1
+				}
+				modifier = {
+					if = {
+						limit = {
+							government_legitimacy < 25
+						}
+					}
+					add = 1
+				}
+				add_journal_entry = {
+					type = pec_je_secessionist_movement
+				}
+			}
+			9 = {
+				modifier = {
+					if = {
+						limit = {
+							has_law = law_type:law_pec_federalism
+						}
+					}
+					add = 10
+				}
+			}
+		}
+	}
+}
+
+pec_secession_brewing.100 = {
+	type = country_event
+	hidden = yes
+	
+	trigger = {
+		any_scope_state = {
+			has_modifier = pec_nationalism_forced_assimilation_mod
+		}
+	}
+	immediate = {
+		scope:pec_secessionistbrewing_state = {
+			every_scope_pop = {
+				limit = {
+					culture = scope:pec_secessionistbrewing_culture
+				}
+				change_pop_culture = {
+					target = scope:pec_primary_culture
+					value = 0.01
+				}
+			}
+		}
+	}
+}
+
+pec_secession_brewing.2 = {
+	type = country_event
+	placement = scope:pec_secessionistbrewing_state
+	title = pec_secession_brewing.2.t
+	desc = pec_secession_brewing.2.d
+	flavor = pec_secession_brewing.2.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_springtime_of_nations"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_secession_brewing.2.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = {
+					has_law = law_type:law_multicultural
+				}
+				add = -40
+			}
+		}
+		default_option = yes
+		add_modifier = {
+			name = pec_brewingnationalists_strategy_suppression
+			months = 68
+		}
+		add_radicals = {
+			value = 0.03
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_radicals_in_state = {
+				value = 0.08
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.2.b
+		ai_chance = {
+			base = 50
+		}
+		add_modifier = {
+			name = pec_brewingnationalists_strategy_concession
+			months = 68
+		}
+		add_radicals = {
+			value = 0.02
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_radicals_in_state = {
+				value = 0.05
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.2.c
+		highlighted_option = yes
+		trigger = {
+			custom_tooltip = {
+				text = pec_secession_brewing2ctt
+				scope:pec_secessionistbrewing_culture = {
+					OR = {
+						NOT = { culture_is_discriminated_in = ROOT }
+						shares_heritage_trait_with_any_primary_culture = ROOT
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				trigger = {
+					has_law = law_type:law_multicultural
+				}
+				add = 25
+			}
+		}
+		add_modifier = {
+			name = pec_brewingnationalists_strategy_integration
+			months = 68
+		}
+		add_radicals = {
+			value = 0.01
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_loyalists_in_state = {
+				value = 0.02
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+	}
+}
+
+pec_secession_brewing.3 = {
+	type = country_event
+	placement = scope:pec_nationalist_university_state
+	title = pec_secession_brewing.3.t
+	desc = pec_secession_brewing.3.d
+	flavor = pec_secession_brewing.3.f
+
+	duration = 3
+
+	cooldown = { months = 36 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				state_region = { is_homeland = scope:pec_secessionistbrewing_culture }
+				any_scope_building = {
+					is_building_type = building_university
+					occupancy > 0.9
+				}
+			}
+			save_scope_as = pec_nationalist_university_state
+			random_scope_building = {
+				limit = {
+					is_building_type = building_university
+				}
+				save_scope_as = pec_secessionist_university_building
+			}
+		}
+	}
+
+	trigger = {
+		any_scope_state = {
+			state_region = { is_homeland = scope:pec_secessionistbrewing_culture }
+			any_scope_building = {
+				is_building_type = building_university
+				occupancy > 0.9
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.3.a # no action
+		ai_chance = {
+			base = 25
+		}
+		default_option = yes
+		scope:pec_nationalist_university_state = {
+			add_radicals_in_state = {
+				value = 0.03
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_radicals_in_state = {
+				value = 0.10
+				pop_type = academics
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 3
+				}
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = pec_nationalism_decrease_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = -3
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.3.b # prohibit nationalism on campus
+		ai_chance = {
+			base = 50
+		}
+		scope:pec_secessionist_university_building = {
+			add_modifier = {
+				name = pec_secessionbrewing3_university_mod
+				months = 61
+			}
+		}
+		scope:pec_nationalist_university_state = {
+			add_radicals_in_state = {
+				value = 0.01
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				pop_type = academics
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.3.c # shut down university (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_nationalist_university_state = {
+			remove_building = building_university
+		}
+		random_list = {
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -10
+					}
+				}
+				scope:pec_nationalist_university_state = {
+					add_radicals_in_state = {
+						value = 0.02
+					}
+					add_radicals_in_state = {
+						value = 0.25
+						pop_type = academics
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_nationalist_university_state = {
+					add_radicals_in_state = {
+						value = 0.01
+					}
+					add_radicals_in_state = {
+						value = 0.25
+						pop_type = academics
+					}
+				}
+			}
+			50 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_nationalist_university_state = {
+					add_loyalists_in_state = {
+						value = 0.01
+					}
+					add_radicals_in_state = {
+						value = 0.25
+						pop_type = academics
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_nationalist_university_state = {
+					add_loyalists_in_state = {
+						value = 0.02
+					}
+					add_radicals_in_state = {
+						value = 0.25
+						pop_type = academics
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_secession_brewing.3.e # support academics (integration)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_integration
+		}
+		ai_chance = {
+			base = 150
+		}
+		scope:pec_nationalist_university_state = {
+			add_radicals_in_state = {
+				value = 0.05
+				culture = scope:pec_primary_culture
+			}
+			add_radicals_in_state = {
+				value = 0.15
+				pop_type = academics
+				culture = scope:pec_primary_culture
+			}
+		}
+		random_list = {
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			25 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+# Organic Work: Education
+pec_secession_brewing.4 = {
+	type = country_event
+	placement = scope:pec_secessionistbrewing_state
+	title = pec_secession_brewing.4.t
+	desc = pec_secession_brewing.4.d
+	flavor = pec_secession_brewing.4.f
+
+	duration = 3
+
+	cooldown = { months = 61 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_secession_brewing.4.a # no action
+		ai_chance = {
+			base = 25
+		}
+		default_option = yes
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_education_organic_work
+				months = 61
+			}
+			add_radicals_in_state = {
+				value = 0.01
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_1
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1
+				}
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = pec_nationalism_decrease_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = -3
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.4.b # censor their publications
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_censorship
+				has_law = law_type:law_outlawed_dissent
+			}
+		}
+		ai_chance = {
+			base = 50
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_education_organic_work_censored
+				months = 61
+			}
+			add_loyalists_in_state = {
+				value = 0.01
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.4.c # round up teachers (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 100
+		}
+		random_list = {
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_radicals_in_state = {
+						value = 0.05
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_radicals_in_state = {
+						value = 0.02
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			45 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_radicals_in_state = {
+						value = 0.01
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_loyalists_in_state = {
+						value = 0.01
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_loyalists_in_state = {
+						value = 0.01
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.4.e # support education efforts (integration)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_integration
+		}
+		ai_chance = {
+			base = 150
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_education_organic_work_supported
+				months = 61
+			}
+			add_radicals_in_state = {
+				value = 0.03
+				culture = scope:pec_primary_culture
+			}
+		}
+		random_list = {
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			40 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+# Organic Work: Industry
+pec_secession_brewing.5 = {
+	type = country_event
+	placement = scope:pec_secessionistbrewing_state
+	title = pec_secession_brewing.5.t
+	desc = pec_secession_brewing.5.d
+	flavor = pec_secession_brewing.5.f
+
+	duration = 3
+
+	cooldown = { months = 61 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "southamerica_factory_opening"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_secession_brewing.5.a # no action
+		ai_chance = {
+			base = 25
+		}
+		default_option = yes
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_industry_organic_work
+				months = 61
+			}
+			add_radicals_in_state = {
+				value = 0.02
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_1
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_integration
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 3
+				}
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = pec_nationalism_decrease_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = -3
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.5.b # exploit this phenomenon
+		ai_chance = {
+			base = 50
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_industry_organic_work_exploited
+				months = 91
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_decrease_progress_5
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = -5
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.5.c # forced labour (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_industry_organic_work_forced
+				months = 61
+			}
+			kill_population_percent_in_state = {
+				percent = 0.0025
+				pop_type = machinists
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			kill_population_percent_in_state = {
+				percent = 0.005
+				pop_type = laborers
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			kill_population_percent_in_state = {
+				percent = 0.005
+				pop_type = peasants
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		random_list = {
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_radicals_in_state = {
+						value = 0.02
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.06
+						pop_type = machinists
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.06
+						pop_type = laborers
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.06
+						pop_type = peasants
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_radicals_in_state = {
+						value = 0.02
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.06
+						pop_type = machinists
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.06
+						pop_type = laborers
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.06
+						pop_type = peasants
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_radicals_in_state = {
+						value = 0.01
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.025
+						pop_type = machinists
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.025
+						pop_type = laborers
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.025
+						pop_type = peasants
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			40 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_radicals_in_state = {
+						value = 0.01
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_loyalists_in_state = {
+						value = 0.025
+						pop_type = machinists
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_loyalists_in_state = {
+						value = 0.025
+						pop_type = laborers
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_loyalists_in_state = {
+						value = 0.025
+						pop_type = peasants
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_loyalists_in_state = {
+						value = 0.01
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_radicals_in_state = {
+						value = 0.03
+						pop_type = machinists
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_loyalists_in_state = {
+						value = 0.03
+						pop_type = laborers
+						culture = scope:pec_secessionistbrewing_culture
+					}
+					add_loyalists_in_state = {
+						value = 0.03
+						pop_type = peasants
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+		}
+	}
+}
+
+# Riots in main state
+
+pec_secession_brewing.6 = {
+	type = country_event
+	placement = scope:pec_secessionistbrewing_state
+	title = pec_secession_brewing.6.t
+	desc = pec_secession_brewing.6.d
+	flavor = pec_secession_brewing.6.f
+
+	duration = 3
+
+	cooldown = { months = 36 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+		scope:pec_secessionistbrewing_state = {
+			turmoil > 0.15
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.6.a # no action
+		ai_chance = {
+			base = 25
+		}
+		default_option = yes
+		scope:pec_secessionistbrewing_state = {
+			state_region = { add_devastation = 20 }
+			add_modifier = {
+				name = pec_nationalist_riots
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.03
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_radicals_in_state = {
+				value = 0.02
+				culture = scope:pec_primary_culture
+			}
+			kill_population_percent_in_state = {
+				percent = 0.002
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_decrease_progress_5
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = -5
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.6.b # quell the riots with the police
+		highlighted_option = yes
+		trigger = {
+			NOT = { has_law = law_type:law_no_police }
+			institution_investment_level = {
+				institution = institution_police
+				value >= 2
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_secessionistbrewing_state = {
+			state_region = { add_devastation = 10 }
+			add_modifier = {
+				name = pec_nationalist_riots
+				multiplier = 0.5
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.04
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			kill_population_percent_in_state = {
+				percent = 0.001
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_increase_progress_1
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = 1
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.6.c # send in the army (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 300
+		}
+		scope:pec_secessionistbrewing_state = {
+			kill_population_percent_in_state = {
+				percent = 0.005
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			kill_population_percent_in_state = {
+				percent = 0.0025
+				culture = scope:pec_primary_culture
+			}
+		}
+		random_list = {
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 50 }
+					add_radicals_in_state = {
+						value = 0.1
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			15 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 40 }
+					add_radicals_in_state = {
+						value = 0.04
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			25 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 40 }
+				}
+			}
+			25 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 40 }
+					add_loyalists_in_state = {
+						value = 0.01
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 30 }
+					add_loyalists_in_state = {
+						value = 0.02
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 50 }
+					add_loyalists_in_state = {
+						value = 0.03
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_secession_brewing.6.e # rebuilding efforts (integration)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_integration
+		}
+		ai_chance = {
+			base = 150
+		}
+		add_radicals = {
+			value = 0.005
+			culture = scope:pec_primary_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalist_riots_rebuild
+				months = 49
+			}
+		}
+		random_list = {
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+pec_secession_brewing.7 = {
+	type = country_event
+	placement = scope:pec_newrioter_state
+	title = pec_secession_brewing.7.t
+	desc = pec_secession_brewing.7.d
+	flavor = pec_secession_brewing.7.f
+
+	duration = 3
+
+	cooldown = { months = 6 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				state_region = { is_homeland = scope:pec_secessionistbrewing_culture }
+				turmoil > 0.15
+				NOT = { has_modifier = pec_nationalist_riots }
+				any_neighbouring_state = {
+					has_modifier = pec_nationalist_riots
+				}
+			}
+			save_scope_as = pec_newrioter_state
+		}
+	}
+
+	trigger = {
+		any_scope_state = {
+			state_region = { is_homeland = scope:pec_secessionistbrewing_culture }
+			turmoil > 0.15
+			NOT = { has_modifier = pec_nationalist_riots }
+			any_neighbouring_state = {
+				has_modifier = pec_nationalist_riots
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.7.a # no action
+		ai_chance = {
+			base = 10
+		}
+		default_option = yes
+		scope:pec_newrioter_state = {
+			state_region = { add_devastation = 20 }
+			add_modifier = {
+				name = pec_nationalist_riots
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.03
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_radicals_in_state = {
+				value = 0.02
+				culture = scope:pec_primary_culture
+			}
+			kill_population_percent_in_state = {
+				percent = 0.002
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_decrease_progress_5
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = -5
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.7.b # quell the riots with the police
+		highlighted_option = yes
+		trigger = {
+			NOT = { has_law = law_type:law_no_police }
+			institution_investment_level = {
+				institution = institution_police
+				value >= 2
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_newrioter_state = {
+			state_region = { add_devastation = 10 }
+			add_modifier = {
+				name = pec_nationalist_riots
+				multiplier = 0.5
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.04
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			kill_population_percent_in_state = {
+				percent = 0.001
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_increase_progress_1
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = 1
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.7.c # send in the army (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 300
+		}
+		scope:pec_newrioter_state = {
+			kill_population_percent_in_state = {
+				percent = 0.005
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			kill_population_percent_in_state = {
+				percent = 0.0025
+				culture = scope:pec_primary_culture
+			}
+		}
+		random_list = {
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -10
+					}
+				}
+				scope:pec_newrioter_state = {
+					state_region = { add_devastation = 50 }
+					add_radicals_in_state = {
+						value = 0.1
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			15 = {
+				scope:pec_newrioter_state = {
+					state_region = { add_devastation = 40 }
+					add_radicals_in_state = {
+						value = 0.04
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			25 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+				scope:pec_newrioter_state = {
+					state_region = { add_devastation = 40 }
+				}
+			}
+			25 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_newrioter_state = {
+					state_region = { add_devastation = 30 }
+					add_loyalists_in_state = {
+						value = 0.01
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_newrioter_state = {
+					state_region = { add_devastation = 40 }
+					add_loyalists_in_state = {
+						value = 0.02
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+				scope:pec_newrioter_state = {
+					state_region = { add_devastation = 50 }
+					add_loyalists_in_state = {
+						value = 0.03
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_secession_brewing.7.e # rebuilding efforts (integration)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_integration
+		}
+		ai_chance = {
+			base = 150
+		}
+		add_radicals = {
+			value = 0.005
+			culture = scope:pec_primary_culture
+		}
+		scope:pec_newrioter_state = {
+			add_modifier = {
+				name = pec_nationalist_riots_rebuild
+				months = 49
+			}
+		}
+		random_list = {
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+# nationalism spreads to another culture
+pec_secession_brewing.8 = {
+	type = country_event
+	placement = scope:pec_inspired_nat_state
+	title = pec_secession_brewing.8.t
+	desc = pec_secession_brewing.8.d
+	flavor = pec_secession_brewing.8.f
+
+	duration = 3
+
+	cooldown = { months = 12 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				NOT = {
+					state_region = { is_homeland = scope:pec_secessionistbrewing_culture }
+				}
+				turmoil > 0.25
+				state_population > 1000000
+				NOR = {
+					has_modifier = pec_nationalism_crushed_state
+					has_modifier = pec_concessions_accepted_state
+					has_modifier = pec_inspired_nationalist_state
+					has_modifier = pec_inspired_culture_concessions
+				}
+				save_temporary_scope_as = pec_potential_inspired_nat_state
+				any_scope_culture = {
+					NOT = { is_primary_culture_of = ROOT }
+					has_homeland = scope:pec_potential_inspired_nat_state
+					save_temporary_scope_as = pec_potential_inspired_nat_culture
+				}
+				culture_percent_state = {
+					target = scope:pec_potential_inspired_nat_culture
+					value >= 0.5
+				}
+			}
+			save_scope_as = pec_inspired_nat_state
+			random_scope_culture = {
+				limit = {
+					NOT = { is_primary_culture_of = ROOT }
+					has_homeland = scope:pec_inspired_nat_state
+					scope:pec_inspired_nat_state = {
+						culture_percent_state = {
+							target = PREV
+							value >= 0.5
+						}
+					}
+				}
+				save_scope_as = pec_inspired_nat_culture
+			}
+		}
+	}
+
+	trigger = {
+		any_scope_state = {
+			NOT = {
+				state_region = { is_homeland = scope:pec_secessionistbrewing_culture }
+			}
+			turmoil > 0.25
+			state_population > 1000000
+			NOR = {
+				has_modifier = pec_nationalism_crushed_state
+				has_modifier = pec_concessions_accepted_state
+				has_modifier = pec_inspired_nationalist_state
+				has_modifier = pec_inspired_culture_concessions
+			}
+			save_temporary_scope_as = pec_potential_inspired_nat_state_temp
+			any_scope_culture = {
+				NOT = { is_primary_culture_of = ROOT }
+				has_homeland = scope:pec_potential_inspired_nat_state_temp
+				save_temporary_scope_as = pec_potential_inspired_nat_culture_temp
+			}
+			culture_percent_state = {
+				target = scope:pec_potential_inspired_nat_culture_temp
+				value >= 0.5
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.8.a # no action - this is a very bad idea if there is any other option
+		ai_chance = {
+			base = 10
+		}
+		default_option = yes
+		add_radicals = {
+			value = 0.05
+			culture = scope:pec_inspired_nat_culture
+		}
+		scope:pec_inspired_nat_state = {
+			add_radicals = {
+				value = 0.12
+				culture = scope:pec_inspired_nat_culture
+			}
+			add_modifier = {
+				name = pec_inspired_nationalist_state
+				months = 91
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_decrease_progress_15
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = -15
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.8.b # limit freedom of speech
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_censorship
+				has_law = law_type:law_outlawed_dissent
+			}
+		}
+		ai_chance = {
+			base = 50
+		}
+		add_radicals = {
+			value = 0.03
+			culture = scope:pec_inspired_nat_culture
+		}
+		scope:pec_inspired_nat_state = {
+			add_radicals_in_state = {
+				value = 0.08
+				culture = scope:pec_inspired_nat_culture
+			}
+			add_modifier = {
+				name = pec_inspired_nationalist_state
+				multiplier = 0.5
+				months = 61
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_decrease_progress_5
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = -5
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.8.c # nip this in the bud (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 300
+		}
+		scope:pec_inspired_nat_state = {
+			kill_population_percent_in_state = {
+				percent = 0.005
+				culture = scope:pec_inspired_nat_culture
+			}
+		}
+		random_list = {
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -10
+					}
+				}
+				add_radicals = {
+					value = 0.1
+					culture = scope:pec_inspired_nat_culture
+				}
+				scope:pec_inspired_nat_state = {
+					add_modifier = {
+						name = pec_inspired_nationalist_state
+						multiplier = 2.0
+						months = 121
+					}
+					state_region = { add_devastation = 20 }
+					add_radicals_in_state = {
+						value = 0.15
+						culture = scope:pec_inspired_nat_culture
+					}
+				}
+			}
+			20 = {
+				add_radicals = {
+					value = 0.05
+					culture = scope:pec_inspired_nat_culture
+				}
+				scope:pec_inspired_nat_state = {
+					add_modifier = {
+						name = pec_inspired_nationalist_state
+						months = 61
+					}
+					state_region = { add_devastation = 20 }
+					add_radicals_in_state = {
+						value = 0.1
+						culture = scope:pec_inspired_nat_culture
+					}
+				}
+			}
+			20 = {
+				add_radicals = {
+					value = 0.03
+					culture = scope:pec_inspired_nat_culture
+				}
+				scope:pec_inspired_nat_state = {
+					add_modifier = {
+						name = pec_inspired_nationalist_state
+						multiplier = 0.8
+						months = 61
+					}
+					state_region = { add_devastation = 20 }
+					add_radicals_in_state = {
+						value = 0.07
+						culture = scope:pec_inspired_nat_culture
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+				add_radicals = {
+					value = 0.02
+					culture = scope:pec_inspired_nat_culture
+				}
+				scope:pec_inspired_nat_state = {
+					add_modifier = {
+						name = pec_inspired_nationalist_state
+						multiplier = 0.5
+						months = 61
+					}
+					state_region = { add_devastation = 20 }
+					add_radicals_in_state = {
+						value = 0.05
+						culture = scope:pec_inspired_nat_culture
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				add_radicals = {
+					value = 0.001
+					culture = scope:pec_inspired_nat_culture
+				}
+				scope:pec_inspired_nat_state = {
+					add_modifier = {
+						name = pec_inspired_nationalist_state
+						multiplier = 0.25
+						months = 61
+					}
+					state_region = { add_devastation = 20 }
+					add_radicals_in_state = {
+						value = 0.03
+						culture = scope:pec_inspired_nat_culture
+					}
+				}
+			}
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_inspired_nat_state = {
+					add_modifier = {
+						name = pec_inspired_nationalist_state
+						multiplier = 0.05
+						months = 61
+					}
+					state_region = { add_devastation = 20 }
+					add_radicals_in_state = {
+						value = 0.02
+						culture = scope:pec_inspired_nat_culture
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_secession_brewing.8.e # comply with moderate demands (integration + concession)
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+				has_modifier = pec_brewingnationalists_strategy_integration
+			}
+		}
+		ai_chance = {
+			base = 250
+		}
+		add_radicals = {
+			value = 0.005
+			culture = scope:pec_primary_culture
+		}
+		add_loyalists = {
+			value = 0.01
+			culture = scope:pec_inspired_nat_culture
+		}
+		every_scope_state = {
+			limit = {
+				is_capital = no
+				state_region = { is_homeland = scope:pec_inspired_nat_culture }
+			}
+			add_modifier = {
+				name = pec_inspired_culture_concessions
+				months = 61
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_5
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 5
+				}
+			}
+		}
+		else = {
+			random_list = {
+				30 = {
+					custom_tooltip = {
+						text = pec_nationalism_increase_progress_3
+						change_variable = {
+							name = pec_secession_brewing_var
+							add = 3
+						}
+					}
+				}
+				35 = {
+					custom_tooltip = {
+						text = pec_nationalism_increase_progress_5
+						change_variable = {
+							name = pec_secession_brewing_var
+							add = 5
+						}
+					}
+				}
+				30 = {
+					custom_tooltip = {
+						text = pec_nationalism_increase_progress_10
+						change_variable = {
+							name = pec_secession_brewing_var
+							add = 10
+						}
+					}
+				}
+				5 = {
+					custom_tooltip = {
+						text = pec_nationalism_increase_progress_15
+						change_variable = {
+							name = pec_secession_brewing_var
+							add = 15
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+pec_secession_brewing.9 = {
+	type = country_event
+	placement = scope:pec_secessionistbrewing_state
+	title = pec_secession_brewing.9.t
+	desc = pec_secession_brewing.9.d
+	flavor = pec_secession_brewing.9.f
+
+	duration = 3
+
+	cooldown = { months = 65 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_secession_brewing.9.a # no action
+		ai_chance = {
+			base = 25
+		}
+		default_option = yes
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_underground_newspapers_nat
+				months = 61
+			}
+			add_radicals_in_state = {
+				value = 0.02
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_1
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1
+				}
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = pec_nationalism_decrease_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = -3
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.9.b # strike against their publications
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_censorship
+				has_law = law_type:law_outlawed_dissent
+			}
+		}
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_secbrew9pol_tt
+		}
+		if = {
+			limit = {
+				institution_investment_level = {
+					institution = institution_police
+					value >= 4
+				}
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_10
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 10
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				institution_investment_level = {
+					institution = institution_police
+					value >= 2
+				}
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_5
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 5
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				institution_investment_level = {
+					institution = institution_police
+					value = 1
+				}
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 3
+				}
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_1
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1
+				}
+			}
+		}
+		scope:pec_secessionistbrewing_state = {
+			if = {
+				limit = {
+					owner = {
+						institution_investment_level = {
+							institution = institution_police
+							value = 5
+						}
+					}
+				}
+				add_modifier = {
+					name = pec_underground_newspapers_nat
+					multiplier = 0.2
+					months = 61
+				}
+				add_loyalists_in_state = {
+					value = 0.02
+					culture = scope:pec_secessionistbrewing_culture
+				}
+			}
+			else_if = {
+				limit = {
+					owner = {
+						institution_investment_level = {
+							institution = institution_police
+							value = 4
+						}
+					}
+				}
+				add_modifier = {
+					name = pec_underground_newspapers_nat
+					multiplier = 0.35
+					months = 61
+				}
+				add_loyalists_in_state = {
+					value = 0.01
+					culture = scope:pec_secessionistbrewing_culture
+				}
+			}
+			else_if = {
+				limit = {
+					owner = {
+						institution_investment_level = {
+							institution = institution_police
+							value = 3
+						}
+					}
+				}
+				add_modifier = {
+					name = pec_underground_newspapers_nat
+					multiplier = 0.50
+					months = 61
+				}
+			}
+			else_if = {
+				limit = {
+					owner = {
+						institution_investment_level = {
+							institution = institution_police
+							value = 2
+						}
+					}
+				}
+				add_modifier = {
+					name = pec_underground_newspapers_nat
+					multiplier = 0.7
+					months = 61
+				}
+				add_radicals_in_state = {
+					value = 0.01
+					culture = scope:pec_secessionistbrewing_culture
+				}
+			}
+			else_if = {
+				limit = {
+					owner = {
+						institution_investment_level = {
+							institution = institution_police
+							value = 1
+						}
+					}
+				}
+				add_modifier = {
+					name = pec_underground_newspapers_nat
+					multiplier = 0.80
+					months = 61
+				}
+				add_radicals_in_state = {
+					value = 0.015
+					culture = scope:pec_secessionistbrewing_culture
+				}
+			}
+			else = {
+				add_modifier = {
+					name = pec_underground_newspapers_nat
+					multiplier = 0.90
+					months = 61
+				}
+				add_radicals_in_state = {
+					value = 0.03
+					culture = scope:pec_secessionistbrewing_culture
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.9.c # allow the underground press (integration or protected speech)
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_modifier = pec_brewingnationalists_strategy_integration
+				has_law = law_type:law_protected_speech
+			}
+		}
+		ai_chance = {
+			base = 200
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_underground_newspapers_nat_legal
+				months = 61
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				culture = scope:pec_primary_culture
+			}
+		}
+		random_list = {
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# local assassination
+
+pec_secession_brewing.10 = {
+	type = country_event
+	placement = scope:pec_secessionistbrewing_state
+	title = pec_secession_brewing.10.t
+	desc = pec_secession_brewing.10.d
+	flavor = pec_secession_brewing.10.f
+
+	duration = 3
+
+	cooldown = { months = 25 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "southamerica_public_figure_assassination"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_secession_brewing.10.a # imprisonment
+		ai_chance = {
+			base = 25
+		}
+		default_option = yes
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_local_official_assassinated
+				months = 49
+			}
+			add_radicals_in_state = {
+				value = 0.02
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_radicals_in_state = {
+				value = 0.03
+				culture = scope:pec_primary_culture
+			}
+			add_radicals_in_state = {
+				value = 0.08
+				pop_type = bureaucrats
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 3
+				}
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = pec_nationalism_decrease_progress_3
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = -3
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.10.b # execution
+		ai_chance = {
+			base = 50
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_local_official_assassinated
+				months = 49
+			}
+			add_radicals_in_state = {
+				value = 0.04
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_radicals_in_state = {
+				value = 0.01
+				culture = scope:pec_primary_culture
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.10.c # take revenge (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_secessionistbrewing_state = {
+			kill_population_percent_in_state = {
+				percent = 0.005
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		random_list = {
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_local_official_assassinated
+						months = 49
+					}
+					add_radicals_in_state = {
+						value = 0.1
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			25 = {
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_local_official_assassinated
+						multiplier = 0.75
+						months = 49
+					}
+					add_radicals_in_state = {
+						value = 0.02
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			40 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_local_official_assassinated
+						multiplier = 0.5
+						months = 49
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_local_official_assassinated
+						multiplier = 0.25
+						months = 49
+					}
+					add_loyalists_in_state = {
+						value = 0.025
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_local_official_assassinated
+						multiplier = 0.1
+						months = 49
+					}
+					add_loyalists_in_state = {
+						value = 0.04
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.10.e # pardon the assassin (integration)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_integration
+		}
+		ai_chance = {
+			base = 150
+		}
+		add_radicals = {
+			value = 0.01
+			culture = scope:pec_primary_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_local_official_assassinated
+				months = 61
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				culture = scope:pec_primary_culture
+			}
+			add_radicals_in_state = {
+				value = 0.2
+				pop_type = bureaucrats
+			}
+			add_loyalists_in_state = {
+				value = 0.1
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		random_list = {
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+# prominent assassination
+
+pec_secession_brewing.11 = {
+	type = country_event
+	placement = scope:pec_secessionistbrewing_state
+	title = pec_secession_brewing.11.t
+	desc = pec_secession_brewing.11.d
+	flavor = pec_secession_brewing.11.f
+
+	duration = 3
+
+	cooldown = { months = 71 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "southamerica_public_figure_assassination"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+		if = {
+			limit = {
+				any_scope_character = {
+					is_heir = yes
+					age > 20
+				}
+			}
+			random_scope_character = {
+				limit = {
+					is_heir = yes
+					age > 20
+				}
+				save_scope_as = pec_secbre11_assassinated
+			}
+		}
+		else = {
+			random_interest_group = {
+				limit = {
+					is_in_government = yes
+					leader = {
+						is_ruler = no
+					}
+				}
+				save_scope_as = pec_secbre11_ig
+				leader = {
+					save_scope_as = pec_secbre11_assassinated
+				}
+			}
+		}
+	}
+
+	trigger = {
+		scope:pec_secessionistbrewing_state = {
+			turmoil > 0.25
+		}
+		OR = {
+			any_scope_character = {
+				is_heir = yes
+				age > 20
+			}
+			any_interest_group = {
+				is_in_government = yes
+				leader = {
+					is_ruler = no
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.11.a # imprisonment
+		ai_chance = {
+			base = 25
+		}
+		default_option = yes
+		scope:pec_secbre11_assassinated = {
+			kill_character = yes
+		}
+		every_country = {
+			limit = {
+				country_has_primary_culture = scope:pec_secessionistbrewing_culture
+			}
+			change_relations = {
+				country = ROOT
+				value = -20
+			}
+		}
+		add_radicals = {
+			value = 0.005
+			culture = scope:pec_primary_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_prominent_official_assassinated
+				months = 49
+			}
+			add_radicals_in_state = {
+				value = 0.02
+				culture = scope:pec_primary_culture
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+			}
+			custom_tooltip = {
+				text = pec_nationalism_increase_progress_1
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = 1
+				}
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = pec_nationalism_decrease_progress_5
+				change_variable = {
+					name = pec_secession_brewing_var
+					add = -5
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.11.b # execution
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_secbre11_assassinated = {
+			kill_character = yes
+		}
+		every_country = {
+			limit = {
+				country_has_primary_culture = scope:pec_secessionistbrewing_culture
+			}
+			change_relations = {
+				country = ROOT
+				value = -30
+			}
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_prominent_official_assassinated
+				months = 49
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_loyalists_in_state = {
+				value = 0.01
+				culture = scope:pec_primary_culture
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.11.c # take revenge (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 500
+		}
+		scope:pec_secbre11_assassinated = {
+			kill_character = yes
+		}
+		every_country = {
+			limit = {
+				country_has_primary_culture = scope:pec_secessionistbrewing_culture
+			}
+			change_relations = {
+				country = ROOT
+				value = -50
+			}
+		}
+		scope:pec_secessionistbrewing_state = {
+			kill_population_percent_in_state = {
+				percent = 0.015
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		add_loyalists = {
+			value = 0.01
+			culture = scope:pec_primary_culture
+		}
+		random_list = {
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -15
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_prominent_official_assassinated
+						months = 49
+					}
+					add_radicals_in_state = {
+						value = 0.1
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			25 = {
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_prominent_official_assassinated
+						multiplier = 0.75
+						months = 49
+					}
+					add_radicals_in_state = {
+						value = 0.02
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			40 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_prominent_official_assassinated
+						multiplier = 0.5
+						months = 49
+					}
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_prominent_official_assassinated
+						multiplier = 0.25
+						months = 49
+					}
+					add_loyalists_in_state = {
+						value = 0.025
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					add_modifier = {
+						name = pec_prominent_official_assassinated
+						multiplier = 0.1
+						months = 49
+					}
+					add_loyalists_in_state = {
+						value = 0.015
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.11.e # pardon the assassin (integration)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_integration
+		}
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_secbre11_assassinated = {
+			kill_character = yes
+		}
+		every_country = {
+			limit = {
+				country_has_primary_culture = scope:pec_secessionistbrewing_culture
+			}
+			change_relations = {
+				country = ROOT
+				value = 10
+			}
+		}
+		add_radicals = {
+			value = 0.025
+			culture = scope:pec_primary_culture
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_prominent_official_assassinated
+				months = 61
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				culture = scope:pec_primary_culture
+			}
+			add_loyalists_in_state = {
+				value = 0.1
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		random_list = {
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+# Protests in main state
+
+pec_secession_brewing.12 = {
+	type = country_event
+	placement = scope:pec_secessionistbrewing_state
+	title = pec_secession_brewing.12.t
+	desc = pec_secession_brewing.12.d
+	flavor = pec_secession_brewing.12.f
+
+	duration = 3
+
+	cooldown = { months = 37 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "africa_public_protest"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	immediate = {
+	}
+
+	trigger = {
+	}
+
+	option = {
+		name = pec_secession_brewing.12.a # no action
+		ai_chance = {
+			base = 50
+		}
+		default_option = yes
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalist_protests
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.02
+				culture = scope:pec_secessionistbrewing_culture
+			}
+			add_radicals_in_state = {
+				value = 0.01
+				culture = scope:pec_primary_culture
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_decrease_progress_3
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = -3
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.12.b # quell the protests with the police
+		highlighted_option = yes
+		trigger = {
+			NOT = { has_law = law_type:law_no_police }
+			institution_investment_level = {
+				institution = institution_police
+				value >= 2
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalist_protests
+				multiplier = 0.5
+				months = 25
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		custom_tooltip = {
+			text = pec_nationalism_increase_progress_3
+			change_variable = {
+				name = pec_secession_brewing_var
+				add = 3
+			}
+		}
+	}
+
+	option = {
+		name = pec_secession_brewing.12.c # send in the army (suppression)
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_brewingnationalists_strategy_suppression
+		}
+		ai_chance = {
+			base = 300
+		}
+		scope:pec_secessionistbrewing_state = {
+			kill_population_percent_in_state = {
+				percent = 0.0025
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		random_list = {
+			10 = {
+				custom_tooltip = {
+					text = pec_nationalism_decrease_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = -10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 10 }
+					add_radicals_in_state = {
+						value = 0.15
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			15 = {
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 20 }
+					add_radicals_in_state = {
+						value = 0.08
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			25 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 20 }
+					add_radicals_in_state = {
+						value = 0.04
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			25 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 20 }
+				}
+			}
+			20 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 20 }
+					add_loyalists_in_state = {
+						value = 0.04
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+				scope:pec_secessionistbrewing_state = {
+					state_region = { add_devastation = 30 }
+					add_loyalists_in_state = {
+						value = 0.06
+						culture = scope:pec_secessionistbrewing_culture
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_secession_brewing.12.e # listen to their demands (integration + concession)
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_modifier = pec_brewingnationalists_strategy_concession
+				has_modifier = pec_brewingnationalists_strategy_integration
+			}
+		}
+		ai_chance = {
+			base = 350
+		}
+		scope:pec_secessionistbrewing_state = {
+			add_modifier = {
+				name = pec_nationalist_protests_listened
+				months = 49
+			}
+			add_loyalists_in_state = {
+				value = 0.03
+				culture = scope:pec_secessionistbrewing_culture
+			}
+		}
+		add_loyalists = {
+			value = 0.01
+			culture = scope:pec_secessionistbrewing_culture
+		}
+		random_list = {
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_3
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 3
+					}
+				}
+			}
+			35 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_5
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 5
+					}
+				}
+			}
+			30 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_10
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 10
+					}
+				}
+			}
+			5 = {
+				custom_tooltip = {
+					text = pec_nationalism_increase_progress_15
+					change_variable = {
+						name = pec_secession_brewing_var
+						add = 15
+					}
+				}
+			}
+		}
+	}
+}

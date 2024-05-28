@@ -1,0 +1,934 @@
+﻿pec_set_boombust_variables = {
+# Population
+	set_variable = { name = pec_market_population value = root.total_population }
+	if = {
+		limit = {
+			total_population < 1000000
+		}
+		set_variable = { name = pec_market_population value = 10000000 }
+	}
+	change_variable = { name = pec_market_population divide = 1000000 }
+
+# Volatility
+	set_variable = { name = pec_market_volatility value = 0 }
+	set_variable = { name = pec_market_volatility_progress value = 0 }
+	set_variable = { name = pec_market_volatility_current value = 0 }
+	set_variable = { name = pec_market_volatility_laws value = 0 }
+	set_variable = { name = pec_market_volatility_banks value = 0 }
+	set_variable = { name = pec_market_volatility_constructionsectors value = 0 }
+	set_variable = { name = pec_market_volatility_govbanks value = 0 }
+	set_variable = { name = pec_market_volatility_industrial value = 0 }
+	set_variable = { name = pec_market_volatility_growth value = 0 }
+	set_variable = { name = pec_market_volatility_events value = 0 }
+	set_variable = { name = pec_market_volatility_interest value = 0 }
+	set_variable = { name = pec_market_volatility_minting value = 0 }
+
+# Confidence
+	set_variable = { name = pec_market_confidence value = 0 }
+	set_variable = { name = pec_market_confidence_progress value = 0 }
+	set_variable = { name = pec_market_confidence_current value = 0 }
+	set_variable = { name = pec_market_confidence_debt value = 0 }
+	set_variable = { name = pec_market_confidence_radicals value = 0 }
+	set_variable = { name = pec_market_confidence_legitimacy value = 0 }
+	set_variable = { name = pec_market_confidence_taxes value = 0 }
+	set_variable = { name = pec_market_confidence_laws value = 0 }
+	set_variable = { name = pec_market_confidence_savings value = 0 }
+	set_variable = { name = pec_market_confidence_hadbust value = 0 }
+	set_variable = { name = pec_market_confidence_hadboom value = 0 }
+	set_variable = { name = pec_market_confidence_vol value = 0 }
+	set_variable = { name = pec_market_confidence_events value = 0 }
+	set_variable = { name = pec_market_confidence_interest value = 0 }
+
+# Interest rate
+	set_variable = { name = pec_interest_rate value = 0 }
+}
+
+# Check for hyperinflation
+pec_boombust_hyperinflation_check = {
+	if = {
+		limit = {
+			has_modifier = pec_minting_high
+		}
+		random_list = {
+			1999 = { }
+			1 = { trigger_event = pec_boombust_pulse.17 }
+		}
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_minting_very_high
+		}
+		random_list = {
+			299 = { }
+			1 = { trigger_event = pec_boombust_pulse.17 }
+		}
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_minting_extremely_high
+		}
+		random_list = {
+			99 = { }
+			1 = { trigger_event = pec_boombust_pulse.17 }
+		}
+	}
+}
+
+pec_boombust_monthly_pulse_population = {
+	set_variable = { name = pec_market_population value = total_population }
+	if = {
+		limit = {
+			total_population < 1000000
+		}
+		set_variable = { name = pec_market_population value = 1000000 }
+	}
+	change_variable = { name = pec_market_population divide = 1000000 }
+}
+
+# Volatility Progress
+pec_boombust_weekly_pulse_volatility_progress = {
+	set_variable = { name = pec_market_volatility_progress value = 0 }
+	set_variable = { name = pec_market_volatility_current value = 0 }
+	set_variable = { name = pec_market_volatility_laws value = 0 }
+	set_variable = { name = pec_market_volatility_banks value = 0 }
+	set_variable = { name = pec_market_volatility_constructionsectors value = 0 }
+	set_variable = { name = pec_market_volatility_govbanks value = 0 }
+	set_variable = { name = pec_market_volatility_industrial value = 0 }
+	set_variable = { name = pec_market_volatility_growth value = 0 }
+	set_variable = { name = pec_market_volatility_minting value = 0 }
+	set_variable = { name = pec_market_volatility_events value = 0 }
+
+
+# save game compatibility - can be removed later (june)
+	if = {
+		limit = {
+			NOT = { has_variable = pec_gdp_growth }
+		}
+		pec_gdp_baseline = yes
+	}
+
+
+# Current Value (trend towards 0)
+	set_variable = { name = pec_market_volatility_current value = root.var:pec_market_volatility }
+	change_variable = { name = pec_market_volatility_current divide = 5 } # value -5 to 5
+	change_variable = { name = pec_market_volatility_current multiply = -1 } # flips value
+
+
+# Laws effect on volatility
+	if = {
+		limit = {
+			OR = {
+				has_law = law_type:law_pec_merchant_banks
+			}
+		}
+		change_variable = { name = pec_market_volatility_laws add = 1.25 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_pec_free_banking
+		}
+		change_variable = { name = pec_market_volatility_laws add = 1.75 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_pec_central_bank_metallic
+		}
+		change_variable = { name = pec_market_volatility_laws add = 1.00 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_pec_central_bank_fiat
+		}
+		change_variable = { name = pec_market_volatility_laws add = 1.25 }
+	}
+
+	if = {
+		limit = {
+			NOT = { has_law = law_type:law_pec_merchant_banks }
+			NOT = { has_law = law_type:law_pec_free_banking }
+			NOT = { has_law = law_type:law_pec_central_bank_metallic }
+			NOT = { has_law = law_type:law_pec_central_bank_fiat }
+		}
+		change_variable = { name = pec_market_volatility_laws add = 1.5 }
+	}
+
+# Financial Sector effects on market volatility - value from -1 to 1
+	every_scope_building = { 
+		limit = {
+			is_building_type = building_pec_banks
+			occupancy >= 0.5
+		}
+		ROOT = {
+			change_variable = { name = pec_market_volatility_banks add = prev.level }
+		}
+	}
+	change_variable = { name = pec_market_volatility_banks divide = var:pec_market_population } # per 1 million
+	change_variable = { name = pec_market_volatility_banks divide = 1.25 }
+	change_variable = { name = pec_market_volatility_banks subtract = 1 }
+	if = {
+		limit = {
+			var:pec_market_volatility_banks > 1
+		}
+		set_variable = { name = pec_market_volatility_banks value = 1 }
+	}
+
+# Construction Sector effects on market volatility - value from -1 to 1
+	every_scope_building = { 
+		limit = {
+			is_building_type = building_construction_sector
+			occupancy >= 0.5
+		}
+		ROOT = {
+			change_variable = { name = pec_market_volatility_constructionsectors add = prev.level }
+		}
+	}
+	change_variable = { name = pec_market_volatility_constructionsectors divide = var:pec_market_population } # 1 per 1 million
+	change_variable = { name = pec_market_volatility_constructionsectors divide = 1.0 } 
+	change_variable = { name = pec_market_volatility_constructionsectors subtract = 1 }
+	if = {
+		limit = {
+			var:pec_market_volatility_constructionsectors > 1
+		}
+		set_variable = { name = pec_market_volatility_constructionsectors value = 1 }
+	}
+
+# Financial Sectors in government control
+	every_scope_building = { 
+		limit = {
+			is_building_type = building_pec_banks
+			occupancy >= 0.5
+			OR = {
+				has_active_production_method = pm_mixed_ownership_bank
+				has_active_production_method = pm_government_run_bank
+			}
+		}
+		ROOT = {
+			change_variable = { name = pec_market_volatility_govbanks subtract = prev.level }
+		}
+	}
+	change_variable = { name = pec_market_volatility_govbanks divide = var:pec_market_population }
+	if = {
+		limit = {
+			var:pec_market_volatility_govbanks < -0.5
+		}
+		set_variable = { name = pec_market_volatility_govbanks value = -0.5 }
+	}
+
+# Relative Industrialization
+	every_scope_building = { 
+		limit = {
+			occupancy >= 0.5
+			OR = {
+				is_building_group = bg_light_industry
+				is_building_group = bg_heavy_industry
+				is_building_group = bg_pec_tertiary_sector
+			}
+		}
+		ROOT = {
+			change_variable = { name = pec_market_volatility_industrial add = prev.level }
+		}
+	}
+
+	change_variable = { name = pec_market_volatility_industrial multiply = 1.00 }
+
+	every_scope_building = { 
+		limit = {
+			occupancy >= 0.5
+			OR = {
+				is_building_group = bg_agriculture
+				is_building_group = bg_ranching
+				is_building_group = bg_plantations
+			}
+			NOT = { is_building_group = bg_subsistence_agriculture }
+		}
+		ROOT = {
+			change_variable = { name = pec_market_volatility_industrial subtract = prev.level }
+		}
+	}
+	change_variable = { name = pec_market_volatility_industrial divide = 10 }
+	change_variable = { name = pec_market_volatility_industrial divide = var:pec_market_population }
+	clamp_variable = { name = pec_market_volatility_industrial max = 0.5 min = -1 }
+
+# GDP Growth and volatility
+	change_variable = { name = pec_market_volatility_growth add = root.var:pec_gdp_growth }
+	change_variable = { name = pec_market_volatility_growth divide = 20 }
+	clamp_variable = { name = pec_market_volatility_growth max = 2 min = -0.5 }
+
+# Event effects on market volatility
+	if = {
+		limit = {
+			has_modifier = pec_usa_bankwar_aftermath
+		}
+		change_variable = { name = pec_market_volatility_events add = 1.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_depression18_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse1_v_var
+		}
+		change_variable = { name = pec_market_volatility_events subtract = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse4_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.25 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse5_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.75 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse6b_var
+		}
+		change_variable = { name = pec_market_volatility_events subtract = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse7c_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse8a_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 1 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse8b_var
+		}
+		change_variable = { name = pec_market_volatility_events subtract = 0.75 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse9b_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse10b_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse12a_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse12b_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.25 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse13a_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse13b_var
+		}
+		change_variable = { name = pec_market_volatility_events subtract = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse14a_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.75 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse15a_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse16a_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 1.0 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse16b_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse16c_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_modifier = pec_hyperinflation_mod
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+
+	if = {
+		limit = {
+			OR = {
+				has_modifier = pec_bull_market
+				has_modifier = pec_bear_market
+			}
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse20a_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 1.00 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse20b_var
+		}
+		change_variable = { name = pec_market_volatility_events add = 0.50 }
+	}
+
+# Interest rate effect on volatility
+	set_variable = { name = pec_market_volatility_interest value = root.var:pec_interest_rate } # value between -1 to 1
+	change_variable = { name = pec_market_volatility_interest multiply = 2 } # value between -2 to 2
+	change_variable = { name = pec_market_volatility_interest multiply = -1 } # flips value
+
+# Minting rate effect on volatility
+	if = {
+		limit = {
+			has_modifier = pec_minting_low
+		}
+		set_variable = { name = pec_market_volatility_minting value = -0.25 }
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_minting_high
+		}
+		set_variable = { name = pec_market_volatility_minting value = 0.25 }
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_minting_very_high
+		}
+		set_variable = { name = pec_market_volatility_minting value = 0.5 }
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_minting_extremely_high
+		}
+		set_variable = { name = pec_market_volatility_minting value = 0.75 }
+	}
+	else = {
+		set_variable = { name = pec_market_volatility_minting value = 0 }
+	}
+
+# final volatility
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_current }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_laws }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_banks }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_constructionsectors }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_govbanks }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_industrial }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_growth }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_events }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_interest }
+	change_variable = { name = pec_market_volatility_progress add = var:pec_market_volatility_minting }
+}
+
+# Confidence Progress
+pec_boombust_weekly_pulse_confidence_progress = {
+	set_variable = { name = pec_market_confidence_progress value = 0 }
+	set_variable = { name = pec_market_confidence_current value = 0 }
+	set_variable = { name = pec_market_confidence_debt value = 0 }
+	set_variable = { name = pec_market_confidence_radicals value = 0 }
+	set_variable = { name = pec_market_confidence_legitimacy value = 0 }
+	set_variable = { name = pec_market_confidence_laws value = 0 }
+	set_variable = { name = pec_market_confidence_taxes value = 0 }
+	set_variable = { name = pec_market_confidence_savings value = 0 }
+	set_variable = { name = pec_market_confidence_hadbust value = 0 }
+	set_variable = { name = pec_market_confidence_hadboom value = 0 }
+	set_variable = { name = pec_market_confidence_vol value = 0 }
+	set_variable = { name = pec_market_confidence_events value = 0 }
+
+# Current Value (trend towards 0)
+	set_variable = { name = pec_market_confidence_current value = root.var:pec_market_confidence }
+	change_variable = { name = pec_market_confidence_current divide = 5 } # value -5 to 5
+	change_variable = { name = pec_market_confidence_current multiply = -1 } # flips value
+
+# debt's effect on confidence
+	if = {
+		limit = {
+			scaled_debt < 0.25
+		}
+		set_variable = { name = pec_market_confidence_debt value = 0 }
+	}
+	else = {
+		set_variable = { name = pec_market_confidence_debt value = root.scaled_debt }
+	}
+	if = {
+		limit = {
+			scaled_debt < 0.50
+		}
+		change_variable = { name = pec_market_confidence_debt multiply = 0.75 }
+	}
+	if = {
+		limit = {
+			scaled_debt > 0.50
+		}
+		change_variable = { name = pec_market_confidence_debt multiply = 1.5 }
+	}
+	if = {
+		limit = {
+			scaled_debt > 0.75
+		}
+		change_variable = { name = pec_market_confidence_debt multiply = 1.5 }
+	}
+	change_variable = { name = pec_market_confidence_debt multiply = -1 }
+	clamp_variable = { name = pec_market_confidence_debt max = 0 min = -2 }
+
+# radicalism effect on confidence
+	set_variable = { name = pec_market_confidence_radicals value = root.loyalist_fraction }
+	change_variable = { name = pec_market_confidence_radicals subtract = root.radical_fraction }
+	change_variable = { name = pec_market_confidence_radicals multiply = 3 } # value between -3 to 3
+	if = {
+		limit = {
+			var:pec_market_confidence_radicals < -1
+		}
+		set_variable = { name = pec_market_confidence_radicals value = -1 }
+	}
+	if = {
+		limit = {
+			var:pec_market_confidence_radicals > 1
+		}
+		set_variable = { name = pec_market_confidence_radicals value = 1 }
+	}
+
+
+# legitimacy effect on confidence
+	set_variable = { name = pec_market_confidence_legitimacy value = root.government_legitimacy }
+	change_variable = { name = pec_market_confidence_legitimacy divide = 100 } # makes value 0 to 1
+	change_variable = { name = pec_market_confidence_legitimacy subtract = 0.5 } # makes value between -0.5 to 0.5
+
+# Laws effect on confidence
+	if = {
+		limit = {
+			has_law = law_type:law_traditionalism
+		}
+		change_variable = { name = pec_market_confidence_laws subtract = 0.1 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_pec_merchant_banks
+		}
+		change_variable = { name = pec_market_confidence_laws subtract = 0.1 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_laissez_faire
+		}
+		change_variable = { name = pec_market_confidence_laws add = 0.25 }
+	}
+
+
+# taxation effect on confidence
+	if = {
+		limit = {
+			tax_level = very_low
+		}
+		set_variable = { name = pec_market_confidence_taxes value = 0.5 }
+	}
+	else_if = {
+		limit = {
+			tax_level = low
+		}
+		set_variable = { name = pec_market_confidence_taxes value = 0.25 }
+	}
+	else_if = {
+		limit = {
+			tax_level = high
+		}
+		set_variable = { name = pec_market_confidence_taxes value = -0.75 }
+	}
+	else_if = {
+		limit = {
+			tax_level = very_high
+		}
+		set_variable = { name = pec_market_confidence_taxes value = -1.5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_law = law_type:law_consumption_based_taxation
+				has_law = law_type:law_land_based_taxation
+				has_law = law_type:law_per_capita_based_taxation
+			}
+		}
+		change_variable = { name = pec_market_confidence_taxes divide = 2 }
+	}
+	else_if = {
+		limit = {
+			has_law = law_type:law_graduated_taxation
+		}
+		change_variable = { name = pec_market_confidence_taxes multiply = 1.5 }
+	}
+
+# savings effect on confidence
+	every_scope_building = { 
+		limit = {
+			OR = {
+				is_building_type = building_pec_banks
+				is_building_group = bg_light_industry
+				is_building_group = bg_heavy_industry
+				is_building_group = bg_service
+				is_building_group = bg_urban_facilities
+				is_building_group = bg_pec_tertiary_sector
+			}
+			cash_reserves_ratio > 0.90
+		}
+		ROOT = {
+			change_variable = { name = pec_market_confidence_savings add = prev.level }
+		}
+	}
+	every_scope_building = { 
+		limit = {
+			cash_reserves_ratio < 0.90
+			OR = {
+				is_building_type = building_pec_banks
+				is_building_group = bg_light_industry
+				is_building_group = bg_heavy_industry
+				is_building_group = bg_service
+				is_building_group = bg_urban_facilities
+				is_building_group = bg_pec_tertiary_sector
+			}
+		}
+		ROOT = {
+			change_variable = { name = pec_market_confidence_savings subtract = prev.level }
+		}
+	}
+	change_variable = { name = pec_market_confidence_savings divide = 20 }
+	change_variable = { name = pec_market_confidence_savings divide = var:pec_market_population }
+	if = {
+		limit = {
+			var:pec_market_confidence_savings > 1.5
+		}
+		set_variable = { name = pec_market_confidence_savings value = 1.5 }
+	}
+	if = {
+		limit = {
+			var:pec_market_confidence_savings < -1.5
+		}
+		set_variable = { name = pec_market_confidence_savings value = -1.5 }
+	}
+
+# recent boom
+	if = {
+		limit = {
+			has_modifier = pec_had_boom
+			NOT = { has_law = law_type:law_pec_mixed_market }
+		}
+		set_variable = { name = pec_market_confidence_hadboom value = -2.5 }
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_had_boom
+		}
+		set_variable = { name = pec_market_confidence_hadboom value = -1.5 }
+	}
+
+# recent bust
+
+	if = {
+		limit = {
+			has_modifier = pec_had_bust
+			NOT = { has_law = law_type:law_pec_mixed_market }
+		}
+		set_variable = { name = pec_market_confidence_hadbust value = 2.5 }
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_had_bust
+		}
+		set_variable = { name = pec_market_confidence_hadbust value = 1.5 }
+	}
+
+# volatility effect on confidence
+	if = {
+		limit = {
+			var:pec_market_volatility > -5
+			var:pec_market_volatility < 0
+		}
+		set_variable = { name = pec_market_confidence_vol value = 0 }
+	}
+	else_if = {
+		limit = {
+			var:pec_market_volatility > 5
+		}
+		set_variable = { name = pec_market_confidence_vol value = 10 }
+		change_variable = { name = pec_market_confidence_vol subtract = var:pec_market_volatility }
+		change_variable = { name = pec_market_confidence_vol multiply = 2.5 }
+	}
+	else = {
+		set_variable = { name = pec_market_confidence_vol value = var:pec_market_volatility }
+	}
+	change_variable = { name = pec_market_confidence_vol divide = 25 } # value -1 to 1
+
+	clamp_variable = { name = pec_market_confidence_vol max = 1 min = -1 }
+
+
+# Event effects on market confidence
+	if = {
+		limit = {
+			has_modifier = pec_usa_bankwar_aftermath
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 2.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_depression18_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.75 }
+	}
+
+	if = {
+		limit = {
+			has_modifier = pec_listened_to_keynes_mod
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse1_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse2_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 1 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse3_var
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse4_var
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.25 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse6a_var
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse7a_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 1 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse7b_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse8a_var
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse9a_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.75 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse10a_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse11_var
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse12a_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.75 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse12b_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse13a_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse13b_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse14a_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 1.0 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse14b_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse15a_var
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.25 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse15b_var
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.25 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse16a_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 1.00 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse16b_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.5 }
+	}
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse16c_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.25 }
+	}
+	if = {
+		limit = {
+			has_modifier = pec_stimulus_spending
+		}
+		change_variable = { name = pec_market_confidence_events add = 1.0 }
+	}
+
+	if = {
+		limit = {
+			has_modifier = pec_hyperinflation_mod
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.5 }
+	}
+
+	if = {
+		limit = {
+			has_modifier = pec_bull_market
+		}
+		change_variable = { name = pec_market_confidence_events add = 0.25 }
+	}
+
+	if = {
+		limit = {
+			OR = {
+				has_modifier = pec_bear_market
+				has_modifier = pec_bear_market_limited
+			}
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 0.25 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse20a_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 1.50 }
+	}
+
+	if = {
+		limit = {
+			has_variable = pec_boombustpulse20b_var
+		}
+		change_variable = { name = pec_market_confidence_events subtract = 1.00 }
+	}
+
+
+# Interest rate effect on confidence
+	set_variable = { name = pec_market_confidence_interest value = root.var:pec_interest_rate } # value between -1 to 1
+	change_variable = { name = pec_market_confidence_interest multiply = -1 } # flips value
+
+# final calculation
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_current }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_debt }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_radicals }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_legitimacy }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_laws }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_taxes }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_savings }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_hadboom }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_hadbust }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_vol }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_events }
+	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_interest }
+}

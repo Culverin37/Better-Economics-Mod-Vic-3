@@ -1,0 +1,493 @@
+﻿law_pec_merchant_banks = {
+	group = lawgroup_pec_banking_system
+	
+	icon = "gfx/interface/icons/law_icons/unused/no_poll_tax.dds"
+	
+	progressiveness = -25
+
+	disallowing_laws = {
+		law_command_economy
+	}
+
+	on_activate = {
+		every_scope_state = {
+			if = {
+				limit = {
+					has_building = building_pec_central_bank
+				}
+				remove_building = building_pec_central_bank
+			}
+		}
+		set_variable = { name = pec_interest_rate value = 0 }
+		if = {
+			limit = {
+				has_modifier = pec_minting_low 
+			}
+			remove_modifier = pec_minting_low 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_high 
+			}
+			remove_modifier = pec_minting_high 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_very_high 
+			}
+			remove_modifier = pec_minting_very_high 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_extremely_high 
+			}
+			remove_modifier = pec_minting_extremely_high 
+		}
+	}
+	
+	on_enact = {
+		if = {
+			limit = {
+				has_law = law_type:law_pec_free_banking
+			}
+			custom_tooltip =  pec_merchant_banks_enact_from_free_tt
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_metallic
+			}
+			custom_tooltip =  pec_merchant_banks_enact_from_metal_tt
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			custom_tooltip =  pec_merchant_banks_enact_from_fiat_tt
+		}
+	}
+	
+	modifier = {
+		state_building_pec_banks_max_level_add = 5
+		country_shopkeepers_pol_str_mult = 0.10
+		building_group_bg_pec_banks_throughput_add = -0.1
+		country_loan_interest_rate_mult = 0.25
+		state_shopkeepers_investment_pool_efficiency_mult = 0.1
+		state_farmers_investment_pool_efficiency_mult = 0.1
+		state_capitalists_investment_pool_efficiency_mult = -0.1
+	}
+	
+	possible_political_movements = {
+		law_pec_free_banking
+		law_pec_central_bank_metallic
+		law_pec_central_bank_fiat
+	}
+
+	pop_support = {
+		value = 0
+		add = {
+			desc = "POP_SHOPKEEPERS"			
+			if = {
+				limit = {
+					is_pop_type = shopkeepers
+				}
+				value = 0.3
+			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+}
+
+law_pec_free_banking = {
+	group = lawgroup_pec_banking_system
+	
+	icon = "gfx/interface/icons/law_icons/pec_free_banking.dds"
+	
+	progressiveness = 0
+
+	disallowing_laws = {
+		law_command_economy
+	}
+
+	on_activate = {
+		every_scope_state = {
+			if = {
+				limit = {
+					has_building = building_pec_central_bank
+				}
+				remove_building = building_pec_central_bank
+			}
+		}
+		set_variable = { name = pec_interest_rate value = 0 }
+		if = {
+			limit = {
+				has_modifier = pec_piaohao
+			}
+			remove_modifier = pec_piaohao
+		}
+		if = {
+			limit = {
+				has_modifier = pec_minting_low 
+			}
+			remove_modifier = pec_minting_low 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_high 
+			}
+			remove_modifier = pec_minting_high 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_very_high 
+			}
+			remove_modifier = pec_minting_very_high 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_extremely_high 
+			}
+			remove_modifier = pec_minting_extremely_high 
+		}
+	}
+
+	on_enact = {
+		if = {
+			limit = {
+				has_law = law_type:law_pec_merchant_banks
+			}
+			custom_tooltip = pec_free_banking_enact_tt
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_metallic
+			}
+			custom_tooltip =  pec_free_banking_enact_from_metal_tt
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			custom_tooltip =  pec_free_banking_enact_from_fiat_tt
+		}
+	}
+	
+	unlocking_technologies = {
+		banking
+	}
+	
+	modifier = {
+		state_building_pec_banks_max_level_add = 15
+		country_shopkeepers_pol_str_mult = 0.10
+		country_capitalists_pol_str_mult = 0.10
+		state_shopkeepers_investment_pool_efficiency_mult = 0.15	
+		state_capitalists_investment_pool_efficiency_mult = 0.15
+		building_group_bg_pec_banks_throughput_add = 0.1
+	}
+	
+	possible_political_movements = {
+		law_pec_merchant_banks
+		law_pec_central_bank_metallic
+		law_pec_central_bank_fiat
+	}
+
+	pop_support = {
+		value = 0
+		add = {
+			desc = "POP_CAPITALISTS"			
+			if = {
+				limit = {
+					is_pop_type = capitalists
+				}
+				value = 0.2
+			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+
+		if = {
+			limit = { 
+				has_law = law_type:law_pec_merchant_banks
+				any_interest_group = {
+					is_in_government = yes
+					ig_clout > 0.1
+					OR = {
+						is_interest_group_type = ig_petty_bourgeoisie
+						is_interest_group_type = ig_industrialists
+					}
+				}
+				ig:ig_devout = {
+					OR = {
+						NOT = { has_ideology = ideology:ideology_pec_anti_usury }
+						ig_clout < 0.15
+					}
+				}
+				scope:law = law_type:law_pec_free_banking
+			}
+			add = 500
+		}
+
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+}
+
+law_pec_central_bank_metallic = {
+	group = lawgroup_pec_banking_system
+	
+	icon = "gfx/interface/icons/law_icons/pec_central_metallic.dds"
+	
+	progressiveness = 0
+	
+
+	on_activate = {
+		if = {
+			limit = {
+				has_modifier = pec_piaohao
+			}
+			remove_modifier = pec_piaohao
+		}
+		if = {
+			limit = {
+				has_modifier = pec_minting_low 
+			}
+			remove_modifier = pec_minting_low 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_high 
+			}
+			remove_modifier = pec_minting_high 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_very_high 
+			}
+			remove_modifier = pec_minting_very_high 
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_extremely_high 
+			}
+			remove_modifier = pec_minting_extremely_high 
+		}
+	}
+
+	on_enact = {
+		if = {
+			limit = {
+				has_law = law_type:law_pec_merchant_banks
+			}
+			custom_tooltip =  pec_central_bank_metallic_enact_tt
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_free_banking
+			}
+			custom_tooltip =  pec_central_bank_metallic_enact_from_free_tt
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			custom_tooltip =  pec_central_bank_metallic_enact_from_fiat_tt
+		}
+	}
+	
+	unlocking_technologies = {
+		central_banking
+	}
+	
+	modifier = {
+		state_building_pec_banks_max_level_add = 100
+		building_gold_fields_throughput_add = 0.1
+		building_gold_mine_throughput_add = 0.2
+		country_loan_interest_rate_mult = -0.1
+		state_shopkeepers_investment_pool_efficiency_mult = 0.05	
+		state_capitalists_investment_pool_efficiency_mult = 0.05
+		country_subsidies_bg_pec_central_bank = yes
+	}
+	
+	possible_political_movements = {
+		law_pec_merchant_banks
+		law_pec_free_banking
+		law_pec_central_bank_fiat
+	}
+
+	pop_support = {
+		value = 0
+		add = {
+			desc = "POP_SHOPKEEPERS"			
+			if = {
+				limit = {
+					is_pop_type = shopkeepers
+				}
+				value = 0.3
+			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+
+		if = {
+			limit = {
+				any_interest_group = {
+					is_in_government = yes
+					ig_clout > 0.1
+					leader = {
+						has_ideology = ideology:ideology_pec_metallist
+					}
+				}
+				ig:ig_devout = {
+					OR = {
+						NOT = { has_ideology = ideology:ideology_pec_anti_usury }
+						ig_clout < 0.15
+					}
+				}
+				scope:law = law_type:law_pec_central_bank_metallic
+			}
+			add = 500
+		}
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+}
+
+law_pec_central_bank_fiat = {
+	group = lawgroup_pec_banking_system
+	
+	icon = "gfx/interface/icons/law_icons/pec_central_fiat.dds"
+	
+	progressiveness = 0
+
+	on_activate = {
+		if = {
+			limit = {
+				has_modifier = pec_piaohao
+			}
+			remove_modifier = pec_piaohao
+		}
+	}
+	
+	on_enact = {
+		if = {
+			limit = {
+				has_law = law_type:law_pec_merchant_banks
+			}
+			custom_tooltip =  pec_central_bank_fiat_enact_tt
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_free_banking
+			}
+			custom_tooltip =  pec_central_bank_fiat_enact_from_free_tt
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_central_bank_metallic
+			}
+			custom_tooltip =  pec_central_bank_fiat_enact_from_metal_tt
+		}
+	}
+	
+	unlocking_technologies = {
+		central_banking
+	}
+	
+	modifier = {
+		state_building_pec_banks_max_level_add = 100
+		state_shopkeepers_investment_pool_efficiency_mult = 0.10	
+		state_capitalists_investment_pool_efficiency_mult = 0.10
+		country_subsidies_bg_pec_central_bank = yes
+	}
+	
+	possible_political_movements = {
+		law_pec_merchant_banks
+		law_pec_free_banking
+		law_pec_central_bank_metallic
+	}
+
+	pop_support = {
+		value = 0
+		add = {
+			desc = "POP_BUREAUCRATS"			
+			if = {
+				limit = {
+					is_pop_type = bureaucrats
+				}
+				value = 0.1
+			}
+		}
+
+		add = {
+			desc = "POP_CAPITALISTS"			
+			if = {
+				limit = {
+					is_pop_type = bureaucrats
+				}
+				value = 0.1
+			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+
+		if = {
+			limit = {
+				any_interest_group = {
+					is_in_government = yes
+					ig_clout > 0.1
+					leader = {
+						has_ideology = ideology:ideology_pec_centralbanker
+					}
+				}
+				ig:ig_devout = {
+					OR = {
+						NOT = { has_ideology = ideology:ideology_pec_anti_usury }
+						ig_clout < 0.15
+					}
+				}
+				scope:law = law_pec_central_bank_fiat
+			}
+			add = 500
+		}
+
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
+}

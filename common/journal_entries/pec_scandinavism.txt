@@ -1,0 +1,81 @@
+﻿je_pec_scandinavism = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	group = je_group_internal_affairs
+
+	is_shown_when_inactive = {
+		c:SCA ?= this
+	}
+
+	possible = {
+		has_technology_researched = pan-nationalism
+		hidden_trigger = {
+			NOT = { has_variable = pec_completed_scandinavism }
+		}
+	}
+
+	immediate = {
+		pec_set_scandinavian_identity_vars = yes
+		pec_calculate_scandinavian_identity_progress = yes
+		trigger_event = { id = pec_scandinavism.1 popup = yes }
+	}
+
+	on_weekly_pulse = {
+		effect = {
+			pec_calculate_scandinavian_identity_progress = yes
+		}
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			20 = 0
+			1 = pec_scandinavism.3 # Common dinner table
+		}
+		effect = {
+			pec_add_scandinavian_identity_progress = yes
+		}
+	}
+
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+	}
+
+	on_complete = {
+		clear_scandinavian_identity_vars = yes
+		trigger_event = {
+			id = pec_scandinavism.2 popup = yes
+		}
+		show_as_tooltip = {
+			add_primary_culture = cu:pec_scandinavian
+			remove_primary_culture = cu:norwegian
+			remove_primary_culture = cu:danish
+			remove_primary_culture = cu:swedish
+			remove_primary_culture = cu:icelandic
+		}
+		hidden_effect = {
+			set_variable = pec_completed_scandinavism
+		}
+	}
+
+	fail = {
+	}
+
+	on_fail = {
+	}
+
+	current_value = {
+		value = root.var:pec_scandinavian_identity_progress_var
+	}
+
+	goal_add_value = {
+		add = 100
+	}
+
+	weight = 100
+
+	progressbar = yes
+
+	should_be_pinned_by_default = yes
+}

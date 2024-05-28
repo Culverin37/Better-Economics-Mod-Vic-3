@@ -1,0 +1,116 @@
+﻿namespace = pec_updates
+
+
+pec_updates.1 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		has_law = law_type:law_state_atheism
+		NOT = { country_has_state_religion = rel:atheist }					
+	}	
+		
+	immediate = {
+		set_state_religion = rel:atheist
+		every_scope_state = {
+			limit = {
+				is_incorporated = no
+				is_capital = no
+			}
+			convert_population = {
+				target = rel:atheist
+				value = 0.02
+			}
+		}
+		every_scope_state = {
+			limit = {
+				is_incorporated = yes
+				is_capital = no
+			}
+			convert_population = {
+				target = rel:atheist
+				value = 0.15
+			}
+		}
+		every_scope_state = {
+			limit = {
+				is_capital = yes
+			}
+			convert_population = {
+				target = rel:atheist
+				value = 0.25
+			}
+		}
+	}		
+}
+
+pec_updates.2 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		c:RUS ?= this
+		ruler = {
+			has_template = RUS_nicholas_i
+		}
+		year > 1850					
+	}	
+		
+	immediate = {
+		if = {
+			limit = {
+				year >= 1850
+				year < 1853
+			}
+			random_list = {
+				2 = {
+					ruler = {
+						kill_character = yes
+					}
+				}
+				98 = {
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				year >= 1853
+				year < 1856
+			}
+			random_list = {
+				10 = {
+					ruler = {
+						kill_character = yes
+					}
+				}
+				90 = {
+				}
+			}
+		}
+		else = {
+			random_list = {
+				50 = {
+					ruler = {
+						kill_character = yes
+					}
+				}
+				50 = {
+				}
+			}
+		}
+	}		
+}
+
+pec_updates.3 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		has_journal_entry = pec_boombust_je_1
+		NOT = { has_variable = 	pec_gdp_growth }				
+	}	
+
+	immediate = {
+		pec_gdp_baseline = yes
+	}		
+}

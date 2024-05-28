@@ -1,0 +1,118 @@
+﻿pec_state_is_in_europe = {
+	OR = {
+		region = sr:region_russia
+		region = sr:region_dnieper
+		region = sr:region_north_sea_coast
+		region = sr:region_north_germany
+		region = sr:region_south_germany
+		region = sr:region_england
+		region = sr:region_iberia
+		region = sr:region_france
+		region = sr:region_occitania
+		region = sr:region_rhine
+		region = sr:region_italy	
+		region = sr:region_poland
+		region = sr:region_danubia
+		region = sr:region_balkans
+		region = sr:region_baltic	
+	}
+}
+
+
+pec_country_is_in_europe = {
+	exists = capital
+	capital = {
+		pec_state_is_in_europe = yes
+	}
+}
+
+pec_character_has_social_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_social_democrat
+		has_ideology = ideology:ideology_pec_chartist
+		has_ideology = ideology:ideology_distributist
+		has_ideology = ideology:ideology_pec_laborsympathizer
+	}
+}
+
+pec_character_has_radical_social_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_communist
+		has_ideology = ideology:ideology_anarchist
+		has_ideology = ideology:ideology_vanguardist
+	}
+}
+
+pec_character_has_liberal_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_reformer
+		has_ideology = ideology:ideology_pec_chartist
+		has_ideology = ideology:ideology_liberal_leader
+		has_ideology = ideology:ideology_pec_liberal_nationalist
+		has_ideology = ideology:ideology_orleanist
+	}
+}
+
+pec_character_has_radical_liberal_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_humanitarian
+		has_ideology = ideology:ideology_feminist
+		has_ideology = ideology:ideology_republican_leader
+		has_ideology = ideology:ideology_abolitionist
+		has_ideology = ideology:ideology_radical
+		has_ideology = ideology:ideology_humanitarian_royalist
+	}
+}
+
+pec_character_has_nationalist_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_fascist
+		has_ideology = ideology:ideology_ethno_nationalist
+		has_ideology = ideology:ideology_pec_liberal_nationalist
+	}
+}
+
+
+pec_character_has_militarist_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_fascist
+		has_ideology = ideology:ideology_vanguardist
+		has_ideology = ideology:ideology_jingoist_leader
+		has_ideology = ideology:ideology_bonapartist
+	}
+}
+
+pec_character_has_conservative_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_traditionalist
+		has_ideology = ideology:ideology_royalist
+		has_ideology = ideology:ideology_theocrat
+		has_ideology = ideology:ideology_legitimist
+		has_ideology = ideology:ideology_slaver
+		has_ideology = ideology:ideology_jacksonian_democrat
+	}
+}
+
+pec_character_has_rural_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_land_reformer
+		has_ideology = ideology:ideology_pec_agrarian_socialist
+	}
+}
+
+pec_character_has_anticlerical_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_atheist
+		has_ideology = ideology:ideology_communist
+		has_ideology = ideology:ideology_positivist
+	}
+}
+
+pec_character_has_business_ideology = {
+	OR = {
+		has_ideology = ideology:ideology_market_liberal
+		has_ideology = ideology:ideology_protectionist
+		has_ideology = ideology:ideology_pec_metallist
+		has_ideology = ideology:ideology_pec_centralbanker
+	}
+}

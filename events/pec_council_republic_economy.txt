@@ -1,0 +1,231 @@
+﻿namespace = pec_council_republic_economy
+
+pec_council_republic_economy.1 = {
+	type = country_event
+	placement = root
+	title = pec_council_republic_economy.1.t
+	desc = pec_council_republic_economy.1.d
+	flavor = pec_council_republic_economy.1.f
+
+	duration = 3
+	
+	cooldown = { months = 36 }
+
+	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_capital = yes
+			}
+			save_scope_as = pec_cre1_capital
+		}
+	}
+
+	trigger = {
+		has_law = law_type:law_council_republic
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		NOT = { has_law = law_type:law_command_economy }
+		NOT = { has_law = law_type:law_pec_mixed_market }
+	}
+
+	option = {
+		name = pec_council_republic_economy.1.a # cooperative ownership
+		default_option = yes
+		ai_chance = {
+			base = 25
+			modifier = {
+				trigger = {
+					ruler = {
+						has_ideology = ideology:ideology_anarchist
+					}
+				}
+				add = 250
+			}
+		}
+		activate_law = law_type:law_cooperative_ownership
+		add_modifier = {
+			name = pec_modifier_radical_economic_shift
+			years = 4
+			is_decaying = yes
+		}
+		add_radicals = {
+			value = 0.40
+			pop_type = aristocrats
+		}
+		add_radicals = {
+			value = 0.75
+			pop_type = capitalists
+		}
+		add_radicals = {
+			value = 0.50
+			pop_type = shopkeepers
+		}
+		add_radicals = {
+			value = 0.25
+			pop_type = farmers
+		}
+	}
+	option = {
+		name = pec_council_republic_economy.1.b # command economy
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = {
+					ruler = {
+						has_ideology = ideology:ideology_vanguardist
+					}
+				}
+				add = 50
+			}
+		}
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_autocracy
+				has_law = law_type:law_oligarchy
+				has_law = law_type:law_single_party_state
+				has_law = law_type:law_technocracy
+			}
+		}
+		activate_law = law_type:law_command_economy
+		add_modifier = {
+			name = pec_modifier_radical_economic_shift
+			years = 4
+			is_decaying = yes
+		}
+		add_radicals = {
+			value = 0.40
+			pop_type = aristocrats
+		}
+		add_radicals = {
+			value = 0.75
+			pop_type = capitalists
+		}
+		add_radicals = {
+			value = 0.50
+			pop_type = shopkeepers
+		}
+		add_radicals = {
+			value = 0.25
+			pop_type = farmers
+		}
+	}
+	option = {
+		name = pec_council_republic_economy.1.c # mixed economy 
+		ai_chance = {
+			base = 5
+			modifier = {
+				trigger = {
+					ig:ig_petty_bourgeoisie = {
+						is_powerful = yes
+					}
+				}
+				add = 25
+			}
+			modifier = {
+				trigger = {
+					ig:ig_petty_bourgeoisie = {
+						is_in_government = yes
+					}
+				}
+				add = 50
+			}
+			modifier = {
+				trigger = {
+					ig:ig_petty_bourgeoisie = {
+						is_marginal = yes
+					}
+				}
+				add = -5
+			}
+			modifier = {
+				trigger = {
+					ruler = {
+						has_ideology = ideology:ideology_anarchist
+					}
+				}
+				add = -75
+			}
+		}
+		activate_law = law_type:law_pec_mixed_market
+		add_modifier = {
+			name = pec_modifier_radical_economic_shift
+			years = 2
+			multiplier = 0.5
+			is_decaying = yes
+		}
+		add_radicals = {
+			value = 0.15
+			pop_type = aristocrats
+		}
+		add_radicals = {
+			value = 0.35
+			pop_type = capitalists
+		}
+		if = {
+			limit = {
+				ig:ig_petty_bourgeoisie = {
+					has_ideology = ideology:ideology_meritocratic
+				}
+			}
+			ig:ig_petty_bourgeoisie = {
+				remove_ideology = ideology_meritocratic
+				add_ideology = ideology_meritocratic_nep
+			}
+		}
+	}
+	option = {
+		name = pec_council_republic_economy.1.e # no drastic change 
+		ai_chance = {
+			base = 0
+			modifier = {
+				trigger = {
+					ig:ig_petty_bourgeoisie = {
+						is_powerful = yes
+					}
+				}
+				add = 10
+			}
+			modifier = {
+				trigger = {
+					ig:ig_petty_bourgeoisie = {
+						is_in_government = yes
+					}
+				}
+				add = 25
+			}
+			modifier = {
+				trigger = {
+					ruler = {
+						has_ideology = ideology:ideology_anarchist
+					}
+				}
+				add = -35
+			}
+		}
+		scope:pec_cre1_capital = {
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = machinists
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				pop_type = laborers
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				pop_type = bureaucrats
+			}
+		}
+	}
+
+}

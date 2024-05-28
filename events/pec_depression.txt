@@ -1,0 +1,3280 @@
+﻿namespace = pec_depression
+
+pec_depression.1 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		# triggered by JE
+	}
+		
+	immediate = {
+		if = {
+			limit = {
+				var:pec_depression_progress < 20
+			}
+			remove_modifier = pec_boombust_depression
+			add_modifier = {
+				name = pec_boombust_depression
+			}
+		}
+		else_if = {
+			limit = {
+				var:pec_depression_progress >= 20
+				var:pec_depression_progress < 40
+			}
+			remove_modifier = pec_boombust_depression
+			add_modifier = {
+				name = pec_boombust_depression
+				multiplier = 0.90
+			}
+		}
+		else_if = {
+			limit = {
+				var:pec_depression_progress >= 40
+				var:pec_depression_progress < 60
+			}
+			remove_modifier = pec_boombust_depression
+			add_modifier = {
+				name = pec_boombust_depression
+				multiplier = 0.70
+			}
+		}
+		else_if = {
+			limit = {
+				var:pec_depression_progress >= 60
+				var:pec_depression_progress < 80
+			}
+			remove_modifier = pec_boombust_depression
+			add_modifier = {
+				name = pec_boombust_depression
+				multiplier = 0.50
+			}
+		}
+		else_if = {
+			limit = {
+				var:pec_depression_progress >= 80
+			}
+			remove_modifier = pec_boombust_depression
+			add_modifier = {
+				name = pec_boombust_depression
+				multiplier = 0.33
+			}
+		}
+	}
+}
+
+pec_depression.2 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.2.t
+	desc = pec_depression.2.d
+	flavor = pec_depression.2.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	
+	trigger = {
+		# triggered by JE
+	}
+		
+	immediate = {
+	}
+
+	option = {
+		name = pec_depression.2.a # watch and wait
+		default_option = yes
+		add_loyalists = {
+			value = 0.05
+		}
+		if = {
+			limit = {
+				NOT = { has_technology_researched = central_banking }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = central_banking
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = stock_exchange }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = stock_exchange
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = postal_savings }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = postal_savings
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = corporate_charters }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = corporate_charters
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = joint_stock_companies }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = joint_stock_companies
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = mutual_funds }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = mutual_funds
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = investment_banks }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = investment_banks
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = international_exchange_standards }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = international_exchange_standards
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = corporate_management }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = corporate_management
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_technology_researched = macroeconomics }
+			}
+			add_technology_progress = {
+				progress = 6000
+				technology = macroeconomics
+			}
+		}
+	}
+}
+
+# breadlines
+pec_depression.3 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.3.t
+	desc = pec_depression.3.d
+	flavor = pec_depression.3.f
+
+	duration = 3
+
+	cooldown = { months = 9 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "asia_poor_people_moving"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		any_scope_state = {
+			average_sol < 10
+			is_incorporated = yes
+			NOT = { has_modifier = pec_depression_breadlines_mod }
+		}
+	}
+		
+	immediate = {
+		random_scope_state = {
+			limit = {
+				average_sol < 10
+				is_incorporated = yes
+			}
+			save_scope_as = pec_depression_breadlines_state
+		}
+	}
+
+	option = {
+		name = pec_depression.3.a # oh dear
+		default_option = yes
+		ai_chance = {
+			base = 10
+		}
+		scope:pec_depression_breadlines_state = {
+			add_modifier = {
+				name = pec_depression_breadlines_mod
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				strata = poor
+			}
+		}
+	}
+	option = {
+		name = pec_depression.3.b # emergency measures
+		highlighted_option = yes
+		trigger = {
+			NOT = { has_law = law_type:law_laissez_faire }
+		}
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_1
+			change_variable = { name = pec_depression_progress add = 1 }
+		}
+		add_modifier = {
+			name = pec_paying_for_emergency_measures_breadlines
+			multiplier = money_amount_multiplier_small
+			months = 25
+		}
+		scope:pec_depression_breadlines_state = {
+			add_modifier = {
+				name = pec_depression_breadlines_mod
+				multiplier = 0.5
+				months = 25
+			}
+			add_modifier = {
+				name = pec_depression_breadlines_emergency_mod
+				months = 25
+			}
+			add_radicals_in_state = {
+				value = 0.03
+				strata = poor
+			}
+		}
+	}
+	option = {
+		name = pec_depression.3.c # increase welfare payments
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_wage_subsidies
+				has_law = law_type:law_old_age_pension
+			}
+		}
+		ai_chance = {
+			base = 75
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_1
+			change_variable = { name = pec_depression_progress add = 1 }
+		}
+		scope:pec_depression_breadlines_state = {
+			add_modifier = {
+				name = pec_depression_breadlines_mod
+				multiplier = 0.5
+				months = 25
+			}
+			add_modifier = {
+				name = pec_depression_breadlines_increase_welfare_mod
+				months = 25
+			}
+			add_radicals_in_state = {
+				value = 0.03
+				strata = poor
+			}
+		}
+	}
+}
+
+# demands: protectionism
+pec_depression.4 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.4.t
+	desc = pec_depression.4.d
+	flavor = pec_depression.4.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		has_law = law_type:law_free_trade
+		any_interest_group = {
+			law_stance = {
+				law = law_type:law_free_trade
+				value < neutral
+			}
+			OR = {
+				is_in_government = yes
+				is_powerful = yes
+			}
+		}
+	}
+		
+	immediate = {
+		random_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_free_trade
+					value < neutral
+				}
+				OR = {
+					is_in_government = yes
+					is_powerful = yes
+				}
+			}
+			save_scope_as = pec_depression4_protectionist_ig
+		}
+	}
+
+	option = {
+		name = pec_depression.4.a # ignore their demands
+		default_option = yes
+		ai_chance = {
+			base = 10
+		}
+		add_radicals = {
+			value = 0.02
+		}
+		every_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_free_trade
+					value < neutral
+				}
+			}
+			add_modifier = {
+				name = pec_depression4_igmod_tariffs_neg
+				months = 60
+			}
+		}
+		every_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_free_trade
+					value > neutral
+				}
+			}
+			add_modifier = {
+				name = pec_depression4_igmod_tariffs_pos
+				months = 60
+			}
+		}
+	}
+	option = {
+		name = pec_depression.4.b # temporary protective tariffs
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_1
+			change_variable = { name = pec_depression_progress add = 1 }
+		}
+		add_modifier = {
+			name = pec_temporary_tariffs
+			months = 37
+		}
+		every_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_free_trade
+					value < neutral
+				}
+			}
+			add_modifier = {
+				name = pec_depression4_igmod_tariffs_pos
+				multiplier = 0.5
+				months = 60
+			}
+		}
+		every_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_free_trade
+					value > neutral
+				}
+			}
+			add_modifier = {
+				name = pec_depression4_igmod_tariffs_neg
+				multiplier = 0.5
+				months = 60
+			}
+		}
+	}
+	option = {
+		name = pec_depression.4.c # abolish free trade
+		highlighted_option = yes
+		trigger = {
+			government_legitimacy > 60
+		}
+		ai_chance = {
+			base = 20
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_1
+			change_variable = { name = pec_depression_progress add = 1 }
+		}
+		activate_law = law_type:law_protectionism
+		add_modifier = {
+			name = pec_depression_forced_law
+			months = 48
+		}
+		every_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_free_trade
+					value < neutral
+				}
+			}
+			add_modifier = {
+				name = pec_depression4_igmod_tariffs_pos
+				months = 60
+			}
+		}
+		every_interest_group = {
+			limit = {
+				law_stance = {
+					law = law_type:law_free_trade
+					value > neutral
+				}
+			}
+			add_modifier = {
+				name = pec_depression4_igmod_tariffs_neg
+				months = 60
+			}
+		}
+	}
+}
+
+# demands: social security
+pec_depression.5 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.5.t
+	desc = pec_depression.5.d
+	flavor = pec_depression.5.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		has_law = law_type:law_no_social_security
+		OR = {
+			ig:ig_trade_unions = {
+				is_marginal = no
+			}
+			ig:ig_pec_unorganized_labour = {
+				is_marginal = no
+			}
+		}
+	}
+		
+	immediate = {
+	}
+
+	option = {
+		name = pec_depression.5.a # ignore their demands
+		default_option = yes
+		ai_chance = {
+			base = 15
+		}
+		add_radicals = {
+			value = 0.03
+			strata = poor
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_depression5_igmod_ignore_neg
+				months = 49
+			}
+		}
+		ig:ig_pec_unorganized_labour = {
+			add_modifier = {
+				name = pec_depression5_igmod_ignore_neg
+				multiplier = 0.34
+				months = 49
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_depression5_igmod_ignore_pos
+				months = 49
+			}
+		}
+	}
+	option = {
+		name = pec_depression.5.b # temporary welfare payments
+		ai_chance = {
+			base = 70
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_3
+			change_variable = { name = pec_depression_progress add = 3 }
+		}
+		add_modifier = {
+			name = pec_temporary_welfare_payments
+			months = 37
+		}
+		ig:ig_pec_unorganized_labour = {
+			add_modifier = {
+				name = pec_depression5_igmod_temporary_pos
+				months = 49
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_depression5_igmod_temporary_neg
+				months = 49
+			}
+		}
+	}
+	option = {
+		name = pec_depression.5.c # force it through
+		highlighted_option = yes
+		trigger = {
+			government_legitimacy > 60
+			OR = {
+				ig:ig_trade_unions = {
+					is_in_government = yes
+				}
+				ig:ig_pec_unorganized_labour = {
+					is_in_government = yes
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		add_radicals = {
+			value = 0.05
+			strata = rich
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_3
+			change_variable = { name = pec_depression_progress add = 3 }
+		}
+		activate_law = law_type:law_wage_subsidies
+		add_modifier = {
+			name = pec_depression_forced_law
+			months = 48
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_depression5_igmod_forcedlaw_pos
+				months = 49
+			}
+		}
+		ig:ig_pec_unorganized_labour = {
+			add_modifier = {
+				name = pec_depression5_igmod_forcedlaw_pos
+				multiplier = 0.66667
+				months = 49
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_depression5_igmod_forcedlaw_neg
+				months = 49
+			}
+		}
+		ig:ig_landowners = {
+			add_modifier = {
+				name = pec_depression5_igmod_forcedlaw_neg
+				months = 49
+			}
+		}
+	}
+}
+
+# rising socialism
+pec_depression.6 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.6.t
+	desc = pec_depression.6.d
+	flavor = pec_depression.6.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		has_technology_researched = socialism
+		NOR = {
+			has_law = law_type:law_cooperative_ownership
+			has_law = law_type:law_council_republic
+		}
+	}
+		
+	immediate = {
+	}
+
+	option = {
+		name = pec_depression.6.a # communism in the unions
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.03
+			strata = poor
+		}
+		add_radicals = {
+			value = 0.03
+			pop_type = machinists
+		}
+		if = {
+			limit = {
+				ig:ig_trade_unions = {
+					leader = {
+						NOR = {
+							has_ideology = ideology:ideology_communist
+							has_ideology = ideology:ideology_vanguardist
+							has_ideology = ideology:ideology_anarchist
+							has_ideology = ideology:ideology_pec_agrarian_socialist
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = pec_depression6a_newleader_tt
+				random_list = {
+					50 = {
+						ig:ig_trade_unions = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_trade_unions
+							ideology = ideology_communist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+					25 = {
+						ig:ig_trade_unions = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_trade_unions
+							ideology = ideology_vanguardist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+					25 = {
+						ig:ig_trade_unions = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_trade_unions
+							ideology = ideology_anarchist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+				}
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_depression6_igmod_popular_communists
+				months = 61
+			}
+			leader = {
+				add_modifier = {
+					name = pec_depression6_charmod_popular_communist
+					months = 121
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_depression.6.b # communism in the unions
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.02
+			strata = poor
+		}
+		add_radicals = {
+			value = 0.10
+			pop_type = academics
+		}
+		if = {
+			limit = {
+				ig:ig_intelligentsia = {
+					leader = {
+						NOR = {
+							has_ideology = ideology:ideology_communist
+							has_ideology = ideology:ideology_vanguardist
+							has_ideology = ideology:ideology_anarchist
+							has_ideology = ideology:ideology_pec_agrarian_socialist
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = pec_depression6b_newleader_tt
+				random_list = {
+					20 = {
+						ig:ig_intelligentsia = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_intelligentsia
+							ideology = ideology_communist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+					40 = {
+						ig:ig_intelligentsia = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_intelligentsia
+							ideology = ideology_vanguardist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+					40 = {
+						ig:ig_intelligentsia = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_intelligentsia
+							ideology = ideology_anarchist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+				}
+			}
+		}
+		ig:ig_intelligentsia = {
+			add_modifier = {
+				name = pec_depression6_igmod_popular_communists
+				months = 61
+			}
+			leader = {
+				add_modifier = {
+					name = pec_depression6_charmod_popular_communist
+					months = 121
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_depression.6.c # socialist agitation
+		ai_chance = {
+			base = 20
+		}
+		highlighted_option = yes
+		trigger = {
+			empty_agitator_slots >= 1
+		}
+		add_radicals = {
+			value = 0.1
+			strata = poor
+		}
+		custom_tooltip = {
+			text = pec_depression6c_agitator_tt
+			random_list = {
+				10 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_intelligentsia
+						ideology = ideology_anarchist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				10 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_intelligentsia
+						ideology = ideology_vanguardist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				10 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_intelligentsia
+						ideology = ideology_communist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				10 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_trade_unions
+						ideology = ideology_anarchist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				30 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_trade_unions
+						ideology = ideology_communist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				20 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_trade_unions
+						ideology = ideology_vanguardist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				10 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_pec_unorganized_labour
+						ideology = ideology_anarchist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# rising fascism
+pec_depression.7 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.7.t
+	desc = pec_depression.7.d
+	flavor = pec_depression.7.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		has_technology_researched = political_agitation
+		ruler = {
+			NOR = {
+				has_ideology = ideology:ideology_fascist
+				has_ideology = ideology:ideology_ethno_nationalist
+			}
+		}
+	}
+		
+	immediate = {
+	}
+
+	option = {
+		name = pec_depression.7.a # fascism among the PB
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.01
+			strata = poor
+		}
+		add_radicals = {
+			value = 0.03
+			strata = middle
+		}
+		add_radicals = {
+			value = 0.03
+			pop_type = shopkeepers
+		}
+		if = {
+			limit = {
+				ig:ig_petty_bourgeoisie = {
+					leader = {
+						NOR = {
+							has_ideology = ideology:ideology_fascist
+							has_ideology = ideology:ideology_ethno_nationalist
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = pec_depression7a_newleader_tt
+				random_list = {
+					80 = {
+						ig:ig_petty_bourgeoisie = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_petty_bourgeoisie
+							ideology = ideology_fascist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+					20 = {
+						ig:ig_petty_bourgeoisie = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_petty_bourgeoisie
+							ideology = ideology_ethno_nationalist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+				}
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression7_igmod_popular_fascists
+				months = 61
+			}
+			leader = {
+				add_modifier = {
+					name = pec_depression7_charmod_popular_fascist
+					months = 121
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_depression.7.b # fascism in the military
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.02
+			strata = poor
+		}
+		add_radicals = {
+			value = 0.10
+			pop_type = soldiers
+		}
+		add_radicals = {
+			value = 0.10
+			pop_type = officers
+		}
+		if = {
+			limit = {
+				ig:ig_armed_forces = {
+					leader = {
+						NOR = {
+							has_ideology = ideology:ideology_fascist
+							has_ideology = ideology:ideology_ethno_nationalist
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				text = pec_depression7b_newleader_tt
+				random_list = {
+					80 = {
+						ig:ig_armed_forces = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_armed_forces
+							ideology = ideology_fascist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+					20 = {
+						ig:ig_armed_forces = {
+							leader = {
+								kill_character = yes
+							}
+						}
+						create_character = {
+							ig_leader = yes
+							interest_group = ig_armed_forces
+							ideology = ideology_ethno_nationalist
+							traits = {
+								firebrand
+								charismatic
+							}
+						}
+					}
+				}
+			}
+		}
+		ig:ig_armed_forces = {
+			add_modifier = {
+				name = pec_depression7_igmod_popular_fascists
+				months = 61
+			}
+			leader = {
+				add_modifier = {
+					name = pec_depression7_charmod_popular_fascist
+					months = 121
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_depression.7.c # fascist agitation
+		ai_chance = {
+			base = 20
+		}
+		highlighted_option = yes
+		trigger = {
+			empty_agitator_slots >= 1
+		}
+		add_radicals = {
+			value = 0.05
+			strata = poor
+		}
+		add_radicals = {
+			value = 0.1
+			strata = middle
+		}
+		custom_tooltip = {
+			text = pec_depression7c_agitator_tt
+			random_list = {
+				40 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_petty_bourgeoisie
+						ideology = ideology_fascist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				20 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_petty_bourgeoisie
+						ideology = ideology_ethno_nationalist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				30 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_armed_forces
+						ideology = ideology_ethno_nationalist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				15 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_armed_forces
+						ideology = ideology_fascist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				10 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_pec_unorganized_labour
+						ideology = ideology_fascist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+				5 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_pec_unorganized_labour
+						ideology = ideology_ethno_nationalist
+						traits = {
+							firebrand
+							charismatic
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# keynesianism
+pec_depression.8 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.8.t
+	desc = pec_depression.8.d
+	flavor = pec_depression.8.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "middleeast_middleclass_cafe"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		has_technology_researched = macroeconomics
+		empty_agitator_slots >= 1
+	}
+		
+	immediate = {
+	}
+
+	option = {
+		name = pec_depression.8.a # let him talk
+		ai_chance = {
+			base = 30
+		}
+		custom_tooltip = {
+			text = pec_depression8a_agitator_tt
+			random_list = {
+				10 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_petty_bourgeoisie
+						ideology = ideology_pec_keynesian
+						traits = {
+							firebrand
+							meticulous
+							innovative
+						}
+					}
+				}
+				20 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_intelligentsia
+						ideology = ideology_pec_keynesian
+						traits = {
+							firebrand
+							meticulous
+							innovative
+						}
+					}
+				}
+				30 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_industrialists
+						ideology = ideology_pec_keynesian
+						traits = {
+							firebrand
+							meticulous
+							innovative
+						}
+					}
+				}
+				10 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_landowners
+						ideology = ideology_pec_keynesian
+						traits = {
+							firebrand
+							meticulous
+							innovative
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_depression.8.b # implement some of his policies
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_3
+			change_variable = { name = pec_depression_progress add = 3 }
+		}
+		add_modifier = {
+			name = pec_listened_to_keynes_mod
+			months = 37
+		}
+		custom_tooltip = {
+			text = pec_depression8_implement_tt
+		}
+		custom_tooltip = {
+			text = pec_depression8a_agitator_tt
+			random_list = {
+				30 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_petty_bourgeoisie
+						ideology = ideology_pec_keynesian
+						traits = {
+							firebrand
+							meticulous
+							innovative
+						}
+					}
+				}
+				25 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_intelligentsia
+						ideology = ideology_pec_keynesian
+						traits = {
+							firebrand
+							meticulous
+							innovative
+						}
+					}
+				}
+				30 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_industrialists
+						ideology = ideology_pec_keynesian
+						traits = {
+							firebrand
+							meticulous
+							innovative
+						}
+					}
+				}
+				5 = {
+					create_character = {
+						is_agitator = yes
+						interest_group = ig_landowners
+						ideology = ideology_pec_keynesian
+						traits = {
+							firebrand
+							meticulous
+							innovative
+						}
+					}
+				}
+			}
+		}
+
+	}
+	option = {
+		name = pec_depression.8.c # shut him down
+		ai_chance = {
+			base = 20
+		}
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_secret_police
+				has_law = law_type:law_censorship
+				has_law = law_type:law_outlawed_dissent
+			}
+		}
+		add_radicals = {
+			value = 0.02
+			strata = middle
+		}
+	}
+}
+
+# farm bankruptcies
+pec_depression.9 = {	
+	type = country_event 
+	placement = scope:pec_depression9_bankrupt_state
+	title = pec_depression.9.t
+	desc = pec_depression.9.d
+	flavor = pec_depression.9.f
+
+	duration = 3
+
+	cooldown = { months = 8 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "asia_dead_cattle_poor_harvest"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_modifier = pec_depression9_bankruptcy_protection }
+		NOT = { has_modifier = pec_depression_total_bankruptcy_protection }
+		any_scope_state = {
+			state_population > 500000
+			OR = {
+				has_building = building_rye_farm
+				has_building = building_wheat_farm
+				has_building = building_rice_farm
+				has_building = building_maize_farm
+				has_building = building_millet_farm
+			}
+			any_scope_building = {
+				OR = {
+					is_building_type = building_rye_farm
+					is_building_type = building_wheat_farm
+					is_building_type = building_rice_farm
+					is_building_type = building_maize_farm
+					is_building_type = building_millet_farm
+				}
+				level >= 3
+				weekly_profit < 0
+				cash_reserves_ratio < 0.10
+				is_subsidized = no
+				NOT = { has_active_production_method = pm_simple_farming }
+				NOT = { has_active_production_method = pm_simple_farming_building_rice_farm }
+			}
+		}
+	}
+		
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					OR = {
+						is_building_type = building_rye_farm
+						is_building_type = building_wheat_farm
+						is_building_type = building_rice_farm
+						is_building_type = building_maize_farm
+						is_building_type = building_millet_farm
+					}
+					level >= 3
+					weekly_profit < 0
+					cash_reserves_ratio < 0.10
+					is_subsidized = no
+					NOT = { has_active_production_method = pm_simple_farming }
+					NOT = { has_active_production_method = pm_simple_farming_building_rice_farm }
+				}
+			}
+			save_scope_as = pec_depression9_bankrupt_state
+			random_scope_building = {
+				limit = {
+					OR = {
+						is_building_type = building_rye_farm
+						is_building_type = building_wheat_farm
+						is_building_type = building_rice_farm
+						is_building_type = building_maize_farm
+						is_building_type = building_millet_farm
+					}
+					level >= 3
+					cash_reserves_ratio < 0.10
+					weekly_profit < 0
+					is_subsidized = no
+					NOT = { has_active_production_method = pm_simple_farming }
+					NOT = { has_active_production_method = pm_simple_farming_building_rice_farm }
+				}
+				save_scope_as = pec_depression9_bankrupt_farm
+			}
+		}
+	}
+
+	option = {
+		name = pec_depression.9.a # let the fields go fallow
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_3
+			change_variable = { name = pec_depression_progress add = 3 }
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = pec_depression9_igmod_fallow
+				months = 37
+			}
+		}
+		scope:pec_depression9_bankrupt_state = {
+			if = {
+				limit = {
+					scope:pec_depression9_bankrupt_farm = {
+						is_building_type = building_rye_farm
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_rye_farm
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression9_bankrupt_farm = {
+						is_building_type = building_wheat_farm
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_wheat_farm
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression9_bankrupt_farm = {
+						is_building_type = building_rice_farm
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_rice_farm
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression9_bankrupt_farm = {
+						is_building_type = building_maize_farm
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_maize_farm
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression9_bankrupt_farm = {
+						is_building_type = building_millet_farm
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_millet_farm
+			}
+			add_radicals_in_state = {
+				value = 0.15
+				pop_type = farmers
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = aristocrats
+			}
+		}
+	}
+	option = {
+		name = pec_depression.9.b # subsidize
+		ai_chance = {
+			base = 40
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+			}
+		}
+		scope:pec_depression9_bankrupt_farm = {
+			set_subsidized = yes
+		}
+		add_modifier = {
+			name = pec_depression_assumed_industry_debt
+			multiplier = money_amount_multiplier_small
+			months = 25
+		}
+		scope:pec_depression9_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.10
+				pop_type = farmers
+			}
+		}
+	}
+	option = {
+		name = pec_depression.9.c # issue bankruptcy protection
+		ai_chance = {
+			base = 40
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+			}
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression9c_tt
+		}
+		add_modifier = {
+			name = pec_depression9_bankruptcy_protection
+			months = 61
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_depression9c_igmod_neg
+				months = 61
+			}
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = pec_depression9c_igmod_pos
+				months = 61
+			}
+		}
+		ig:ig_landowners = {
+			add_modifier = {
+				name = pec_depression9c_igmod_pos
+				multiplier = 0.5
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.02
+			pop_type = capitalists
+		}
+		scope:pec_depression9_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.10
+				pop_type = farmers
+			}
+		}
+	}
+
+	option = {
+		name = pec_depression.9.e # issue bankruptcy protection
+		ai_chance = {
+			base = 20
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+			}
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression_bankruptcy_protection_tt
+		}
+		add_modifier = {
+			name = pec_depression_total_bankruptcy_protection
+			months = 61
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_depression_total_bankruptcy_protection_igmod_neg
+				months = 61
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression_total_bankruptcy_protection_igmod_pos
+				multiplier = 0.25
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.1
+			pop_type = capitalists
+		}
+		scope:pec_depression9_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.10
+				pop_type = farmers
+			}
+		}
+	}
+}
+
+# heavy industry bankruptcies
+pec_depression.10 = {	
+	type = country_event 
+	placement = scope:pec_depression10_bankrupt_state
+	title = pec_depression.10.t
+	desc = pec_depression.10.d
+	flavor = pec_depression.10.f
+
+	duration = 3
+
+	cooldown = { months = 8 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_factory_closed"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_modifier = pec_depression10_bankruptcy_protection }
+		NOT = { has_modifier = pec_depression_total_bankruptcy_protection }
+		any_scope_state = {
+			state_population > 500000
+			any_scope_building = {
+				is_building_group = bg_heavy_industry
+				level >= 3
+				cash_reserves_ratio < 0.10
+				weekly_profit < 0
+				is_subsidized = no
+			}
+		}
+	}
+		
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					is_building_group = bg_heavy_industry
+					level >= 3
+					cash_reserves_ratio < 0.10
+					weekly_profit < 0
+					is_subsidized = no
+				}
+			}
+			save_scope_as = pec_depression10_bankrupt_state
+			random_scope_building = {
+				limit = {
+					is_building_group = bg_heavy_industry
+					level >= 3
+					cash_reserves_ratio < 0.10
+					weekly_profit < 0
+					is_subsidized = no
+				}
+				save_scope_as = pec_depression10_bankrupt_building
+			}
+		}
+	}
+
+	option = {
+		name = pec_depression.10.a # let it die
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_3
+			change_variable = { name = pec_depression_progress add = 3 }
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_depression10_igmod_bankrupt
+				months = 37
+			}
+		}
+		scope:pec_depression10_bankrupt_state = {
+			if = {
+				limit = {
+					scope:pec_depression10_bankrupt_building = {
+						is_building_type = building_chemical_plants
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_chemical_plants
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression10_bankrupt_building = {
+						is_building_type = building_explosives_factory
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_explosives_factory
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression10_bankrupt_building = {
+						is_building_type = building_synthetics_plants
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_synthetics_plants
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression10_bankrupt_building = {
+						is_building_type = building_steel_mills
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_steel_mills
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression10_bankrupt_building = {
+						is_building_type = building_motor_industry
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_motor_industry
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression10_bankrupt_building = {
+						is_building_type = building_electrics_industry
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_electrics_industry
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression10_bankrupt_building = {
+						is_building_type = building_war_machine_industry
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_war_machine_industry
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = machinists
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = laborers
+			}
+		}
+	}
+	option = {
+		name = pec_depression.10.b # subsidize
+		ai_chance = {
+			base = 40
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+				has_law = law_type:law_agrarianism
+			}
+		}
+		scope:pec_depression10_bankrupt_building = {
+			set_subsidized = yes
+		}
+		scope:pec_depression10_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = machinists
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = laborers
+			}
+		}
+	}
+	option = {
+		name = pec_depression.10.c # issue bankruptcy protection
+		ai_chance = {
+			base = 40
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+				has_law = law_type:law_agrarianism
+			}
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression10c_tt
+		}
+		add_modifier = {
+			name = pec_depression10_bankruptcy_protection
+			months = 61
+		}
+		ig:ig_landowners = {
+			add_modifier = {
+				name = pec_depression10c_igmod_neg
+				months = 61
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_depression10c_igmod_pos
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.02
+			pop_type = capitalists
+		}
+		scope:pec_depression10_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.12
+				pop_type = capitalists
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = laborers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = machinists
+			}
+		}
+	}
+	option = {
+		name = pec_depression.10.e # issue bankruptcy protection
+		ai_chance = {
+			base = 20
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+			}
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression_bankruptcy_protection_tt
+		}
+		add_modifier = {
+			name = pec_depression_total_bankruptcy_protection
+			months = 61
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_depression_total_bankruptcy_protection_igmod_neg
+				months = 61
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression_total_bankruptcy_protection_igmod_pos
+				multiplier = 0.25
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.1
+			pop_type = capitalists
+		}
+		scope:pec_depression10_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.20
+				pop_type = capitalists
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = laborers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = machinists
+			}
+		}
+	}
+
+}
+
+# The blame game: minorities
+pec_depression.11 = {	
+	type = country_event 
+	placement = scope:pec_depression11_minoritystate
+	title = pec_depression.11.t
+	desc = pec_depression.11.d
+	flavor = pec_depression.11.f
+
+	duration = 3
+
+	cooldown = { months = 50 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_vandalized_storefront"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_variable = pec_blame_game_set }
+		any_scope_culture = {
+			culture_is_discriminated_in = ROOT
+			save_temporary_scope_as = pec_depression11_minority_culture
+		}
+		any_scope_state = {
+			is_incorporated = yes
+			culture_percent_state = {
+				target = scope:pec_depression11_minority_culture
+				value > 0.20
+			}
+		}
+	}
+		
+	immediate = {
+		scope:pec_depression11_minority_culture = {
+			save_scope_as = pec_depression11_minority
+		}
+		random_scope_culture = {
+			limit = {
+				is_primary_culture_of = ROOT
+			}
+			save_scope_as = pec_depression11_primary
+		}
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				culture_percent_state = {
+					target = scope:pec_depression11_minority
+					value > 0.20
+				}
+			}
+			save_scope_as = pec_depression11_minoritystate
+		}
+	}
+
+	option = {
+		name = pec_depression.11.a # let it spread
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_blamegame_tt
+			set_variable = {
+				name = pec_blame_game_set
+				months = 49
+			}
+		}
+		add_modifier = {
+			name = pec_depression11_blaming_minorities
+			months = 49
+		}
+		scope:pec_depression11_minoritystate = {
+			add_radicals_in_state = {
+				value = 0.15
+				culture = scope:pec_depression11_minority
+			}
+		}
+	}
+	option = {
+		name = pec_depression.11.b # combat the narrative
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.02
+			culture = scope:pec_depression11_primary
+		}
+		scope:pec_depression11_minoritystate = {
+			add_radicals_in_state = {
+				value = 0.05
+				culture = scope:pec_depression11_minority
+			}
+			add_radicals_in_state = {
+				value = 0.15
+				culture = scope:pec_depression11_primary
+			}
+		}
+	}
+}
+
+# The blame game: petite-bourgeoisie
+pec_depression.12 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.12.t
+	desc = pec_depression.12.d
+	flavor = pec_depression.12.f
+
+	duration = 3
+
+	cooldown = { months = 50 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "middleeast_middleclass_cafe"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_variable = pec_blame_game_set }
+		ig:ig_petty_bourgeoisie = {
+			is_marginal = no
+		}
+	}
+		
+	immediate = {
+		ig:ig_petty_bourgeoisie = {
+			save_scope_as = pec_depression12_blamed_ig
+		}
+	}
+
+	option = {
+		name = pec_depression.12.a # its ALL their fault
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_blamegame_tt
+			set_variable = {
+				name = pec_blame_game_set
+				months = 49
+			}
+		}
+		add_modifier = {
+			name = pec_depression12_blaming_shopkeepers
+			months = 49
+		}
+		add_radicals = {
+			value = 0.05
+			pop_type = shopkeepers
+		}
+		add_radicals = {
+			value = 0.05
+			pop_type = clerks
+		}
+		scope:pec_depression12_blamed_ig = {
+			add_modifier = {
+				name = pec_depression_blamed_ig
+				months = 49
+			}
+		}
+	}
+	option = {
+		name = pec_depression.12.b # combat the narrative
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.02
+			strata = poor
+		}
+		add_radicals = {
+			value = 0.02
+			strata = rich
+		}
+	}
+}
+# The blame game: trade unions
+pec_depression.13 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.13.t
+	desc = pec_depression.13.d
+	flavor = pec_depression.13.f
+
+	duration = 3
+
+	cooldown = { months = 50 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "asia_union_leader"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_variable = pec_blame_game_set }
+		ig:ig_trade_unions = {
+			is_marginal = no
+		}
+	}
+		
+	immediate = {
+		ig:ig_trade_unions = {
+			save_scope_as = pec_depression13_blamed_ig
+		}
+	}
+
+	option = {
+		name = pec_depression.13.a # its ALL their fault
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_blamegame_tt
+			set_variable = {
+				name = pec_blame_game_set
+				months = 49
+			}
+		}
+		add_modifier = {
+			name = pec_depression13_blaming_workers
+			months = 49
+		}
+		add_radicals = {
+			value = 0.05
+			pop_type = machinists
+		}
+		add_radicals = {
+			value = 0.05
+			pop_type = laborers
+		}
+		scope:pec_depression13_blamed_ig = {
+			add_modifier = {
+				name = pec_depression_blamed_ig
+				months = 49
+			}
+		}
+	}
+	option = {
+		name = pec_depression.13.b # combat the narrative
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.02
+			strata = middle
+		}
+		add_radicals = {
+			value = 0.02
+			strata = rich
+		}
+	}
+}
+
+# The blame game: capital
+pec_depression.14 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.14.t
+	desc = pec_depression.14.d
+	flavor = pec_depression.14.f
+
+	duration = 3
+
+	cooldown = { months = 50 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "middleeast_upperclass_party"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_variable = pec_blame_game_set }
+		ig:ig_industrialists = {
+			is_marginal = no
+		}
+		NOR = {
+			has_law = law_type:law_cooperative_ownership
+			has_law = law_type:law_traditionalism
+			has_law = law_type:law_agrarianism
+		}
+	}
+		
+	immediate = {
+		ig:ig_industrialists = {
+			save_scope_as = pec_depression14_blamed_ig
+		}
+	}
+
+	option = {
+		name = pec_depression.14.a # its ALL their fault
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_blamegame_tt
+			set_variable = {
+				name = pec_blame_game_set
+				months = 49
+			}
+		}
+		add_modifier = {
+			name = pec_depression14_blaming_capitalists
+			months = 49
+		}
+		add_radicals = {
+			value = 0.1
+			pop_type = capitalists
+		}
+		scope:pec_depression14_blamed_ig = {
+			add_modifier = {
+				name = pec_depression_blamed_ig
+				months = 49
+			}
+		}
+	}
+	option = {
+		name = pec_depression.14.b # combat the narrative
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.02
+			strata = middle
+		}
+		add_radicals = {
+			value = 0.02
+			strata = poor
+		}
+	}
+}
+
+# The blame game: aristocrats
+pec_depression.15 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.15.t
+	desc = pec_depression.15.d
+	flavor = pec_depression.15.f
+
+	duration = 3
+
+	cooldown = { months = 50 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "southamerica_aristocrats"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_variable = pec_blame_game_set }
+		ig:ig_industrialists = {
+			is_marginal = no
+		}
+		OR = {
+			has_law = law_type:law_traditionalism
+			has_law = law_type:law_agrarianism
+		}
+	}
+		
+	immediate = {
+		ig:ig_landowners = {
+			save_scope_as = pec_depression15_blamed_ig
+		}
+	}
+
+	option = {
+		name = pec_depression.15.a # its ALL their fault
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_blamegame_tt
+			set_variable = {
+				name = pec_blame_game_set
+				months = 49
+			}
+		}
+		add_modifier = {
+			name = pec_depression15_blaming_aristocrats
+			months = 49
+		}
+		add_radicals = {
+			value = 0.1
+			pop_type = aristocrats
+		}
+		scope:pec_depression15_blamed_ig = {
+			add_modifier = {
+				name = pec_depression_blamed_ig
+				months = 49
+			}
+		}
+	}
+	option = {
+		name = pec_depression.15.b # combat the narrative
+		ai_chance = {
+			base = 40
+		}
+		add_radicals = {
+			value = 0.02
+			strata = middle
+		}
+		add_radicals = {
+			value = 0.02
+			strata = poor
+		}
+	}
+}
+
+# The blame game: the government
+pec_depression.16 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.16.t
+	desc = pec_depression.16.d
+	flavor = pec_depression.16.f
+
+	duration = 3
+
+	cooldown = { months = 50 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_variable = pec_blame_game_set }
+	}
+		
+	immediate = {
+		ruler = {
+			save_scope_as = pec_depression16_ruler
+		}
+	}
+
+	option = {
+		name = pec_depression.16.a # its ALL our fault
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_blamegame_tt
+			set_variable = {
+				name = pec_blame_game_set
+				months = 49
+			}
+		}
+		add_modifier = {
+			name = pec_depression16_blaming_government
+			months = 49
+		}
+		add_radicals = {
+			value = 0.15
+			pop_type = bureaucrats
+		}
+	}
+	option = {
+		name = pec_depression.16.b # blame ruler
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_blamegame_tt
+			set_variable = {
+				name = pec_blame_game_set
+				months = 49
+			}
+		}
+		add_modifier = {
+			name = pec_depression16_blaming_government
+			multiplier = 0.5
+			months = 49
+		}
+		add_radicals = {
+			value = 0.01
+		}
+		scope:pec_depression16_ruler = {
+			add_modifier = {
+				name = pec_depression16_charmod_blamed_for_depression
+				months = 240
+			}
+		}
+	}
+}
+
+
+# high gdp country in customs union
+pec_depression.17 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.17.t
+	desc = pec_depression.17.d
+	flavor = pec_depression.17.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "asia_westerners_arriving"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		is_in_customs_union = yes
+		OR = {
+			AND = {
+				is_junior_in_customs_union = yes
+				root.gdp > 20000000
+			}
+			leads_customs_union = yes
+		}
+	}
+		
+	immediate = {
+	}
+
+	option = {
+		name = pec_depression.17.a # oh dear
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		every_country = {
+			limit = {
+				has_diplomatic_pact = {
+					who = root
+					type = customs_union
+				}
+				has_journal_entry = pec_boombust_je_1
+				NOT = { has_variable = pec_depression18_var }
+			}
+			trigger_event = { id = pec_depression.18 }
+			change_relations = {
+				country = root
+				value = -20
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression17_crisis_spreads_tt
+			set_variable = {
+				name = pec_depression17_var
+				months = 6
+			}
+		}
+	}
+}
+
+
+# ripple effect
+pec_depression.18 = {	
+	type = country_event 
+	placement = root
+	title = pec_depression.18.t
+	desc = pec_depression.18.d
+	flavor = pec_depression.18.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+	}
+		
+	immediate = {
+		random_country = {
+			limit = {
+				has_journal_entry = pec_depression_je
+				has_variable = pec_depression17_var
+				has_diplomatic_pact = {
+					who = ROOT
+					type = customs_union
+				}
+			}
+			save_scope_as = pec_depression18_countryorigin
+		}
+	}
+
+	option = {
+		name = pec_depression.18.a # oh dear
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		add_modifier = {
+			name = pec_test
+			months = 1
+		}
+		custom_tooltip = {
+			text = pec_depression18_crisis_spreads_tt
+			set_variable = {
+				name = pec_depression18_var
+				months = 37
+			}
+		}
+	}
+}
+
+# light industry bankruptcies
+pec_depression.19 = {	
+	type = country_event 
+	placement = scope:pec_depression19_bankrupt_state
+	title = pec_depression.19.t
+	desc = pec_depression.19.d
+	flavor = pec_depression.19.f
+
+	duration = 3
+
+	cooldown = { months = 8 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_factory_closed"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_modifier = pec_depression19_bankruptcy_protection }
+		NOT = { has_modifier = pec_depression_total_bankruptcy_protection }
+		any_scope_state = {
+			state_population > 500000
+			any_scope_building = {
+				is_building_group = bg_light_industry
+				level >= 3
+				cash_reserves_ratio < 0.10
+				weekly_profit < 0
+				is_subsidized = no
+			}
+		}
+	}
+		
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					is_building_group = bg_light_industry
+					level >= 3
+					cash_reserves_ratio < 0.10
+					weekly_profit < 0
+					is_subsidized = no
+				}
+			}
+			save_scope_as = pec_depression19_bankrupt_state
+			random_scope_building = {
+				limit = {
+					is_building_group = bg_light_industry
+					level >= 3
+					cash_reserves_ratio < 0.10
+					weekly_profit < 0
+					is_subsidized = no
+				}
+				save_scope_as = pec_depression19_bankrupt_building
+			}
+		}
+	}
+
+	option = {
+		name = pec_depression.19.a # let it die
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_3
+			change_variable = { name = pec_depression_progress add = 3 }
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression19_igmod_bankrupt
+				months = 37
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_depression19_igmod_bankrupt
+				months = 37
+			}
+		}
+		scope:pec_depression19_bankrupt_state = {
+			if = {
+				limit = {
+					scope:pec_depression19_bankrupt_building = {
+						is_building_type = building_food_industry
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_food_industry
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression19_bankrupt_building = {
+						is_building_type = building_textile_mills
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_textile_mills
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression19_bankrupt_building = {
+						is_building_type = building_furniture_manufacturies
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_furniture_manufacturies
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression19_bankrupt_building = {
+						is_building_type = building_glassworks
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_glassworks
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression19_bankrupt_building = {
+						is_building_type = building_tooling_workshops
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_tooling_workshops
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression19_bankrupt_building = {
+						is_building_type = building_paper_mills
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_paper_mills
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = machinists
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = laborers
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = shopkeepers
+			}
+		}
+	}
+	option = {
+		name = pec_depression.19.b # subsidize
+		ai_chance = {
+			base = 40
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+				has_law = law_type:law_agrarianism
+			}
+		}
+		scope:pec_depression19_bankrupt_building = {
+			set_subsidized = yes
+		}
+		scope:pec_depression19_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = machinists
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = laborers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = shopkeepers
+			}
+		}
+	}
+	option = {
+		name = pec_depression.19.c # issue bankruptcy protection
+		ai_chance = {
+			base = 40
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+				has_law = law_type:law_agrarianism
+			}
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression19c_tt
+		}
+		add_modifier = {
+			name = pec_depression19_bankruptcy_protection
+			months = 61
+		}
+		ig:ig_landowners = {
+			add_modifier = {
+				name = pec_depression19c_igmod_neg
+				months = 61
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_depression19c_igmod_pos
+				months = 61
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression19c_igmod_pos
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.02
+			pop_type = capitalists
+		}
+		scope:pec_depression10_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.12
+				pop_type = capitalists
+			}
+			add_loyalists_in_state = {
+				value = 0.04
+				pop_type = shopkeepers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = laborers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = machinists
+			}
+		}
+	}
+	option = {
+		name = pec_depression.19.e # issue general bankruptcy protection
+		ai_chance = {
+			base = 20
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+			}
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression_bankruptcy_protection_tt
+		}
+		add_modifier = {
+			name = pec_depression_total_bankruptcy_protection
+			months = 61
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_depression_total_bankruptcy_protection_igmod_neg
+				months = 61
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression_total_bankruptcy_protection_igmod_pos
+				multiplier = 0.25
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.1
+			pop_type = capitalists
+		}
+		scope:pec_depression19_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.20
+				pop_type = capitalists
+			}
+			add_loyalists_in_state = {
+				value = 0.04
+				pop_type = shopkeepers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = laborers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = machinists
+			}
+		}
+	}
+}
+
+# tertiary industry bankruptcies
+pec_depression.20 = {	
+	type = country_event 
+	placement = scope:pec_depression20_bankrupt_state
+	title = pec_depression.20.t
+	desc = pec_depression.20.d
+	flavor = pec_depression.20.f
+
+	duration = 3
+
+	cooldown = { months = 8 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_factory_closed"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	trigger = {
+		NOT = { has_modifier = pec_depression20_bankruptcy_protection }
+		NOT = { has_modifier = pec_depression_total_bankruptcy_protection }
+		any_scope_state = {
+			state_population > 500000
+			any_scope_building = {
+				OR = {
+					is_building_group = bg_pec_tertiary_sector
+					is_building_group = bg_arts
+				}
+				level >= 3
+				cash_reserves_ratio < 0.10
+				weekly_profit < 0
+				is_subsidized = no
+			}
+		}
+	}
+		
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					OR = {
+						is_building_group = bg_pec_tertiary_sector
+						is_building_group = bg_arts
+					}
+					level >= 3
+					cash_reserves_ratio < 0.10
+					weekly_profit < 0
+					is_subsidized = no
+				}
+			}
+			save_scope_as = pec_depression20_bankrupt_state
+			random_scope_building = {
+				limit = {
+					OR = {
+						is_building_group = bg_pec_tertiary_sector
+						is_building_group = bg_arts
+					}
+					level >= 3
+					cash_reserves_ratio < 0.10
+					weekly_profit < 0
+					is_subsidized = no
+				}
+				save_scope_as = pec_depression20_bankrupt_building
+			}
+		}
+	}
+
+	option = {
+		name = pec_depression.20.a # let it die
+		default_option = yes
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_depression_progress_add_3
+			change_variable = { name = pec_depression_progress add = 3 }
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression20_igmod_bankrupt
+				months = 37
+			}
+		}
+		ig:ig_pec_unorganized_labour = {
+			add_modifier = {
+				name = pec_depression20_igmod_bankrupt
+				months = 37
+			}
+		}
+		scope:pec_depression20_bankrupt_state = {
+			if = {
+				limit = {
+					scope:pec_depression20_bankrupt_building = {
+						is_building_type = pec_building_hospitality
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = pec_building_hospitality
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression20_bankrupt_building = {
+						is_building_type = pec_building_entertainment
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = pec_building_entertainment
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression20_bankrupt_building = {
+						is_building_type = pec_building_media
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = pec_building_media
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression20_bankrupt_building = {
+						is_building_type = building_arts_academy
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_arts_academy
+			}
+			else_if = {
+				limit = {
+					scope:pec_depression20_bankrupt_building = {
+						is_building_type = building_pec_banks
+						level >= 3
+						cash_reserves_ratio < 0.10
+						weekly_profit < 0
+					}
+				}
+				remove_building = building_pec_banks
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = clerks
+			}
+			add_radicals_in_state = {
+				value = 0.1
+				pop_type = shopkeepers
+			}
+		}
+	}
+	option = {
+		name = pec_depression.20.b # subsidize
+		ai_chance = {
+			base = 40
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+				has_law = law_type:law_agrarianism
+			}
+		}
+		scope:pec_depression20_bankrupt_building = {
+			set_subsidized = yes
+		}
+		scope:pec_depression20_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = clerks
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = shopkeepers
+			}
+		}
+	}
+	option = {
+		name = pec_depression.20.c # issue bankruptcy protection
+		ai_chance = {
+			base = 40
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+				has_law = law_type:law_agrarianism
+			}
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression20c_tt
+		}
+		add_modifier = {
+			name = pec_depression20_bankruptcy_protection
+			months = 61
+		}
+		ig:ig_landowners = {
+			add_modifier = {
+				name = pec_depression20c_igmod_neg
+				months = 61
+			}
+		}
+		ig:ig_pec_unorganized_labour = {
+			add_modifier = {
+				name = pec_depression20c_igmod_pos
+				months = 61
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression20c_igmod_pos
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.02
+			pop_type = capitalists
+		}
+		scope:pec_depression10_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.12
+				pop_type = capitalists
+			}
+			add_loyalists_in_state = {
+				value = 0.04
+				pop_type = shopkeepers
+			}
+			add_loyalists_in_state = {
+				value = 0.01
+				pop_type = laborers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = clerks
+			}
+		}
+	}
+	option = {
+		name = pec_depression.20.e # issue general bankruptcy protection
+		ai_chance = {
+			base = 20
+		}
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_laissez_faire
+				has_law = law_type:law_traditionalism
+			}
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		custom_tooltip = {
+			text = pec_depression_bankruptcy_protection_tt
+		}
+		add_modifier = {
+			name = pec_depression_total_bankruptcy_protection
+			months = 61
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_depression_total_bankruptcy_protection_igmod_neg
+				months = 61
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_depression_total_bankruptcy_protection_igmod_pos
+				multiplier = 0.25
+				months = 61
+			}
+		}
+		add_radicals = {
+			value = 0.1
+			pop_type = capitalists
+		}
+		scope:pec_depression20_bankrupt_state = {
+			add_loyalists_in_state = {
+				value = 0.20
+				pop_type = capitalists
+			}
+			add_loyalists_in_state = {
+				value = 0.04
+				pop_type = shopkeepers
+			}
+			add_loyalists_in_state = {
+				value = 0.01
+				pop_type = laborers
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				pop_type = clerks
+			}
+		}
+	}
+}

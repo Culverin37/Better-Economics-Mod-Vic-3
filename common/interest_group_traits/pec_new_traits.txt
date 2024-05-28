@@ -1,0 +1,9 @@
+﻿ig_trait_pec_oxbridge = {
+	icon = "gfx/interface/icons/ig_trait_icons/treasury_bonds.dds"
+	min_approval = loyal
+	
+	modifier = {
+		country_tech_research_speed_mult = 0.05
+		country_influence_mult = 0.05
+	}
+}

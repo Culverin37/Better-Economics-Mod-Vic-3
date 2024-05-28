@@ -1,0 +1,12 @@
+﻿l_simp_chinese:
+ pec_boombust_pulse.21.t:0 "Stagnation!"
+ pec_boombust_pulse.21.d:0 "Investments, both sound and speculative, are grinding to a halt as all signs point towards our economy stagnating. Caution rules the day in our country, with neither excessive selling nor buying."
+ pec_boombust_pulse.21.f:0 ""Iron rusts from disuse; water loses its purity from stagnation... even so does inaction sap the vigor of the mind.""
+ pec_boombust_pulse.21.a:0 "Terrible."
+ pec_boombust_pulse21_tt:0 "#red -0.5#! #bold Market Confidence#! per month for five years.\n\nCan be ended early by getting #bold Market Volatility#! above 0 or by triggering a Boom or Bust."
+ pec_stagnation:0 "Stagnation"
+
+ pec_boombust_pulse.22.t:0 "Stagnation Ends"
+ pec_boombust_pulse.22.d:0 "Caution and hoarding no longer rule the day in our country, as investments rise in most sectors."
+ pec_boombust_pulse.22.f:0 "The period of economic stagnation is over, marking a pivotal transition. The economy now faces a delicate balance, with opportunities for change amid lingering uncertainties."
+ pec_boombust_pulse.22.a:0 "Huzzah!"

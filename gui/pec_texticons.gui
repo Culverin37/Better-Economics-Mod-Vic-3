@@ -1,0 +1,48 @@
+﻿texticon = {
+	icon = pec_financial_services
+	iconsize = {
+		texture = "gfx/interface/icons/goods_icons/pec_financial_services.dds"
+		size = { 25 25 }
+		offset = { 0 7 }
+		fontsize = 18
+	}
+}
+
+texticon = {
+	icon = pec_hospitality
+	iconsize = {
+		texture = "gfx/interface/icons/goods_icons/pec_hospitality.dds"
+		size = { 25 25 }
+		offset = { 0 7 }
+		fontsize = 18
+	}
+}
+
+texticon = {
+	icon = pec_entertainment
+	iconsize = {
+		texture = "gfx/interface/icons/goods_icons/pec_entertainment.dds"
+		size = { 25 25 }
+		offset = { 0 7 }
+		fontsize = 18
+	}
+}
+
+texticon = {
+	icon = pec_media
+	iconsize = {
+		texture = "gfx/interface/icons/goods_icons/pec_media.dds"
+		size = { 25 25 }
+		offset = { 0 7 }
+		fontsize = 18
+	}
+}
+
+texticon = {
+	icon = pec_unorganized_labour
+	iconsize = {
+		offset = { 0 7 }
+		texture = "gfx/interface/icons/ig_icons/pec_unorganized_labour_30.dds"
+		fontsize = 22
+	}
+}

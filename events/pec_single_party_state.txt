@@ -1,0 +1,908 @@
+﻿namespace = pec_singlepartystate_event
+
+pec_singlepartystate_event.1 = {	
+	type = country_event 
+	hidden = yes
+	
+	trigger = {
+		has_law = law_type:law_single_party_state
+		NOT = {
+			has_journal_entry = pec_single_party_je_1
+		}
+	}
+		
+	immediate = {
+		add_journal_entry = { type = pec_single_party_je_1 }
+	}
+}
+
+# Popular Dissident
+pec_singlepartystate_event.2 = {
+	type = country_event
+	placement = root
+	title = pec_singlepartystate_event.2.t
+	desc = pec_singlepartystate_event.2.d
+	flavor = pec_singlepartystate_event.2.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	event_image = {
+		video = "africa_leader_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		any_scope_character = {
+			AND = {
+				has_ideology = ideology:ideology_pec_dissident
+				popularity >= 50
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_character = {
+			limit = {
+				has_ideology = ideology:ideology_pec_dissident
+				popularity >= 50
+				NOT = { has_modifier = pec_dissidentsurvive_mod }
+			}
+			save_scope_as = pec_singleparty2_populardissident
+		}
+	}
+
+	option = {
+		name = pec_singlepartystate_event.2.a # try to have them killed
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		scope:pec_singleparty2_populardissident = {
+			random_list = {
+				75 = {
+					kill_character = yes
+				}
+				25 = {
+					add_modifier = { 
+						name = pec_dissidentsurvive_mod
+						months = 120
+					}
+				}
+			}
+		}
+		random_list = {
+			25 = { 
+				add_radicals = {
+					value = 0.10
+				}
+				add_modifier = {
+					name = pec_singleparty_wellknownassassin_mod
+					months = 49
+				}
+				custom_tooltip = {
+					text = pec_regimestab_lose_10_text
+					change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+					set_variable = {
+						name = pec_singleparty_wellknownassassin
+						months = 60
+					}
+				}
+			}
+			75 = {
+				add_radicals = {
+					value = 0.02
+				}
+				add_modifier = {
+					name = pec_singleparty_conspiracytheoriesassassin_mod
+					months = 49
+				}
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.2.b # use non-violent means
+		ai_chance = {
+			base = 20
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_5_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 5 }
+		}
+		set_variable = {
+			name = pec_censuringdissident
+			months = 60
+		}
+		add_modifier = {
+			name = pec_censureddissidentcountry_mod
+			months = 49
+		}
+		scope:pec_singleparty2_populardissident = {
+			add_modifier = {
+				name = pec_censureddissident_mod
+				months = 121
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.2.c # definitely have them killed
+		highlighted_option = yes
+		trigger = {
+			has_law = law_type:law_secret_police
+			institution_investment_level = {
+				institution = institution_home_affairs
+				value >= 4
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		scope:pec_singleparty2_populardissident = {
+			kill_character = yes
+		}
+		random_list = {
+			10 = { 
+				add_radicals = {
+					value = 0.10
+				}
+				add_modifier = {
+					name = pec_singleparty_wellknownassassin_mod
+					months = 49
+				}
+				custom_tooltip = {
+					text = pec_regimestab_lose_10_text
+					change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+					set_variable = {
+						name = pec_singleparty_wellknownassassin
+						months = 60
+					}
+				}
+			}
+			90 = {
+				add_radicals = {
+					value = 0.02
+				}
+				add_modifier = {
+					name = pec_singleparty_conspiracytheoriesassassin_mod
+					months = 49
+				}
+			}
+		}
+	}
+}
+
+pec_singlepartystate_event.3 = {
+	type = country_event
+	placement = root
+	title = pec_singlepartystate_event.3.t
+	desc = pec_singlepartystate_event.3.d
+	flavor = pec_singlepartystate_event.3.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	event_image = {
+		video = "middleeast_middleclass_cafe"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	trigger = {
+		NOT = { has_law = law_type:law_right_of_assembly }
+		NOT = { has_law = law_type:law_protected_speech }
+		literacy_rate >= 0.50
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_singlepartystate_event.3.a # increase efforts to combat illegal papers
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_5_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 5 }
+			set_variable = {
+				name = pec_singleparty_combatingundergroundpress
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_singleparty_undergroundpress_mod
+			multiplier = 0.5
+			months = 48
+		}
+		add_modifier = {
+			name = pec_singleparty_repress_undergroundpress_mod
+			multiplier = money_amount_multiplier_medium
+			months = 48
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.3.b # maintain current efforts
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+			set_variable = {
+				name = pec_singleparty_undergroundpress
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_singleparty_undergroundpress_mod
+			months = 60
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.3.c # grant concessions
+		highlighted_option = yes
+		trigger = {
+			NOT = {
+				any_scope_character = {
+					OR = {
+						is_ruler = yes
+						has_role = politician
+					}
+					has_ideology = ideology:ideology_pec_totalitarian
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_15_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 15 }
+			set_variable = {
+				name = pec_singleparty_undergroundpress_concession
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_singleparty_gave_concessions
+			months = 60
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_censorship
+			}
+			activate_law = law_type:law_right_of_assembly
+		}
+		else_if = {
+			limit = {
+				has_law = law_type:law_outlawed_dissent
+			}
+			activate_law = law_type:law_censorship
+		}
+	}
+}
+
+pec_singlepartystate_event.4 = {
+	type = country_event
+	placement = root
+	title = pec_singlepartystate_event.4.t
+	desc = pec_singlepartystate_event.4.d
+	flavor = pec_singlepartystate_event.4.f
+
+	duration = 3
+
+	cooldown = { months = 90 }
+
+	event_image = {
+		video = "asia_union_leader"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	trigger = {
+		NOT = { has_law = law_type:law_pec_free_unions }
+		any_scope_state = {
+			is_incorporated = yes
+			turmoil > 0.1
+			any_scope_building = {
+				OR = {
+					is_building_group = bg_mining
+					is_building_group = bg_logging
+					is_building_group = bg_manufacturing
+				}
+				earnings >= 10
+				occupancy > 0.90
+				level >= 10
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_building = {
+					OR = {
+						is_building_group = bg_mining
+						is_building_group = bg_logging
+						is_building_group = bg_manufacturing
+					}
+					earnings >= 10
+					occupancy > 0.90
+					level >= 10
+				}
+			}
+			save_scope_as = pec_singleparty_wildcatstate
+		}
+		scope:pec_singleparty_wildcatstate = {
+			random_scope_building = {
+				limit = {
+					OR = {
+						is_building_group = bg_mining
+						is_building_group = bg_logging
+						is_building_group = bg_manufacturing
+					}
+					occupancy > 0.90
+					earnings >= 10
+					level >= 10
+				}
+				save_scope_as = pec_singleparty_wildcatbuilding
+			}
+		}
+	}
+
+	option = {
+		name = pec_singlepartystate_event.4.a # crack down on the workers
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_5_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 5 }
+			set_variable = {
+				name = pec_singleparty_strike_crackdown
+				months = 60
+			}
+		}
+		scope:pec_singleparty_wildcatstate = {
+			add_radicals_in_state = {
+				value = 0.05
+			}
+			add_modifier = {
+				name = pec_singleparty_wildcatstate_mod
+				multiplier = 0.5
+				months = 36
+			}
+		}
+		scope:pec_singleparty_wildcatbuilding = {
+			add_modifier = {
+				name = pec_singleparty_wildcatbuilding_mod
+				months = 36
+			}
+		}
+		add_modifier = {
+			name = pec_singleparty_repress_wildcatstrikers_mod
+			multiplier = money_amount_multiplier_small
+			months = 48
+		}
+		random_list = {
+			80 = {
+				create_character = {
+					is_agitator = yes
+					interest_group = ig_trade_unions
+					ideology = ideology_pec_dissident
+					traits = {
+						inspirational_orator
+						charismatic
+					}
+				}
+			}
+			20 = {
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.4.b # make token measures
+		ai_chance = {
+			base = 40
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+			set_variable = {
+				name = pec_singleparty_strike_token
+				months = 60
+			}
+		}
+		scope:pec_singleparty_wildcatstate = {
+			add_radicals_in_state = {
+				value = 0.02
+			}
+			add_modifier = {
+				name = pec_singleparty_wildcatstate_mod
+				months = 48
+			}
+		}
+		scope:pec_singleparty_wildcatbuilding = {
+			add_modifier = {
+				name = pec_singleparty_wildcatbuilding_mod
+				months = 48
+			}
+		}
+		random_list = {
+			60 = {
+				create_character = {
+					is_agitator = yes
+					interest_group = ig_trade_unions
+					ideology = ideology_pec_dissident
+					traits = {
+						inspirational_orator
+						charismatic
+					}
+				}
+			}
+			40 = {
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.4.c # grant concessions
+		highlighted_option = yes
+		trigger = {
+			NOT = {
+				any_scope_character = {
+					OR = {
+						is_ruler = yes
+						has_role = politician
+					}
+					has_ideology = ideology:ideology_pec_totalitarian
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_15_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 15 }
+			set_variable = {
+				name = pec_singleparty_strike_concession
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_singleparty_gave_concessions
+			months = 60
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_pec_regulated_unions
+			}
+			activate_law = law_type:law_pec_free_unions
+		}
+		else_if = {
+			limit = {
+				has_law = law_type:law_pec_persecuted_unions
+			}
+			activate_law = law_type:law_pec_regulated_unions
+		}
+		random_list = {
+			20 = {
+				create_character = {
+					is_agitator = yes
+					interest_group = ig_trade_unions
+					ideology = ideology_pec_dissident
+					traits = {
+						inspirational_orator
+						charismatic
+					}
+				}
+			}
+			80 = {
+			}
+		}
+	}
+}
+
+pec_singlepartystate_event.5 = {
+	type = country_event
+	placement = root
+	title = pec_singlepartystate_event.5.t
+	desc = pec_singlepartystate_event.5.d
+	flavor = pec_singlepartystate_event.5.f
+
+	duration = 3
+
+	cooldown = { months = 90 }
+
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	trigger = {
+		has_ruling_interest_group_count >= 2
+	}
+
+	immediate = {
+		random_active_party = {
+			save_scope_as = pec_singleparty_conflictparty
+		}
+		random_interest_group = {
+			limit = {
+				is_strongest_ig_in_government = yes
+			}
+			save_scope_as = pec_singleparty_conflictig1
+		}
+		random_interest_group = {
+			limit = {
+				is_strongest_ig_in_government = no
+				is_in_government = yes
+			}
+			save_scope_as = pec_singleparty_conflictig2
+		}
+	}
+
+	option = {
+		name = pec_singlepartystate_event.5.a # do not interfere
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_5_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 5 }
+			set_variable = {
+				name = pec_singleparty_factionalism_5
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_singleparty_internalconflict_mod
+			months = 60
+		}
+		scope:pec_singleparty_conflictig1 = {
+			add_modifier = {
+				name = pec_singleparty_internalconflict_igmod
+				months = 60
+			}
+		}
+		scope:pec_singleparty_conflictig2 = {
+			add_modifier = {
+				name = pec_singleparty_internalconflict_igmod
+				months = 60
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.5.b # crack down on factionalism
+		ai_chance = {
+			base = 25
+		}
+		add_modifier = {
+			name = pec_singleparty_suppressedfactionalism_mod
+			months = 60
+		}
+		every_interest_group = {
+			limit = {
+				is_in_government = yes
+			}
+			add_modifier = {
+				name = pec_singleparty_suppressedfactionalism_igmod
+				months = 60
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.5.c # support dominant
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+			set_variable = {
+				name = pec_singleparty_factionalism_10
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_singleparty_internalconflict_mod
+			multiplier = 0.5
+			months = 60
+		}
+		scope:pec_singleparty_conflictig1 = {
+			add_modifier = {
+				name = pec_singleparty_supportedconflict_igmod
+				months = 60
+			}
+		}
+		scope:pec_singleparty_conflictig2 = {
+			add_modifier = {
+				name = pec_singleparty_opposedconflict_igmod
+				months = 60
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.5.e # support weaker
+		ai_chance = {
+			base = 10
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+			set_variable = {
+				name = pec_singleparty_factionalism_10
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_singleparty_internalconflict_mod
+			multiplier = 0.5
+			months = 60
+		}
+		scope:pec_singleparty_conflictig1 = {
+			add_modifier = {
+				name = pec_singleparty_opposedconflict_igmod
+				multiplier = 1.5
+				months = 60
+			}
+		}
+		scope:pec_singleparty_conflictig2 = {
+			add_modifier = {
+				name = pec_singleparty_supportedconflict_igmod
+				multiplier = 1.5
+				months = 60
+			}
+		}
+	}
+}
+
+pec_singlepartystate_event.6 = {
+	type = country_event
+	placement = root
+	title = pec_singlepartystate_event.6.t
+	desc = pec_singlepartystate_event.6.d
+	flavor = pec_singlepartystate_event.6.f
+
+	duration = 3
+
+	cooldown = { months = 90 }
+
+	event_image = {
+		video = "unspecific_ruler_speaking_to_people"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		 ruler = {
+		 	popularity >= 30
+		 }
+	}
+
+	immediate = {
+		random_active_party = {
+			save_scope_as = pec_singleparty_party
+		}
+		ruler = {
+			save_scope_as = pec_singleparty_popularleader
+		}
+	}
+
+	option = {
+		name = pec_singlepartystate_event.6.a # huzzah
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_gain_5_text
+			change_variable = { name = pec_singlepartystability_je_var add = 5 }
+			set_variable = {
+				name = pec_singleparty_popularleader_5
+				months = 60
+			}
+		}
+		scope:pec_singleparty_popularleader = {
+			add_modifier = {
+				name = pec_singleparty_popularleader_charmod
+				months = 60
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.6.b # exploit popularity
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_gain_10_text
+			change_variable = { name = pec_singlepartystability_je_var add = 10 }
+			set_variable = {
+				name = pec_singleparty_popularleader_10
+				months = 60
+			}
+		}
+	}
+}
+
+pec_singlepartystate_event.7 = {
+	type = country_event
+	placement = root
+	title = pec_singlepartystate_event.7.t
+	desc = pec_singlepartystate_event.7.d
+	flavor = pec_singlepartystate_event.7.f
+
+	duration = 3
+
+	cooldown = { months = 90 }
+
+	event_image = {
+		video = "unspecific_ruler_speaking_to_people"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		 ruler = {
+		 	popularity < -50
+		 }
+	}
+
+	immediate = {
+		random_active_party = {
+			save_scope_as = pec_singleparty_party
+		}
+		ruler = {
+			save_scope_as = pec_singleparty_unpopularleader
+		}
+	}
+
+	option = {
+		name = pec_singlepartystate_event.7.a # replace
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+			set_variable = {
+				name = pec_singleparty_unpopularleader_10
+				months = 60
+			}
+		}
+		scope:pec_singleparty_unpopularleader = {
+			kill_character = yes
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.7.b # do nothing
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_lose_10_text
+			change_variable = { name = pec_singlepartystability_je_var subtract = 10 }
+			set_variable = {
+				name = pec_singleparty_unpopularleader_10
+				months = 60
+			}
+		}
+	}
+}
+
+pec_singlepartystate_event.8 = {
+	type = country_event
+	placement = root
+	title = pec_singlepartystate_event.8.t
+	desc = pec_singlepartystate_event.8.d
+	flavor = pec_singlepartystate_event.8.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	event_image = {
+		video = "unspecific_ruler_speaking_to_people"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		 ruler = {
+		 	popularity > -25
+			OR = {
+				popularity >= 50
+				has_trait = charismatic
+				has_trait = arrogant
+				has_trait = ambitious
+				has_trait = imperious
+			}
+		 }
+	}
+
+	immediate = {
+		ruler = {
+			save_scope_as = pec_singleparty_personalitycult_ruler
+		}
+	}
+
+	option = {
+		name = pec_singlepartystate_event.8.a # allow it to continue
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_gain_5_text
+			change_variable = { name = pec_singlepartystability_je_var add = 5 }
+			set_variable = {
+				name = pec_singleparty_cop_allowed
+				months = 60
+			}
+		}
+		scope:pec_singleparty_personalitycult_ruler = {
+			add_modifier = {
+				name = pec_singleparty_cultofpersonality
+				months = 120
+			}
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.8.b # support the cult of personality
+		ai_chance = {
+			base = 50
+		}
+		custom_tooltip = {
+			text = pec_regimestab_gain_10_text
+			change_variable = { name = pec_singlepartystability_je_var add = 10 }
+			set_variable = {
+				name = pec_singleparty_cop_supported
+				months = 60
+			}
+		}
+		scope:pec_singleparty_personalitycult_ruler = {
+			add_modifier = pec_singleparty_cultofpersonality
+		}
+		add_modifier = {
+			name = pec_singleparty_supporting_cultofpersonality
+			multiplier = money_amount_multiplier_medium
+			months = 60
+		}
+	}
+	option = {
+		name = pec_singlepartystate_event.8.c # suppress the cult of personality
+		ai_chance = {
+			base = 10
+		}
+		add_modifier = {
+			name = pec_singleparty_cop_suppressed
+			months = 60
+		}
+	}
+}

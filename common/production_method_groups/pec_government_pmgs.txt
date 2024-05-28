@@ -1,0 +1,35 @@
+﻿pec_pmg_government_administration_education = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pec_pm_no_formal_education
+		pec_pm_religious_schools
+		pec_pm_private_schools
+		pec_pm_public_schools
+	}
+}
+
+pec_pmg_government_administration_healthcare = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pec_pm_no_formal_healthcare
+		pec_pm_charity_healthcare
+		pec_pm_private_healthcare
+		pec_pm_public_healthcare
+	}
+}
+
+pec_pmg_university_education = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pec_pm_no_formal_school
+		pec_pm_religious_school
+		pec_pm_private_school
+		pec_pm_public_school
+	}
+}

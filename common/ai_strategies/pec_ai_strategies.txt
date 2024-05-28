@@ -1,0 +1,390 @@
+ai_strategy_pec_tertiary_sector = {
+	icon = "gfx/interface/icons/law_icons/wealth_voting.dds"
+	
+	type = administrative
+	
+	subsidies = {
+		building_pec_banks = wants_to_have
+		pec_building_hospitality = wants_to_have
+		pec_building_entertainment = wants_to_have
+	}
+	
+	goods_stances = {
+		tea = { stance = wants_high_supply }
+		coffee = { stance = wants_high_supply }
+		wine = { stance = wants_high_supply }
+		liquor = { stance = wants_high_supply }
+		groceries = { stance = wants_high_supply }
+		paper = { stance = wants_high_supply }
+		pec_entertainment = { stance = wants_high_supply }
+		pec_financial_services = { stance = wants_export }
+		pec_hospitality = { stance = wants_export }
+		pec_media = { stance = wants_export }
+	}
+	
+	building_group_weights = {
+		bg_manufacturing = 1.25
+		bg_plantations = 1.25
+		bg_oil_extraction = 1.25	
+		bg_pec_tertiary_sector = 2.5	
+	}
+
+	possible = {
+		has_technology_researched = pec_leisure
+	}
+	
+	weight = {
+		value = 0
+				
+		if = {
+			limit = { 
+				OR = {
+					country_is_in_europe = yes
+					country_is_in_north_america = yes
+				}
+			}
+			add = 5
+		}
+
+		if = {
+			limit = {
+				has_technology_researched = pec_tourism
+			}
+			add = 8
+		}
+		if = {
+			limit = {
+				average_sol > 11
+			}
+			add = 4
+		}
+		if = {
+			limit = {
+				average_sol > 13
+			}
+			add = 6
+		}
+
+		if = {
+			limit = {
+				average_sol > 15
+			}
+			add = 12
+		}
+
+		if = {
+			limit = {
+				average_sol > 18
+			}
+			add = 18
+		}
+
+
+		if = {
+			limit = {
+				has_law = law_type:law_council_republic	
+			}
+			add = -20
+		}	
+		
+		if = {
+			limit = {
+				has_law = law_type:law_command_economy	
+			}
+			multiply = 0
+		}	
+		
+		if = {
+			limit = { is_country_type = unrecognized }
+			multiply = 0.25
+		}	
+		
+		if = {
+			limit = { 
+				exists = ig:ig_industrialists
+				ig:ig_industrialists = { is_powerful = yes } 
+			}
+			multiply = 1.25
+		}
+
+		if = {
+			limit = { 
+				exists = ig:ig_petty_bourgeoisie
+				ig:ig_petty_bourgeoisie = { is_powerful = yes } 
+			}
+			multiply = 1.25
+		}
+
+		if = {
+			limit = { 
+				exists = ig:ig_intelligentsia
+				ig:ig_intelligentsia = { is_powerful = yes } 
+			}
+			multiply = 1.75
+		}
+
+		if = { 
+			limit = { literacy_rate < 0.40 }
+			multiply = 0.1
+		}
+
+		if = { 
+			limit = { literacy_rate < 0.50 }
+			multiply = 0.5
+		}	
+		
+		if = { 
+			limit = { literacy_rate >= 0.60 }
+			multiply = 1.5
+		}
+		
+		if = { 
+			limit = { literacy_rate >= 0.70 }
+			multiply = 1.5
+		}
+
+		if = { 
+			limit = { literacy_rate >= 0.80 }
+			multiply = 1.75
+		}
+
+		if = { 
+			limit = { literacy_rate >= 0.90 }
+			multiply = 2
+		}					
+	}
+}
+
+ai_strategy_unify_germany = {
+	icon = "gfx/interface/icons/ai_strategy_icons/unification.dds"
+	
+	type = diplomatic
+	
+	undesirable_infamy_level = {
+		value = 30
+	}
+	
+	unacceptable_infamy_level = {
+		value = 60
+	}
+	
+	ideological_opinion_effect_mult = {
+		value = 0.5
+	}
+	
+	wargoal_maneuvers_fraction = {
+		value = 0.2
+	}		
+	
+	diplomatic_play_neutrality = {
+		value = 0
+	}
+	
+	diplomatic_play_boldness = {
+		value = 75
+	}
+
+	obligation_value = {
+		value = 0
+	
+		if = {
+			limit = { 
+				scope:target_country = {			
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+				}
+			}
+			add = 25
+		}
+	}	
+
+	recklessness = {
+		value = 0.5
+	}
+	
+	aggression = {
+		value = 0.25
+		
+		if = {
+			limit = { 
+				scope:target_country = {			
+					OR = {
+						country_has_primary_culture = cu:north_german
+						country_has_primary_culture = cu:south_german
+					}
+				}
+			}
+			add = 2.75
+		}
+
+		if = {
+			limit = { 
+				scope:target_country = {
+					is_oppressor_of_schleswig_holstein = yes
+				}
+			}
+			add = 20
+		}
+
+		# Less aggressive against countries we're just antagonistic against, rather than belligerent/domineering
+		if = {
+			limit = {
+				has_attitude = {
+					who = scope:target_country
+					attitude = antagonistic
+				}					
+			}
+			multiply = 0.25
+		}	
+
+		# More aggressive against ideological enemies, a bit less aggressive against ideological allies
+		if = {
+			limit = {
+				"ai_ideological_opinion(scope:target_country)" < 0
+			}
+			
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.2
+				add = 1
+				max = 4.0
+			}				
+		}	
+		else = {
+			multiply = {
+				value = "ai_ideological_opinion(scope:target_country)"
+				multiply = -0.05
+				add = 1
+				min = 0.5
+			}			
+		}		
+	}
+
+	building_group_weights = {
+		bg_army = 1.5
+	}
+	
+	state_value = {
+		if = {
+			limit = {
+				scope:target_state = {
+					state_region = {
+						OR = {
+							is_homeland = cu:north_german
+							is_homeland = cu:south_german
+						}
+					}
+				}
+				can_reach_target_state = yes					
+			}
+			add = 100
+		}
+
+		if = {
+			limit = {
+				scope:target_state = {
+					state_region = s:STATE_SCHLESWIG_HOLSTEIN
+				}				
+			}
+			add = 200
+		}
+	}
+	
+	wargoal_scores = {	
+		unification_leadership = {
+			value = 1000
+		}	
+	}
+	
+	secret_goal_scores = {
+		protect = {		
+			if = {
+				limit = {
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+						NOT = { is_unification_candidate = GER }
+						OR = { 
+							is_supporting_unification_candidate = { who = root country_formation = GER }
+							is_subject_of = root
+							has_diplomatic_pact = {
+								who = scope:target_country
+								type = customs_union
+							}							
+						}						
+					}
+				}
+				add = 1000
+			}		
+		}		
+		dominate = {		
+			if = {
+				limit = {
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}					
+						NOT = { is_unification_candidate = GER }
+						NOR = { 
+							is_supporting_unification_candidate = { who = root country_formation = GER }
+							is_subject_of = root
+							has_diplomatic_pact = {
+								who = scope:target_country
+								type = customs_union
+							}							
+						}	
+					}
+				}
+				add = 1000
+			}
+			if = {
+				limit = {
+					scope:target_country = {
+						OR = {
+							country_has_primary_culture = cu:north_german
+							country_has_primary_culture = cu:south_german
+						}
+    						is_subject = yes
+    						top_overlord ?= {
+    							is_oppressor_of_schleswig_holstein = yes
+    						}	
+					}
+				}
+				add = 500
+			}	
+		}
+		conquer = {				
+			if = {
+				limit = {
+					scope:target_country = {				
+						is_unification_candidate = GER
+					}
+				}
+				add = 1000
+			}
+
+			if = {
+				limit = {
+					scope:target_country = {
+						is_oppressor_of_schleswig_holstein = yes
+					}
+				}
+				add = 2500
+			}		
+		}
+	}	
+
+	possible = {
+		is_unification_candidate = GER	
+		NOT = { country_tier = empire }
+	}
+
+	weight = {
+		value = 1000
+	}
+}

@@ -1,0 +1,147 @@
+﻿goods_input_services_add = {
+	good = no
+	percent = no
+}
+
+goods_input_fine_art_add = {
+	good = no
+	percent = no
+}
+
+goods_input_coffee_add = {
+	good = no
+	percent = no
+}
+
+goods_input_tea_add = {
+	good = no
+	percent = no
+}
+
+goods_output_pec_financial_services_add = {
+	good = no
+	percent = no
+}
+
+goods_input_pec_financial_services_add = {
+	good = no
+	percent = no
+}
+
+goods_output_pec_hospitality_add = {
+	good = no
+	percent = no
+}
+
+goods_input_pec_hospitality_add = {
+	good = no
+	percent = no
+}
+
+goods_output_pec_entertainment_add = {
+	good = no
+	percent = no
+}
+
+goods_input_pec_entertainment_add = {
+	good = no
+	percent = no
+}
+
+goods_output_pec_media_add = {
+	good = no
+	percent = no
+}
+
+goods_input_pec_media_add = {
+	good = no
+	percent = no
+}
+
+state_building_pec_riverdevelopment_max_level_add = {
+	good = yes
+	percent = no
+	num_decimals = 0
+}
+
+building_group_bg_construction_throughput_add = {
+	good = yes
+	percent = yes
+	num_decimals = 0
+}
+
+building_group_bg_pec_banks_throughput_add = {
+	good = yes
+	percent = yes
+	num_decimals = 0
+}
+
+building_group_bg_pec_tertiary_sector_throughput_add = {
+	good = yes
+	percent = yes
+	num_decimals = 0
+}
+
+building_group_bg_pec_central_bank_throughput_add = {
+	good = yes
+	percent = yes
+	num_decimals = 0
+}
+
+state_building_pec_banks_max_level_add = {
+	good = yes
+	percent = no
+	num_decimals = 0
+}
+
+goods_output_pec_hospitality_mult = {
+	good = yes
+	percent = yes
+}
+
+goods_output_pec_financial_services_mult = {
+	good = yes
+	percent = yes
+}
+
+goods_output_transportation_mult = {
+	good = yes
+	percent = yes
+}
+
+goods_output_liquor_mult = {
+	good = yes
+	percent = yes
+}
+
+goods_output_wine_mult = {
+	good = yes
+	percent = yes
+}
+
+interest_group_ig_pec_unorganized_labour_pol_str_mult = {
+	neutral = yes
+	percent = yes
+	num_decimals = 0
+}
+
+interest_group_ig_pec_unorganized_labour_approval_add = {
+	good = yes
+	percent = no
+}
+
+interest_group_ig_pec_unorganized_labour_pop_attraction_mult = {
+	neutral = yes
+	percent = yes
+	num_decimals = 0
+}
+
+country_peasants_pol_str_add = {
+	neutral = yes
+	num_decimals = 0
+}
+
+building_group_bg_construction_employee_mult = {
+	good = no
+	percent = yes
+}

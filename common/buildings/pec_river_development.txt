@@ -1,0 +1,38 @@
+﻿
+building_pec_riverdevelopment = {
+	building_group = bg_pec_river_development2	
+	texture = "gfx/interface/icons/building_icons/panama_canal.dds"
+
+	has_max_level = yes
+
+	production_method_groups = {
+		pmg_riverdev_canals
+		pmg_riverdev_boats
+		pmg_riverdev_hydropower
+		pmg_ownership_capital_building_riverdev
+	}
+
+	required_construction = construction_cost_low
+	
+	ai_value = 2000
+	
+	should_auto_expand = { 
+		occupancy >= 0.8
+		OR = {
+			cash_reserves_ratio > 0.5
+			is_subsidized = yes
+		}
+		OR = {
+			owner = {
+				market = {
+					mg:transportation = { 
+						market_goods_pricier > 0.5 
+					}
+				}
+			}
+			state.market_access < 1
+		}
+		NOT = { is_under_construction = yes }
+
+	}
+}

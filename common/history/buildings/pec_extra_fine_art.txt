@@ -1,0 +1,154 @@
+﻿BUILDINGS={
+	s:STATE_MIDLANDS={
+		region_state:GBR={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_NEW_YORK={
+		region_state:USA={
+			create_building={
+				building="building_arts_academy"
+				level=2
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_BRANDENBURG={
+		region_state:PRU={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+
+	s:STATE_ILE_DE_FRANCE={
+		region_state:FRA={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_FLANDERS={
+		region_state:BEL={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_HOLLAND={
+		region_state:NET={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_AUSTRIA={
+		region_state:AUS={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_INGRIA={
+		region_state:RUS={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_RIO_DE_JANEIRO={
+		region_state:BRZ={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_BEIJING={
+		region_state:CHI={
+			create_building={
+				building="building_arts_academy"
+				level=3
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+
+	s:STATE_NANJING={
+		region_state:CHI={
+			create_building={
+				building="building_arts_academy"
+				level=2
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_KANTO={
+		region_state:JAP={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_KANSAI={
+		region_state:JAP={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_EASTERN_THRACE={
+		region_state:TUR={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+	s:STATE_SVEALAND={
+		region_state:SWE={
+			create_building={
+				building="building_arts_academy"
+				level=1
+				reserves=1
+				activate_production_methods={ "pm_traditional_art" "pm_traditional_patronage" }
+			}
+		}
+	}
+}

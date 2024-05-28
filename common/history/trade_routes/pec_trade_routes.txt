@@ -1,0 +1,98 @@
+﻿TRADE_ROUTES = {
+	c:SWI = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 3
+			direction = export
+			target = c:FRA.market
+		}	
+	}
+	c:SWI = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 1
+			direction = export
+			target = c:AUS.market
+		}	
+	}
+	c:SWI = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 1
+			direction = export
+			target = c:PRU.market
+		}	
+	}
+	c:TUS = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 1
+			direction = export
+			target = c:PAP.market
+		}	
+	}
+	c:TUS = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 1
+			direction = export
+			target = c:SIC.market
+		}	
+	}
+	c:ARG = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 1
+			direction = export
+			target = c:BRZ.market
+		}	
+	}
+	c:ARG = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 1
+			direction = export
+			target = c:CHL.market
+		}	
+	}
+	c:USA = {
+		create_trade_route = {
+			goods = pec_media
+			level = 3
+			direction = export
+			target = c:GBR.market
+		}	
+	}
+	c:GBR = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 2
+			direction = export
+			target = c:RUS.market
+		}	
+	}
+	c:GBR = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 1
+			direction = export
+			target = c:BEL.market
+		}	
+	}
+	c:NET = {
+		create_trade_route = {
+			goods = pec_financial_services
+			level = 1
+			direction = export
+			target = c:SWE.market
+		}	
+	}
+	c:NET = {
+		create_trade_route = {
+			goods = pec_media
+			level = 3
+			direction = import
+			target = c:BEL.market
+		}	
+	}
+}

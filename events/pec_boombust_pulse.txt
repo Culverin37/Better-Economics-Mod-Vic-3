@@ -1,0 +1,2595 @@
+﻿namespace = pec_boombust_pulse
+
+pec_boombust_pulse.1 = {
+	type = country_event
+	placement = scope:pec_bank_panic_state
+	title = pec_boombust_pulse.1.t
+	desc = pec_boombust_pulse.1.d
+	flavor = pec_boombust_pulse.1.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOT = { has_variable = pec_boombustpulse1_var }
+		NOT = { has_variable = pec_boombustpulse1_v_var }
+		NOT = { has_modifier = pec_bank_panic }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		any_scope_state = {
+			has_building = building_pec_banks
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_pec_banks
+				NOT = { has_active_production_method = pm_pec_banks_simple }
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_building = {
+					is_building_type = building_pec_banks
+					NOT = { has_active_production_method = pm_pec_banks_simple }
+				}
+			}
+			save_scope_as = pec_bank_panic_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.1.a
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		scope:pec_bank_panic_state = {
+			add_modifier = {
+				name = pec_bank_panic_state
+				months = 49
+			}
+			add_radicals_in_state = {
+				value = 0.03
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_banknobailout_negative
+				months = 25
+			}
+		}
+		custom_tooltip = pec_boombust_pulse1.tt
+		set_variable = {
+			name = pec_boombustpulse1_var
+			months = 49
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.1.b
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		scope:pec_bank_panic_state = {
+			add_modifier = {
+				name = pec_bank_panic_state
+				months = 25
+			}
+			add_radicals_in_state = {
+				value = 0.01
+			}
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_bailout_local_bank
+			multiplier = money_amount_multiplier_small
+			months = 49
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_bankbailout_positive
+				months = 25
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_bankbailout_negative
+				months = 25
+			}
+		}
+		custom_tooltip = pec_boombust_pulse1.tt
+		set_variable = {
+			name = pec_boombustpulse1_var
+			months = 25
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.1.c
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		scope:pec_bank_panic_state = {
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_bailout_local_bank
+			multiplier = money_amount_multiplier_medium
+			months = 60
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_bankcontrol_negative
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse1_v.tt
+		set_variable = {
+			name = pec_boombustpulse1_v_var
+			months = 60
+		}
+	}
+}
+
+pec_boombust_pulse.2 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.2.t
+	desc = pec_boombust_pulse.2.d
+	flavor = pec_boombust_pulse.2.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOT = { has_variable = pec_boombustpulse2_var }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		any_scope_state = {
+			has_modifier = pec_bank_panic_state
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				has_modifier = pec_bank_panic_state
+			}
+			save_scope_as = pec_bank_panic_state2
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.2.a
+		default_option = yes
+		ai_chance = {
+			base = 20
+		}
+		add_modifier = {
+			name = pec_bank_panic
+			months = 37
+		}
+		add_radicals = {
+			value = 0.02
+		}
+		custom_tooltip = pec_boombust_pulse2.tt
+		set_variable = {
+			name = pec_boombustpulse2_var
+			months = 37
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.2.b
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		ai_chance = {
+			base = 80
+		}
+		add_modifier = {
+			name = pec_bank_panic
+			months = 25
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_bailout_national_bank
+			multiplier = money_amount_multiplier_medium
+			months = 37
+		}
+		add_radicals = {
+			value = 0.01
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_bankbailout_positive
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse2.tt
+		set_variable = {
+			name = pec_boombustpulse2_var
+			months = 25
+		}
+	}
+}
+
+pec_boombust_pulse.3 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.3.t
+	desc = pec_boombust_pulse.3.d
+	flavor = pec_boombust_pulse.3.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "middleeast_upperclass_party"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOT = { has_variable = pec_boombustpulse3_var }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		var:pec_market_confidence > 5
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.3.a
+		default_option = yes
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		custom_tooltip = pec_boombust_pulse3a.tt
+		set_variable = {
+			name = pec_boombustpulse3_var
+			months = 48
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.3.b
+		default_option = yes
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		custom_tooltip = pec_boombust_pulse3b.tt
+		set_variable = {
+			name = pec_boombustpulse3_var
+			months = 36
+		}
+	}
+}
+
+pec_boombust_pulse.4 = {
+	type = country_event
+	placement = scope:pec_investment_trust_state
+	title = pec_boombust_pulse.4.t
+	desc = pec_boombust_pulse.4.d
+	flavor = pec_boombust_pulse.4.f
+
+	duration = 3
+
+	cooldown = { months = 132 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		has_technology_researched = mutual_funds
+		NOT = { has_variable = pec_boombustpulse4_var }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		any_scope_state = {
+			has_building = building_pec_banks
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_pec_banks
+				NOT = { has_active_production_method = pm_pec_banks_simple }
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_building = {
+					is_building_type = building_pec_banks
+					NOT = { has_active_production_method = pm_pec_banks_simple }
+				}
+			}
+			save_scope_as = pec_investment_trust_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.4.a
+		default_option = yes
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		scope:pec_investment_trust_state = {
+			add_modifier = {
+				name = pec_investment_trust
+				months = 120
+			}
+			add_loyalists_in_state = {
+				value = 0.1
+				strata = upper
+			}
+			add_loyalists_in_state = {
+				value = 0.05
+				strata = middle
+			}
+		}
+		custom_tooltip = pec_boombust_pulse4a.tt
+		set_variable = {
+			name = pec_boombustpulse4_var
+			months = 120
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.4.b
+		default_option = yes
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		scope:pec_investment_trust_state = {
+			add_modifier = {
+				name = pec_investment_trust
+				months = 84
+			}
+			add_loyalists_in_state = {
+				value = 0.08
+				strata = upper
+			}
+			add_loyalists_in_state = {
+				value = 0.03
+				strata = middle
+			}
+		}
+		custom_tooltip = pec_boombust_pulse4b.tt
+		set_variable = {
+			name = pec_boombustpulse4_var
+			months = 84
+		}
+	}
+}
+
+pec_boombust_pulse.5 = {
+	type = country_event
+	placement = scope:pec_investment_trust_state
+	title = pec_boombust_pulse.5.t
+	desc = pec_boombust_pulse.5.d
+	flavor = pec_boombust_pulse.5.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_factory_closed"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		has_technology_researched = mutual_funds
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		NOT = { has_variable = pec_boombustpulse5_var }
+		any_scope_state = {
+			has_modifier = pec_investment_trust
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				has_modifier = pec_investment_trust
+			}
+			save_scope_as = pec_investment_trust_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.5.a
+		default_option = yes
+
+		scope:pec_investment_trust_state = {
+			remove_modifier = pec_investment_trust
+			add_radicals_in_state = {
+				value = 0.10
+				strata = upper
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				strata = middle
+			}
+		}
+		custom_tooltip = pec_boombust_pulse5.tt
+		set_variable = {
+			name = pec_boombustpulse5_var
+			months = 36
+		}
+		remove_variable = pec_boombustpulse4_var
+	}
+	option = {
+		name = pec_boombust_pulse.5.b
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		scope:pec_investment_trust_state = {
+			add_radicals_in_state = {
+				value = 0.03
+				strata = poor
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_bailout_investmenttrust_negative
+				months = 60
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_bailout_investmenttrust_positive
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_bailout_investment_trust
+			multiplier = money_amount_multiplier_small
+			months = 37
+		}
+	}
+}
+
+pec_boombust_pulse.6 = {
+	type = country_event
+	placement = scope:pec_boombust6_state
+	title = pec_boombust_pulse.6.t
+	desc = pec_boombust_pulse.6.d
+	flavor = pec_boombust_pulse.6.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "africa_city_center"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		NOT = { has_law = law_type:law_industry_banned }
+		NOT = { has_variable = pec_boombustpulse6a_var }
+		NOT = { has_variable = pec_boombustpulse6b_var }
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = building_urban_center
+				level >= 8
+			}
+			is_incorporated = yes
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_building = {
+					is_building_type = building_urban_center
+					level >= 8
+				}
+			}
+			save_scope_as = pec_boombust6_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.6.a
+		default_option = yes
+
+		scope:pec_boombust6_state = {
+			add_radicals_in_state = {
+				value = 0.10
+				strata = middle
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_supported_bigbusiness_negative
+				months = 60
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_supported_bigbusiness_positive
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse6a.tt
+		set_variable = {
+			name = pec_boombustpulse6a_var
+			months = 60
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.6.b
+		scope:pec_boombust6_state = {
+			add_radicals_in_state = {
+				value = 0.10
+				strata = rich
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_supported_smallbusiness_positive
+				months = 60
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_supported_smallbusiness_negative
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse6b.tt
+		set_variable = {
+			name = pec_boombustpulse6b_var
+			months = 60
+		}
+	}
+}
+
+pec_boombust_pulse.7 = {
+	type = country_event
+	placement = scope:pec_localstrike_state
+	title = pec_boombust_pulse.7.t
+	desc = pec_boombust_pulse.7.d
+	flavor = pec_boombust_pulse.7.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "asia_union_leader"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		has_technology_researched = labor_movement
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		NOT = { has_variable = pec_boombustpulse7a_var }
+		NOT = { has_variable = pec_boombustpulse7b_var }
+		NOT = { has_variable = pec_boombustpulse7c_var }
+		any_scope_state = {
+			is_incorporated = yes
+			radical_fraction = {
+				value >= 0.15
+				pop_type = laborers
+			}
+			any_scope_pop = {
+				is_pop_type = laborers
+				pop_is_discriminated = no
+				OR = {
+					pop_employment_building_group = bg_manufacturing
+					pop_employment_building_group = bg_mining
+					pop_employment_building_group = bg_private_infrastructure
+				}
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				radical_fraction = {
+					value >= 0.15
+					pop_type = laborers
+				}
+				any_scope_pop = {
+					is_pop_type = laborers
+					pop_is_discriminated = no
+					OR = {
+						pop_employment_building_group = bg_manufacturing
+						pop_employment_building_group = bg_mining
+						pop_employment_building_group = bg_private_infrastructure
+					}
+				}
+			}
+			save_scope_as = pec_localstrike_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.7.a
+		default_option = yes
+		ai_chance = {
+			base = 20
+		}
+		scope:pec_localstrike_state= {
+			add_modifier = {
+				name = pec_boombust7_strike
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.05
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust7_strike_positive
+				months = 37
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_boombust7_strike_negative
+				months = 37
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_boombust7_strike_negative
+				months = 37
+			}
+		}
+		custom_tooltip = pec_boombust_pulse7a.tt
+		set_variable = {
+			name = pec_boombustpulse7a_var
+			months = 36
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.7.b
+		highlighted_option = yes
+		trigger = {
+			has_law = law_type:law_pec_regulated_unions
+		}
+		ai_chance = {
+			base = 40
+		}
+		scope:pec_localstrike_state= {
+			add_modifier = {
+				name = pec_boombust7_strike
+				months = 24
+			}
+			add_radicals_in_state = {
+				value = 0.05
+				strata = poor
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust7_strikebreakers
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse7b.tt
+		set_variable = {
+			name = pec_boombustpulse7b_var
+			months = 36
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.7.c
+		highlighted_option = yes
+		trigger = {
+			has_law = law_type:law_pec_persecuted_unions
+		}
+		ai_chance = {
+			base = 40
+		}
+		scope:pec_localstrike_state= {
+			add_modifier = {
+				name = pec_boombust7_strike
+				months = 12
+			}
+			add_radicals_in_state = {
+				value = 0.08
+				strata = poor
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust7_strikebreakers
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse7c.tt
+		set_variable = {
+			name = pec_boombustpulse7c_var
+			months = 36
+		}
+	}
+}
+
+pec_boombust_pulse.8 = {
+	type = country_event
+	placement = scope:pec_boomingbusiness_state
+	title = pec_boombust_pulse.8.t
+	desc = pec_boombust_pulse.8.d
+	flavor = pec_boombust_pulse.8.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "southamerica_factory_opening"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOT = { has_variable = pec_boombustpulse8a_var }
+		NOT = { has_variable = pec_boombustpulse8b_var }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		any_scope_state = {
+			is_incorporated = yes
+			any_scope_building = {
+				weekly_profit > 15000
+				earnings >= 25
+				occupancy > 0.90
+				level >= 8
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_building = {
+					weekly_profit > 15000
+					earnings >= 25
+					occupancy > 0.90
+					level >= 8
+				}
+			}
+			save_scope_as = pec_boomingbusiness_state
+		}
+		scope:pec_boomingbusiness_state = {
+			random_scope_building = {
+				limit = {
+					weekly_profit > 10000
+					occupancy > 0.75
+					earnings >= 15
+					level >= 3
+				}
+				save_scope_as = pec_boomingbusiness_building
+			}
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.8.a
+		default_option = yes
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+
+		scope:pec_boomingbusiness_state = {
+			add_loyalists_in_state = {
+				value = 0.02
+			}
+		}
+		scope:pec_boomingbusiness_building = {
+			add_modifier = {
+				name = pec_buildingmod_boombust8_fullspeed
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse8al.tt
+		set_variable = {
+			name = pec_boombustpulse8a_var
+			months = 60
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.8.a
+		default_option = yes
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+
+		scope:pec_boomingbusiness_state = {
+			add_loyalists_in_state = {
+				value = 0.01
+			}
+		}
+		scope:pec_boomingbusiness_building = {
+			add_modifier = {
+				name = pec_buildingmod_boombust8_fullspeed
+				months = 36
+			}
+		}
+		custom_tooltip = pec_boombust_pulse8a.tt
+		set_variable = {
+			name = pec_boombustpulse8a_var
+			months = 36
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.8.b
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+
+		scope:pec_boomingbusiness_state = {
+			add_loyalists_in_state = {
+				value = 0.04
+			}
+		}
+		scope:pec_boomingbusiness_building = {
+			add_modifier = {
+				name = pec_buildingmod_boombust8_restraint
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse8bl.tt
+		set_variable = {
+			name = pec_boombustpulse8b_var
+			months = 60
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.8.b
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+
+		scope:pec_boomingbusiness_state = {
+			add_loyalists_in_state = {
+				value = 0.02
+			}
+		}
+		scope:pec_boomingbusiness_building = {
+			add_modifier = {
+				name = pec_buildingmod_boombust8_restraint
+				months = 36
+			}
+		}
+		custom_tooltip = pec_boombust_pulse8b.tt
+		set_variable = {
+			name = pec_boombustpulse8b_var
+			months = 36
+		}
+	}
+}
+
+pec_boombust_pulse.9 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.9.t
+	desc = pec_boombust_pulse.9.d
+	flavor = pec_boombust_pulse.9.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "asia_union_leader"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		has_journal_entry = je_strike
+		NOT = { has_variable = pec_boombustpulse9a_var }
+		NOT = { has_variable = pec_boombustpulse9b_var }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.9.a
+		default_option = yes
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_regulated_unions
+				has_law = law_type:law_pec_free_unions
+			}
+		}
+		ai_chance = {
+			base = 20
+		}
+		add_radicals = {
+			value = 0.05
+			interest_group = ig:ig_industrialists
+		}
+		custom_tooltip = pec_boombust_pulse9a.tt
+		set_variable = {
+			name = pec_boombustpulse9a_var
+			months = 36
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.9.b
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_regulated_unions
+				has_law = law_type:law_pec_persecuted_unions
+			}
+		}
+		ai_chance = {
+			base = 50
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust7_strikebreakers
+				months = 36
+			}
+		}
+		add_radicals = {
+			value = 0.05
+			interest_group = ig:ig_trade_unions
+		}
+		custom_tooltip = pec_boombust_pulse9b.tt
+		set_variable = {
+			name = pec_boombustpulse9b_var
+			months = 36
+		}
+		change_variable = {
+			name = strike_timer_var
+			add = 6
+		}
+	}
+}
+
+pec_boombust_pulse.10 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.10.t
+	desc = pec_boombust_pulse.10.d
+	flavor = pec_boombust_pulse.10.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_political_extremism"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		any_revolution_ongoing = yes
+		revolution_progress_high = yes
+		NOT = { has_variable = pec_boombustpulse10a_var }
+		NOT = { has_variable = pec_boombustpulse10b_var }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.10.a
+		default_option = yes
+
+		ai_chance = {
+			base = 20
+		}
+
+		custom_tooltip = pec_boombust_pulse10a.tt
+		set_variable = {
+			name = pec_boombustpulse10a_var
+			months = 60
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.10.b
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		ai_chance = {
+			base = 40
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_stimulus
+			multiplier = money_amount_multiplier_medium
+			months = 60
+		}
+		custom_tooltip = pec_boombust_pulse10b.tt
+		set_variable = {
+			name = pec_boombustpulse10b_var
+			months = 60
+		}
+	}
+}
+
+pec_boombust_pulse.11 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.11.t
+	desc = pec_boombust_pulse.11.d
+	flavor = pec_boombust_pulse.11.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		has_technology_researched = banking
+		NOT = { has_variable = pec_boombustpulse11_var }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.11.a
+		default_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		add_modifier = {
+			name = pec_boombust11_modifier
+			months = 72
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_boombust11
+				months = 72
+			}
+		}
+		ig:ig_landowners = {
+			add_modifier = {
+				name = pec_igmod_boombust11
+				months = 72
+			}
+		}
+		custom_tooltip = pec_boombust_pulse11a.tt
+		set_variable = {
+			name = pec_boombustpulse11_var
+			months = 72
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.11.a
+		default_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		add_modifier = {
+			name = pec_boombust11_modifier
+			months = 48
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_boombust11
+				months = 48
+			}
+		}
+		ig:ig_landowners = {
+			add_modifier = {
+				name = pec_igmod_boombust11
+				months = 48
+			}
+		}
+		custom_tooltip = pec_boombust_pulse11b.tt
+		set_variable = {
+			name = pec_boombustpulse11_var
+			months = 48
+		}
+	}
+}
+
+pec_boombust_pulse.12 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.12.t
+	desc = pec_boombust_pulse.12.d
+	flavor = pec_boombust_pulse.12.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_russian_serfs"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		market_capital.market = {
+			mg:grain = { 
+				market_goods_pricier > 0.15
+			}
+		}
+		NOT = { has_variable = pec_boombustpulse12a_var }
+		NOT = { has_variable = pec_boombustpulse12b_var }
+		NOT = { has_law = law_type:law_cooperative_ownership }
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.12.a
+		add_modifier = {
+			name = pec_boombust12a_modifier
+			months = 49
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = pec_igmod_boombust12a
+				months = 49
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust12a
+				months = 49
+			}
+		}
+		custom_tooltip = pec_boombust_pulse12a.tt
+		set_variable = {
+			name = pec_boombustpulse12a_var
+			months = 49
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.12.b
+		default_option = yes
+
+		add_modifier = {
+			name = pec_boombust12b_modifier
+			months = 49
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_agricultural_subsidies
+			multiplier = money_amount_multiplier_medium
+			months = 49
+		}
+		ig:ig_landowners = {
+			add_modifier = {
+				name = pec_igmod_boombust12b
+				months = 49
+			}
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = pec_igmod_boombust12b
+				months = 49
+			}
+		}
+		custom_tooltip = pec_boombust_pulse12b.tt
+		set_variable = {
+			name = pec_boombustpulse12b_var
+			months = 49
+		}
+	}
+}
+
+pec_boombust_pulse.13 = {
+	type = country_event
+	placement = scope:pec_boombust13_drought_state
+	title = pec_boombust_pulse.13.t
+	desc = pec_boombust_pulse.13.d
+	flavor = pec_boombust_pulse.13.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_russian_serfs"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		any_scope_state = {
+			state_population > 500000
+			OR = {
+				has_building = building_rye_farm
+				has_building = building_wheat_farm
+				has_building = building_rice_farm
+				has_building = building_maize_farm
+				has_building = building_millet_farm
+			}
+			any_scope_building = {
+				OR = {
+					is_building_type = building_rye_farm
+					is_building_type = building_wheat_farm
+					is_building_type = building_rice_farm
+					is_building_type = building_maize_farm
+					is_building_type = building_millet_farm
+				}
+				level >= 5
+				NOT = { has_active_production_method = pm_chemical_fertilizer }
+				NOT = { has_active_production_method = pm_chemical_fertilizer_building_rice_farm }
+			}
+		}
+		NOT = { has_variable = pec_boombustpulse13a_var }
+		NOT = { has_variable = pec_boombustpulse13b_var }
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					OR = {
+						is_building_type = building_rye_farm
+						is_building_type = building_wheat_farm
+						is_building_type = building_rice_farm
+						is_building_type = building_maize_farm
+						is_building_type = building_millet_farm
+					}
+					level >= 5
+					NOT = { has_active_production_method = pm_chemical_fertilizer }
+					NOT = { has_active_production_method = pm_chemical_fertilizer_building_rice_farm }
+				}
+			}
+			save_scope_as = pec_boombust13_drought_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.13.a
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		scope:pec_boombust13_drought_state = {
+			add_modifier = {
+				name = pec_boombust13a_drought_state
+				months = 49
+			}
+			add_radicals_in_state = {
+				value = 0.12
+			}
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = pec_igmod_boombust13a
+				months = 49
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust13a
+				months = 49
+			}
+		}
+		add_radicals = {
+			value = 0.02
+			interest_group = ig:ig_rural_folk
+		}
+		add_radicals = {
+			value = 0.02
+			interest_group = ig:ig_trade_unions
+		}
+		custom_tooltip = pec_boombust_pulse13a.tt
+		set_variable = {
+			name = pec_boombustpulse13a_var
+			months = 49
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.13.b
+		highlighted_option = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = {
+					has_law = law_type:law_laissez_faire
+				}
+				add = -45
+			}
+		}
+
+		scope:pec_boombust13_drought_state = {
+			add_modifier = {
+				name = pec_boombust13b_drought_state
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.03
+			}
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_drought_relief
+			multiplier = money_amount_multiplier_medium
+			months = 37
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_boombust13b_neg
+				months = 37
+			}
+		}
+		add_radicals = {
+			value = 0.1
+			interest_group = ig:ig_industrialists
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = pec_igmod_boombust13b_pos
+				months = 37
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust13b_pos
+				months = 37
+			}
+		}
+		custom_tooltip = pec_boombust_pulse13b.tt
+		set_variable = {
+			name = pec_boombustpulse13b_var
+			months = 37
+		}
+	}
+}
+
+pec_boombust_pulse.14 = {
+	type = country_event
+	placement = scope:pec_boombust14_drought_state
+	title = pec_boombust_pulse.14.t
+	desc = pec_boombust_pulse.14.d
+	flavor = pec_boombust_pulse.14.f
+
+	duration = 3
+
+	cooldown = { months = 100 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "asia_dead_cattle_poor_harvest"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		total_population > 10000000
+		any_scope_state = {
+			state_population > 1000000
+			OR = {
+				has_building = building_rye_farm
+				has_building = building_wheat_farm
+				has_building = building_rice_farm
+				has_building = building_maize_farm
+				has_building = building_millet_farm
+			}
+			any_scope_building = {
+				OR = {
+					is_building_type = building_rye_farm
+					is_building_type = building_wheat_farm
+					is_building_type = building_rice_farm
+					is_building_type = building_maize_farm
+					is_building_type = building_millet_farm
+				}
+				level >= 10
+				NOT = { has_active_production_method = pm_chemical_fertilizer }
+				NOT = { has_active_production_method = pm_chemical_fertilizer_building_rice_farm }
+			}
+		}
+
+		NOT = { has_variable = pec_boombustpulse14a_var }
+		NOT = { has_variable = pec_boombustpulse14b_var }
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					OR = {
+						is_building_type = building_rye_farm
+						is_building_type = building_wheat_farm
+						is_building_type = building_rice_farm
+						is_building_type = building_maize_farm
+						is_building_type = building_millet_farm
+					}
+					level >= 10
+					NOT = { has_active_production_method = pm_chemical_fertilizer }
+					NOT = { has_active_production_method = pm_chemical_fertilizer_building_rice_farm }
+				}
+			}
+			save_scope_as = pec_boombust14_drought_state
+		}
+		scope:pec_boombust14_drought_state = {
+			set_variable = {
+				name =pec_boombustpulse14a_state_var
+				months = 49
+			}
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.14.a
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		every_scope_state = {
+			limit = {
+				OR = {
+					has_variable = pec_boombustpulse14a_state_var
+					any_neighbouring_state = {
+						has_variable = pec_boombustpulse14a_state_var
+					}
+				}
+			}
+			add_modifier = {
+				name = pec_boombust13b_drought_state
+				months = 49
+			}
+			add_radicals_in_state = {
+				value = 0.10
+			}
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = pec_igmod_boombust14a
+				months = 49
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust14a
+				months = 49
+			}
+		}
+		add_radicals = {
+			value = 0.04
+			interest_group = ig:ig_rural_folk
+		}
+		add_radicals = {
+			value = 0.04
+			interest_group = ig:ig_trade_unions
+		}
+		custom_tooltip = pec_boombust_pulse14a.tt
+		set_variable = {
+			name = pec_boombustpulse14a_var
+			months = 49
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.14.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				trigger = {
+					has_law = law_type:law_laissez_faire
+				}
+				add = -45
+			}
+		}
+		every_scope_state = {
+			limit = {
+				OR = {
+					has_variable = pec_boombustpulse14a_state_var
+					any_neighbouring_state = {
+						has_variable = pec_boombustpulse14a_state_var
+					}
+				}
+			}
+			add_modifier = {
+				name = pec_boombust13b_drought_state
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.03
+			}
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_drought_relief
+			multiplier = money_amount_multiplier_more_large
+			months = 37
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_boombust14b_neg
+				months = 37
+			}
+		}
+		add_radicals = {
+			value = 0.01
+			interest_group = ig:ig_industrialists
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = pec_igmod_boombust14b_pos
+				months = 37
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = pec_igmod_boombust14b_pos
+				months = 37
+			}
+		}
+		custom_tooltip = pec_boombust_pulse14b.tt
+		set_variable = {
+			name = pec_boombustpulse14b_var
+			months = 37
+		}
+	}
+}
+
+pec_boombust_pulse.15 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.15.t
+	desc = pec_boombust_pulse.15.d
+	flavor = pec_boombust_pulse.15.f
+
+	duration = 3
+
+	cooldown = { months = 120 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		has_variable = pec_gdp_growth
+		var:pec_gdp_growth > 15
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		NOT = { has_variable = pec_boombustpulse15a_var }
+		NOT = { has_variable = pec_boombustpulse15b_var }
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.15.a # speculative investments generic
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_speculation_generic
+			months = 49
+		}
+		custom_tooltip = pec_boombust_pulse15a.tt
+		set_variable = {
+			name = pec_boombustpulse15a_var
+			months = 49
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.15.b # speculative investments in Companies
+		ai_chance = {
+			base = 25
+		}
+		highlighted_option = yes
+		trigger = {
+			has_technology_researched = corporate_charters
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_speculation_companies
+			months = 49
+		}
+		custom_tooltip = pec_boombust_pulse15a.tt
+		set_variable = {
+			name = pec_boombustpulse15a_var
+			months = 49
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.15.c # speculative investments in Railways
+		ai_chance = {
+			base = 25
+		}
+		highlighted_option = yes
+		trigger = {
+			has_technology_researched = railways
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_speculation_railways
+			months = 49
+		}
+		custom_tooltip = pec_boombust_pulse15a.tt
+		set_variable = {
+			name = pec_boombustpulse15a_var
+			months = 49
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.15.e # restrict it
+		ai_chance = {
+			base = 75
+		}
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			OR = {
+				has_law = law_type:law_pec_mixed_market
+				has_law = law_type:law_interventionism
+			}
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_igmod_boombust15b
+				months = 60
+			}
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_boombust15b
+				months = 60
+			}
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_speculation_restricted
+			months = 37
+		}
+		custom_tooltip = pec_boombust_pulse15b.tt
+		set_variable = {
+			name = pec_boombustpulse15b_var
+			months = 37
+		}
+	}
+}
+
+pec_boombust_pulse.16 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.16.t
+	desc = pec_boombust_pulse.16.d
+	flavor = pec_boombust_pulse.16.f
+
+	duration = 3
+
+	cooldown = { months = 110 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		OR = {
+			has_modifier = pec_boombust_pulse_speculation_restricted
+			has_modifier = pec_boombust_pulse_speculation_railways
+			has_modifier = pec_boombust_pulse_speculation_companies
+			has_modifier = pec_boombust_pulse_speculation_generic
+		}
+		has_variable = pec_gdp_growth
+		var:pec_gdp_growth < 10
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.16.a # oh shiiii...
+		default_option = yes
+		ai_chance = {
+			base = 1
+		}
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_modifier = pec_boombust_pulse_speculation_railways
+				has_modifier = pec_boombust_pulse_speculation_companies
+				has_modifier = pec_boombust_pulse_speculation_generic
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_boombust_pulse_speculation_generic
+			}
+			remove_modifier = pec_boombust_pulse_speculation_generic
+			remove_variable = pec_boombustpulse15a_var
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_boombust_pulse_speculation_companies
+			}
+			remove_modifier = pec_boombust_pulse_speculation_companies
+			remove_variable = pec_boombustpulse15a_var
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_boombust_pulse_speculation_railways
+			}
+			remove_modifier = pec_boombust_pulse_speculation_railways
+			remove_variable = pec_boombustpulse15a_var
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_speculation_burst
+			months = 49
+		}
+		add_radicals = {
+			value = 0.05
+			strata = middle
+		}
+		add_radicals = {
+			value = 0.01
+			strata = poor
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_boombust16a
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse16a.tt
+		set_variable = {
+			name = pec_boombustpulse16a_var
+			months = 49
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.16.b # fixing our mistake
+		ai_chance = {
+			base = 50
+		}
+		highlighted_option = yes
+		trigger = {
+			AND = {
+				OR = {
+					has_modifier = pec_boombust_pulse_speculation_railways
+					has_modifier = pec_boombust_pulse_speculation_companies
+					has_modifier = pec_boombust_pulse_speculation_generic
+				}
+				OR = {
+					has_law = law_type:law_pec_mixed_market
+					has_law = law_type:law_interventionism
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_modifier = pec_boombust_pulse_speculation_generic
+			}
+			remove_modifier = pec_boombust_pulse_speculation_generic
+			remove_variable = pec_boombustpulse15a_var
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_boombust_pulse_speculation_companies
+			}
+			remove_modifier = pec_boombust_pulse_speculation_companies
+			remove_variable = pec_boombustpulse15a_var
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_boombust_pulse_speculation_railways
+			}
+			remove_modifier = pec_boombust_pulse_speculation_railways
+			remove_variable = pec_boombustpulse15a_var
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_refunding_investors
+			multiplier = money_amount_multiplier_large
+			months = 49
+		}
+		add_modifier = {
+			name = pec_boombust_pulse_speculation_burst
+			multiplier = 0.5
+			months = 49
+		}
+		add_radicals = {
+			value = 0.03
+			strata = middle
+		}
+		add_radicals = {
+			value = 0.05
+			strata = rich
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_boombust16a
+				multiplier = 0.5
+				months = 60
+			}
+		}
+		custom_tooltip = pec_boombust_pulse16b.tt
+		set_variable = {
+			name = pec_boombustpulse16b_var
+			months = 49
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.16.c # dodged a bullet
+		default_option = yes
+		ai_chance = {
+			base = 100
+		}
+		highlighted_option = yes
+		trigger = {
+			has_modifier = pec_boombust_pulse_speculation_restricted
+		}
+		remove_modifier = pec_boombust_pulse_speculation_restricted
+		add_modifier = {
+			name = pec_boombust_pulse_speculation_burst_restricted
+			months = 25
+		}
+		add_radicals = {
+			value = 0.01
+			strata = middle
+		}
+		ig:ig_petty_bourgeoisie = {
+			add_modifier = {
+				name = pec_igmod_boombust16a
+				multiplier = 0.25
+				months = 49
+			}
+		}
+		custom_tooltip = pec_boombust_pulse16c.tt
+		set_variable = {
+			name = pec_boombustpulse16c_var
+			months = 49
+		}
+	}
+}
+
+# Hyperinflation
+pec_boombust_pulse.17 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.17.t
+	desc = pec_boombust_pulse.17.d
+	flavor = pec_boombust_pulse.17.f
+
+	duration = 3
+
+	cooldown = { months = 60 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOT = {
+			has_modifier = pec_hyperinflation_mod
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_modifier = pec_minting_high
+			}
+			add_modifier = {
+				name = pec_hyperinflation_mod
+				multplier = 0.5
+				months = 37
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_very_high
+			}
+			add_modifier = {
+				name = pec_hyperinflation_mod
+				months = 37
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = pec_minting_extremely_high
+			}
+			add_modifier = {
+				name = pec_hyperinflation_mod
+				multplier = 1.5
+				months = 37
+			}
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.17.a # oh well
+		default_option = yes
+		ai_chance = {
+			base = 1
+		}
+		custom_tooltip = {
+			text = pec_hyperinflation_tt
+		}
+	}
+}
+
+pec_boombust_pulse.18 = {
+	type = country_event
+	placement = scope:pec_bull_market_state
+	title = pec_boombust_pulse.18.t
+	desc = pec_boombust_pulse.18.d
+	flavor = pec_boombust_pulse.18.f
+
+	duration = 3
+
+	cooldown = { months = 80 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_capitalists_meeting"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOR = {
+			has_modifier = pec_bull_market
+			has_modifier = pec_bear_market
+			has_modifier = pec_bear_market_limited
+			has_modifier = pec_stock_market_crash
+		}
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		var:pec_market_volatility > 5
+		var:pec_market_confidence > -3
+		any_scope_state = {
+			has_building = building_pec_banks
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_pec_banks
+				OR = {
+					has_active_production_method = pm_pec_banks_securitiestrade
+					has_active_production_method = pm_pec_banks_hedgefunds
+				}
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_building = {
+					is_building_type = building_pec_banks
+					OR = {
+						has_active_production_method = pm_pec_banks_securitiestrade
+						has_active_production_method = pm_pec_banks_hedgefunds
+					}
+				}
+			}
+			save_scope_as = pec_bull_market_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.18.a
+		default_option = yes
+		highlighted_option = yes
+		trigger = {
+			NOR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		ai_chance = {
+			base = 50
+		}
+		add_modifier = {
+			name = pec_bull_market
+			months = 25
+		}
+		scope:pec_bull_market_state = {
+			add_modifier = {
+				name = pec_bull_market_state_mod
+				months = 25
+			}
+			add_loyalists_in_state = {
+				value = 0.04
+				strata = rich
+			}
+			add_loyalists_in_state = {
+				value = 0.02
+				strata = middle
+			}
+		}
+		custom_tooltip = pec_boombust_pulse18a_tt
+	}
+	option = {
+		name = pec_boombust_pulse.18.b
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_free_banking
+				has_law = law_type:law_laissez_faire
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		add_modifier = {
+			name = pec_bull_market
+			months = 49
+		}
+		scope:pec_bull_market_state = {
+			add_modifier = {
+				name = pec_bull_market_state_mod
+				months = 49
+			}
+			add_loyalists_in_state = {
+				value = 0.06
+				strata = rich
+			}
+			add_loyalists_in_state = {
+				value = 0.03
+				strata = middle
+			}
+		}
+		custom_tooltip = pec_boombust_pulse18b_tt
+	}
+}
+
+pec_boombust_pulse.19 = {
+	type = country_event
+	placement = scope:pec_bear_market_state
+	title = pec_boombust_pulse.19.t
+	desc = pec_boombust_pulse.19.d
+	flavor = pec_boombust_pulse.19.f
+
+	duration = 3
+
+	cooldown = { months = 80 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOR = {
+			has_modifier = pec_bull_market
+			has_modifier = pec_bear_market
+			has_modifier = pec_bear_market_limited
+			has_modifier = pec_stock_market_crash
+		}
+		NOR = {
+			has_modifier = pec_boombust_boom
+			has_modifier = pec_boombust_boom_small
+		}
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		var:pec_market_volatility > 5
+		var:pec_market_confidence < 3
+		any_scope_state = {
+			has_building = building_pec_banks
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_pec_banks
+				OR = {
+					has_active_production_method = pm_pec_banks_securitiestrade
+					has_active_production_method = pm_pec_banks_hedgefunds
+				}
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_building = {
+					is_building_type = building_pec_banks
+					OR = {
+						has_active_production_method = pm_pec_banks_securitiestrade
+						has_active_production_method = pm_pec_banks_hedgefunds
+					}
+				}
+			}
+			save_scope_as = pec_bear_market_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.19.a
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		add_modifier = {
+			name = pec_bear_market
+			months = 37
+		}
+		scope:pec_bear_market_state = {
+			add_modifier = {
+				name = pec_bear_market_state_mod
+				months = 37
+			}
+			add_radicals_in_state = {
+				value = 0.02
+				strata = rich
+			}
+			add_radicals_in_state = {
+				value = 0.01
+				strata = middle
+			}
+		}
+		custom_tooltip = pec_boombust_pulse19a_tt
+	}
+	option = {
+		name = pec_boombust_pulse.19.b
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			OR = {
+				has_law = law_type:law_interventionism
+				has_law = law_type:law_pec_mixed_market
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		add_modifier = {
+			name = pec_bear_market_limited
+			months = 37
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_bear_market_limited_igmod
+				months = 61
+			}
+		}
+		scope:pec_bear_market_state = {
+			add_modifier = {
+				name = pec_bear_market_limited_state_mod
+				months = 37
+			}
+		}
+		custom_tooltip = pec_boombust_pulse19b_tt
+	}
+}
+
+pec_boombust_pulse.20 = {
+	type = country_event
+	placement = scope:pec_stock_crash_state
+	title = pec_boombust_pulse.20.t
+	desc = pec_boombust_pulse.20.d
+	flavor = pec_boombust_pulse.20.f
+
+	duration = 3
+
+	cooldown = { months = 80 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		OR = {
+			has_modifier = pec_bear_market
+			AND = {
+				has_modifier = pec_bear_market_limited
+				var:pec_market_confidence < -6
+			}
+		}
+		NOR = {
+			has_modifier = pec_boombust_boom
+			has_modifier = pec_boombust_boom_small
+		}
+		NOT = { has_law = law_type:law_cooperative_ownership }
+		var:pec_market_volatility > 10
+		var:pec_market_confidence < 0
+		any_scope_state = {
+			has_building = building_pec_banks
+			is_incorporated = yes
+			any_scope_building = {
+				is_building_type = building_pec_banks
+				level >= 7
+				OR = {
+					has_active_production_method = pm_pec_banks_securitiestrade
+					has_active_production_method = pm_pec_banks_hedgefunds
+				}
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				any_scope_building = {
+					is_building_type = building_pec_banks
+					level >= 7
+					OR = {
+						has_active_production_method = pm_pec_banks_securitiestrade
+						has_active_production_method = pm_pec_banks_hedgefunds
+					}
+				}
+			}
+			save_scope_as = pec_stock_crash_state
+		}
+	}
+
+	option = {
+		name = pec_boombust_pulse.20.a
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		add_modifier = {
+			name = pec_stock_market_crash
+			months = 49
+		}
+		add_radicals = {
+			value = 0.03
+		}
+		scope:pec_stock_crash_state = {
+			add_modifier = {
+				name = pec_stock_crash_state_mod
+				months = 49
+			}
+		}
+		custom_tooltip = pec_boombust_pulse20a_tt
+		set_variable = {
+			name = pec_boombustpulse20a_var
+			months = 49
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.20.b
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			OR = {
+				has_law = law_type:law_interventionism
+				has_law = law_type:law_pec_mixed_market
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		add_modifier = {
+			name = pec_stock_market_crash
+			months = 49
+		}
+		add_modifier = {
+			name = pec_stock_market_crash_intervention_payment
+			multiplier = money_amount_multiplier_medium
+			months = 49
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_stock_crash_intervention_igmod
+				months = 49
+			}
+		}
+		scope:pec_stock_crash_state = {
+			add_modifier = {
+				name = pec_stock_crash_intervention_state_mod
+				months = 49
+			}
+		}
+		custom_tooltip = pec_boombust_pulse20b_tt
+		set_variable = {
+			name = pec_boombustpulse20b_var
+			months = 49
+		}
+	}
+	option = {
+		name = pec_boombust_pulse.20.c
+		highlighted_option = yes
+		trigger = {
+			OR = {
+				has_law = law_type:law_pec_central_bank_metallic
+				has_law = law_type:law_pec_central_bank_fiat
+			}
+			has_law = law_type:law_pec_mixed_market
+		}
+		ai_chance = {
+			base = 25
+		}
+		add_modifier = {
+			name = pec_stock_market_crash
+			months = 25
+		}
+		add_modifier = {
+			name = pec_stock_market_crash_intervention_payment
+			multiplier = money_amount_multiplier_large
+			months = 25
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = pec_stock_crash_intervention_igmod
+				multiplier = 3.0
+				months = 25
+			}
+		}
+		scope:pec_stock_crash_state = {
+			add_modifier = {
+				name = pec_stock_crash_state_mod
+				months = 25
+			}
+		}
+		custom_tooltip = pec_boombust_pulse20c_tt
+		set_variable = {
+			name = pec_boombustpulse20b_var
+			months = 25
+		}
+	}
+}
+
+pec_boombust_pulse.21 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.21.t
+	desc = pec_boombust_pulse.21.d
+	flavor = pec_boombust_pulse.21.f
+
+	duration = 3
+
+	cooldown = { months = 60 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "unspecific_factory_closed"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		NOR = {
+			has_modifier = pec_stagnation
+			has_modifier = pec_boombust_depression
+			has_modifier = pec_boombust_recession
+			has_modifier = pec_boombust_boom_small
+			has_modifier = pec_boombust_boom
+		}
+		var:pec_market_volatility < -10
+		var:pec_market_volatility_industrial > 0.25
+		var:pec_gdp_growth < 4
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.21.a
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		add_modifier = {
+			name = pec_stagnation
+			months = 61
+		}
+		custom_tooltip = pec_boombust_pulse21_tt
+		set_variable = {
+			name = pec_boombustpulse21_var
+			months = 61
+		}
+	}
+}
+
+pec_boombust_pulse.22 = {
+	type = country_event
+	placement = root
+	title = pec_boombust_pulse.22.t
+	desc = pec_boombust_pulse.22.d
+	flavor = pec_boombust_pulse.22.f
+
+	duration = 3
+
+	cooldown = { months = 12 }
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	event_image = {
+		video = "europenorthamerica_rich_and_poor"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_industry.dds"
+
+	trigger = {
+		has_modifier = pec_stagnation
+		var:pec_market_volatility > 0
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = pec_boombust_pulse.22.a
+		default_option = yes
+		ai_chance = {
+			base = 50
+		}
+		remove_modifier = pec_stagnation
+		remove_variable = pec_boombustpulse21_var
+		custom_tooltip = pec_boombust_pulse22_tt
+	}
+}

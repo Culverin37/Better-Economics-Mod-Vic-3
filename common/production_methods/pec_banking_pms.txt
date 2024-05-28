@@ -1,0 +1,529 @@
+﻿# lending PMG
+
+pm_pec_banks_simple = {
+	texture = "gfx/interface/icons/production_method_icons/unused/elected_bureaucrats.dds"
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_pec_financial_services_add = 12 # 360 - profit of 360
+		}
+		level_scaled = {
+			building_employment_laborers_add = 3000
+			building_employment_clerks_add = 2000
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_shopkeepers_investment_pool_efficiency_mult = 0.1
+		}
+	}
+
+	country_modifiers = {
+		workforce_scaled = {
+			building_group_bg_pec_central_bank_throughput_add = 0.01
+		}
+	}
+}
+
+pm_pec_banks_fractional_reserve_banking = {
+	texture = "gfx/interface/icons/production_method_icons/trade_center.dds"
+
+	unlocking_technologies = {
+		banking
+	}
+
+	disallowing_laws = {
+		law_pec_merchant_banks
+		law_command_economy
+		law_cooperative_ownership
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_services_add = 10 # 300
+			goods_output_pec_financial_services_add = 30 # 900 - profit of 600
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1500
+			building_employment_clerks_add = 3000
+			building_employment_shopkeepers_add = 500
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_shopkeepers_investment_pool_efficiency_mult = 0.1
+			state_capitalists_investment_pool_efficiency_mult = 0.1
+		}
+	}
+}
+
+pm_pec_banks_securitiestrade = {
+	texture = "gfx/interface/icons/production_method_icons/unused/stock_exchange.dds"
+
+	unlocking_technologies = {
+		investment_banks
+	}
+
+	disallowing_laws = {
+		law_pec_merchant_banks
+		law_command_economy
+		law_cooperative_ownership
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_services_add = 20 # 600
+			goods_output_pec_financial_services_add = 50 # 1500 - profit of 900
+		}
+		level_scaled = {
+			building_employment_laborers_add = 1000
+			building_employment_clerks_add = 3000
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_shopkeepers_investment_pool_efficiency_mult = 0.1
+			state_capitalists_investment_pool_efficiency_mult = 0.15
+		}
+	}
+}
+
+pm_pec_banks_hedgefunds = {
+	texture = "gfx/interface/icons/production_method_icons/unused/financial_district.dds"
+
+	unlocking_technologies = {
+		modern_financial_instruments
+	}
+
+	disallowing_laws = {
+		law_pec_merchant_banks
+		law_command_economy
+		law_cooperative_ownership
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_electricity_add = 5 # 150
+			goods_input_radios_add = 2 # 160
+			goods_input_services_add = 25 # 750
+			goods_output_pec_financial_services_add = 80 # 2400 - profit of 1340
+		}
+		level_scaled = {
+			building_employment_clerks_add = 3000
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_shopkeepers_investment_pool_efficiency_mult = 0.1
+			state_capitalists_investment_pool_efficiency_mult = 0.2
+		}
+	}
+
+	required_input_goods = electricity
+}
+
+pm_pec_banks_planning = {
+	texture = "gfx/interface/icons/production_method_icons/unused/appointed_bureaucrats.dds"
+
+	unlocking_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_paper_add = 10 # 300
+			goods_input_services_add = 10 # 300
+			goods_output_pec_financial_services_add = 35 # 1050 - profit of 450
+		}
+		level_scaled = {
+			building_employment_bureaucrats_add = 1500
+			building_employment_clerks_add = 2500
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_shopkeepers_investment_pool_efficiency_mult = 0.1
+			state_farmers_investment_pool_efficiency_mult = 0.1
+			state_academics_investment_pool_efficiency_mult = 0.1
+			state_machinists_investment_pool_efficiency_mult = 0.1
+			state_engineers_investment_pool_efficiency_mult = 0.1
+			state_laborers_investment_pool_efficiency_mult = 0.1
+		}
+	}
+}
+
+# currency PMG
+
+pm_pec_banks_inv_none = {
+	texture = "gfx/interface/icons/production_method_icons/crude_paper.dds"
+	
+	building_modifiers = {
+	}
+}
+
+pm_pec_banks_banknotes = {
+	texture = "gfx/interface/icons/production_method_icons/pulp_pressing.dds"
+
+	unlocking_technologies = {
+		currency_standards
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_paper_add = 10 # 300
+			goods_output_pec_financial_services_add = 20 # 600 - profit of 300
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_dependent_wage_mult = 0.1
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			building_group_bg_pec_central_bank_throughput_add = 0.01
+		}
+	}
+}
+
+pm_pec_banks_banknotes_coins = {
+	texture = "gfx/interface/icons/production_method_icons/pulp_pressing.dds"
+
+	unlocking_technologies = {
+		currency_standards
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_paper_add = 6 # 180
+			goods_input_iron_add = 3 # 120
+			goods_output_pec_financial_services_add = 20 # 600 - profit of 300
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_dependent_wage_mult = 0.1
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			building_group_bg_pec_central_bank_throughput_add = 0.01
+		}
+	}
+}
+
+pm_pec_banks_mutual_funds = {
+	texture = "gfx/interface/icons/production_method_icons/photographic_art.dds"
+
+	unlocking_technologies = {
+		mutual_funds
+	}
+
+	disallowing_laws = {
+		law_pec_merchant_banks
+		law_pec_free_banking
+		law_pec_central_bank_metallic
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_paper_add = 15 # 450
+			goods_output_pec_financial_services_add = 35 # 1050 - profit of 600
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_dependent_wage_mult = 0.2
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			building_group_bg_pec_central_bank_throughput_add = 0.015
+		}
+	}
+}
+
+
+pm_pec_banks_mutual_funds_coins = {
+	texture = "gfx/interface/icons/production_method_icons/photographic_art.dds"
+
+	unlocking_technologies = {
+		mutual_funds
+	}
+
+	disallowing_laws = {
+		law_pec_merchant_banks
+		law_pec_free_banking
+		law_pec_central_bank_metallic
+	}
+
+	building_modifiers = {
+		workforce_scaled = {
+			goods_input_paper_add = 7 # 210
+			goods_input_iron_add = 6 # 240
+			goods_output_pec_financial_services_add = 35 # 1050 - profit of 600
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_dependent_wage_mult = 0.2
+		}
+	}
+	country_modifiers = {
+		workforce_scaled = {
+			building_group_bg_pec_central_bank_throughput_add = 0.015
+		}
+	}
+}
+
+# ownership PMG
+
+pm_merchant_banks = {
+	texture = "gfx/interface/icons/production_method_icons/merchant_guilds.dds"
+
+	unlocking_production_methods = {
+		pm_pec_banks_simple
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_shopkeepers_add = 250
+		}
+		unscaled = {
+			building_shopkeepers_shares_add = 10
+		}
+	}
+}
+
+pm_private_bank = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+
+	unlocking_production_methods = {
+		pm_pec_banks_fractional_reserve_banking
+		pm_pec_banks_securitiestrade
+		pm_pec_banks_hedgefunds
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 100
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 1
+			building_throughput_add = 0.015
+		}
+	}
+}
+
+pm_mutualfundown = {
+	texture = "gfx/interface/icons/production_method_icons/publicly_traded.dds"
+
+	unlocking_technologies = {
+		mutual_funds
+	}
+	unlocking_production_methods = {
+		pm_pec_banks_fractional_reserve_banking
+		pm_pec_banks_securitiestrade
+		pm_pec_banks_hedgefunds
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 150
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 1
+			building_throughput_add = 0.05
+		}
+	}
+}
+
+pm_mixed_ownership_bank = {
+	texture = "gfx/interface/icons/production_method_icons/mixed_ownership.dds"
+
+	unlocking_technologies = {
+		identification_documents
+	}
+
+	disallowing_laws = {
+		law_traditionalism
+		law_laissez_faire
+		law_command_economy
+		law_cooperative_ownership
+		law_pec_merchant_banks
+		law_pec_free_banking
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 100
+			building_employment_bureaucrats_add = 100
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 1
+			building_government_shares_add = 0.1
+		}
+	}
+}
+
+pm_credit_union = {
+	texture = "gfx/interface/icons/production_method_icons/worker_cooperative.dds"
+
+
+	unlocking_technologies = {
+		postal_savings
+	}
+
+	unlocking_laws = {
+		law_cooperative_ownership
+		law_agrarianism
+	}
+
+	disallowing_laws = {
+		law_pec_merchant_banks
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_shopkeepers_add = 300
+		}
+		unscaled = {
+			building_workforce_shares_add = 1
+		}
+	}
+	state_modifiers = {
+		unscaled = {
+			state_dependent_wage_mult = 0.15
+		}
+	}
+}
+
+pm_government_run_bank = {
+	texture = "gfx/interface/icons/production_method_icons/government_run.dds"
+
+	unlocking_technologies = {
+		central_planning
+	}
+	
+	disallowing_laws = {
+		law_traditionalism
+		law_laissez_faire
+	}
+
+	unlocking_laws = {
+		law_pec_mixed_market
+		law_command_economy
+	}
+	
+	building_modifiers = {
+		level_scaled = {
+			building_employment_bureaucrats_add = 150
+		}
+		unscaled = {
+			building_government_shares_add = 1
+		}
+	}
+}
+
+# central bank
+
+pm_pec_central_bank = {
+	texture = "gfx/interface/icons/production_method_icons/unused/stock_exchange.dds"
+	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_gold_add = 30
+		}
+		level_scaled = {
+			building_employment_clerks_add = 10000
+		}
+	}
+}
+
+pm_central_bank_private = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_pec_mixed_market
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 300
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 1
+		}
+	}
+}
+
+
+pm_central_bank_mixed = {
+	texture = "gfx/interface/icons/production_method_icons/mixed_ownership.dds"
+
+	disallowing_laws = {
+		law_traditionalism
+		law_laissez_faire
+		law_command_economy
+		law_cooperative_ownership
+	}
+
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 200
+			building_employment_bureaucrats_add = 200
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 1
+			building_government_shares_add = 0.1
+		}
+	}
+}
+
+pm_central_bank_government = {
+	texture = "gfx/interface/icons/production_method_icons/government_run.dds"
+	
+	unlocking_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_pec_mixed_market
+	}
+	
+	building_modifiers = {
+		level_scaled = {
+			building_employment_bureaucrats_add = 500
+		}
+		unscaled = {
+			building_government_shares_add = 1
+		}
+	}
+}
