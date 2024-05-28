@@ -64,6 +64,7 @@ ideology_eco_interventionist = {
 		law_cooperative_ownership = strongly_disapprove
 		law_command_economy = neutral
 	}
+	
 	lawgroup_bem_banking_system = {
 		law_pec_merchant_banks = strongly_disapprove
 		law_pec_free_banking = disapprove
