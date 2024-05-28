@@ -1,72 +1,51 @@
 ﻿GLOBAL = {
 	c:FRA = {
 		activate_law = law_type:law_colonial_exploitation
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_central_bank_metallic
-		add_modifier = {
-			name = pec_multiparty_system
-			years = -1
-		}
+
 	}
 	c:ARG = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:GBR = {
 		activate_law = law_type:law_colonial_exploitation
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_central_bank_metallic
-		add_modifier = {
-			name = pec_two_party_system
-			years = -1
-		}
+
 	}
 	c:HBC = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:NBS = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:HBC = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:NSW = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:NVS = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:ONT = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:ORG = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:QUE = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SAS = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:TAS = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:WAS = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SWI = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_free_trade
 		activate_law = law_type:law_pec_free_banking
 		create_diplomatic_pact = {
@@ -83,7 +62,6 @@
 		}
 	}
 	c:USA = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 		add_modifier = {
 			name = pec_two_party_system
@@ -95,45 +73,43 @@
 		}
 	}
 	c:ANH = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:AUS = {
-		activate_law = law_type:law_pec_nobility
 		activate_law = law_type:law_pec_merchant_banks
 	}
 	c:BAD = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:BAV = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:BEL = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:BOL = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:BRA = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:BRE = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:IQU = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:BRZ = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:CHI = {
-		activate_law = law_type:law_pec_unitarism
+		
 		add_modifier = {
 			name = pec_piaohao
 			months = -1
@@ -141,244 +117,235 @@
 		add_technology_researched = currency_standards
 	}
 	c:CHL = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:CLM = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:COB = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:CUB = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:ANH = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:DEN = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:ECU = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:EGY = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:FIN = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_central_bank_metallic
 	}
 	c:FRM = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:GRE = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:HAI = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:HAM = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:HAN = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:HEK = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:HES = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:LIP = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:HOH = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:HOL = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:ION = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:KOR = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:KRA = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:LUB = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:LUC = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:LUX = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:MEC = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:MEI = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:MEX = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:MOD = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:MST = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:NET = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_central_bank_metallic
 		add_technology_researched = central_banking
 	}
 	c:NOR = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_central_bank_metallic
 	}
 	c:NPU = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:OLD = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:PAP = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:PAR = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:PER = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:PNI = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:POR = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:PRG = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:PRU = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:RUS = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:SAF = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SAR = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SAX = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SCH = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SCM = {
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SCW = {
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SER = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:SIC = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:SIL = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:SPA = {
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:SPU = {
-		activate_law = law_type:law_pec_unitarism
 
 	}
 	c:SWE = {
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_central_bank_metallic
 	}
 	c:TEX = {
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:TRN = {
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:TUS = {
-		activate_law = law_type:law_pec_unitarism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:UCA = {
-		activate_law = law_type:law_pec_federalism
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:URU = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:VNZ = {
-		activate_law = law_type:law_pec_unitarism
+		
 	}
 	c:WEI = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:WLD = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:WUR = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:ANH = {
-		activate_law = law_type:law_pec_unitarism
+		
 		activate_law = law_type:law_pec_free_banking
 	}
 	c:BIC = {
@@ -394,7 +361,7 @@
 				country_has_state_religion = rel:shiite
 			}
 		}
-		activate_law = law_type:law_pec_regulated_alcohol
+		activate_law = law_type:law_bem_regulated_alcohol
 	}
 	s:STATE_HOLLAND={
 		region_state:NET={

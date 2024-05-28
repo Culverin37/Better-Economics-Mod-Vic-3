@@ -10,7 +10,7 @@ pm_no_peasant_tax ={
 		law_land_based_taxation
 	}
 }
-pmg_corvee_system ={
+pm_peasant_tax ={
 	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
 	unlocking_laws = {
 		law_land_based_taxation
@@ -24,6 +24,8 @@ pmg_corvee_system ={
 	building_modifiers = {
 		workforce_scaled = { # 85
 			goods_output_services_add =1
+		}
+		unscaled = {
 			building_peasants_mortality_mult	=0.1
 		}
 		level_scaled = {

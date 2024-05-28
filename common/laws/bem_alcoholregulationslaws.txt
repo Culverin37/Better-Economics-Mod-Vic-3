@@ -1,5 +1,5 @@
-﻿law_pec_unregulated_alcohol = {
-	group = lawgroup_pec_alcohol_regulations
+﻿law_bem_unregulated_alcohol = {
+	group = lawgroup_bem_alcohol_regulations
 	
 	icon = "gfx/interface/icons/law_icons/pec_unregulated_alcohol.dds"
 	
@@ -35,8 +35,8 @@
 	}
 	
 	possible_political_movements = {
-		law_pec_regulated_alcohol
-		law_pec_prohibition
+		law_bem_regulated_alcohol
+		law_bem_prohibition
 	}
 
 	pop_support = {
@@ -57,8 +57,8 @@
 	}
 }
 
-law_pec_regulated_alcohol = {
-	group = lawgroup_pec_alcohol_regulations
+law_bem_regulated_alcohol = {
+	group = lawgroup_bem_alcohol_regulations
 	
 	icon = "gfx/interface/icons/law_icons/pec_regulated_alcohol.dds"
 	
@@ -96,8 +96,8 @@ law_pec_regulated_alcohol = {
 	}
 	
 	possible_political_movements = {
-		law_pec_unregulated_alcohol
-		law_pec_prohibition
+		law_bem_unregulated_alcohol
+		law_bem_prohibition
 	}
 
 	pop_support = {
@@ -118,8 +118,8 @@ law_pec_regulated_alcohol = {
 	}
 }
 
-law_pec_prohibition = {
-	group = lawgroup_pec_alcohol_regulations
+law_bem_prohibition = {
+	group = lawgroup_bem_alcohol_regulations
 	
 	icon = "gfx/interface/icons/law_icons/pec_prohibition.dds"
 	
@@ -158,8 +158,8 @@ law_pec_prohibition = {
 	}
 	
 	possible_political_movements = {
-		law_pec_unregulated_alcohol
-		law_pec_regulated_alcohol
+		law_bem_unregulated_alcohol
+		law_bem_regulated_alcohol
 	}
 
 	pop_support = {
