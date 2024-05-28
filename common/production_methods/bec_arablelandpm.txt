@@ -1,0 +1,1032 @@
+pm_no_peasant_tax ={
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_consumption_based_taxation
+		law_per_capita_based_taxation
+		law_proportional_taxation
+		law_graduated_taxation
+	}
+	disallowing_laws ={
+		law_land_based_taxation
+	}
+}
+pmg_corvee_system ={
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_land_based_taxation
+	}
+	disallowing_laws ={
+		law_consumption_based_taxation
+		law_per_capita_based_taxation
+		law_proportional_taxation
+		law_graduated_taxation
+	}
+	building_modifiers = {
+		workforce_scaled = { # 85
+			goods_output_services_add =1
+			building_peasants_mortality_mult	=0.1
+		}
+		level_scaled = {
+			building_employment_peasants_add = 1000
+		}
+	}
+}
+
+
+default_building_subsistence_farms = {
+	texture = "gfx/interface/icons/production_method_icons/subsistence_farming.dds"
+	
+	building_modifiers = {
+		workforce_scaled = { # 85
+			goods_output_grain_add = 2 # 50
+
+		}
+
+		level_scaled = {
+			building_employment_peasants_add = 4750
+		}
+	}
+}
+
+pm_sub_no ={
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+		law_collectivized_agriculture
+	}
+}
+pm_sub_tool = {
+	unlocking_laws = {
+		law_homesteading
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 3
+			goods_input_tools_add=1
+		}
+		level_scaled = {
+			building_employment_farmers_add = 50
+		}
+
+	}
+}
+pm_sub_tract = {
+	unlocking_laws = {
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	unlocking_technologies = {
+		rotary_valve_engine
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 8
+			goods_input_tools_add=1
+			goods_input_coal_add = 1
+
+		}
+		level_scaled = {
+			building_employment_farmers_add = 100
+		}
+
+	}
+}
+pm_collec = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		
+		law_collectivized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 5 # 10
+			goods_output_wood_add = 5 # 10
+			#goods_output_clothes_add = 1.25 # 15
+			#goods_output_furniture_add = 1.25 # 15
+			#goods_output_liquor_add = 1.25 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+pm_CA = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_commercialized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_collectivized_agriculture
+		law_serfdom
+		law_homesteading
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 4
+			goods_output_fabric_add = 1.25
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+
+		}
+	}
+}
+pm_homesteading = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_homesteading
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 1 # 10
+			goods_output_wood_add = 1 # 10
+			goods_output_clothes_add = 1 # 15
+			goods_output_furniture_add = 1 # 15
+			goods_output_liquor_add = 1 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+
+pm_tenet = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+
+	}
+	disallowing_laws = {
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 3
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+			goods_output_fabric_add = 1
+
+		}
+	}
+}
+
+pm_serfdom = {
+	texture = "gfx/interface/icons/production_method_icons/serfdom.dds"
+	disallowing_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+	}
+	unlocking_laws = {
+		law_serfdom
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_fabric_add = 0.75 # 10
+			goods_output_wood_add = 0.75 # 10
+			goods_output_clothes_add = 0.75 # 15
+			goods_output_furniture_add = 0.75 # 15
+			goods_output_liquor_add = 0.75 # 15 
+		}
+
+		unscaled = {
+			building_subsistence_output_add = 4
+		}		
+	}
+}		
+
+default_building_subsistence_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/subsistence_farming.dds"
+	
+	building_modifiers = {
+		workforce_scaled = { # 85
+			goods_output_grain_add = 0.5 # 10 
+			goods_output_fruit_add = 1.33 # 40
+		}
+
+		level_scaled = {
+			building_employment_peasants_add = 4750
+		}
+	}
+}
+
+
+pm_sub_no_orch ={
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+		law_collectivized_agriculture
+	}
+}
+pm_sub_tool_orch = {
+	unlocking_laws = {
+		law_homesteading
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_fruit_add = 2
+			goods_input_tools_add=1
+		}
+		level_scaled = {
+			building_employment_farmers_add = 50
+		}
+
+	}
+}
+pm_sub_tract_orch = {
+	unlocking_laws = {
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	unlocking_technologies = {
+		rotary_valve_engine
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 2
+			goods_output_fruit_add = 3.5
+			goods_input_tools_add=1
+			goods_input_coal_add = 1
+
+		}
+		level_scaled = {
+			building_employment_farmers_add = 100
+		}
+
+	}
+}
+pm_collec_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		
+		law_collectivized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 5 # 10
+			goods_output_wood_add = 5 # 10
+			#goods_output_clothes_add = 1.25 # 15
+			#goods_output_furniture_add = 1.25 # 15
+			#goods_output_liquor_add = 1.25 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+pm_CA_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_commercialized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_collectivized_agriculture
+		law_serfdom
+		law_homesteading
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_fruit_add = 2.5
+			goods_output_fabric_add = 1.25
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+
+		}
+	}
+}
+pm_homesteading_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_homesteading
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 1 # 10
+			goods_output_wood_add = 1 # 10
+			goods_output_clothes_add = 1 # 15
+			goods_output_furniture_add = 1 # 15
+			goods_output_liquor_add = 1 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+
+pm_tenet_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+
+	}
+	disallowing_laws = {
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_fruit_add = 1.5
+			goods_output_fabric_add = 1
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+
+		}
+	}
+}
+
+
+
+pm_serfdom_building_subsistence_orchards = {
+	texture = "gfx/interface/icons/production_method_icons/serfdom.dds"
+	disallowing_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+	}
+	unlocking_laws = {
+		law_serfdom
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_fabric_add = 0.75 # 10
+			goods_output_wood_add = 0.75 # 10
+			goods_output_clothes_add = 0.75 # 15
+			goods_output_furniture_add = 0.75 # 15
+			goods_output_liquor_add = 0.75 # 15 		}
+		}
+		unscaled = {
+			building_subsistence_output_add = 4
+		}			
+	}
+}		
+
+default_building_subsistence_pastures = {
+	texture = "gfx/interface/icons/production_method_icons/subsistence_farming.dds"
+	
+	building_modifiers = {
+		workforce_scaled = { # 85
+			goods_output_grain_add = 0.5 # 10
+			goods_output_meat_add = 1.33 # 40
+		}
+
+		level_scaled = {
+			building_employment_peasants_add = 4750
+		}
+	}
+}
+
+
+pm_sub_no_past ={
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+		law_collectivized_agriculture
+	}
+}
+pm_sub_tool_past = {
+	unlocking_laws = {
+		law_homesteading
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_meat_add = 2
+			goods_input_tools_add=1
+		}
+		level_scaled = {
+			building_employment_farmers_add = 50
+		}
+
+	}
+}
+pm_sub_tract_past = {
+	unlocking_laws = {
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	unlocking_technologies = {
+		rotary_valve_engine
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 2
+			goods_output_meat_add = 3.5
+			goods_input_tools_add=1
+			goods_input_coal_add = 1
+
+		}
+		level_scaled = {
+			building_employment_farmers_add = 100
+		}
+
+	}
+}
+pm_collec_pastures = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		
+		law_collectivized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 5 # 10
+			goods_output_wood_add = 5 # 10
+			#goods_output_clothes_add = 1.25 # 15
+			#goods_output_furniture_add = 1.25 # 15
+			#goods_output_liquor_add = 1.25 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+pm_CA_pastures = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_commercialized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_collectivized_agriculture
+		law_serfdom
+		law_homesteading
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_meat_add = 2.5
+			goods_output_fabric_add = 1.25
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+
+		}
+	}
+}
+pm_homesteading_pastures = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_homesteading
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 1 # 10
+			goods_output_wood_add = 1 # 10
+			goods_output_clothes_add = 1 # 15
+			goods_output_furniture_add = 1 # 15
+			goods_output_liquor_add = 1 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+
+pm_tenet_pastures = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+
+	}
+	disallowing_laws = {
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_meat_add = 1.5
+			goods_output_fabric_add = 1
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+
+		}
+	}
+}
+
+
+pm_serfdom_building_subsistence_pastures = {
+	texture = "gfx/interface/icons/production_method_icons/serfdom.dds"
+	disallowing_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+	}
+	unlocking_laws = {
+		law_serfdom
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_fabric_add = 0.75 # 10
+			goods_output_wood_add = 0.75 # 10
+			goods_output_clothes_add = 0.75 # 15
+			goods_output_furniture_add = 0.75 # 15
+			goods_output_liquor_add = 0.75 # 15 
+		}
+
+		unscaled = {
+			building_subsistence_output_add = 4
+		}			
+	}
+}
+
+default_building_subsistence_fishing_villages = {
+	texture = "gfx/interface/icons/production_method_icons/subsistence_farming.dds"
+	
+	building_modifiers = {
+		workforce_scaled = { # 85
+			goods_output_grain_add = 0.5 # 10
+			goods_output_fish_add = 2.0 # 40
+		}
+
+		level_scaled = {
+			building_employment_peasants_add = 4750
+		}
+	}
+}
+
+pm_sub_no_fish ={
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+		law_collectivized_agriculture
+	}
+}
+pm_sub_tool_fish = {
+	unlocking_laws = {
+		law_homesteading
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_fish_add = 2.5
+			goods_input_tools_add=1
+		}
+		level_scaled = {
+			building_employment_farmers_add = 50
+		}
+
+	}
+}
+pm_sub_tract_fish = {
+	unlocking_laws = {
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	unlocking_technologies = {
+		rotary_valve_engine
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 2
+			goods_output_fish_add = 4
+			goods_input_tools_add=1
+			goods_input_coal_add = 1
+
+		}
+		level_scaled = {
+			building_employment_farmers_add = 100
+		}
+
+	}
+}
+pm_collec_fishing = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		
+		law_collectivized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 5 # 10
+			goods_output_wood_add = 5 # 10
+			#goods_output_clothes_add = 1.25 # 15
+			#goods_output_furniture_add = 1.25 # 15
+			#goods_output_liquor_add = 1.25 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+pm_CA_fishing = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_commercialized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_collectivized_agriculture
+		law_serfdom
+		law_homesteading
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_fish_add = 3.0
+			goods_output_fabric_add = 1.25
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+
+		}
+	}
+}
+pm_homesteading_fishing = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_homesteading
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 1 # 10
+			goods_output_wood_add = 1 # 10
+			goods_output_clothes_add = 1 # 15
+			goods_output_furniture_add = 1 # 15
+			goods_output_liquor_add = 1 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+
+pm_tenet_fishing = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+
+	}
+	disallowing_laws = {
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 1
+			goods_output_fish_add = 2
+			goods_output_fabric_add = 1
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+
+		}
+	}
+}
+
+
+
+
+
+pm_serfdom_building_subsistence_fishing_villages = {
+	texture = "gfx/interface/icons/production_method_icons/serfdom.dds"
+	disallowing_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+	}
+	unlocking_laws = {
+		law_serfdom
+	}		
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_fabric_add = 0.75 # 10
+			goods_output_wood_add = 0.75 # 10
+			goods_output_clothes_add = 0.75 # 15
+			goods_output_furniture_add = 0.75 # 15
+			goods_output_liquor_add = 0.75 # 15 
+		}
+
+		unscaled = {
+			building_subsistence_output_add = 3
+		}			
+	}
+}		
+
+default_building_subsistence_rice_paddies = {
+	texture = "gfx/interface/icons/production_method_icons/subsistence_farming.dds"
+	
+	building_modifiers = {
+		workforce_scaled = { # 180
+			goods_output_grain_add = 4.5 # 90
+
+		}
+
+		level_scaled = {
+			building_employment_peasants_add = 9750
+		}
+	}
+}
+
+
+pm_sub_no_rice ={
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+		law_collectivized_agriculture
+	}
+}
+pm_sub_tool_rice = {
+	unlocking_laws = {
+		law_homesteading
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 7
+			goods_input_tools_add=1
+		}
+		level_scaled = {
+			building_employment_farmers_add = 50
+		}
+
+	}
+}
+pm_sub_tract_rice = {
+	unlocking_laws = {
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+	}
+	disallowing_laws = {
+		law_serfdom
+		law_tenant_farmers
+	}
+	unlocking_technologies = {
+		rotary_valve_engine
+	}
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_grain_add = 18
+			goods_input_tools_add=1
+			goods_input_coal_add = 1
+
+		}
+		level_scaled = {
+			building_employment_farmers_add = 100
+		}
+
+	}
+}
+pm_collec_rice = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		
+		law_collectivized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 5 # 10
+			goods_output_wood_add = 5 # 10
+			#goods_output_clothes_add = 1.25 # 15
+			#goods_output_furniture_add = 1.25 # 15
+			#goods_output_liquor_add = 1.25 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+pm_CA_rice = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_commercialized_agriculture
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_collectivized_agriculture
+		law_serfdom
+		law_homesteading
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 9
+			goods_output_fabric_add = 1.25
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+
+		}
+	}
+}
+pm_homesteading_rice = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_homesteading
+	}
+	disallowing_laws ={
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_fabric_add = 1 # 10
+			goods_output_wood_add = 1 # 10
+			goods_output_clothes_add = 1 # 15
+			goods_output_furniture_add = 1 # 15
+			goods_output_liquor_add = 1 # 15 
+		}				
+		unscaled = {
+			building_subsistence_output_add = 4
+
+		}
+	}
+}
+
+pm_tenet_rice = {
+	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
+	unlocking_laws = {
+		law_tenant_farmers
+
+	}
+	disallowing_laws = {
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+		law_serfdom
+	}
+	building_modifiers = {	
+		workforce_scaled = {
+			goods_output_grain_add = 7
+		}				
+		unscaled = {
+			building_subsistence_output_add = 3
+			goods_output_fabric_add = 1
+
+		}
+	}
+}
+
+
+pm_serfdom_building_subsistence_rice_paddies = {
+	texture = "gfx/interface/icons/production_method_icons/serfdom.dds"
+	disallowing_laws = {
+		law_tenant_farmers
+		law_commercialized_agriculture
+		law_homesteading
+		law_collectivized_agriculture
+	}
+	unlocking_laws = {
+		law_serfdom
+	}	
+	building_modifiers = {
+		workforce_scaled = {
+			goods_output_fabric_add = 1.5 # 10
+			goods_output_wood_add = 1.5 # 10
+			goods_output_clothes_add = 1.5 # 15
+			goods_output_furniture_add = 1.5 # 15
+			goods_output_liquor_add = 1.5 # 15 
+		}
+
+		unscaled = {
+			building_subsistence_output_add = 3
+		}			
+	}
+}
+

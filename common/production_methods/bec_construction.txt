@@ -13,13 +13,14 @@
 		workforce_scaled = {
 			goods_input_fabric_add = 25
 			goods_input_wood_add = 70
-			goods_input_pec_financial_services_add = 3
+			goods_input_pec_financial_services_add = 1.5
+			goods_input_services_add = 30
 		}
 
 		level_scaled = {
 			building_employment_bureaucrats_add = 500
 			building_employment_clerks_add = 500
-			building_employment_laborers_add = 4000
+			building_employment_laborers_add = 1000
 		}
 		unscaled = {
 			building_laborers_mortality_mult = 0.1
@@ -53,13 +54,14 @@ pm_iron_frame_buildings = {
 			goods_input_iron_add = 50
 			goods_input_tools_add = 10
 			goods_input_pec_financial_services_add = 15
+			goods_input_services_add = 65
 		}
 
 		level_scaled = {
 			building_employment_bureaucrats_add = 500
 			building_employment_clerks_add = 500
 			building_employment_machinists_add = 250
-			building_employment_laborers_add = 3750
+			building_employment_laborers_add = 750
 		}
 		unscaled = {
 			building_laborers_mortality_mult = 0.1
@@ -93,13 +95,14 @@ pm_steel_frame_buildings = {
 			goods_input_explosives_add = 10
 			goods_input_tools_add = 15
 			goods_input_pec_financial_services_add = 40
+			goods_input_services_add = 110
 		}
 
 		level_scaled = {
 			building_employment_bureaucrats_add = 500
 			building_employment_clerks_add = 500
 			building_employment_machinists_add = 750
-			building_employment_laborers_add = 3250
+			building_employment_laborers_add = 500
 		}
 		unscaled = {
 			building_laborers_mortality_mult = 0.1
@@ -134,6 +137,7 @@ pm_arc_welded_buildings = {
 			goods_input_tools_add = 30
 			goods_input_electricity_add = 40
 			goods_input_pec_financial_services_add = 70
+			goods_input_services_add = 175
 		} 
 
 		level_scaled = {
@@ -141,7 +145,7 @@ pm_arc_welded_buildings = {
 			building_employment_clerks_add = 500
 			building_employment_engineers_add = 250
 			building_employment_machinists_add = 750
-			building_employment_laborers_add = 3000
+			building_employment_laborers_add = 250
 		}
 		unscaled = {
 			building_laborers_mortality_mult = 0.1
