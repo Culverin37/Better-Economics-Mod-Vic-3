@@ -154,7 +154,7 @@ pm_CA = {
 		}
 	}
 }
-pm_homesteading = {
+pm_sub_homesteading = {
 	texture = "gfx/interface/icons/production_method_icons/no_serfdom.dds"
 	unlocking_laws = {
 		law_homesteading

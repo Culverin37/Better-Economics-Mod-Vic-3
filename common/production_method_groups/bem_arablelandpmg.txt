@@ -11,7 +11,7 @@ pmg_serfdom_building_subsistence_farms = {
 	production_methods = {
 		pm_collec
 		pm_CA
-		pm_homesteading
+		pm_sub_homesteading
 		pm_tenet
 		pm_serfdom
 	}
