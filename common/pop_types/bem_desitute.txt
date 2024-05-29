@@ -23,7 +23,7 @@
 			
 			if = {
 				limit = { 
-					standard_of_living < 5
+					standard_of_living < 3 # well they are even worse than starving 
 				}
 				value = 1
 			}		
