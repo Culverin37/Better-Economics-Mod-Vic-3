@@ -10,10 +10,10 @@ law_poor_laws = {
 		democracy
 	}
 	
-	#institution = institution_social_security
-	#institution_modifier = {
+	institution = institution_social_security
+	institution_modifier = {
 	#	state_political_strength_from_welfare_mult = -0.15
-	#}
+	}
 	
 	possible_political_movements = {
 		law_wage_subsidies

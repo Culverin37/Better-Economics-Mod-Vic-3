@@ -2,8 +2,8 @@ namespace = bem_workhouse_pm_change
 
 bem_workhouse_pm_change.1 = {
     type = country_event
-    #placement = ROOT
-    #THIS = ROOT
+    placement = ROOT
+    THIS = ROOT
     immediate = {
         every_scope_building = {
             limit = {
