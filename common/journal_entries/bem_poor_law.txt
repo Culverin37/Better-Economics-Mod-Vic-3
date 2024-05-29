@@ -1,0 +1,67 @@
+bem_poor_law_je = {
+    is_shown_when_inactive = {
+        always = yes
+    }
+    group = je_group_internal_affairs
+
+    possible = {
+        has_law = law_type:law_poor_laws
+    }
+    invalid = {
+		not = {has_law = law_type:law_poor_laws}
+	}
+    immediate = {
+    #    set_variable = {
+	#		name = bem_je_poor_var
+	#		value = bem_poor_law_insitution_value
+	#	}
+    }
+    on_weekly_pulse = {
+        effect ={
+            #change_variable = {
+             #   name = bem_je_poor_var
+              #  value = bem_poor_law_insitution_value
+            #}
+            if = {
+                limit = {
+                    bem_poor_law_insitution_value = 1
+                }
+                trigger_event = {id = bem_workhouse_pm_change.1 }
+
+            }
+            else_if = {
+                limit = {
+                    bem_poor_law_insitution_value = 2
+                }
+                trigger_event = {id = bem_workhouse_pm_change.2 }
+            }
+            else_if = {
+                limit = {
+                    bem_poor_law_insitution_value = 3
+                }      
+                trigger_event = {id = bem_workhouse_pm_change.3 }
+            }      
+            else_if = {
+                limit = {
+                    bem_poor_law_insitution_value = 4
+                }  
+                trigger_event = {id = bem_workhouse_pm_change.4 }
+            }          
+            else_if = {
+                limit = {
+                    bem_poor_law_insitution_value = 5
+                }     
+                trigger_event = {id = bem_workhouse_pm_change.5 }
+
+            }       
+        }
+    }
+    progressbar = yes
+	current_value = {
+		value = bem_poor_law_insitution_value
+	}
+	goal_add_value = {
+		add = 5
+	}
+
+}

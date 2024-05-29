@@ -145,3 +145,11 @@ building_group_bg_construction_employee_mult = {
 	good = no
 	percent = yes
 }
+building_employment_bem_pop_desitute_add ={
+	good = no
+	percent = no
+}
+building_bem_pop_desitute_mortality_mult = {
+	good = no
+	percent = yes 
+}

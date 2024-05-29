@@ -33,3 +33,26 @@ pec_pmg_university_education = {
 		pec_pm_public_school
 	}
 }
+
+
+bem_pmg_workhouse_pro = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_workhouse_planks
+		bem_pm_workhouse_chairs
+		bem_pm_workhouse_clothes
+		bem_pm_workhouse_tool
+		bem_pm_prepulses
+	}
+}
+bem_pmg_workhouse_mort = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_workhouse_prepulse
+		bem_pm_workhouse_vhmort
+		bem_pm_workhouse_hmort
+		bem_pm_workhouse_mmort
+		bem_pm_workhouse_lmort
+		bem_pm_workhouse_vlmort
+	}
+}
