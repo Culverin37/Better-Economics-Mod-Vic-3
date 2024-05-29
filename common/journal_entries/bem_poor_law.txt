@@ -9,6 +9,7 @@ bem_poor_law_je = {
     }
     invalid = {
 		not = {has_law = law_type:law_poor_laws}
+        activate_law = lawtype:bem_law_no_welfare
 	}
     immediate = {
     #    set_variable = {
@@ -16,7 +17,7 @@ bem_poor_law_je = {
 	#		value = bem_poor_law_insitution_value
 	#	}
     }
-    on_weekly_pulse = {
+    on_monthly_pulse = {
         effect ={
             #change_variable = {
              #   name = bem_je_poor_var
@@ -26,32 +27,36 @@ bem_poor_law_je = {
                 limit = {
                     bem_poor_law_insitution_value = 1
                 }
-                trigger_event = {id = bem_workhouse_pm_change.1 }
-
+                #trigger_event = {id = bem_workhouse_pm_change.1 }
+                activate_law = law_type:bem_law_very_low_welfare
             }
             else_if = {
                 limit = {
                     bem_poor_law_insitution_value = 2
                 }
-                trigger_event = {id = bem_workhouse_pm_change.2 }
+               #trigger_event = {id = bem_workhouse_pm_change.2 }
+               activate_law = law_type:bem_law_low_welfare
             }
             else_if = {
                 limit = {
                     bem_poor_law_insitution_value = 3
                 }      
-                trigger_event = {id = bem_workhouse_pm_change.3 }
+                #trigger_event = {id = bem_workhouse_pm_change.3 }
+                activate_law = law_type:bem_law_med_welfare
             }      
             else_if = {
                 limit = {
                     bem_poor_law_insitution_value = 4
                 }  
                 trigger_event = {id = bem_workhouse_pm_change.4 }
+                activate_law = law_type:bem_law_high_welfare
             }          
             else_if = {
                 limit = {
                     bem_poor_law_insitution_value = 5
                 }     
                 trigger_event = {id = bem_workhouse_pm_change.5 }
+                activate_law = law_type:bem_law_very_high_welfare
 
             }       
         }
@@ -61,7 +66,7 @@ bem_poor_law_je = {
 		value = bem_poor_law_insitution_value
 	}
 	goal_add_value = {
-		add = 5
+		add = 4
 	}
 
 }

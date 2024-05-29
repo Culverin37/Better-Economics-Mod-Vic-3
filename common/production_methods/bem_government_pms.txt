@@ -450,11 +450,15 @@ bem_pm_workhouse_prepulse = {
 			
 		}
 	}
+	unlocking_laws = {
+		bem_law_no_welfare
+	}
 	disallowing_laws = {
-		law_poor_laws
-		law_no_social_security
-		law_wage_subsidies
-		law_old_age_pension
+		bem_law_very_low_welfare
+		bem_law_low_welfare
+		bem_law_med_welfare
+		bem_law_high_welfare
+		bem_law_very_high_welfare
 	}
 }
 bem_pm_workhouse_vhmort = {
@@ -467,11 +471,15 @@ bem_pm_workhouse_vhmort = {
 			building_bem_pop_desitute_mortality_mult = 0.2
 		}
 	}
+	unlocking_laws = {
+		bem_law_very_low_welfare
+	}
 	disallowing_laws = {
-		law_poor_laws
-		law_no_social_security
-		law_wage_subsidies
-		law_old_age_pension
+		bem_law_no_welfare
+		bem_law_low_welfare
+		bem_law_med_welfare
+		bem_law_high_welfare
+		bem_law_very_high_welfare
 	}
 }
 bem_pm_workhouse_hmort = {
@@ -485,11 +493,16 @@ bem_pm_workhouse_hmort = {
 			building_bem_pop_desitute_mortality_mult = 0.1
 		}
 	}
+	unlocking_laws = {
+		
+		bem_law_low_welfare
+	}
 	disallowing_laws = {
-		law_poor_laws
-		law_no_social_security
-		law_wage_subsidies
-		law_old_age_pension
+		bem_law_no_welfare
+		bem_law_very_low_welfare
+		bem_law_med_welfare
+		bem_law_high_welfare
+		bem_law_very_high_welfare
 	}
 }
 bem_pm_workhouse_mmort = {
@@ -503,11 +516,17 @@ bem_pm_workhouse_mmort = {
 			building_bem_pop_desitute_mortality_mult = 0.05
 		}
 	}
+	unlocking_laws = {
+		
+		
+		bem_law_med_welfare
+	}
 	disallowing_laws = {
-		law_poor_laws
-		law_no_social_security
-		law_wage_subsidies
-		law_old_age_pension
+		bem_law_no_welfare
+		bem_law_very_low_welfare
+		bem_law_low_welfare
+		bem_law_high_welfare
+		bem_law_very_high_welfare
 	}
 }
 bem_pm_workhouse_lmort = {
@@ -521,11 +540,15 @@ bem_pm_workhouse_lmort = {
 			building_bem_pop_desitute_mortality_mult = 0.02
 		}
 	}
+	unlocking_laws = {
+		bem_law_high_welfare
+	}
 	disallowing_laws = {
-		law_poor_laws
-		law_no_social_security
-		law_wage_subsidies
-		law_old_age_pension
+		bem_law_no_welfare
+		bem_law_very_low_welfare
+		bem_law_low_welfare
+		bem_law_med_welfare
+		bem_law_very_high_welfare
 	}
 }
 bem_pm_workhouse_vlmort = {
@@ -539,10 +562,16 @@ bem_pm_workhouse_vlmort = {
 			building_bem_pop_desitute_mortality_mult = 0.01
 		}
 	}
+	unlocking_laws = {
+		
+		
+		bem_law_very_high_welfare
+	}
 	disallowing_laws = {
-		law_poor_laws
-		law_no_social_security
-		law_wage_subsidies
-		law_old_age_pension
+		bem_law_no_welfare
+		bem_law_very_low_welfare
+		bem_law_low_welfare
+		bem_law_med_welfare
+		bem_law_high_welfare
 	}
 }
