@@ -1,15 +1,17 @@
+namespace = bem_workhouse_pm_change
+
 bem_workhouse_pm_change.1 = {
     type = country_event
     #placement = ROOT
     #THIS = ROOT
     immediate = {
-            every_scope_building = {
-                limit = {
-                    is_building_type = building_workhouses 
-                    not = {has_active_production_method = bem_pm_workhouse_vhmort}
-                }
+        every_scope_building = {
+            limit = {
+                is_building_type = building_workhouses 
+                not = { has_active_production_method = bem_pm_workhouse_vhmort }
             }
-            activate_production_method = {bem_pm_workhouse_vhmort}
+        }
+        activate_production_method = {bem_pm_workhouse_vhmort}
     }
 }
 
@@ -19,57 +21,56 @@ bem_workhouse_pm_change.2 = {
     THIS = ROOT
     immediate = {
         every_scope_building = {
-                limit = {
-                    is_building_type = building_workhouses 
-                    not = {has_active_production_method = bem_pm_workhouse_hmort}
-                }
-
+            limit = {
+                is_building_type = building_workhouses 
+                not = {has_active_production_method = bem_pm_workhouse_hmort}
             }
-            activate_production_method = {bem_pm_workhouse_hmort}
+        }
+        activate_production_method = {bem_pm_workhouse_hmort}
     }
 }
+
 bem_workhouse_pm_change.3 = {
     type = country_event
     placement = ROOT
     THIS = ROOT
     immediate = {
         every_scope_building = {
-                limit = {
-                    is_building_type = building_workhouses 
-                    not = {has_active_production_method = bem_pm_workhouse_mmort}
-                }
-                activate_production_method = {bem_pm_workhouse_mmort}
-
+            limit = {
+                is_building_type = building_workhouses 
+                not = {has_active_production_method = bem_pm_workhouse_mmort}
             }
+            activate_production_method = {bem_pm_workhouse_mmort}
+        }
     }
 }
+
 bem_workhouse_pm_change.4 = {
     type = country_event
     placement = ROOT
     THIS = ROOT
     immediate = {
         every_scope_building = {
-                limit = {
-                    is_building_type = building_workhouses 
-                    not = {has_active_production_method = bem_pm_workhouse_lhmort}
-                }
-                activate_production_method = {bem_pm_workhouse_lmort}
-
+            limit = {
+                is_building_type = building_workhouses 
+                not = {has_active_production_method = bem_pm_workhouse_lhmort}
             }
+            activate_production_method = {bem_pm_workhouse_lmort}
         }
+    }
 }
+
 bem_workhouse_pm_change.5 = {
     type = country_event
     placement = ROOT
     THIS = ROOT
     immediate = {
         every_scope_building = {
-                limit = {
-                    is_building_type = building_workhouses 
-                    not = {has_active_production_method = bem_pm_workhouse_vlmort}
-                }
-                activate_production_method = {bem_pm_workhouse_vlmort}
-
+            limit = {
+                is_building_type = building_workhouses 
+                not = {has_active_production_method = bem_pm_workhouse_vlmort}
             }
+            activate_production_method = {bem_pm_workhouse_vlmort}
+        }
     }
 }
