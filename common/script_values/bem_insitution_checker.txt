@@ -16,3 +16,9 @@ bem_centralization_value = {
         add = institution:institution_centralization.investment
     }
 }
+bem_road_construction_cost = {
+    add = num_incorporated_states	
+    multiply = {
+        add = -5
+    }
+}

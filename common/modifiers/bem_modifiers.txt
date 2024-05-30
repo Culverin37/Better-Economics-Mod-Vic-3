@@ -1679,3 +1679,6 @@ pec_nationalist_protests_listened = {
 	state_radicals_from_discrimination_mult = -0.2
 	state_tax_collection_mult = -0.15
 }
+bem_road_building_mod = {
+	country_construction_add = 1
+}

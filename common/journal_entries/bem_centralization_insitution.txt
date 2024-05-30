@@ -16,6 +16,7 @@ bem_centralization_je = {
 	#		name = bem_je_poor_var
 	#		value = bem_poor_law_insitution_value
 	#	}
+        bem_var_road_creation = yes # check scripted effects for road buidling
     }
     on_weekly_pulse = {
         effect ={

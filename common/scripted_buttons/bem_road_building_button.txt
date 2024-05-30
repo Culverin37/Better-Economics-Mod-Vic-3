@@ -1,5 +1,6 @@
 road_building_button = {
     name = "road_building"
+    desc = "LOC_KEY_DESC"
     visible = {
         always = yes
     }
@@ -7,22 +8,23 @@ road_building_button = {
         always = yes
     }
     effect = {
-        set_variable = {name = cp value = 0}
         every_scope_state = {
             if = {
-                limit = {is_incorporated}
+                limit = {is_incorporated= yes
+                 not = {var:bem_road_building_var =0}   }
                 create_building = {
                     building = "building_roads"
-                    level =1
+                    level = root.var:bem_road_building_var
                     reserves=1
-                    change_variable	={name = cp subtract = 5}
                 }
             }
         }
+        change_variable	={name = cp multiply = num_incorporated_states	}
         add_modifier = {
-            name = road_building
-            country_construction_add = cp
-            month = 12
+            name = bem_road_building_mod
+            multiplier = bem_road_construction_cost
+            months = 12
         }
+        bem_var_road_add_one = yes  
     }
 }

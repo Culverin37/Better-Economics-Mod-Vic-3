@@ -21,6 +21,9 @@ pm_road_sealed = {
             state_market_access_price_impact = 0.2
         }
     }
+    unlocking_technologies = {
+        paved_roads
+    }
 
 }
 pm_road_walking = {

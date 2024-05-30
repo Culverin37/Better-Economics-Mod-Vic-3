@@ -1,0 +1,6 @@
+bem_var_road_creation = {
+    set_variable = {name = bem_road_building_var value = 2} 
+}
+bem_var_road_add_one = {
+    change_variable = {name = bem_road_building_var add = 1}
+}
