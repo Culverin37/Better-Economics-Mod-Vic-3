@@ -12,6 +12,15 @@ lawgroup_bem_banking_system = {
 	regressive_movement_chance = 1.0			
 }
 
+lawgroup_bem_money_system = {
+	law_group_category = economy
+	base_enactment_days = 50
+	affected_by_regime_change = yes
+	
+	progressive_movement_chance = 2.0
+	regressive_movement_chance = 1.0
+}
+
 
 lawgroup_bem_alcohol_regulations = {
 	law_group_category = human_rights
@@ -21,12 +30,14 @@ lawgroup_bem_alcohol_regulations = {
 	progressive_movement_chance = 2.5
 	regressive_movement_chance = 1.5	
 }
+
 lawgroup_bem_dummy_insitution_welfare_investment = {
 	law_group_category = dummy_laws
 	base_enactment_days = 50
 	affected_by_regime_change = yes
 
 }
+
 lawgroup_bem_dummy_cent_insi ={
 	law_group_category = dummy_laws
 	base_enactment_days = 50
