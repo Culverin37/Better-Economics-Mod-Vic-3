@@ -17,7 +17,7 @@ bem_centralization_je = {
 	#		value = bem_poor_law_insitution_value
 	#	}
     }
-    on_monthly_pulse = {
+    on_weekly_pulse = {
         effect ={
             #change_variable = {
              #   name = bem_je_poor_var

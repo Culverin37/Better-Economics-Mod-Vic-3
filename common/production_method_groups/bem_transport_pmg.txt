@@ -73,7 +73,7 @@ pmg_infrascture_reduction = {
 		pm_good_planning
 	}
 }
-pmg_ourgoing_transport = {
+pmg_outgoing_transport = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
 	production_methods = {
 		pm_vl_trans
