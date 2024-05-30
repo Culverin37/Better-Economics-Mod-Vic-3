@@ -983,6 +983,33 @@
  pec_central_bank_fiat_enact_from_free_tt:0 "Decreases Market Volatility and enables adjusting Interest Rate."
  pec_central_bank_fiat_enact_from_metal_tt:0 "Increases Market Volatility."
 
+ lawgroup_bem_money_system:0 "Monetary System"
+ law_bem_silver_standard:0 "Silver Standard"
+ law_bem_silver_standard_desc:0 "The Silver Standard is a primordial system, relying on the large quantity of easily-mined silver to back the currency of a nation. The reliance on silver gives both benefits and drawbacks: the inflaction inherent in the more accessible silver decreases risks of depressions, but increases the risk of hyperinflation. Moreover, due to silver not being the reserve metal of the world, nations using this system will experience issues with unequal exchange and international currency arbitrage."
+ law_bem_bimetal_standard:0 "Bimetallic Standard"
+ law_bem_bimetal_standard_desc:0 "A modernization on the Silver Standard, this nation uses both silver and gold coins, establishing a set ratio in value between the two metals. While this system does lessen the foreign trade issues of the Silver Standard while maintaining liquidity, it also has significant negatives surrounding international currency arbitrage. Bimetallic nations must constantly fear a sudden exodus of silver from their markets to Silver Standard nations and the accompanying deflation. Luckily, such crises are also convenient opportunities to adopt the Gold Standard."
+ law_bem_gold_standard:0 "Gold Standard"
+ law_bem_gold_standard_desc:0 "While mono-Gold Standard money systems are comparatively new to the world, gold has long been seen as a store of value. Gold's rarity means stability, which comes with significant benefits for foreign trade and investment. However, such benefits come at the cost of deflation, harming the indebeted and downtrodden. Furthermore, in times of crisis, a reliance on gold may need to be suspended, in order to manage the massive spending for wars, bailouts, and public programs." 
+ law_bem_fiat:0 "Fiat Money"
+ law_bem_fiat_desc:0 "Fiat Money has been the obsession of a small number of financial theorists for years, but every nation that has adopted it has only maintained it temporarily. While providing unparalleled control over the money supply, fiat money also comes with significant foreign trade issues, as there is no commodity to back the paper with. Perhaps, in the future, some new energy source may prove useful in this purpose, but for now fiat money remains a crisis measure."
+
+ bem_silver_enact_bimetal_tt:0 ""
+ bem_silver_enact_from_gold_tt:0 ""
+ bem_silver_enact_from_fiat_tt:0 ""
+ 
+ pec_bimetal_enact_tt:0 ""
+ pec_bimetal_enact_from_gold_tt:0 ""
+ pec_bimetal_enact_from_fiat_tt:0 ""
+
+ pec_gold_enact_tt:0 ""
+ pec_gold_enact_from_bimetal_tt:0 ""
+ pec_gold_enact_from_fiat_tt:0 ""
+
+ pec_fiat_enact_tt:0 ""
+ pec_fiat_enact_from_bimetal_tt:0 ""
+ pec_fiat_enact_from_gold_tt:0 ""
+ 
+
  rule_pec_atheismgrowth_gamerule:0 "PEC: Growth of Atheism Journal Entry"
  setting_pec_atheismgrowth_possible:0 "Active"
  setting_pec_atheismgrowth_possible_desc:0 "The Growth of Atheism journal entry #green CAN#! trigger."
