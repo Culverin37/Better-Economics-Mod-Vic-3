@@ -1,8 +1,10 @@
 pm_aristocratic_influence = {
     building_modifier = {
         level_scaled = {
-            goods_input_transportation_add = 15
             building_employment_aristocrats_add = 50
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 15
         }
     }
     unlocking_laws = {
@@ -36,8 +38,10 @@ pm_no_central_influence = {
 pm_minor_central_influence = {
     building_modifier = {
         level_scaled = {
-            goods_input_transportation_add = 10
             building_employment_bureaucrats_add = 10
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 10
         }
     }
     unlocking_laws = {
@@ -53,8 +57,10 @@ pm_minor_central_influence = {
 pm_major_central_influence = {
     building_modifier = {
         level_scaled = {
-            goods_input_transportation_add = 20
             building_employment_bureaucrats_add = 25
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 20
         }
     }
     unlocking_laws = {
@@ -68,32 +74,38 @@ pm_major_central_influence = {
         law_ad_hoc_centralization
     }
 }
-pmg_ourgoing_transport = {
+pm_awe_inspriing_central_influence = {
     building_modifier = {
         level_scaled = {
-            goods_input_transportation_add = 30
             building_employment_bureaucrats_add = 50
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 30
         }
     }
     unlocking_laws = {
-        law_unitary 
+        law_unitary
+        
     }
     disallowing_laws = {
         law_confederated
         law_federated 
+        law_devolved 
         law_ad_hoc_centralization
-        law_devolved
     }
 }
+
 pm_poor_planning = {
     building_modifier = {
         level_scaled = {
-            goods_input_transportation_add = 10
             building_employment_bureaucrats_add = 10
+        }
+        workforce_scaled ={
+            goods_input_transportation_add = 10
         }
     }
     state_modifiers = {
-        level_scaled = {
+        workforce_scaled = {
             state_infrastructure_add = 1
         }
     }
@@ -101,12 +113,14 @@ pm_poor_planning = {
 pm_medium_planning = {
     building_modifier = {
         level_scaled = {
-            goods_input_transportation_add = 50
             building_employment_bureaucrats_add = 10
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 50
         }
     }
     state_modifiers = {
-        level_scaled = {
+        workforce_scaled = {
             state_infrastructure_add = 5
         }
     }
@@ -114,12 +128,14 @@ pm_medium_planning = {
 pm_good_planning = {
     building_modifier = {
         level_scaled = {
-            goods_input_transportation_add = 100
             building_employment_bureaucrats_add = 10
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 100
         }
     }
     state_modifiers = {
-        level_scaled = {
+        workforce_scaled = {
             state_infrastructure_add = 20
         }
     }
@@ -129,9 +145,15 @@ pm_vl_trans = {
        unscaled = {
         state_market_access_price_impact = 0.1
        }
+       
     }
     building_modifier = {
-        building_employment_clerks_add = 10
+        level_scaled = {
+            building_employment_clerks_add = 10
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 10
+        }
     }
     unlocking_laws = {
 		
@@ -151,7 +173,12 @@ pm_l_trans = {
        }
     }
     building_modifier = {
-        building_employment_clerks_add = 20
+        level_scaled = {
+            building_employment_clerks_add = 20
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 20
+        }    
     }
     unlocking_laws = {
 		bem_law_dum_lcent
@@ -171,7 +198,12 @@ pm_m_trans = {
        }
     }
     building_modifier = {
-        building_employment_clerks_add = 30
+        level_scaled = {
+            building_employment_clerks_add = 30
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 30
+        }    
     }
     unlocking_laws = {
 		
@@ -191,8 +223,13 @@ pm_h_trans = {
        }
     }
     building_modifier = {
-        building_employment_clerks_add = 40
-    }
+        level_scaled = {
+            building_employment_clerks_add = 40
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 40
+        }
+        }
     unlocking_laws = {
 		bem_law_dum_hcent
 		
@@ -211,7 +248,12 @@ pm_vh_trans = {
        }
     }
     building_modifier = {
-        building_employment_clerks_add = 50
+        level_scaled = {
+            building_employment_clerks_add = 50
+        }
+        workforce_scaled = {
+            goods_input_transportation_add = 50
+        }
     }
     unlocking_laws = {
 		
