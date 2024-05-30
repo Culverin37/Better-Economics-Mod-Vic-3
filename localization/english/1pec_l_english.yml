@@ -957,7 +957,7 @@
  pec_confederation_removed_tt:0 "#green Successions will no longer automatically succeed.#!"
  pec_confederation_enacted_tt:0 "#red Secessions will automatically succeed!#!"
 
- lawgroup_pec_banking_system:0 "Banking System"
+ lawgroup_bem_money_system:0 "Banking System"
  law_pec_merchant_banks:0 "Merchant Banks"
  law_pec_merchant_banks_desc:0 "The Financial System is primitive, archaic laws inhibiting lending and interest."
  law_pec_free_banking:0 "Free Banking"
