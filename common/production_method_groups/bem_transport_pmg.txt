@@ -38,3 +38,19 @@ pmg_ownership_capital_building_riverdev = {
 		pm_pec_riverdev_own_government
 	}
 }
+pmg_road_base = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_road_normal
+		pm_road_sealed
+	}
+
+}
+pmg_road_transport = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_road_walking
+		pm_road_horses
+		pm_road_cars
+	}
+}

@@ -368,8 +368,16 @@
 			create_building={
 				building="building_pec_central_bank"
 				level=1
-				reserves=1
 			}
 		}
 	}
+	every_state = {
+		create_building = {
+			building = "building_roads"
+			level =1
+			reserves=1
+
+		}
+	}
+	
 }

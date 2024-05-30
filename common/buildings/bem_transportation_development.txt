@@ -36,3 +36,14 @@ building_pec_riverdevelopment = {
 
 	}
 }
+building_roads ={
+	building_group =bg_private_infrastructure
+	texture = "gfx/interface/icons/building_icons/panama_canal.dds"
+	has_max_level = yes	
+	required_construction = construction_cost_very_low
+	production_method_groups = {
+		pmg_road_base
+		pmg_road_transport
+	}
+
+}
