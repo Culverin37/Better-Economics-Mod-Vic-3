@@ -10,6 +10,17 @@
 	convoy_cost_multiplier = 0.00
 }
 
+transportation stock = {
+	texture = "gfx/interface/icons/invention_icons/stock_exchanges.dds"
+	cost = 30
+	category = luxury
+	
+	obsession_chance = 0.1
+	prestige_factor = 40
+	
+	traded_quantity = 10
+	convoy_cost_multiplier = 0.00
+}
 
 pec_hospitality = {
 	texture = "gfx/interface/icons/goods_icons/pec_hospitality.dds"
