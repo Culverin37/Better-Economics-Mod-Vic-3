@@ -10,7 +10,7 @@
 	convoy_cost_multiplier = 0.00
 }
 
-transportation stock = {
+transportation_stock = {
 	texture = "gfx/interface/icons/invention_icons/stock_exchanges.dds"
 	cost = 100
 	category = luxury
