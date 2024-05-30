@@ -1,0 +1,72 @@
+bem_centralization_je = {
+    is_shown_when_inactive = {
+        always = yes
+    }
+    group = je_group_internal_affairs
+
+    possible = {
+        always=yes
+    }
+    invalid = {
+		##not = {has_law = law_type:law_poor_laws}
+        #activate_law = lawtype:bem_law_no_welfare
+	}
+    immediate = {
+    #    set_variable = {
+	#		name = bem_je_poor_var
+	#		value = bem_poor_law_insitution_value
+	#	}
+    }
+    on_monthly_pulse = {
+        effect ={
+            #change_variable = {
+             #   name = bem_je_poor_var
+              #  value = bem_poor_law_insitution_value
+            #}
+            if = {
+                limit = {
+                    bem_centralization_value = 1
+                }
+                #trigger_event = {id = bem_workhouse_pm_change.1 }
+                activate_law = law_type:bem_law_dum_vlcent
+            }
+            else_if = {
+                limit = {
+                    bem_centralization_value = 2
+                }
+               #trigger_event = {id = bem_workhouse_pm_change.2 }
+               activate_law = law_type:bem_law_dum_lcent
+            }
+            else_if = {
+                limit = {
+                    bem_centralization_value = 3
+                }      
+                #trigger_event = {id = bem_workhouse_pm_change.3 }
+                activate_law = law_type:bem_law_dum_mcent
+            }      
+            else_if = {
+                limit = {
+                    bem_centralization_value = 4
+                }  
+                trigger_event = {id = bem_workhouse_pm_change.4 }
+                activate_law = law_type:bem_law_dum_hcent
+            }          
+            else_if = {
+                limit = {
+                    bem_centralization_value = 5
+                }     
+                trigger_event = {id = bem_workhouse_pm_change.5 }
+                activate_law = law_type:bem_law_dum_vhcent
+
+            }       
+        }
+    }
+    progressbar = yes
+	current_value = {
+		value = bem_centralization_value
+	}
+	goal_add_value = {
+		add = 4
+	}
+
+}

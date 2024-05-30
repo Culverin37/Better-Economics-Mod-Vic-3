@@ -53,4 +53,33 @@ pmg_road_transport = {
 		pm_road_horses
 		pm_road_cars
 	}
+
+}
+pmg_centralization_inefficency = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_aristocratic_influence
+		pm_no_central_influence
+		pm_minor_central_influence
+		pm_major_central_influence
+		pm_awe_inspriing_central_influence
+	}
+}
+pmg_infrascture_reduction = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_poor_planning
+		pm_medium_planning
+		pm_good_planning
+	}
+}
+pmg_ourgoing_transport = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_vl_trans
+		pm_l_trans
+		pm_m_trans
+		pm_h_trans
+		pm_vh_trans
+	}
 }

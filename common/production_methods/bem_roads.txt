@@ -3,7 +3,9 @@ pm_road_normal = {
         level_scaled = {
             building_employment_laborers_add = 1000
         }
-        state_modifiers = {
+    }
+    state_modifiers = {
+        unscaled ={
             state_market_access_price_impact = 0.1
         }
     }
@@ -13,10 +15,13 @@ pm_road_sealed = {
         level_scaled = {
             building_employment_laborers_add = 1500
         }
-        state_modifiers = {
+    }
+    state_modifiers = {
+        unscaled ={
             state_market_access_price_impact = 0.2
         }
     }
+
 }
 pm_road_walking = {
     building_modifiers = {

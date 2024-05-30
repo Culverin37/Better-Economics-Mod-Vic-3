@@ -6,3 +6,13 @@ bem_poor_law_insitution_value ={
 
     }
 }
+bem_centralization_value = {
+    value = 0
+    if = {
+        limit = {has_law = lawtype:law_ad_hoc_centralization}
+        add = 1
+    }
+    else_if = {
+        add = institution:institution_centralization.investment
+    }
+}
