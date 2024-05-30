@@ -12,14 +12,11 @@
 
 transportation stock = {
 	texture = "gfx/interface/icons/invention_icons/stock_exchanges.dds"
-	cost = 30
+	cost = 100
 	category = luxury
-	
-	obsession_chance = 0.1
-	prestige_factor = 40
-	
-	traded_quantity = 10
-	convoy_cost_multiplier = 0.00
+	tradeable = no
+	fixed_price = yes
+	prestige_factor = 5
 }
 
 pec_hospitality = {
