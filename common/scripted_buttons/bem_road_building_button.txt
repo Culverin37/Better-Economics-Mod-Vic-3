@@ -1,0 +1,28 @@
+road_building_button = {
+    name = "road_building"
+    visible = {
+        always = yes
+    }
+    possible = {
+        always = yes
+    }
+    effect = {
+        set_variable = {name = cp value = 0}
+        every_scope_state = {
+            if = {
+                limit = {is_incorporated}
+                create_building = {
+                    building = "building_roads"
+                    level =1
+                    reserves=1
+                    change_variable	={name = cp subtract = 5}
+                }
+            }
+        }
+        add_modifier = {
+            name = road_building
+            country_construction_add = cp
+            month = 12
+        }
+    }
+}

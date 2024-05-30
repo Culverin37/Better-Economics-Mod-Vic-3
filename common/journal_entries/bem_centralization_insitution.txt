@@ -3,7 +3,7 @@ bem_centralization_je = {
         always = yes
     }
     group = je_group_internal_affairs
-
+    scripted_button = road_building_button
     possible = {
         always=yes
     }
