@@ -1682,3 +1682,6 @@ pec_nationalist_protests_listened = {
 bem_road_building_mod = {
 	country_construction_add = 1
 }
+bem_peasant_mortality ={
+	state_peasants_mortality_mult = 1
+}

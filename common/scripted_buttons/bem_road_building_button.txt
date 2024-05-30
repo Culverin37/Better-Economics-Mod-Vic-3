@@ -10,8 +10,7 @@ road_building_button = {
     effect = {
         every_scope_state = {
             if = {
-                limit = {is_incorporated= yes
-                 not = {var:bem_road_building_var =0}   }
+                limit = {is_incorporated= yes }
                 create_building = {
                     building = "building_roads"
                     level = root.var:bem_road_building_var
@@ -19,7 +18,6 @@ road_building_button = {
                 }
             }
         }
-        change_variable	={name = cp multiply = num_incorporated_states	}
         add_modifier = {
             name = bem_road_building_mod
             multiplier = bem_road_construction_cost

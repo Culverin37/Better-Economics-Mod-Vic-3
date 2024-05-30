@@ -1,0 +1,28 @@
+bem_land_dev_je = {
+    is_shown_when_inactive = {
+        always = yes
+    }
+    group = je_group_internal_affairs
+    scripted_button = develop_land_button
+    possible = {
+        always = yes
+    }
+    invalid = {
+	}
+    immediate = {
+        set_variable  = {name = dev_current_value_var value = 0}
+    }
+    on_weeky_pulse = {
+        effect ={
+                change_variable = {name = dev_current_value_var add = bem_internal_land_colony_value}
+            }       
+        }
+    progressbar = yes
+	current_value = {
+		value = var:dev_current_value_var
+	}
+	goal_add_value = {
+		add = 100
+	}
+
+}

@@ -1,0 +1,23 @@
+develop_land_button = {
+    name = "land_building"
+    desc = "LOC_KEY_DESC"
+    visible = {
+        always = yes
+    }
+    possible = {
+        var:dev_current_value_var > 100
+    }
+    effect = {
+        every_scope_state = {
+            if = {
+                limit = {is_incorporated= yes}
+                add_arable_land = 10
+                add_modifier = {
+                    name = bem_peasant_mortality
+                    multiplier = 0.1
+                    months = 12
+                }
+            }
+        }
+    }
+}

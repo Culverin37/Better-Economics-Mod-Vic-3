@@ -22,3 +22,16 @@ bem_road_construction_cost = {
         add = -5
     }
 }
+bem_internal_land_colony_value = {
+    value = 0 
+    if = {
+        limit = {has_law = lawtype : law_no_colonial_affairs}
+        add = 1
+    }
+    else_if = {
+        add = institution:institution_colonial_affairs.investment
+    }
+    multiply = {
+        20
+    }
+}
