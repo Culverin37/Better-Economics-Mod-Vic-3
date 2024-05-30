@@ -48,8 +48,15 @@
 	lawgroup_pec_banking_system = {
 		law_pec_merchant_banks = strongly_disapprove
 		law_pec_free_banking = approve
-		law_pec_central_bank_metallic = approve
-		law_pec_central_bank_fiat = neutral
+		law_pec_central_bank_fiat = approve
+		law_pec_central_bank_metallic = neutral
+	}
+
+	lawgroup_bem_money_system = {
+		law_bem_silver_standard = strongly_disapprove
+		law_bem_bimetal_standard = approve
+		law_bem_gold_standard = approve
+		law_bem_fiat = neutral
 	}
 
 	lawgroup_pec_alcohol_regulations = {
@@ -90,8 +97,15 @@ ideology_meritocratic_nep = {
 	lawgroup_pec_banking_system = {
 		law_pec_merchant_banks = disapprove
 		law_pec_free_banking = neutral
-		law_pec_central_bank_metallic = approve
 		law_pec_central_bank_fiat = approve
+		law_pec_central_bank_metallic = approve
+	}
+
+	lawgroup_bem_money_system = {
+		law_bem_silver_standard = disapprove
+		law_bem_bimetal_standard = neutral
+		law_bem_gold_standard = approve
+		law_bem_fiat = approve
 	}
 
 	lawgroup_pec_trade_unions = {
