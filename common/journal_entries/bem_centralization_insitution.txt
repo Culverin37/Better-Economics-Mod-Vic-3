@@ -14,7 +14,7 @@ bem_centralization_je = {
 		}
     	}
 
-    	on_weekly_pulse = {
+    	on_monthly_pulse = {
         	effect ={
 			every_scope_state = {
 				set_variable = {
