@@ -35,6 +35,7 @@ building_logistic_sector = {
         pmg_centralization_inefficency
         pmg_infrascture_reduction
         pmg_outgoing_transport
+		pmg_trade_policy 
 	}
 	
 	#buildable = no

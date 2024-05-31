@@ -83,3 +83,12 @@ pmg_outgoing_transport = {
 		pm_vh_trans
 	}
 }
+pmg_trade_policy = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_isolationalist_logistic
+		pm_mercantile_logistic
+		pm_protect_logistic
+		pm_free_trade_logistic
+	}
+}
