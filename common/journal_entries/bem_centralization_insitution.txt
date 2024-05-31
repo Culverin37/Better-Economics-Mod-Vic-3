@@ -1,14 +1,11 @@
 bem_centralization_je = {
+    	group = je_group_internal_affairs
     	is_shown_when_inactive = {
         	always = yes
     	}
-    	group = je_group_internal_affairs
-    	scripted_button = road_building_button
    	possible = {
     		always=yes
    	}
-    	invalid = {
-	}
 
     	immediate = {
 		set_variable = {
@@ -97,6 +94,7 @@ bem_centralization_je = {
             		}       
         	}
     	}
+    	scripted_button = road_building_button
     	progressbar = yes
 	current_value = {
 		value = bem_centralization_value
