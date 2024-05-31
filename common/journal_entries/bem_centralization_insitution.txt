@@ -9,8 +9,8 @@ bem_centralization_je = {
 
     	immediate = {
 		set_variable = {
-			name = bem_var_road_creation # check scripted effects for road buidling
-			value = 0
+			name = bem_road_building_var # check scripted effects for road buidling
+			value = 2
 		}
         	
     	}
