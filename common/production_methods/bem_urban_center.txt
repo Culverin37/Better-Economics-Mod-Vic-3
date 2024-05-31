@@ -202,6 +202,7 @@ bem_pm_zepplins = {
 		workforce_scaled = {
 			goods_input_fabric_add = 5
 			goods_input_coal_add = 5
+			good_output_transportation_add = 25
 		}
 		level_scaled = {
 			building_employment_engineers_add = 5
@@ -219,6 +220,7 @@ bem_pm_airplanes = {
 	building_modifiers = {
 		workforce_scaled = {
 			goods_input_aeroplanes_add = 5
+			good_output_transportation_add = 60
 		}
 		level_scaled = {
 			building_employment_engineers_add = 10
