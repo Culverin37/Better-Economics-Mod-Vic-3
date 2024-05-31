@@ -19,16 +19,11 @@ bem_centralization_je = {
         	effect ={
             		# I love paradox stuff you just have to do this lmao
             		every_scope_state = {
-                		if = {
-                    			limit = {bem_urban_level_checker = 0}
-                		}
-                		else_if = {
-                   			limit = {bem_urban_level_checker >= 1}
-                    			create_building = {
-                        			building = "building_logistic_sector"
-                        			level = bem_urban_level_checker
-                        			reserves= 1
-                    			}
+                		limit = {bem_urban_level_checker >= 1}
+                    		create_building = {
+                        		building = "building_logistic_sector"
+                        		level = bem_urban_level_checker
+                        		reserves = 1
                 		}
             		}
             		if = {
