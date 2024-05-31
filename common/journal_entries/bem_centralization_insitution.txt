@@ -1,130 +1,107 @@
 bem_centralization_je = {
-    is_shown_when_inactive = {
-        always = yes
-    }
-    group = je_group_internal_affairs
-    scripted_button = road_building_button
-    possible = {
-        always=yes
-    }
-    invalid = {
-
+    	is_shown_when_inactive = {
+        	always = yes
+    	}
+    	group = je_group_internal_affairs
+    	scripted_button = road_building_button
+   	possible = {
+    		always=yes
+   	}
+    	invalid = {
 	}
-    immediate = {
 
-        bem_var_road_creation = yes # check scripted effects for road buidling
-    }
-    on_weekly_pulse = {
-        effect ={
-            # I love paradox stuff you just have to do this lmao
-            every_scope_state = {
-                if = {
-                    limit = {bem_urban_level_checker = 0}
-                }
-                else_if = {
-                    limit = {bem_urban_level_checker = 1}
-                    create_building = {
-                        building = "building_logistic_sector"
-                        level =1
-                        reserves=1
-                    }
-                }
-                else_if = {
-                    limit = {bem_urban_level_checker = 2}
-                    create_building = {
-                        building = "building_logistic_sector"
-                        level =2
-                        reserves =1
-                    }
-                }
-                else_if = {
-                    limit = {bem_urban_level_checker = 3}
-                    create_building = {
-                        building = "building_logistic_sector"
-                        level =3
-                        reserves =1
-                    }
-                }
-                else_if = {
-                    limit = {bem_urban_level_checker = 4}
-                    create_building = {
-                        building = "building_logistic_sector"
-                        level =4
-                        reserves =1
-                    }
-                }
-            }
-            if = {
-                limit = {
-                    bem_centralization_value = 1
-                }
-                #trigger_event = {id = bem_workhouse_pm_change.1 }
-                activate_law = law_type:bem_law_dum_vlcent
-            }
-            else_if = {
-                limit = {
-                    bem_centralization_value = 2
-                }
-               activate_law = law_type:bem_law_dum_lcent
-               every_scope_state = {
-                create_building = {
-                    building = "building_roads"
-                    level =2
-                    reserves=1
+    	immediate = {
+		set_variable = {
+			name = bem_var_road_creation # check scripted effects for road buidling
+			value = 0
+		}
+        	
+    	}
+
+    	on_weekly_pulse = {
+        	effect ={
+            		# I love paradox stuff you just have to do this lmao
+            		every_scope_state = {
+                		if = {
+                    			limit = {bem_urban_level_checker = 0}
+                		}
+                		else_if = {
+                   			limit = {bem_urban_level_checker >= 1}
+                    			create_building = {
+                        			building = "building_logistic_sector"
+                        			level = bem_urban_level_checker
+                        			reserves= 1
+                    			}
+                		}
+            		}
+            		if = {
+                		limit = {
+                    			bem_centralization_value = 1
+                		}
+                		#trigger_event = {id = bem_workhouse_pm_change.1 }
+                		activate_law = law_type:bem_law_dum_vlcent
+            		}
+            		else_if = {
+                		limit = {
+                    			bem_centralization_value = 2
+                		}
+               			activate_law = law_type:bem_law_dum_lcent
+               			every_scope_state = {
+                			create_building = {
+                    				building = "building_roads"
+                    				level = 2
+                    				reserves= 1
         
-                }
-                }
-            }
-            else_if = {
-                limit = {
-                    bem_centralization_value = 3
-                }      
-                activate_law = law_type:bem_law_dum_mcent
-                every_scope_state = {
-                    create_building = {
-                        building = "building_roads"
-                        level =3
-                        reserves=1
-            
-                    }
-                    }
-            }      
-            else_if = {
-                limit = {
-                    bem_centralization_value = 4
-                }  
-                activate_law = law_type:bem_law_dum_hcent
-                every_scope_state = {
-                create_building = {
-                    building = "building_roads"
-                    level =4
-                    reserves=1
+                			}
+                		}
+            		}
+            		else_if = {
+                		limit = {
+                    			bem_centralization_value = 3
+                		}      
+                		activate_law = law_type:bem_law_dum_mcent
+                		every_scope_state = {
+                    			create_building = {
+                        			building = "building_roads"
+                        			level = 3
+                        			reserves = 1
+                    			}
+                    		}
+           		}      
+            		else_if = {
+                		limit = {
+                    			bem_centralization_value = 4
+                		}  
+                		activate_law = law_type:bem_law_dum_hcent
+                		every_scope_state = {
+                			create_building = {
+                    				building = "building_roads"
+                    				level = 4
+                    				reserves = 1
+                			}
+                		}
+            		}          
+            		else_if = {
+                		limit = {
+                    			bem_centralization_value = 5
+                		}     
+                		activate_law = law_type:bem_law_dum_vhcent
+                		every_scope_state =  {
+                			create_building = {
+                    				building = "building_roads"
+                    				level = 5
+                    				reserves = 1
         
-                }
-                }
-            }          
-            else_if = {
-                limit = {
-                    bem_centralization_value = 5
-                }     
-                activate_law = law_type:bem_law_dum_vhcent
-                every_scope_state =  {
-                create_building = {
-                    building = "building_roads"
-                    level =5
-                    reserves=1
-        
-                }
-            }
-            }       
-        }
-    }
-    progressbar = yes
+                			}
+            			}
+            		}       
+        	}
+    	}
+    	progressbar = yes
 	current_value = {
 		value = bem_centralization_value
 	}
 	goal_add_value = {
 		add = 4
 	}
-
 }
