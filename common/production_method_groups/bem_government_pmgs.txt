@@ -56,3 +56,21 @@ bem_pmg_workhouse_mort = {
 		bem_pm_workhouse_vlmort
 	}
 }
+pmg_money_lending = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_no_interest 
+		bem_pm_low_interest
+		bem_pm_medium_interest
+		bem_pm_high_interest
+		bem_pm_sucidal_interest
+	}
+}
+pmg_air_transport = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_no_air
+		bem_pm_zepplins
+		bem_pm_airplanes
+	}
+}

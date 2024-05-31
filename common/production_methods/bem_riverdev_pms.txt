@@ -19,7 +19,7 @@ pm_pec_naturalriver = {
 			#state_infrastructure_add = 5
 		}
 		unscaled = {
-			state_market_access_price_impact = 0.00
+			state_market_access_price_impact = 0.01
 		}
 	}
 }
@@ -52,7 +52,7 @@ pm_pec_canals = {
 			#building_group_bg_plantations_throughput_add = 0.02
 		}
 		unscaled = {
-			state_market_access_price_impact = 0.05
+			state_market_access_price_impact = 0.025
 		}
 	}
 }
@@ -86,7 +86,7 @@ pm_pec_canals_modern = {
 			#state_pollution_generation_add = 5
 		}
 		unscaled = {
-			state_market_access_price_impact = 0.1
+			state_market_access_price_impact = 0.05
 		}
 	}
 }
@@ -100,7 +100,7 @@ pm_pec_simpleboats = {
 			goods_input_wood_add = 10 # 200
 			goods_input_fabric_add = 10 # 200
 			goods_output_fish_add = 10 # 200
-			goods_output_transportation_add = 10 #300 - profit of 100
+			goods_output_transportation_add = 15 #300 - profit of 100
 		}
 		level_scaled = {
 			building_employment_laborers_add = 1300
@@ -134,7 +134,7 @@ pm_pec_riverboats = {
 		workforce_scaled = {
 			goods_input_clippers_add = 15 # 750
 			goods_output_fish_add = 20 # 400
-			goods_output_transportation_add = 20 # 600 - profit of 250
+			goods_output_transportation_add = 25 # 600 - profit of 250
 		}
 		level_scaled = {
 			building_employment_laborers_add = 1000
@@ -169,7 +169,7 @@ pm_pec_steamboats = {
 			goods_input_steamers_add = 10 # 700
 			goods_input_coal_add = 20 # 600
 			goods_output_fish_add = 40 # 800
-			goods_output_transportation_add = 40 # 1200 - profit of 700
+			goods_output_transportation_add = 50 # 1200 - profit of 700
 		}
 		level_scaled = {
 			building_employment_laborers_add = 500

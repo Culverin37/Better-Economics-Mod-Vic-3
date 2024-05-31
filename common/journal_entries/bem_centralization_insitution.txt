@@ -14,15 +14,17 @@ bem_centralization_je = {
 		}
     	}
 
-    	on_monthly_pulse = {
+    	on_weekly_pulse = {
         	effect ={
-			if = {
-				limit = {bem_urban_level_checker > bem_logistic_value_checker}
+		
 			every_scope_state = {
 				set_variable = {
 					name = bem_urban_level_var
 					value = b:building_urban_center.level
 				}
+				if = {
+					limit = { b:building_urban_center.level > b:building_logistic_sector.level}
+				
             			switch = {
 				trigger = bem_urban_level_var
 				1 = {create_building = {building = building_logistic_sector level = 1 reserves = 1 }}

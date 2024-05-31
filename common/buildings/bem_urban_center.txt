@@ -12,7 +12,8 @@ building_urban_center = {
 		pmg_amenities
 		pmg_street_lighting
 		pmg_public_transport
-
+		pmg_air_transport
+		pmg_money_lending
 		pmg_urban_clergy
 	}
 	
