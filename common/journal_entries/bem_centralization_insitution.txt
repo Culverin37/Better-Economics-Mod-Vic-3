@@ -8,22 +8,52 @@ bem_centralization_je = {
         always=yes
     }
     invalid = {
-		##not = {has_law = law_type:law_poor_laws}
-        #activate_law = lawtype:bem_law_no_welfare
+
 	}
     immediate = {
-    #    set_variable = {
-	#		name = bem_je_poor_var
-	#		value = bem_poor_law_insitution_value
-	#	}
+
         bem_var_road_creation = yes # check scripted effects for road buidling
     }
     on_weekly_pulse = {
         effect ={
-            #change_variable = {
-             #   name = bem_je_poor_var
-              #  value = bem_poor_law_insitution_value
-            #}
+            # I love paradox stuff you just have to do this lmao
+            every_scope_state = {
+                if = {
+                    limit = {bem_urban_level_checker = 0}
+                }
+                else_if = {
+                    limit = {bem_urban_level_checker = 1}
+                    create_building = {
+                        building = "building_logistic_sector"
+                        level =1
+                        reserves=1
+                    }
+                }
+                else_if = {
+                    limit = {bem_urban_level_checker = 2}
+                    create_building = {
+                        building = "building_logistic_sector"
+                        level =2
+                        reserves =1
+                    }
+                }
+                else_if = {
+                    limit = {bem_urban_level_checker = 3}
+                    create_building = {
+                        building = "building_logistic_sector"
+                        level =3
+                        reserves =1
+                    }
+                }
+                else_if = {
+                    limit = {bem_urban_level_checker = 4}
+                    create_building = {
+                        building = "building_logistic_sector"
+                        level =4
+                        reserves =1
+                    }
+                }
+            }
             if = {
                 limit = {
                     bem_centralization_value = 1
@@ -35,30 +65,57 @@ bem_centralization_je = {
                 limit = {
                     bem_centralization_value = 2
                 }
-               #trigger_event = {id = bem_workhouse_pm_change.2 }
                activate_law = law_type:bem_law_dum_lcent
+               every_scope_state = {
+                create_building = {
+                    building = "building_roads"
+                    level =2
+                    reserves=1
+        
+                }
+                }
             }
             else_if = {
                 limit = {
                     bem_centralization_value = 3
                 }      
-                #trigger_event = {id = bem_workhouse_pm_change.3 }
                 activate_law = law_type:bem_law_dum_mcent
+                every_scope_state = {
+                    create_building = {
+                        building = "building_roads"
+                        level =3
+                        reserves=1
+            
+                    }
+                    }
             }      
             else_if = {
                 limit = {
                     bem_centralization_value = 4
                 }  
-                trigger_event = {id = bem_workhouse_pm_change.4 }
                 activate_law = law_type:bem_law_dum_hcent
+                every_scope_state = {
+                create_building = {
+                    building = "building_roads"
+                    level =4
+                    reserves=1
+        
+                }
+                }
             }          
             else_if = {
                 limit = {
                     bem_centralization_value = 5
                 }     
-                trigger_event = {id = bem_workhouse_pm_change.5 }
                 activate_law = law_type:bem_law_dum_vhcent
-
+                every_scope_state =  {
+                create_building = {
+                    building = "building_roads"
+                    level =5
+                    reserves=1
+        
+                }
+            }
             }       
         }
     }

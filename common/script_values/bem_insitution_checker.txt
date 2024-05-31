@@ -35,3 +35,9 @@ bem_internal_land_colony_value = {
         20
     }
 }
+bem_urban_level_checker = {
+   if = {
+        limit = { exists = b:building_urban_center}
+        add = b:building_urban_center.level
+   }
+}

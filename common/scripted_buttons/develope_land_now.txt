@@ -5,7 +5,7 @@ develop_land_button = {
         always = yes
     }
     possible = {
-        var:dev_current_value_var > 100
+        root.var:dev_current_value_var > 100
     }
     effect = {
         every_scope_state = {

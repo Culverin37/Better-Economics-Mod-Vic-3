@@ -82,3 +82,10 @@ bg_pec_river_development2 = {
 	
 	urbanization = 5
 }
+bg_bem_urban_service = {
+	parent_group = bg_private_infrastructure
+	urbanization = 0
+	category = urban
+	#land_usage = urban
+	always_possible =  yes
+}
