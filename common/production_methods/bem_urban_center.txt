@@ -155,7 +155,8 @@ bem_pm_high_interest = {
 		}
 
 		level_scaled = {
-			building_employment_shopkeepers_add = 10
+			building_employment_shopkeepers_add = 5
+			building_employment_bem_pop_desitute_add = 10
 			building_employment_capitalists_add = 10
 		}
 	}
