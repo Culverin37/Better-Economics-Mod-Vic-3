@@ -40,7 +40,7 @@ building_logistic_sector = {
 		
 	}
 	
-	buildable = no
+	#buildable = no
 	expandable = no
 	downsizeable = no	
 	

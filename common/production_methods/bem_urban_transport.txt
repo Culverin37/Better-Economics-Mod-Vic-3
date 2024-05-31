@@ -393,9 +393,16 @@ pm_traditional_planning = {
     unlocking_laws = {
         law_traditionalism
     }
+    disallowing_laws ={
+        law_interventionism
+        law_agrarianism
+        law_industry_banned
+        law_laissez_faire
+        law_cooperative_ownership
+	} 
     state_modifiers = {
         unscaled = {
-         state_market_access_price_impact = 0.1
+         state_market_access_price_impact = 0
         }
      }
      building_modifiers = {
@@ -408,5 +415,167 @@ pm_traditional_planning = {
      }
 }
 pm_interventionism_planning = {
-    
+    unlocking_laws = {
+        
+        law_interventionism
+
+    }
+    disallowing_laws ={
+        law_agrarianism
+        law_industry_banned
+        law_laissez_faire
+        law_cooperative_ownership
+        law_traditionalism
+	} 
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.1
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 10
+             building_employment_aristocrats_add = 0
+             building_employment_bureaucrats_add = 10
+ 
+         }
+     }
+}
+pm_agrarianism_planning = {
+    unlocking_laws = {
+        law_agrarianism
+
+    }
+    disallowing_laws ={
+        law_interventionism
+        law_industry_banned
+        law_laissez_faire
+        law_cooperative_ownership
+        law_traditionalism
+	} 
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.1
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 0
+             building_employment_aristocrats_add = 5
+             building_employment_bureaucrats_add = 10
+             building_employment_farmers_add = 5
+ 
+         }
+     }
+}
+pm_free_trade_planning = {
+    unlocking_laws = {
+        law_laissez_faire
+
+    }
+    disallowing_laws ={
+        law_interventionism
+        law_industry_banned
+        law_agrarianism
+        law_cooperative_ownership
+        law_traditionalism
+	} 
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.05
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 20
+             building_employment_aristocrats_add = 0
+             building_employment_bureaucrats_add = 0
+             building_employment_farmers_add = 0
+ 
+         }
+     }
+}
+pm_banned_planning = {
+    unlocking_laws = {
+        law_industry_banned
+
+    }
+    disallowing_laws ={
+        law_interventionism
+        law_agrarianism
+        law_cooperative_ownership
+        law_traditionalism
+        law_laissez_faire
+	} 
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.025
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 0
+             building_employment_aristocrats_add = 0
+             building_employment_bureaucrats_add = 5
+             building_employment_farmers_add = 5
+             building_employment_laborers_add = 10
+ 
+         }
+     }
+}
+pm_co_planning = {
+    unlocking_laws = {
+        law_cooperative_ownership
+
+    }
+    disallowing_laws ={
+        law_interventionism
+        law_agrarianism
+        law_industry_banned
+        law_traditionalism
+        law_laissez_faire
+	} 
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.0275
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 0
+             building_employment_aristocrats_add = 0
+             building_employment_bureaucrats_add = 5
+             building_employment_farmers_add = 0
+             building_employment_laborers_add = 15
+ 
+         }
+     }
+}
+pm_ce_planning	= {
+    unlocking_laws = {
+        law_cooperative_ownership
+
+    }
+    disallowing_laws ={
+        law_interventionism
+        law_agrarianism
+        law_industry_banned
+        law_traditionalism
+        law_laissez_faire
+	} 
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.0275
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 2
+             building_employment_aristocrats_add = 0
+             building_employment_bureaucrats_add = 15
+             building_employment_farmers_add = 0
+             building_employment_laborers_add = 3
+ 
+         }
+     }
 }

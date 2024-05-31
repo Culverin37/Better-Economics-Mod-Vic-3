@@ -109,7 +109,6 @@ pmg_economical_planner = {
 		pm_agrarianism_planning
 		pm_free_trade_planning
 		pm_banned_planning
-		pm_lf_planning
 		pm_co_planning
 		pm_ce_planning	
 
