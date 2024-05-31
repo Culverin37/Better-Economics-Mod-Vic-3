@@ -310,13 +310,39 @@ pm_mercantile_logistic = {
          }
      }
 }
+pm_mercantile_logistic = {
+    unlocking_laws = {
+        law_mercantilism
+
+	}
+	disallowing_laws ={
+        law_protectionism
+
+        law_free_trade
+        law_isolationism
+
+	}
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.05
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 20
+             goods_input_transportation_add = 5
+             building_employment_aristocrats_add = 0
+ 
+         }
+     }
+}
 pm_protect_logistic = {
     unlocking_laws = {
         law_protectionism
 
 	}
 	disallowing_laws ={
-        law_protectionism
+        
         law_mercantilism
 
         law_free_trade
@@ -336,4 +362,51 @@ pm_protect_logistic = {
  
          }
      }
+}
+pm_free_trade_logistic = {
+    unlocking_laws = {
+        law_free_trade
+
+	}
+	disallowing_laws ={
+        law_protectionism
+        law_mercantilism
+
+        law_isolationism
+
+	}
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.1
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 40
+             goods_input_transportation_add = 5
+             building_employment_aristocrats_add = 0
+ 
+         }
+     }
+}
+pm_traditional_planning = {
+    unlocking_laws = {
+        law_traditionalism
+    }
+    state_modifiers = {
+        unscaled = {
+         state_market_access_price_impact = 0.1
+        }
+     }
+     building_modifiers = {
+         level_scaled = {
+             building_employment_capitalists_add = 0
+             building_employment_aristocrats_add = 10
+             building_employment_bureaucrats_add = 10
+ 
+         }
+     }
+}
+pm_interventionism_planning = {
+    
 }

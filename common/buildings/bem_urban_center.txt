@@ -36,9 +36,11 @@ building_logistic_sector = {
         pmg_infrascture_reduction
         pmg_outgoing_transport
 		pmg_trade_policy 
+		pmg_economical_planner
+		
 	}
 	
-	#buildable = no
+	buildable = no
 	expandable = no
 	downsizeable = no	
 	

@@ -92,3 +92,27 @@ pmg_trade_policy = {
 		pm_free_trade_logistic
 	}
 }
+pmg_internal_logistic = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_isolationalist_int_logistic
+		pm_mercantile_int_logistic
+		pm_protect_int_logistic
+		pm_free_trade_int_logistic
+	}
+}
+pmg_economical_planner = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_traditional_planning
+		pm_interventionism_planning
+		pm_agrarianism_planning
+		pm_free_trade_planning
+		pm_banned_planning
+		pm_lf_planning
+		pm_co_planning
+		pm_ce_planning	
+
+	}
+
+}

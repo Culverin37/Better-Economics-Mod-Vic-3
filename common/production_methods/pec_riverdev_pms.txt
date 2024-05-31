@@ -1,4 +1,5 @@
-﻿pm_pec_naturalriver = {
+﻿
+pm_pec_naturalriver = {
 	texture = "gfx/interface/icons/production_method_icons/unused/no_cargo_handling.dds"
 
 	building_modifiers = {
@@ -13,12 +14,12 @@
 
 	state_modifiers = {
 		workforce_scaled = {
-			building_group_bg_logging_throughput_add = 0.01
-			building_group_bg_agriculture_throughput_add = 0.01
-			state_infrastructure_add = 5
+			#building_group_bg_logging_throughput_add = 0.01
+			#building_group_bg_agriculture_throughput_add = 0.01
+			#state_infrastructure_add = 5
 		}
 		unscaled = {
-			state_market_access_price_impact = 0.01
+			state_market_access_price_impact = 0.00
 		}
 	}
 }
@@ -45,13 +46,13 @@ pm_pec_canals = {
 
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 10
-			building_group_bg_logging_throughput_add = 0.02
-			building_group_bg_agriculture_throughput_add = 0.02
-			building_group_bg_plantations_throughput_add = 0.02
+			#state_infrastructure_add = 10
+			#building_group_bg_logging_throughput_add = 0.02
+			#building_group_bg_agriculture_throughput_add = 0.02
+			#building_group_bg_plantations_throughput_add = 0.02
 		}
 		unscaled = {
-			state_market_access_price_impact = 0.025
+			state_market_access_price_impact = 0.05
 		}
 	}
 }
@@ -78,14 +79,14 @@ pm_pec_canals_modern = {
 
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 20
-			building_group_bg_logging_throughput_add = 0.04
-			building_group_bg_agriculture_throughput_add = 0.04
-			building_group_bg_plantations_throughput_add = 0.04
-			state_pollution_generation_add = 5
+			#state_infrastructure_add = 20
+			#building_group_bg_logging_throughput_add = 0.04
+			#building_group_bg_agriculture_throughput_add = 0.04
+			#building_group_bg_plantations_throughput_add = 0.04
+			#state_pollution_generation_add = 5
 		}
 		unscaled = {
-			state_market_access_price_impact = 0.05
+			state_market_access_price_impact = 0.1
 		}
 	}
 }
@@ -109,15 +110,15 @@ pm_pec_simpleboats = {
 
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 2
-			building_group_bg_logging_throughput_add = 0.01
-			building_group_bg_mining_throughput_add = 0.01
+			#state_infrastructure_add = 2
+			#building_group_bg_logging_throughput_add = 0.01
+			#building_group_bg_mining_throughput_add = 0.01
 		}
 	}
 
 	country_modifiers = {
 		workforce_scaled = {
-			market_land_trade_capacity_add = 2
+			#market_land_trade_capacity_add = 2
 		}
 	}
 }
@@ -143,15 +144,15 @@ pm_pec_riverboats = {
 
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 5
-			building_group_bg_logging_throughput_add = 0.02
-			building_group_bg_mining_throughput_add = 0.02
+			#state_infrastructure_add = 5
+			#building_group_bg_logging_throughput_add = 0.02
+			#building_group_bg_mining_throughput_add = 0.02
 		}
 	}
 
 	country_modifiers = {
 		workforce_scaled = {
-			market_land_trade_capacity_add = 4
+			#market_land_trade_capacity_add = 4
 		}
 	}
 }
@@ -179,15 +180,15 @@ pm_pec_steamboats = {
 
 	state_modifiers = {
 		workforce_scaled = {
-			state_infrastructure_add = 10
-			building_group_bg_mining_throughput_add = 0.04
-			building_group_bg_logging_throughput_add = 0.04
-			state_pollution_generation_add = 20
+			#state_infrastructure_add = 10
+			#building_group_bg_mining_throughput_add = 0.04
+			#building_group_bg_logging_throughput_add = 0.04
+			#state_pollution_generation_add = 20
 		}
 	}
 	country_modifiers = {
 		workforce_scaled = {
-			market_land_trade_capacity_add = 6
+			#market_land_trade_capacity_add = 6
 		}
 	}
 }
