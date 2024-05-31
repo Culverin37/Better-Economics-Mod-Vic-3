@@ -41,3 +41,9 @@ bem_urban_level_checker = {
         add = b:building_urban_center.level
    }
 }
+bem_logistic_value_checker = {
+    if = {
+        limit = { exists = b:building_logistic_sector}
+        add = b:building_logistic_sector.level
+   }
+}

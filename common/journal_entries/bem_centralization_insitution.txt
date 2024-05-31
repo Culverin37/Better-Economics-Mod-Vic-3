@@ -16,6 +16,8 @@ bem_centralization_je = {
 
     	on_monthly_pulse = {
         	effect ={
+			if = {
+				limit = {bem_urban_level_checker > bem_logistic_value_checker}
 			every_scope_state = {
 				set_variable = {
 					name = bem_urban_level_var
@@ -10025,6 +10027,7 @@ bem_centralization_je = {
 				10000 = {create_building = {building = building_logistic_sector level = 10000 reserves = 1 }}
 				}
 			}
+		}
 			every_scope_state = {
                 		limit = {bem_urban_level_checker = 2}
                     		create_building = {
