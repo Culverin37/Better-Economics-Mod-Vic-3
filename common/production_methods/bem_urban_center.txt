@@ -111,9 +111,10 @@ bem_pm_no_interest = {
 		}
 	}
 	state_modifiers = {
+		unscaled = {
 		state_rich_standard_of_living_add = -3	
 		state_poor_standard_of_living_add =  3	
-
+		}
 	}
 }
 bem_pm_low_interest = {
@@ -128,8 +129,10 @@ bem_pm_low_interest = {
 		}
 	}
 	state_modifiers = {
+		unscaled = {
 		state_rich_standard_of_living_add = -1	
-		state_poor_standard_of_living_add =  1	
+		state_poor_standard_of_living_add =  1
+		}	
 	}
 }
 bem_pm_medium_interest = {
