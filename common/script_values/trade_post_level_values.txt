@@ -82,11 +82,12 @@ num_society_impact_level = {
 				OR = {
 					has_state_trait = state_trait_mississippi_river
 					has_state_trait = state_trait_rhine_river
-					has_state_trait = state_trait_danube_river
 					has_state_trait = state_trait_volga_river
-					has_state_trait = state_trait_dnieper_river
+					has_state_trait = state_trait_nile_river
 					has_state_trait = state_trait_indus_river
 					has_state_trait = state_trait_ganges_river
+					has_state_trait = state_trait_mekong_river
+					has_state_trait = state_trait_pearl_river
 					has_state_trait = state_trait_yangtze_river
 					has_state_trait = state_trait_yellow_river
 				}
@@ -124,13 +125,14 @@ num_society_impact_level = {
 				OR = {
 					has_state_trait = state_trait_mississippi_river
 					has_state_trait = state_trait_rhine_river
-					has_state_trait = state_trait_danube_river
 					has_state_trait = state_trait_volga_river
-					has_state_trait = state_trait_dnieper_river
+					has_state_trait = state_trait_nile_river
 					has_state_trait = state_trait_indus_river
-					shas_state_trait = tate_trait_ganges_river
-					shas_state_trait = state_trait_yangtze_river
-					shas_state_trait = state_trait_yellow_river
+					has_state_trait = state_trait_ganges_river
+					has_state_trait = state_trait_mekong_river
+					has_state_trait = state_trait_pearl_river
+					has_state_trait = state_trait_yangtze_river
+					has_state_trait = state_trait_yellow_river
 				}
 			}
 			multiply = 1.5

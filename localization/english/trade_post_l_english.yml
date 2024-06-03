@@ -1,5 +1,5 @@
 ﻿l_english:
- trade_value: "Trade Value"
+ trade_value: "Logistical Services"
 
  modifier_goods_output_trade_value_add: "@trade_value!$trade_value$ output"
  modifier_goods_output_trade_value_add_desc: "The amount of @trade_value!$trade_value$ produced by buildings"
@@ -11,7 +11,7 @@
  state_trade_value_modifier_calibration: "$trade_value$ calibration"
  state_base_market_access_price_impact_calibration: "Freight transportation"
 
- building_trade_post: "Trade Post"
+ building_trade_post: "Logistics Sector"
  building_trade_post_lens_option: "Expand $building_trade_post$"
 
  pmg_trade_value_building_trade_post: "$trade_value$"
