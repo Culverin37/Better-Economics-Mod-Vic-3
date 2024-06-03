@@ -355,6 +355,36 @@
 		activate_law = law_type:law_traditionalism
 	}
 	every_country = {
+		if = {
+			limit = {has_law = law_type:law_parliamentary_republic}
+			activate_law = law_type:law_bem_Performative_Veto
+		}
+		else_if = {
+			limit = {
+				OR ={
+					has_law = law_type:law_census_voting
+					has_law = law_type:law_oligarchy
+					has_law = law_type:law_wealth_voting
+				}
+			}
+			activate_law = law_type:law_bem_semi_consitutioal
+		}
+		else_if = {
+			limit = {
+				OR ={
+					has_law = law_type:law_landed_voting
+				}
+			}
+			activate_law = law_type:Law_bem_enlightened_absolutist
+		}
+		else_if = {
+			limit  ={
+				has_law = law_type:law_universal_suffrage
+			}	
+			activate_law = law_type:law_bem_Executive_Assent
+		}	
+	}
+	every_country = {
 		limit = {
 			OR = {
 				country_has_state_religion = rel:sunni
@@ -379,5 +409,4 @@
 
 		}
 	}
-	
 }

@@ -1,0 +1,33 @@
+bpm_law_enactment_must_accept = {
+	enacting_any_law = yes
+	trigger_if = {
+		limit = { has_law = law_type:Law_bem_absolutist }
+		always = no
+	}
+    trigger_else_if = {
+        limit = {
+            has_law = law_type:Law_bem_enlightened_absolutist
+		}
+		var:bpm_law_enactment_yea_votes_cached > 0.90
+    }
+    trigger_else_if = {
+        limit = {
+            has_law = law_type:law_bem_semi_consitutioal
+		}
+		var:bpm_law_enactment_yea_votes_cached > 0.75
+    }
+	trigger_else_if = {
+		limit = {
+            has_law = law_type:law_bem_Executive_Assent
+		}
+		var:bpm_law_enactment_yea_votes_cached > 0.6666
+	}
+	trigger_else = {
+		always = yes
+	}
+}
+
+bpm_law_enactment_can_accept = {
+	enacting_any_law = yes
+	bpm_law_enactment_ruler_approval > 0
+}
