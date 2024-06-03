@@ -85,18 +85,28 @@ ig_industrialists = {
         if = {
             limit = {
                     has_law = lawtype:law_dedicated_police
-                    OR = {
-                        #is_pop_type = aristocrats
-                        is_pop_type = officers
-                        is_pop_type = soldiers
-                    }
             }
-            add = {
-                desc = "DEDICATED POLICE"
-                value = 100 
-            }
+			if = {
+				limit = {
+					pop_employment_building = building_police
+				}
+				add = {
+					desc = "POLICEMAN"
+					value = 200
+				}
+			}
+			else_if = {
+				limit = {                    
+					OR = {
+					is_pop_type = officers
+					is_pop_type = soldiers
+				}}
+				add = {
+					desc = "DEDICATED POLICE"
+					value = 25 
+				}
+			}
         }
-		
 		add = {
 			desc = "NOT_RURAL_POP"
 			if = {
