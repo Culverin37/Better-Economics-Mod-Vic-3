@@ -1,0 +1,152 @@
+list_add_good_trade = {
+	add_good_trade = {
+		GOOD = "ammunition"
+	}
+	add_good_trade = {
+		GOOD = "small_arms"
+	}
+	add_good_trade = {
+		GOOD = "artillery"
+	}
+	add_good_trade = {
+		GOOD = "tanks"
+	}
+	add_good_trade = {
+		GOOD = "aeroplanes"
+	}
+	add_good_trade = {
+		GOOD = "manowars"
+	}
+	add_good_trade = {
+		GOOD = "ironclads" 
+	}
+	add_good_trade = {
+		GOOD = "grain"
+	}
+	add_good_trade = {
+		GOOD = "fish"
+	}
+	add_good_trade = {
+		GOOD = "fabric"
+	}
+	add_good_trade = {
+		GOOD = "wood"
+	}
+	add_good_trade = {
+		GOOD = "groceries"
+	}
+	add_good_trade = {
+		GOOD = "clothes"
+	}
+	add_good_trade = {
+		GOOD = "furniture"
+	}
+	add_good_trade = {
+		GOOD = "paper"
+	}
+	add_good_trade = {
+		GOOD = "clippers"
+	}
+	add_good_trade = {
+		GOOD = "steamers"
+	}
+	add_good_trade = {
+		GOOD = "silk"
+	}
+	add_good_trade = {
+		GOOD = "dye"
+	}
+	add_good_trade = {
+		GOOD = "sulfur"
+	}
+	add_good_trade = {
+		GOOD = "coal"
+	}
+	add_good_trade = {
+		GOOD = "iron"
+	}
+	add_good_trade = {
+		GOOD = "lead"
+	}
+	add_good_trade = {
+		GOOD = "hardwood"
+	}
+	add_good_trade = {
+		GOOD = "rubber"
+	}
+	add_good_trade = {
+		GOOD = "oil"
+	}
+	add_good_trade = {
+		GOOD = "engines"
+	}
+	add_good_trade = {
+		GOOD = "steel"
+	}
+	add_good_trade = {
+		GOOD = "glass"
+	}
+	add_good_trade = {
+		GOOD = "fertilizer"
+	}
+	add_good_trade = {
+		GOOD = "tools"
+	}
+	add_good_trade = {
+		GOOD = "explosives"
+	}
+	add_good_trade = {
+		GOOD = "porcelain"
+	}
+	add_good_trade = {
+		GOOD = "meat"
+	}
+	add_good_trade = {
+		GOOD = "fruit"
+	}
+	add_good_trade = {
+		GOOD = "liquor"
+	}
+	add_good_trade = {
+		GOOD = "wine"
+	}
+	add_good_trade = {
+		GOOD = "tea"
+	}
+	add_good_trade = {
+		GOOD = "coffee"
+	}
+	add_good_trade = {
+		GOOD = "sugar"
+	}
+	add_good_trade = {
+		GOOD = "tobacco"
+	}
+	add_good_trade = {
+		GOOD = "opium"
+	}
+	add_good_trade = {
+		GOOD = "automobiles"
+	}
+	add_good_trade = {
+		GOOD = "telephones"
+	}
+	add_good_trade = {
+		GOOD = "radios"
+	}
+	add_good_trade = {
+		GOOD = "luxury_clothes"
+	}
+	add_good_trade = {
+		GOOD = "luxury_furniture"
+	}
+	add_good_trade = {
+		GOOD = "fine_art"
+	}
+
+	### 马与畜力
+
+	add_good_trade = {
+		GOOD = "horse"
+	}
+}

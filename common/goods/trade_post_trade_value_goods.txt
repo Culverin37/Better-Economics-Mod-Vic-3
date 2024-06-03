@@ -1,0 +1,8 @@
+trade_value = {
+	texture = "gfx/interface/icons/goods_icons/trade_value.dds"
+	cost = 100
+	category = industrial
+	tradeable = no
+	fixed_price = yes
+	prestige_factor = 1
+}

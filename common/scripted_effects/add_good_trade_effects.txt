@@ -1,0 +1,65 @@
+add_good_trade = {
+	set_local_variable = {
+		name = price_diff
+		value = 0
+	}
+	if = {
+		limit = {
+			sg:$GOOD$.state_goods_pricier > market.mg:$GOOD$.market_goods_pricier
+		}
+		change_local_variable = {
+			name = price_diff
+			add = sg:$GOOD$.state_goods_pricier
+		}
+		change_local_variable = {
+			name = price_diff
+			subtract = market.mg:$GOOD$.market_goods_pricier
+		}
+	}
+	else_if = {
+		limit = {
+			sg:$GOOD$.state_goods_pricier < market.mg:$GOOD$.market_goods_pricier
+		}
+		change_local_variable = {
+			name = price_diff
+			add = market.mg:$GOOD$.market_goods_pricier
+		}
+		change_local_variable = {
+			name = price_diff
+			subtract = sg:$GOOD$.state_goods_pricier
+		}
+	}
+	set_local_variable = {
+		name = logistics_volume
+		value = sg:$GOOD$.state_goods_delta
+	}
+	if = {
+		limit = {
+			sg:$GOOD$.state_goods_delta < 0
+		}
+		change_local_variable = {
+			name = logistics_volume
+			multiply = -1
+		}
+	}
+	change_local_variable = {
+		name = price_diff
+		multiply = $GOOD$_base_price
+	}
+	change_local_variable = {
+		name = price_diff
+		multiply = local_var:logistics_volume
+	}
+	change_local_variable = {
+		name = logistics_volume
+		multiply = $GOOD$_size_multiplier
+	}
+	change_variable = {
+		name = total_trade_size
+		add = local_var:logistics_volume
+	}
+	change_variable = {
+		name = total_trade_value
+		add = local_var:price_diff
+	}
+}

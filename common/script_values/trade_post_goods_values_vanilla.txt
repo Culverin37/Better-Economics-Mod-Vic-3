@@ -1,0 +1,360 @@
+############
+# MILITARY #
+############
+
+ammunition_base_price = {
+    value = 50
+}
+ammunition_size_multiplier = {
+    value = 1
+}
+
+small_arms_base_price = {
+    value = 60
+}
+small_arms_size_multiplier = {
+    value = 1
+}
+
+artillery_base_price = {
+    value = 70
+}
+artillery_size_multiplier = {
+    value = 1.5
+}
+
+tanks_base_price = {
+    value = 80
+}
+tanks_size_multiplier = {
+    value = 2.0
+}
+
+aeroplanes_base_price = {
+    value = 80
+}
+aeroplanes_size_multiplier = {
+    value = 2.0
+}
+
+manowars_base_price = {
+    value = 70
+}
+manowars_size_multiplier = {
+    value = 0.5
+}
+
+ironclads_base_price = {
+    value = 80
+}
+ironclads_size_multiplier = {
+    value = 0.5
+}
+
+##########
+# STAPLE #
+##########
+
+grain_base_price = {
+    value = 20
+}
+grain_size_multiplier = {
+    value = 0.25
+}
+
+fish_base_price = {
+    value = 20
+}
+fish_size_multiplier = {
+    value = 0.25
+}
+
+fabric_base_price = {
+    value = 20
+}
+fabric_size_multiplier = {
+    value = 0.25
+}
+
+wood_base_price = {
+    value = 20
+}
+wood_size_multiplier = {
+    value = 0.25
+}
+
+groceries_base_price = {
+    value = 30
+}
+groceries_size_multiplier = {
+    value = 0.5
+}
+
+clothes_base_price = {
+    value = 30
+}
+clothes_size_multiplier = {
+    value = 0.5
+}
+
+furniture_base_price = {
+    value = 30
+}
+furniture_size_multiplier = {
+    value = 0.5
+}
+
+paper_base_price = {
+    value = 30
+}
+paper_size_multiplier = {
+    value = 0.5
+}
+
+##############
+# INDUSTRIAL #
+##############
+
+clippers_base_price = {
+    value = 60
+}
+clippers_size_multiplier = {
+    value = 0.25
+}
+
+steamers_base_price = {
+    value = 70
+}
+steamers_size_multiplier = {
+    value = 0.25
+}
+
+silk_base_price = {
+    value = 40
+}
+silk_size_multiplier = {
+    value = 1
+}
+
+dye_base_price = {
+    value = 40
+}
+dye_size_multiplier = {
+    value = 1
+}
+
+sulfur_base_price = {
+    value = 50
+}
+sulfur_size_multiplier = {
+    value = 1
+}
+
+coal_base_price = {
+    value = 30
+}
+coal_size_multiplier = {
+    value = 0.75
+}
+
+iron_base_price = {
+    value = 40
+}
+iron_size_multiplier = {
+    value = 1
+}
+
+lead_base_price = {
+    value = 40
+}
+lead_size_multiplier = {
+    value = 1
+}
+
+hardwood_base_price = {
+    value = 40
+}
+hardwood_size_multiplier = {
+    value = 1
+}
+
+rubber_base_price = {
+    value = 40
+}
+rubber_size_multiplier = {
+    value = 1
+}
+
+oil_base_price = {
+    value = 40
+}
+oil_size_multiplier = {
+    value = 1
+}
+
+engines_base_price = {
+    value = 60
+}
+engines_size_multiplier = {
+    value = 1.5
+}
+
+steel_base_price = {
+    value = 50
+}
+steel_size_multiplier = {
+    value = 1
+}
+
+glass_base_price = {
+    value = 40
+}
+glass_size_multiplier = {
+    value = 1
+}
+
+fertilizer_base_price = {
+    value = 30
+}
+fertilizer_size_multiplier = {
+    value = 1
+}
+
+tools_base_price = {
+    value = 40
+}
+tools_size_multiplier = {
+    value = 1
+}
+
+explosives_base_price = {
+    value = 50
+}
+explosives_size_multiplier = {
+    value = 1.5
+}
+
+##########
+# LUXURY #
+##########
+
+porcelain_base_price = {
+    value = 70
+}
+porcelain_size_multiplier = {
+    value = 0.75
+}
+
+meat_base_price = {
+    value = 30
+}
+porcelain_size_multiplier = {
+    value = 0.75
+}
+
+fruit_base_price = {
+    value = 30
+}
+fruit_size_multiplier = {
+    value = 0.75
+}
+
+liquor_base_price = {
+    value = 30
+}
+liquor_size_multiplier = {
+    value = 0.75
+}
+
+wine_base_price = {
+    value = 50
+}
+wine_size_multiplier = {
+    value = 0.75
+}
+
+tea_base_price = {
+    value = 50
+}
+tea_size_multiplier = {
+    value = 0.75
+}
+
+coffee_base_price = {
+    value = 50
+}
+coffee_size_multiplier = {
+    value = 0.75
+}
+
+sugar_base_price = {
+    value = 30
+}
+sugar_size_multiplier = {
+    value = 0.75
+}
+
+tobacco_base_price = {
+    value = 40
+}
+tobacco_size_multiplier = {
+    value = 0.75
+}
+
+opium_base_price = {
+    value = 50
+}
+opium_size_multiplier = {
+    value = 0.75
+}
+
+automobiles_base_price = {
+    value = 100
+}
+automobiles_size_multiplier = {
+    value = 1
+}
+
+telephones_base_price = {
+    value = 70
+}
+telephones_size_multiplier = {
+    value = 1
+}
+
+radios_base_price = {
+    value = 80
+}
+radios_size_multiplier = {
+    value = 1
+}
+
+luxury_clothes_base_price = {
+    value = 60
+}
+luxury_clothes_size_multiplier = {
+    value = 0.75
+}
+
+luxury_furniture_base_price = {
+    value = 60
+}
+luxury_furniture_size_multiplier = {
+    value = 0.75
+}
+
+fine_art_base_price = {
+    value = 200
+}
+fine_art_size_multiplier = {
+    value = 1
+}
+
+### 马与畜力
+
+horse_base_price = {
+    value = 50
+}
+horse_size_multiplier = {
+    value = 1
+}

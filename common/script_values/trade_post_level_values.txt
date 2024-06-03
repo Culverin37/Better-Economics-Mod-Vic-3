@@ -1,0 +1,139 @@
+count_trade_post_level = {
+	value = var:total_trade_size
+	divide = num_society_impact_level
+	ceiling = yes
+}
+
+count_trade_post_modifier_level = {
+	value = var:total_trade_value
+	divide = var:current_trade_post_level
+	divide = 1000  #100*10
+	subtract = 1
+}
+
+num_society_impact_level = {
+	value = 100
+	if = {
+		limit = {
+			owner = {
+				has_technology_researched = urbanization
+			}
+		}
+		add = 20
+	}
+	if = {
+		limit = {
+			owner = {
+				has_technology_researched = urban_planning
+			}
+		}
+		add = 20
+	}
+	if = {
+		limit = {
+			owner = {
+				has_technology_researched = modern_sewerage
+			}
+		}
+		add = 20
+	}
+	if = {
+		limit = {
+			owner = {
+				has_technology_researched = paved_roads
+			}
+		}
+		add = 20
+	}
+### state_market_access_price_impact
+	if = {
+		limit = {
+			owner = {
+				has_law = law_traditionalism
+			}
+		}
+		divide = 16
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = stock_exchange
+				}
+			}
+			multiply = 4
+		}
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = zeppelins
+				}
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = macroeconomics
+				}
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				OR = {
+					has_state_trait = state_trait_mississippi_river
+					has_state_trait = state_trait_rhine_river
+					has_state_trait = state_trait_danube_river
+					has_state_trait = state_trait_volga_river
+					has_state_trait = state_trait_dnieper_river
+					has_state_trait = state_trait_indus_river
+					has_state_trait = state_trait_ganges_river
+					has_state_trait = state_trait_yangtze_river
+					has_state_trait = state_trait_yellow_river
+				}
+			}
+			multiply = 2
+		}
+	}
+	else ={
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = stock_exchange
+				}
+			}
+			multiply = 2
+		}
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = zeppelins
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				owner = {
+					has_technology_researched = macroeconomics
+				}
+			}
+			multiply = 1.5
+		}
+		if = {
+			limit = {
+				OR = {
+					has_state_trait = state_trait_mississippi_river
+					has_state_trait = state_trait_rhine_river
+					has_state_trait = state_trait_danube_river
+					has_state_trait = state_trait_volga_river
+					has_state_trait = state_trait_dnieper_river
+					has_state_trait = state_trait_indus_river
+					shas_state_trait = tate_trait_ganges_river
+					shas_state_trait = state_trait_yangtze_river
+					shas_state_trait = state_trait_yellow_river
+				}
+			}
+			multiply = 1.5
+		}
+	}
+}
