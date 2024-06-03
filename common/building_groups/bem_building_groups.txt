@@ -89,3 +89,7 @@ bg_bem_urban_service = {
 	#land_usage = urban
 	always_possible =  yes
 }
+bg_bem_police = {
+	parent_group = bg_bg_bureaucracy
+	category = urban
+}

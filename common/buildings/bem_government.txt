@@ -73,3 +73,15 @@ building_workhouses = {
 	texture = "gfx/interface/icons/building_icons/building_university.dds"
 	required_construction = construction_cost_very_low
 }
+building_police = {
+	building_group = bg_bem_police 
+	required_construction = construction_cost_very_low
+	texture = "gfx/interface/icons/building_icons/building_university.dds"
+	production_method_groups = {
+		bem_pmg_none
+		bem_pmg_local 
+		bem_pmg_dedicated
+		bem_pmg_miltarize
+		bem_pmg_elected
+	}
+}

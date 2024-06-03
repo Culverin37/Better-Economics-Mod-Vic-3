@@ -108,9 +108,9 @@ pm_poor_planning = {
     state_modifiers = {
         workforce_scaled = {
             state_infrastructure_add = 1
-            building_bg_manufacturing_throughput_add = -1
-            building_bg_logging_throughput_add = -1
-            building_bg_mining_throughput_add = -1
+            building_group_bg_manufacturing_throughput_add = -1
+            building_group_bg_logging_throughput_add = -1
+            building_group_bg_mining_throughput_add = -1
         }
     }
 }
@@ -143,9 +143,9 @@ pm_good_planning = {
     state_modifiers = {
         workforce_scaled = {
             state_infrastructure_add = 20
-            building_bg_manufacturing_throughput_add = 1
-            building_bg_logging_throughput_add = 1
-            building_bg_mining_throughput_add = 1
+            building_group_bg_manufacturing_throughput_add = 1
+            building_group_logging_throughput_add = 1
+            building_group_mining_throughput_add = 1
         }
     }
 }
