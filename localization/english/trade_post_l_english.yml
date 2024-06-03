@@ -1,0 +1,41 @@
+﻿l_english:
+ trade_value: "Trade Value"
+
+ modifier_goods_output_trade_value_add: "@trade_value!$trade_value$ output"
+ modifier_goods_output_trade_value_add_desc: "The amount of @trade_value!$trade_value$ produced by buildings"
+ modifier_goods_input_trade_value_add: "@trade_value!$trade_value$ input"
+ modifier_goods_input_trade_value_add_desc: "The amount of @trade_value!$trade_value$ consumed by buildings"
+ modifier_goods_output_trade_value_mult: "Building @trade_value!$trade_value$ output"
+ modifier_goods_output_trade_value_mult_desc: "A bonus or penalty to the amount of @trade_value!$trade_value$ produced by buildings"
+
+ state_trade_value_modifier_calibration: "$trade_value$ calibration"
+ state_base_market_access_price_impact_calibration: "Freight transportation"
+
+ building_trade_post: "Trade Post"
+ building_trade_post_lens_option: "Expand $building_trade_post$"
+
+ pmg_trade_value_building_trade_post: "$trade_value$"
+ pm_trade_value: "$trade_value$"
+
+ pmg_transport_building_trade_post: "Long-distance Transport"
+ pm_caravan: "Caravan"
+ pm_partial_railway_transport: "Partial Railway Transport"
+ pm_railway_transport: "Railway Transport"
+ pm_mix_transport: "Mix Transport"
+ pm_truck_transport: "Truck Transport"
+
+ pmg_street_transport_building_trade_post: "Street Transport"
+ pm_horse_street_transport: "Street Carriage"
+ pm_truck_street_transport: "Street Trucks"
+
+ pmg_automation_building_trade_post: "Automation"
+ pm_no_automation: "$pm_no_steam_automation$"
+ pm_steam_donkey_building_trade_post: "$pm_steam_donkey_mine$"
+ pm_conveyors_building_trade_post: "Conveyors"
+
+ pmg_ownership_building_trade_post: "$pmg_ownership$"
+ pm_merchant_guilds_building_trade_post: "$pm_merchant_guilds$"
+ pm_privately_owned_building_trade_post: "$pm_privately_owned$"
+ pm_publicly_traded_building_trade_post: "$pm_publicly_traded$"
+ pm_government_run_building_trade_post: "$pm_government_run$"
+ pm_worker_cooperative_building_trade_post: "$pm_worker_cooperative$"
