@@ -1,0 +1,21 @@
+building_trade_post = {
+	building_group = bg_trade_post
+	city_type = city
+	levels_per_mesh = 10
+
+	lens = infrastructure
+
+	texture = "gfx/interface/icons/building_icons/building_trade_post.dds"
+
+	production_method_groups = {
+		pmg_trade_value_building_trade_post
+		pmg_transport_building_trade_post
+		pmg_street_transport_building_trade_post
+		pmg_automation_building_trade_post
+		pmg_ownership_building_trade_post
+	}
+
+	buildable = no
+	expandable = no
+	downsizeable = no
+}
