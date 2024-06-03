@@ -83,9 +83,22 @@ bg_pec_river_development2 = {
 	urbanization = 5
 }
 bg_bem_urban_service = {
-	parent_group = bg_private_infrastructure
-	urbanization = 0
+	is_government_funded = no
+	subsidized = yes
+	
+	cash_reserves_max = 25000
+
 	category = urban
-	#land_usage = urban
-	always_possible =  yes
+	
+	land_usage = urban
+
+	always_possible = yes	
+	
+	auto_place_buildings = yes	
+	
+	economy_of_scale = yes
+	
+	default_building = building_urban_center
+	
+	cash_reserves_max = 25000
 }
