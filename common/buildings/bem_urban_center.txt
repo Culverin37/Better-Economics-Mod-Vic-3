@@ -30,7 +30,9 @@ building_logistic_sector = {
 	unlocking_technologies = { 
 		urbanization
 	}
+
 	required_construction = construction_cost_very_low
+
 	production_method_groups = {
 
         pmg_centralization_inefficency
