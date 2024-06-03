@@ -126,3 +126,8 @@ bg_logistics_sector = { #feel free to change these values
 
 	stateregion_max_level = no
 }
+
+bg_bem_police = {
+	parent_group = bg_bg_bureaucracy
+	category = urban
+}

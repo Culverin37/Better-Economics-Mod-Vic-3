@@ -218,7 +218,7 @@ pm_isolationalist_int_logistic = {
      building_modifiers = {
          level_scaled = {
              building_employment_capitalists_add = 40
-             goods_input_transportation_add = 5
+             #goods_input_transportation_add = 5
              building_employment_aristocrats_add = 0
  
          }
@@ -248,7 +248,7 @@ pm_mercantile_int_logistic = {
      building_modifiers = {
          level_scaled = {
              building_employment_capitalists_add = 10
-             goods_input_transportation_add = 5
+            # goods_input_transportation_add = 5
              building_employment_aristocrats_add = 10
  
          }
@@ -278,7 +278,7 @@ pm_protect_int_logistic = {
      building_modifiers = {
          level_scaled = {
              building_employment_capitalists_add = 12
-             goods_input_transportation_add = 5
+             #goods_input_transportation_add = 1
              building_employment_aristocrats_add = 0
  
          }
@@ -287,11 +287,10 @@ pm_protect_int_logistic = {
 pm_free_trade_int_logistic = {
 	unlocking_laws = {
         
-        law_protectionism
-
+		law_free_trade
 	}
 	disallowing_laws ={
-        law_free_trade
+		law_protectionism
         law_isolationism
 		law_mercantilism
 	}

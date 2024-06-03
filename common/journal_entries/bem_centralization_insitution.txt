@@ -14,8 +14,8 @@ bem_centralization_je = {
 		}
     }
 
-    on_monthly_pulse = {
-		effect ={	
+    on_weekly_pulse = {
+		effect ={
             if = {
        			limit = {
                     bem_centralization_value = 1
