@@ -8,10 +8,12 @@ building_trade_post = {
 
 	production_method_groups = {
 		pmg_trade_value_building_trade_post
-		pmg_transport_building_trade_post
-		pmg_street_transport_building_trade_post
-		pmg_automation_building_trade_post
-		pmg_ownership_building_trade_post
+		pmg_centralization_inefficency
+		pmg_infrascture_reduction
+		pmg_outgoing_transport
+		pmg_trade_policy
+		pmg_internal_logistic
+		pmg_economical_planner
 	}
 
 	buildable = no

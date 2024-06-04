@@ -55,6 +55,13 @@ pmg_road_transport = {
 	}
 
 }
+pmg_trade_value_building_trade_post = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	production_methods = {
+		pm_trade_value
+	}
+}
+
 pmg_centralization_inefficency = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
 	production_methods = {

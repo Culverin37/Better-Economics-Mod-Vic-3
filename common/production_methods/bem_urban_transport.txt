@@ -1,3 +1,14 @@
+pm_trade_value = {
+	texture = "gfx/interface/icons/production_method_icons/trade_value.dds"
+
+	building_modifiers = {
+		unscaled = {
+			# output goods
+			goods_output_trade_value_add = 10
+		}
+	}
+}
+
 pm_aristocratic_influence = {
     building_modifiers = {
         level_scaled = {
