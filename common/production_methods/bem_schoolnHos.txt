@@ -1,0 +1,25 @@
+bem_pm_no_school = {
+    unlocking_laws = {
+        law_no_schools
+    	}
+	disallowing_laws = {
+		law_private_schools
+        law_religious_schools
+        law_public_schools
+	}
+}
+bem_pm_charity_school = {
+    unlocking_laws = {
+        law_religious_schools
+    	}
+	disallowing_laws = {
+		law_private_schools
+        law_public_schools
+        law_no_schools
+	}
+    building_modifiers = {
+        level_scaled = {
+            
+        }
+    }
+}

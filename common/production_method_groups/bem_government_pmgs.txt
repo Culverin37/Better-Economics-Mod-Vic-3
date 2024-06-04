@@ -1,27 +1,4 @@
-﻿pec_pmg_government_administration_education = {
-	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
-	ai_selection = most_productive
-
-	production_methods = {
-		pec_pm_no_formal_education
-		pec_pm_religious_schools
-		pec_pm_private_schools
-		pec_pm_public_schools
-	}
-}
-
-pec_pmg_government_administration_healthcare = {
-	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
-	ai_selection = most_productive
-
-	production_methods = {
-		pec_pm_no_formal_healthcare
-		pec_pm_charity_healthcare
-		pec_pm_private_healthcare
-		pec_pm_public_healthcare
-	}
-}
-
+﻿
 pec_pmg_university_education = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
 	ai_selection = most_productive
@@ -103,5 +80,35 @@ bem_pmg_police_tech = {
 		bem_pm_Identification_Documents
 		bem_pm_central_planning
 		bem_pm_mass_survilence
+	}
+}
+
+bem_pmg_school = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_no_school
+		bem_pm_charity_school
+		bem_pm_private_school
+		bem_pm_public_school
+	}
+}
+
+bem_pmg_hospital = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_no_hospital
+		bem_pm_charity_hospital
+		bem_pm_private_hospital
+		bem_pm_public_hospital
+	}
+}
+bem_pmg_hospital_tech = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_Medical_Degrees
+		bem_pm_Pharmaceuticals
+		bem_pm_Quinine
+		bem_pm_Malaria_prevention
+		bem_pm_antibotics
 	}
 }

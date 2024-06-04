@@ -118,6 +118,14 @@ goods_output_wine_mult = {
 	good = yes
 	percent = yes
 }
+goods_output_bem_charity_add = {
+	good = yes
+	percent = no
+}
+goods_output_bem_private_add = {
+	good = yes
+	percent = no
+}
 
 interest_group_ig_pec_unorganized_labour_pol_str_mult = {
 	neutral = yes
