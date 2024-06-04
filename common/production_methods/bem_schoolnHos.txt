@@ -96,7 +96,7 @@ bem_pm_civic_school = {
     }
     state_modifiers = {
         workforce_scaled = {
-            state_radicals_from_sol_change_mult = -0.1
+            state_assimilation_mult = 0.1
         }
     }
     country_modifiers = {
@@ -105,41 +105,11 @@ bem_pm_civic_school = {
         }
     }
 }
-bem_pm_Hierarchical = {
-    unlocking_laws = {
-        law_public_schools
 
-    	}
-	disallowing_laws = {
-		law_religious_schools
-        law_private_schools
-        law_no_schools
-	}
-    building_modifiers = {
-        level_scaled = {
-            building_employment_academics_add = 250
-            building_employment_clerks_add = 750
-            building_employment_bureaucrats_add = 250
-        }
-        workforce_scaled = {
-            #goods_input_paper_add = 10
-        }
-    }
-    state_modifiers = {
-        workforce_scaled = {
-            state_political_strength_from_wealth_mult	 = 0.1
-        }
-    }
-    country_modifiers = {
-        workforce_scaled = {
-            #interest_group_in_government_attraction_mult = 0.1
-        }
-    }
-}
 bem_pm_Technocratic_school = {
     unlocking_laws = {
         law_public_schools
-
+        law_technocracy	
     	}
 	disallowing_laws = {
 		law_religious_schools
@@ -164,6 +134,46 @@ bem_pm_Technocratic_school = {
     country_modifiers = {
         workforce_scaled = {
             country_tech_research_speed_mult = 0.1
+        }
+    }
+}
+bem_pm_liberatory_school = {
+    unlocking_laws = {
+        law_public_schools
+        law_council_republic	
+    	}
+	disallowing_laws = {
+		law_religious_schools
+        law_private_schools
+        law_no_schools
+	}
+    unlocking_laws = {
+        law_public_schools
+        
+    	}
+	disallowing_laws = {
+		law_religious_schools
+        law_private_schools
+        law_no_schools
+	}
+    building_modifiers = {
+        level_scaled = {
+            building_employment_academics_add = 250
+            building_employment_clerks_add = 750
+            building_employment_bureaucrats_add = 250
+        }
+        workforce_scaled = {
+            #goods_input_paper_add = 10
+        }
+    }
+    state_modifiers = {
+        workforce_scaled = {
+            #state_assimilation_mult = 0.1
+        }
+    }
+    country_modifiers = {
+        workforce_scaled = {
+            interest_group_in_government_attraction_mult = 2
         }
     }
 }
@@ -267,13 +277,13 @@ bem_pm_no_hospital = {
 }
 bem_pm_charity_hospital = {
     unlocking_laws = {
-        	
+        law_public_health_insurance
         law_charitable_health_system
     }
     disallowing_laws = {
         law_no_health_system
         law_private_health_insurance	
-        law_public_health_insurance
+        
     }
     building_modifiers = {
         level_scaled = {
@@ -282,28 +292,33 @@ bem_pm_charity_hospital = {
             building_employment_clergymen_add = 250
         }
         workforce_scaled = {
-            goods_input_opium_add = 10
+         #   goods_input_opium_add = 10
             goods_output_bem_charity_add = 10;
 
         }
     }
     state_modifiers = {
         workforce_scaled = {
-            state_pollution_reduction_health_mult = -0.05
+            #state_pollution_reduction_health_mult = -0.05
             state_poor_standard_of_living_add = 0.20
-            state_mortality_mult = -0.015
+            #state_mortality_mult = -0.015
         }
+    }
+    country_modifiers  = {
+        workforce_scaled = {
+            interest_group_ig_devout_pop_attraction_mult = 0.1
+        }	
     }
 }
 bem_pm_private_hospital = {
     unlocking_laws = {
         law_private_health_insurance
-        
+        law_public_health_insurance
     }
     disallowing_laws = {
         law_no_health_system
         law_charitable_health_system	
-        law_public_health_insurance
+        
     }
     building_modifiers = {
         level_scaled = {
@@ -313,14 +328,19 @@ bem_pm_private_hospital = {
         }
         workforce_scaled = {
             goods_output_bem_private_add = 10;
-            goods_input_opium_add = 10
+          #  goods_input_opium_add = 10
         }
     }
     state_modifiers = {
         workforce_scaled = {
             state_rich_standard_of_living_add = 0.25
-            state_mortality_wealth_mult = -0.001
-            state_pollution_reduction_health_mult = -0.05
+            #state_mortality_wealth_mult = -0.001
+            #state_pollution_reduction_health_mult = -0.05
+        }
+    }
+    country_modifiers = {
+        workforce_scaled = {
+            interest_group_ig_industrialists_pop_attraction_mult = 0.1
         }
     }
 }
@@ -341,19 +361,187 @@ bem_pm_public_hospital = {
             building_employment_bureaucrats_add = 250
         }
         workforce_scaled = {
-            goods_input_opium_add = 10
+           # goods_input_opium_add = 10
         }
     }
     state_modifiers = {
         workforce_scaled = {
-            state_pollution_reduction_health_mult = -0.075
+            #state_pollution_reduction_health_mult = -0.075
             state_standard_of_living_add = 0.5
-            state_mortality_mult = -0.02
+            #state_mortality_mult = -0.02
+        }
+    }
+}
+bem_pm_technocratic_hospital = {
+    unlocking_laws = {
+        law_technocracy
+        law_public_health_insurance
+    }
+    disallowing_laws = {
+        law_no_health_system
+        law_charitable_health_system	
+        law_private_health_insurance
+    }
+    building_modifiers = {
+        level_scaled = {
+            building_employment_academics_add = 250
+            building_employment_clerks_add = 750
+            building_employment_bureaucrats_add = 250
+        }
+        workforce_scaled = {
+            #goods_input_opium_add = 10
+        }
+    }
+    state_modifiers = {
+        workforce_scaled = {
+            #state_pollution_reduction_health_mult = -0.075
+            state_standard_of_living_add = 0.25
+            #state_mortality_mult = -0.02
+        }
+    }
+    country_modifiers = {
+        workforce_scaled = {
+            country_tech_research_speed_mult = 0.1
+        }
+    }
+}
+bem_pm_Liberatory_hospital = {
+    unlocking_laws = {
+        law_technocracy
+        law_public_health_insurance
+    }
+    disallowing_laws = {
+        law_no_health_system
+        law_charitable_health_system	
+        law_private_health_insurance
+    }
+    building_modifiers = {
+        level_scaled = {
+            building_employment_academics_add = 250
+            building_employment_clerks_add = 750
+            building_employment_bureaucrats_add = 250
+        }
+        workforce_scaled = {
+           # goods_input_opium_add = 10
+        }
+    }
+    state_modifiers = {
+        workforce_scaled = {
+            #state_pollution_reduction_health_mult = -0.075
+            state_standard_of_living_add = 0.75
+            #state_mortality_mult = -0.02
+        }
+    }
+    country_modifiers = {
+        workforce_scaled = {
+            #country_tech_research_speed_mult = 1.1
         }
     }
 }
 bem_pm_Medical_Degrees = {
+    state_modifiers = {
+        level_scaled ={
+            state_standard_of_living_add = 0.10
+            #state_mortality_mult = -0.01
+            #state_pollution_reduction_health_mult = -0.025
+        }
+    }
+    building_modifiers = {
+
+        workforce_scaled = {
+            goods_input_paper_add =5
+            goods_input_fabric_add = 5
+            goods_input_services_add = 5
+        }
+    }
+}
+bem_pm_Quinine = {
     unlocking_technologies = {
-        
+        quinine
+    }
+    state_modifiers = {
+        level_scaled ={
+            state_standard_of_living_add = 0.20
+            #state_mortality_mult = -0.02
+            #state_pollution_reduction_health_mult = -0.050
+        }
+    }
+    building_modifiers = {
+
+        workforce_scaled = {
+            goods_input_paper_add =5
+            goods_input_fabric_add = 5
+            goods_input_tools_add =5
+            goods_input_services_add = 5
+        }
+    }
+}
+bem_pm_Malaria_prevention = {
+    unlocking_technologies = {
+        malaria_prevention
+    }
+    state_modifiers = {
+        level_scaled ={
+            state_standard_of_living_add = 0.30
+            #state_mortality_mult = -0.03
+            #state_pollution_reduction_health_mult = -0.075
+        }
+    }
+    building_modifiers = {
+
+        workforce_scaled = {
+            goods_input_paper_add =5
+            goods_input_fabric_add = 5
+            goods_input_tools_add =5
+            goods_input_silk_add =5
+            goods_input_services_add = 5
+        }
+    }
+}
+bem_pm_herbal_medecine = {
+    state_modifiers = {
+        level_scaled ={
+            state_mortality_mult = -0.03
+            state_pollution_reduction_health_mult = -0.075
+        }
+    }
+    building_modifiers = {
+
+        workforce_scaled = {
+            #goods_input_opium_add = 5;
+            goods_input_wine_add = 5 
+        }
+    }
+}
+bem_pm_Pharmaceuticals  = {
+    unlocking_technologies  ={
+        pharmaceuticals
+    }
+    building_modifiers = {
+        level_scaled ={
+            state_mortality_mult = -0.03
+            state_pollution_reduction_health_mult = -0.075
+        }
+        workforce_scaled = {
+            goods_input_opium_add = 5;
+            goods_input_wine_add = 5 
+
+        }
+    }
+}
+bem_pm_antibotics = {
+    unlocking_technologies = {
+        antibiotics
+    }
+    building_modifiers = {
+        level_scaled ={
+            state_mortality_mult = -0.05
+            state_pollution_reduction_health_mult = -0.1
+        }
+        workforce_scaled = {
+            goods_input_opium_add = 5;
+            goods_input_wine_add = 5 
+            goods_input_rubber_add =5 
+        }
     }
 }

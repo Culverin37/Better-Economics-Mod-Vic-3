@@ -91,6 +91,7 @@ bem_pmg_school_circculum  = {
 		bem_pm_private_school
 		bem_pm_civic_school
 		bem_pm_Technocratic_school
+		bem_pm_liberatory_school
 	}
 }
 bem_pmg_school_techs = {
@@ -116,15 +117,24 @@ bem_pmg_hospital = {
 		bem_pm_charity_hospital
 		bem_pm_private_hospital
 		bem_pm_public_hospital
+		bem_pm_technocratic_hospital
+		bem_pm_Liberatory_hospital
 	}
 }
 bem_pmg_hospital_tech = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
 	production_methods = {
 		bem_pm_Medical_Degrees
-		bem_pm_Pharmaceuticals
 		bem_pm_Quinine
 		bem_pm_Malaria_prevention
+		
+	}
+}
+bem_pmg_hospital_medicine = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_herbal_medecine 
+		bem_pm_Pharmaceuticals
 		bem_pm_antibotics
 	}
 }
