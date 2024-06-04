@@ -83,16 +83,32 @@ bem_pmg_police_tech = {
 	}
 }
 
-bem_pmg_school = {
+bem_pmg_school_circculum  = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
 	production_methods = {
 		bem_pm_no_school
 		bem_pm_charity_school
 		bem_pm_private_school
-		bem_pm_public_school
+		bem_pm_civic_school
+		bem_pm_Technocratic_school
 	}
 }
-
+bem_pmg_school_techs = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_socratic
+		bem_pm_herbetian
+		bem_pm_progressive
+	}
+}
+bem_pmg_attendence = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		bem_pm_limited
+		bem_pm_Expanded_attendence
+		bem_pm_universal_attendence
+	}
+}
 bem_pmg_hospital = {
 	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
 	production_methods = {
