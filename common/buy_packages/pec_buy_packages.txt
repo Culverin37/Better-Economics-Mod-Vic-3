@@ -1,4 +1,4 @@
-﻿
+﻿#
 wealth_10 = {
 	political_strength = 0.75
 	goods = {
