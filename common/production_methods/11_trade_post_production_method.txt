@@ -2,7 +2,7 @@ pm_trade_value = {
 	texture = "gfx/interface/icons/production_method_icons/trade_value.dds"
 
 	building_modifiers = {
-		workforce_scaled = {
+		unscaled = {
 			# output goods
 			goods_output_trade_value_add = 10
 		}

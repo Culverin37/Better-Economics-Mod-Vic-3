@@ -14,5 +14,12 @@ set_trade_post = {
 			}
 		}
 	}
+	list_add_good_trade = yes
 	create_trade_post = yes
+	remove_modifier = state_trade_value_modifier_calibration
+	add_modifier = {
+		name = state_trade_value_modifier_calibration
+		multiplier = count_trade_post_modifier_level
+	}
+
 }

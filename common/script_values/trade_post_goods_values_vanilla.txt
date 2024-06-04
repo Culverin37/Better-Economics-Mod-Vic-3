@@ -1,3 +1,13 @@
+
+count_trade_post_modifier_level = {
+	value = var:total_trade_value
+	divide = var:current_trade_post_level
+	divide = 1000  #100*10
+	subtract = 1
+}
+
+
+
 ############
 # MILITARY #
 ############

@@ -1685,3 +1685,7 @@ bem_road_building_mod = {
 bem_peasant_mortality ={
 	state_peasants_mortality_mult = 1
 }
+state_trade_value_modifier_calibration = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
+	goods_output_trade_value_mult = 1
+}

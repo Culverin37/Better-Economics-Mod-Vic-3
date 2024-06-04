@@ -90,6 +90,6 @@ bg_bem_urban_service = {
 	always_possible =  yes
 }
 bg_bem_police = {
-	parent_group = bg_bg_bureaucracy
+	parent_group = bg_trade_post
 	category = urban
 }
