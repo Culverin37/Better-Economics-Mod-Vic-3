@@ -362,9 +362,10 @@
 		else_if = {
 			limit = {
 				OR ={
-					has_law = law_type:law_census_voting
 					has_law = law_type:law_oligarchy
 					has_law = law_type:law_wealth_voting
+					has_law = law_type:law_census_voting
+
 				}
 			}
 			activate_law = law_type:law_bem_semi_consitutioal
@@ -383,6 +384,9 @@
 			}	
 			activate_law = law_type:law_bem_Executive_Assent
 		}	
+		else {
+			activate_law = law_type:Law_bem_absolutist
+		}
 	}
 	every_country = {
 		limit = {
