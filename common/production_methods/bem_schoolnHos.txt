@@ -223,11 +223,11 @@ bem_pm_progressive = {
 }
 bem_pm_limited = {
     unlocking_laws = {
-        law_child_labor_allowed
+        law_limited_secondary_school
     }
     disallowing_laws = {
-        law_restricted_child_labor
-        law_compulsory_primary_school
+        law_extensive_secondary_school
+        law_compulsory_secondary_school
     }
     state_modifiers = {
         unscaled ={
@@ -236,11 +236,11 @@ bem_pm_limited = {
 }
 bem_pm_Expanded_attendence = {
     unlocking_laws = {
-        law_restricted_child_labor
+        law_extensive_secondary_school
     }
     disallowing_laws ={
-        law_child_labor_allowed
-        law_compulsory_primary_school
+        law_compulsory_secondary_school
+        law_limited_secondary_school
     }
     state_modifiers = {
         unscaled ={
@@ -252,11 +252,11 @@ bem_pm_Expanded_attendence = {
 bem_pm_universal_attendence = {
     unlocking_laws = {
         
-        law_compulsory_primary_school
+        law_compulsory_secondary_school
     }
     disallowing_laws ={
-        law_child_labor_allowed
-        law_restricted_child_labor
+        law_limited_secondary_school
+        law_extensive_secondary_school
     }
     state_modifiers = {
         workforce_scaled ={
