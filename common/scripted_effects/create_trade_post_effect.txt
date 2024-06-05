@@ -58,116 +58,116 @@
 	}
 	switch = {
 		trigger = var:trade_post_level
-		1 = {create_building = {building = building_trade_post level = 1}}
-		2 = {create_building = {building = building_trade_post level = 2}}
-		3 = {create_building = {building = building_trade_post level = 3}}
-		4 = {create_building = {building = building_trade_post level = 4}}
-		5 = {create_building = {building = building_trade_post level = 5}}
-		6 = {create_building = {building = building_trade_post level = 6}}
-		7 = {create_building = {building = building_trade_post level = 7}}
-		8 = {create_building = {building = building_trade_post level = 8}}
-		9 = {create_building = {building = building_trade_post level = 9}}
-		10 = {create_building = {building = building_trade_post level = 10}}
-		11 = {create_building = {building = building_trade_post level = 11}}
-		12 = {create_building = {building = building_trade_post level = 12}}
-		13 = {create_building = {building = building_trade_post level = 13}}
-		14 = {create_building = {building = building_trade_post level = 14}}
-		15 = {create_building = {building = building_trade_post level = 15}}
-		16 = {create_building = {building = building_trade_post level = 16}}
-		17 = {create_building = {building = building_trade_post level = 17}}
-		18 = {create_building = {building = building_trade_post level = 18}}
-		19 = {create_building = {building = building_trade_post level = 19}}
-		20 = {create_building = {building = building_trade_post level = 20}}
-		21 = {create_building = {building = building_trade_post level = 21}}
-		22 = {create_building = {building = building_trade_post level = 22}}
-		23 = {create_building = {building = building_trade_post level = 23}}
-		24 = {create_building = {building = building_trade_post level = 24}}
-		25 = {create_building = {building = building_trade_post level = 25}}
-		26 = {create_building = {building = building_trade_post level = 26}}
-		27 = {create_building = {building = building_trade_post level = 27}}
-		28 = {create_building = {building = building_trade_post level = 28}}
-		29 = {create_building = {building = building_trade_post level = 29}}
-		30 = {create_building = {building = building_trade_post level = 30}}
-		31 = {create_building = {building = building_trade_post level = 31}}
-		32 = {create_building = {building = building_trade_post level = 32}}
-		33 = {create_building = {building = building_trade_post level = 33}}
-		34 = {create_building = {building = building_trade_post level = 34}}
-		35 = {create_building = {building = building_trade_post level = 35}}
-		36 = {create_building = {building = building_trade_post level = 36}}
-		37 = {create_building = {building = building_trade_post level = 37}}
-		38 = {create_building = {building = building_trade_post level = 38}}
-		39 = {create_building = {building = building_trade_post level = 39}}
-		40 = {create_building = {building = building_trade_post level = 40}}
-		41 = {create_building = {building = building_trade_post level = 41}}
-		42 = {create_building = {building = building_trade_post level = 42}}
-		43 = {create_building = {building = building_trade_post level = 43}}
-		44 = {create_building = {building = building_trade_post level = 44}}
-		45 = {create_building = {building = building_trade_post level = 45}}
-		46 = {create_building = {building = building_trade_post level = 46}}
-		47 = {create_building = {building = building_trade_post level = 47}}
-		48 = {create_building = {building = building_trade_post level = 48}}
-		49 = {create_building = {building = building_trade_post level = 49}}
-		50 = {create_building = {building = building_trade_post level = 50}}
-		51 = {create_building = {building = building_trade_post level = 51}}
-		52 = {create_building = {building = building_trade_post level = 52}}
-		53 = {create_building = {building = building_trade_post level = 53}}
-		54 = {create_building = {building = building_trade_post level = 54}}
-		55 = {create_building = {building = building_trade_post level = 55}}
-		56 = {create_building = {building = building_trade_post level = 56}}
-		57 = {create_building = {building = building_trade_post level = 57}}
-		58 = {create_building = {building = building_trade_post level = 58}}
-		59 = {create_building = {building = building_trade_post level = 59}}
-		60 = {create_building = {building = building_trade_post level = 60}}
-		61 = {create_building = {building = building_trade_post level = 61}}
-		62 = {create_building = {building = building_trade_post level = 62}}
-		63 = {create_building = {building = building_trade_post level = 63}}
-		64 = {create_building = {building = building_trade_post level = 64}}
-		65 = {create_building = {building = building_trade_post level = 65}}
-		66 = {create_building = {building = building_trade_post level = 66}}
-		67 = {create_building = {building = building_trade_post level = 67}}
-		68 = {create_building = {building = building_trade_post level = 68}}
-		69 = {create_building = {building = building_trade_post level = 69}}
-		70 = {create_building = {building = building_trade_post level = 70}}
-		71 = {create_building = {building = building_trade_post level = 71}}
-		72 = {create_building = {building = building_trade_post level = 72}}
-		73 = {create_building = {building = building_trade_post level = 73}}
-		74 = {create_building = {building = building_trade_post level = 74}}
-		75 = {create_building = {building = building_trade_post level = 75}}
-		76 = {create_building = {building = building_trade_post level = 76}}
-		77 = {create_building = {building = building_trade_post level = 77}}
-		78 = {create_building = {building = building_trade_post level = 78}}
-		79 = {create_building = {building = building_trade_post level = 79}}
-		80 = {create_building = {building = building_trade_post level = 80}}
-		81 = {create_building = {building = building_trade_post level = 81}}
-		82 = {create_building = {building = building_trade_post level = 82}}
-		83 = {create_building = {building = building_trade_post level = 83}}
-		84 = {create_building = {building = building_trade_post level = 84}}
-		85 = {create_building = {building = building_trade_post level = 85}}
-		86 = {create_building = {building = building_trade_post level = 86}}
-		87 = {create_building = {building = building_trade_post level = 87}}
-		88 = {create_building = {building = building_trade_post level = 88}}
-		89 = {create_building = {building = building_trade_post level = 89}}
-		90 = {create_building = {building = building_trade_post level = 90}}
-		91 = {create_building = {building = building_trade_post level = 91}}
-		92 = {create_building = {building = building_trade_post level = 92}}
-		93 = {create_building = {building = building_trade_post level = 93}}
-		94 = {create_building = {building = building_trade_post level = 94}}
-		95 = {create_building = {building = building_trade_post level = 95}}
-		96 = {create_building = {building = building_trade_post level = 96}}
-		97 = {create_building = {building = building_trade_post level = 97}}
-		98 = {create_building = {building = building_trade_post level = 98}}
-		99 = {create_building = {building = building_trade_post level = 99}}
-		100 = {create_building = {building = building_trade_post level = 100}}
-		101 = {create_building = {building = building_trade_post level = 101}}
-		102 = {create_building = {building = building_trade_post level = 102}}
-		103 = {create_building = {building = building_trade_post level = 103}}
-		104 = {create_building = {building = building_trade_post level = 104}}
-		105 = {create_building = {building = building_trade_post level = 105}}
-		106 = {create_building = {building = building_trade_post level = 106}}
-		107 = {create_building = {building = building_trade_post level = 107}}
-		108 = {create_building = {building = building_trade_post level = 108}}
-		109 = {create_building = {building = building_trade_post level = 109}}
-		110 = {create_building = {building = building_trade_post level = 110}}
+		1 = {create_building = {building = building_trade_post level = 1}create_building = {building = building_police level = 1}}
+		2 = {create_building = {building = building_trade_post level = 2}create_building = {building = building_police level = 2}}
+		3 = {create_building = {building = building_trade_post level = 3}create_building = {building = building_police level = 3}}
+		4 = {create_building = {building = building_trade_post level = 4}create_building = {building = building_police level = 4}}
+		5 = {create_building = {building = building_trade_post level = 5}create_building = {building = building_police level = 5}}
+		6 = {create_building = {building = building_trade_post level = 6}create_building = {building = building_police level = 6}}
+		7 = {create_building = {building = building_trade_post level = 7}create_building = {building = building_police level = 7}}
+		8 = {create_building = {building = building_trade_post level = 8}create_building = {building = building_police level = 8}}
+		9 = {create_building = {building = building_trade_post level = 9}create_building = {building = building_police level = 9}}
+		10 = {create_building = {building = building_trade_post level = 10}create_building = {building = building_police level = 10}}
+		11 = {create_building = {building = building_trade_post level = 11}create_building = {building = building_police level = 11}}
+		12 = {create_building = {building = building_trade_post level = 12}create_building = {building = building_police level = 12}}
+		13 = {create_building = {building = building_trade_post level = 13}create_building = {building = building_police level = 13}}
+		14 = {create_building = {building = building_trade_post level = 14}create_building = {building = building_police level = 14}}
+		15 = {create_building = {building = building_trade_post level = 15}create_building = {building = building_police level = 15}}
+		16 = {create_building = {building = building_trade_post level = 16}create_building = {building = building_police level = 16}}
+		17 = {create_building = {building = building_trade_post level = 17}create_building = {building = building_police level = 17}}
+		18 = {create_building = {building = building_trade_post level = 18}create_building = {building = building_police level = 18}}
+		19 = {create_building = {building = building_trade_post level = 19}create_building = {building = building_police level = 19}}
+		20 = {create_building = {building = building_trade_post level = 20}create_building = {building = building_police level = 20}}
+		21 = {create_building = {building = building_trade_post level = 21}create_building = {building = building_police level = 21}}
+		22 = {create_building = {building = building_trade_post level = 22}create_building = {building = building_police level = 22}}
+		23 = {create_building = {building = building_trade_post level = 23}create_building = {building = building_police level = 23}}
+		24 = {create_building = {building = building_trade_post level = 24}create_building = {building = building_police level = 24}}
+		25 = {create_building = {building = building_trade_post level = 25}create_building = {building = building_police level = 25}}
+		26 = {create_building = {building = building_trade_post level = 26}create_building = {building = building_police level = 26}}
+		27 = {create_building = {building = building_trade_post level = 27}create_building = {building = building_police level = 27}}
+		28 = {create_building = {building = building_trade_post level = 28}create_building = {building = building_police level = 28}}
+		29 = {create_building = {building = building_trade_post level = 29}create_building = {building = building_police level = 29}}
+		30 = {create_building = {building = building_trade_post level = 30}create_building = {building = building_police level = 30}}
+		31 = {create_building = {building = building_trade_post level = 31}create_building = {building = building_police level = 31}}
+		32 = {create_building = {building = building_trade_post level = 32}create_building = {building = building_police level = 32}}
+		33 = {create_building = {building = building_trade_post level = 33}create_building = {building = building_police level = 33}}
+		34 = {create_building = {building = building_trade_post level = 34}create_building = {building = building_police level = 34}}
+		35 = {create_building = {building = building_trade_post level = 35}create_building = {building = building_police level = 35}}
+		36 = {create_building = {building = building_trade_post level = 36}create_building = {building = building_police level = 36}}
+		37 = {create_building = {building = building_trade_post level = 37}create_building = {building = building_police level = 37}}
+		38 = {create_building = {building = building_trade_post level = 38}create_building = {building = building_police level = 38}}
+		39 = {create_building = {building = building_trade_post level = 39}create_building = {building = building_police level = 39}}
+		40 = {create_building = {building = building_trade_post level = 40}create_building = {building = building_police level = 40}}
+		41 = {create_building = {building = building_trade_post level = 41}create_building = {building = building_police level = 41}}
+		42 = {create_building = {building = building_trade_post level = 42}create_building = {building = building_police level = 42}}
+		43 = {create_building = {building = building_trade_post level = 43}create_building = {building = building_police level = 43}}
+		44 = {create_building = {building = building_trade_post level = 44}create_building = {building = building_police level = 44}}
+		45 = {create_building = {building = building_trade_post level = 45}create_building = {building = building_police level = 45}}
+		46 = {create_building = {building = building_trade_post level = 46}create_building = {building = building_police level = 46}}
+		47 = {create_building = {building = building_trade_post level = 47}create_building = {building = building_police level = 47}}
+		48 = {create_building = {building = building_trade_post level = 48}create_building = {building = building_police level = 48}}
+		49 = {create_building = {building = building_trade_post level = 49}create_building = {building = building_police level = 49}}
+		50 = {create_building = {building = building_trade_post level = 50}create_building = {building = building_police level = 50}}
+		51 = {create_building = {building = building_trade_post level = 51}create_building = {building = building_police level = 51}}
+		52 = {create_building = {building = building_trade_post level = 52}create_building = {building = building_police level = 52}}
+		53 = {create_building = {building = building_trade_post level = 53}create_building = {building = building_police level = 53}}
+		54 = {create_building = {building = building_trade_post level = 54}create_building = {building = building_police level = 54}}
+		55 = {create_building = {building = building_trade_post level = 55}create_building = {building = building_police level = 55}}
+		56 = {create_building = {building = building_trade_post level = 56}create_building = {building = building_police level = 56}}
+		57 = {create_building = {building = building_trade_post level = 57}create_building = {building = building_police level = 57}}
+		58 = {create_building = {building = building_trade_post level = 58}create_building = {building = building_police level = 58}}
+		59 = {create_building = {building = building_trade_post level = 59}create_building = {building = building_police level = 59}}
+		60 = {create_building = {building = building_trade_post level = 60}create_building = {building = building_police level = 60}}
+		61 = {create_building = {building = building_trade_post level = 61}create_building = {building = building_police level = 61}}
+		62 = {create_building = {building = building_trade_post level = 62}create_building = {building = building_police level = 62}}
+		63 = {create_building = {building = building_trade_post level = 63}create_building = {building = building_police level = 63}}
+		64 = {create_building = {building = building_trade_post level = 64}create_building = {building = building_police level = 64}}
+		65 = {create_building = {building = building_trade_post level = 65}create_building = {building = building_police level = 65}}
+		66 = {create_building = {building = building_trade_post level = 66}create_building = {building = building_police level = 66}}
+		67 = {create_building = {building = building_trade_post level = 67}create_building = {building = building_police level = 67}}
+		68 = {create_building = {building = building_trade_post level = 68}create_building = {building = building_police level = 68}}
+		69 = {create_building = {building = building_trade_post level = 69}create_building = {building = building_police level = 69}}
+		70 = {create_building = {building = building_trade_post level = 70}create_building = {building = building_police level = 70}}
+		71 = {create_building = {building = building_trade_post level = 71}create_building = {building = building_police level = 71}}
+		72 = {create_building = {building = building_trade_post level = 72}create_building = {building = building_police level = 72}}
+		73 = {create_building = {building = building_trade_post level = 73}create_building = {building = building_police level = 73}}
+		74 = {create_building = {building = building_trade_post level = 74}create_building = {building = building_police level = 74}}
+		75 = {create_building = {building = building_trade_post level = 75}create_building = {building = building_police level = 75}}
+		76 = {create_building = {building = building_trade_post level = 76}create_building = {building = building_police level = 76}}
+		77 = {create_building = {building = building_trade_post level = 77}create_building = {building = building_police level = 77}}
+		78 = {create_building = {building = building_trade_post level = 78}create_building = {building = building_police level = 78}}
+		79 = {create_building = {building = building_trade_post level = 79}create_building = {building = building_police level = 79}}
+		80 = {create_building = {building = building_trade_post level = 80}create_building = {building = building_police level = 80}}
+		81 = {create_building = {building = building_trade_post level = 81}create_building = {building = building_police level = 81}}
+		82 = {create_building = {building = building_trade_post level = 82}create_building = {building = building_police level = 82}}
+		83 = {create_building = {building = building_trade_post level = 83}create_building = {building = building_police level = 83}}
+		84 = {create_building = {building = building_trade_post level = 84}create_building = {building = building_police level = 84}}
+		85 = {create_building = {building = building_trade_post level = 85}create_building = {building = building_police level = 85}}
+		86 = {create_building = {building = building_trade_post level = 86}create_building = {building = building_police level = 86}}
+		87 = {create_building = {building = building_trade_post level = 87}create_building = {building = building_police level = 87}}
+		88 = {create_building = {building = building_trade_post level = 88}create_building = {building = building_police level = 88}}
+		89 = {create_building = {building = building_trade_post level = 89}create_building = {building = building_police level = 89}}
+		90 = {create_building = {building = building_trade_post level = 90}create_building = {building = building_police level = 90}}
+		91 = {create_building = {building = building_trade_post level = 91}create_building = {building = building_police level = 91}}
+		92 = {create_building = {building = building_trade_post level = 92}create_building = {building = building_police level = 92}}
+		93 = {create_building = {building = building_trade_post level = 93}create_building = {building = building_police level = 93}}
+		94 = {create_building = {building = building_trade_post level = 94}create_building = {building = building_police level = 94}}
+		95 = {create_building = {building = building_trade_post level = 95}create_building = {building = building_police level = 95}}
+		96 = {create_building = {building = building_trade_post level = 96}create_building = {building = building_police level = 96}}
+		97 = {create_building = {building = building_trade_post level = 97}create_building = {building = building_police level = 97}}
+		98 = {create_building = {building = building_trade_post level = 98}create_building = {building = building_police level = 98}}
+		99 = {create_building = {building = building_trade_post level = 99}create_building = {building = building_police level = 99}}
+		100 = {create_building = {building = building_trade_post level = 100}create_building = {building = building_police level = 100}}
+		101 = {create_building = {building = building_trade_post level = 101}create_building = {building = building_police level = 101}}
+		102 = {create_building = {building = building_trade_post level = 102}create_building = {building = building_police level = 102}}
+		103 = {create_building = {building = building_trade_post level = 103}create_building = {building = building_police level = 103}}
+		104 = {create_building = {building = building_trade_post level = 104}create_building = {building = building_police level = 104}}
+		105 = {create_building = {building = building_trade_post level = 105}create_building = {building = building_police level = 105}}
+		106 = {create_building = {building = building_trade_post level = 106}create_building = {building = building_police level = 106}}
+		107 = {create_building = {building = building_trade_post level = 107}create_building = {building = building_police level = 107}}
+		108 = {create_building = {building = building_trade_post level = 108}create_building = {building = building_police level = 108}}
+		109 = {create_building = {building = building_trade_post level = 109}create_building = {building = building_police level = 109}}
+		110 = {create_building = {building = building_trade_post level = 110}create_building = {building = building_police level = 110}}
 		111 = {create_building = {building = building_trade_post level = 111}}
 		112 = {create_building = {building = building_trade_post level = 112}}
 		113 = {create_building = {building = building_trade_post level = 113}}
