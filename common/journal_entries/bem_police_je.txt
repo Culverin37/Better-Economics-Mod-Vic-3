@@ -1,0 +1,72 @@
+bem_police_je = {
+    is_shown_when_inactive = {
+        always = yes
+    }
+    group = je_group_internal_affairs
+
+    possible = {
+       Not={has_law = law_type:law_no_police}
+    }
+    invalid = {
+        has_law = law_type:law_no_police
+
+	}
+    immediate = {
+    #    set_variable = {
+	#		name = bem_je_poor_var
+	#		value = bem_poor_law_insitution_value
+	#	}
+    }
+    on_monthly_pulse = {
+        effect ={
+            #change_variable = {
+             #   name = bem_je_poor_var
+              #  value = bem_poor_law_insitution_value
+            #}
+            if = {
+                limit = {
+                    bem_police_insitution_value = 1
+                }
+                #trigger_event = {id = bem_workhouse_pm_change.1 }
+                activate_law = law_type:bem_law_dum_vlpol
+            }
+            else_if = {
+                limit = {
+                    bem_police_insitution_value = 2
+                }
+               #trigger_event = {id = bem_workhouse_pm_change.2 }
+               activate_law = law_type:bem_law_dum_lpol
+            }
+            else_if = {
+                limit = {
+                    bem_police_insitution_value = 3
+                }      
+                #trigger_event = {id = bem_workhouse_pm_change.3 }
+                activate_law = law_type:bem_law_dum_mpol
+            }      
+            else_if = {
+                limit = {
+                    bem_police_insitution_value = 4
+                }  
+                trigger_event = {id = bem_workhouse_pm_change.4 }
+                activate_law = law_type:bem_law_dum_hpol
+            }          
+            else_if = {
+                limit = {
+                    bem_police_insitution_value = 5
+                }     
+                trigger_event = {id = bem_workhouse_pm_change.5 }
+                activate_law = law_type:bem_law_dum_vhpol
+
+            }       
+        }
+    }
+    progressbar = yes
+	current_value = {
+		value = bem_poor_law_insitution_value
+	}
+	goal_add_value = {
+		add = 4
+	}
+
+}

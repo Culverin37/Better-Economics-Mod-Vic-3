@@ -6,6 +6,12 @@ bem_poor_law_insitution_value ={
 
     }
 }
+bem_police_insitution_value ={
+    if = {
+       limit = {Not  = {has_law  = law_type:law_no_police}}
+       add = institution:institution_police.investment   
+    }
+}
 bem_centralization_value = {
     value = 0
     if = {
@@ -34,16 +40,4 @@ bem_internal_land_colony_value = {
     multiply = {
         20
     }
-}
-bem_urban_level_checker = {
-   if = {
-        limit = { exists = b:building_urban_center}
-        add = b:building_urban_center.level
-   }
-}
-bem_logistic_value_checker = {
-    if = {
-        limit = { exists = b:building_logistic_sector}
-        add = b:building_logistic_sector.level
-   }
 }

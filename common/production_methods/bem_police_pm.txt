@@ -113,6 +113,15 @@ bem_pm_no_police = {
 
 }
 bem_pm_vlpolice = {
+    unlocking_laws = {
+        bem_law_dum_vlpol
+    }
+    disallowing_laws = {
+        bem_law_dum_lpol
+        bem_law_dum_mpol
+        bem_law_dum_hpol
+        bem_law_dum_vhpol
+    }
     building_modifiers = {
         level_scaled = {
            # goods_input_transportation_add = 5
@@ -130,6 +139,16 @@ bem_pm_vlpolice = {
     }
 }
 bem_pm_lpolice = {
+    unlocking_laws = {
+        
+        bem_law_dum_lpol
+    }
+    disallowing_laws = {
+        bem_law_dum_vlpol
+        bem_law_dum_mpol
+        bem_law_dum_hpol
+        bem_law_dum_vhpol
+    }
     building_modifiers = {
         level_scaled = {
            # goods_input_transportation_add = 5
@@ -147,6 +166,16 @@ bem_pm_lpolice = {
     }
 }
 bem_pm_mpolice = {
+    unlocking_laws = {
+        bem_law_dum_mpol
+        
+    }
+    disallowing_laws = {
+        bem_law_dum_vlpol
+        bem_law_dum_lpol
+        bem_law_dum_hpol
+        bem_law_dum_vhpol
+    }
     building_modifiers = {
         level_scaled = {
            # goods_input_transportation_add = 5
@@ -164,6 +193,16 @@ bem_pm_mpolice = {
     }
 }
 bem_pm_hpolice = {
+    unlocking_laws = {
+        
+        bem_law_dum_hpol
+    }
+    disallowing_laws = {
+        bem_law_dum_vlpol
+        bem_law_dum_lpol
+        bem_law_dum_mpol
+        bem_law_dum_vhpol
+    }
     building_modifiers = {
         level_scaled = {
            # goods_input_transportation_add = 5
@@ -181,6 +220,16 @@ bem_pm_hpolice = {
     }
 }
 bem_pm_vhpolice = {
+    unlocking_laws = {
+        bem_law_dum_vhpol
+        
+    }
+    disallowing_laws = {
+        bem_law_dum_vlpol
+        bem_law_dum_lpol
+        bem_law_dum_mpol
+        bem_law_dum_hpol
+    }
     building_modifiers = {
         level_scaled = {
            # goods_input_transportation_add = 5

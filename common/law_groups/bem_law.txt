@@ -42,6 +42,12 @@ lawgroup_bem_dummy_insitution_welfare_investment = {
 
 }
 
+lawgroup_bem_dummy_police_investment= {
+	law_group_category = dummy_laws
+	base_enactment_days = 50
+	affected_by_regime_change = yes
+}
+
 lawgroup_bem_dummy_cent_insi ={
 	law_group_category = dummy_laws
 	base_enactment_days = 50
