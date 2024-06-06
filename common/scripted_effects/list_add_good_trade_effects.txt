@@ -144,9 +144,30 @@ list_add_good_trade = {
 		GOOD = "fine_art"
 	}
 
+	add_good_trade = {
+		GOOD = "pec_financial_services"
+	}
+	add_good_trade = {
+		GOOD = "bem_charity"
+	}
+	
+	add_good_trade = {
+		GOOD = "bem_private"
+	}
+	add_good_trade = {
+		GOOD = "pec_hospitality"
+	}
+	add_good_trade = {
+		GOOD = "pec_entertainment"
+	}
+	add_good_trade = {
+		GOOD = "pec_media"
+	}
+
 	### 马与畜力
 
 	add_good_trade = {
 		GOOD = "horse"
 	}
 }
+#

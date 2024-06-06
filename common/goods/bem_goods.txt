@@ -10,14 +10,7 @@
 	convoy_cost_multiplier = 0.00
 }
 
-transportation_stock = {
-	texture = "gfx/interface/icons/invention_icons/stock_exchanges.dds"
-	cost = 100
-	category = luxury
-	tradeable = no
-	fixed_price = yes
-	prestige_factor = 5
-}
+
 bem_charity = {
 	texture = "gfx/interface/icons/invention_icons/stock_exchanges.dds"
 	cost = 100

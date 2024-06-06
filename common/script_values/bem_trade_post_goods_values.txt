@@ -12,54 +12,54 @@ count_trade_post_modifier_level = {
 # MILITARY #
 ############
 
-ammunition_base_price = {
-    value = 50
-}
-ammunition_size_multiplier = {
-    value = 1
-}
+#ammunition_base_price = {
+#    value = 50
+#}
+#ammunition_size_multiplier = {
+#    value = 1
+#}
 
-small_arms_base_price = {
-    value = 60
-}
-small_arms_size_multiplier = {
-    value = 1
-}
+#small_arms_base_price = {
+#    value = 60
+#}
+##small_arms_size_multiplier = {
+ #   value = 1
+#}
 
-artillery_base_price = {
-    value = 70
-}
-artillery_size_multiplier = {
-    value = 1.5
-}
+#artillery_base_price = {
+#    value = 70
+#}
+#artillery_size_multiplier = {
+#    value = 1.5
+#}##
+#
+#tanks_base_price = {
+#    value = 80
+#}
+#tanks_size_multiplier = {
+#    value = 2.0
+#}#
+#
+#aeroplanes_base_price = {
+#    value = 80
+#}
+#aeroplanes_size_multiplier = {
+#    value = 2.0
+#}
 
-tanks_base_price = {
-    value = 80
-}
-tanks_size_multiplier = {
-    value = 2.0
-}
+#manowars_base_price = {
+#    value = 70
+#}
+#manowars_size_multiplier = {
+#    value = 0.5
+#}
 
-aeroplanes_base_price = {
-    value = 80
-}
-aeroplanes_size_multiplier = {
-    value = 2.0
-}
-
-manowars_base_price = {
-    value = 70
-}
-manowars_size_multiplier = {
-    value = 0.5
-}
-
-ironclads_base_price = {
-    value = 80
-}
-ironclads_size_multiplier = {
-    value = 0.5
-}
+#ironclads_base_price = {
+#    value = 80
+#}
+#ironclads_size_multiplier = {
+#    value = 0.5
+#}
 
 ##########
 # STAPLE #
@@ -359,6 +359,25 @@ fine_art_base_price = {
 fine_art_size_multiplier = {
     value = 1
 }
+pec_financial_services_base_price = {
+    value = 30
+}
+
+bem_charity_base_price = {
+    value = 100
+}
+bem_private_base_price = {
+    value = 100
+}
+pec_hospitality_base_price = {
+    value = 60 
+}
+pec_entertainment_base_price = {
+    value = 30
+}
+pec_media_base_price = {
+    value = 50
+}
 
 ### 马与畜力
 
@@ -368,3 +387,4 @@ horse_base_price = {
 horse_size_multiplier = {
     value = 1
 }
+#
