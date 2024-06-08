@@ -185,7 +185,7 @@ bem_pm_socratic = {
     }
     state_modifiers = {
         workforce_scaled = {
-            state_education_access_add = 0.1
+           # state_education_access_add = 0.1
         }
     }
 }
@@ -201,7 +201,7 @@ bem_pm_herbetian = {
     }
     state_modifiers = {
         workforce_scaled = {
-            state_education_access_add = 0.2
+            #state_education_access_add = 0.2
         }
     }
 }
@@ -217,7 +217,7 @@ bem_pm_progressive = {
     }
     state_modifiers = {
         workforce_scaled = {
-            state_education_access_add = 0.4
+           # state_education_access_add = 0.4
         }
     }
 }
@@ -245,7 +245,7 @@ bem_pm_Expanded_attendence = {
     state_modifiers = {
         unscaled ={
             state_working_adult_ratio_add = -0.05
-            state_education_access_add = 0.1
+            #state_education_access_add = 0.1
         }
     }
 }
@@ -261,7 +261,7 @@ bem_pm_universal_attendence = {
     state_modifiers = {
         workforce_scaled ={
             state_working_adult_ratio_add = -0.1
-            state_education_access_add = 0.2
+            #state_education_access_add = 0.2
         }
     }
 }
@@ -441,7 +441,7 @@ bem_pm_Liberatory_hospital = {
 bem_pm_Medical_Degrees = {
     state_modifiers = {
         level_scaled ={
-            state_standard_of_living_add = 0.10
+           # state_standard_of_living_add = 0.10
             #state_mortality_mult = -0.01
             #state_pollution_reduction_health_mult = -0.025
         }
@@ -461,7 +461,7 @@ bem_pm_Quinine = {
     }
     state_modifiers = {
         level_scaled ={
-            state_standard_of_living_add = 0.20
+          #  state_standard_of_living_add = 0.20
             #state_mortality_mult = -0.02
             #state_pollution_reduction_health_mult = -0.050
         }
@@ -482,7 +482,7 @@ bem_pm_Malaria_prevention = {
     }
     state_modifiers = {
         level_scaled ={
-            state_standard_of_living_add = 0.30
+           # state_standard_of_living_add = 0.30
             #state_mortality_mult = -0.03
             #state_pollution_reduction_health_mult = -0.075
         }
@@ -501,8 +501,8 @@ bem_pm_Malaria_prevention = {
 bem_pm_herbal_medecine = {
     state_modifiers = {
         level_scaled ={
-            state_mortality_mult = -0.03
-            state_pollution_reduction_health_mult = -0.075
+           # state_mortality_mult = -0.03
+           # state_pollution_reduction_health_mult = -0.075
         }
     }
     building_modifiers = {
@@ -535,8 +535,8 @@ bem_pm_antibotics = {
     }
     building_modifiers = {
         level_scaled ={
-            state_mortality_mult = -0.05
-            state_pollution_reduction_health_mult = -0.1
+           # state_mortality_mult = -0.05
+          #  state_pollution_reduction_health_mult = -0.1
         }
         workforce_scaled = {
             goods_input_opium_add = 5;
