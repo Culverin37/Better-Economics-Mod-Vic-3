@@ -1,0 +1,60 @@
+bem_centralization_je = {
+    group = je_group_internal_affairs
+    is_shown_when_inactive = {
+    	always = yes
+    }
+   	possible = {
+    	always=yes
+   	}
+
+    immediate = {
+		  set_variable = {
+			name = bem_road_building_var # check scripted effects for road buidling
+			value = 2
+		  }
+    }
+
+    on_weekly_pulse = {
+		effect ={
+            if = {
+       			limit = {
+                    bem_centralization_value = 1
+                }
+                #trigger_event = {id = bem_workhouse_pm_change.1 }
+                activate_law = law_type:bem_law_dum_vlcent
+            }
+            else_if = {
+                limit = {
+                    bem_centralization_value = 2
+                }
+               	activate_law = law_type:bem_law_dum_lcent
+            }
+            else_if = {
+                limit = {
+                    bem_centralization_value = 3
+                }      
+                activate_law = law_type:bem_law_dum_mcent
+           	}      
+            else_if = {
+                limit = {
+                    	bem_centralization_value = 4
+               	}  
+                activate_law = law_type:bem_law_dum_hcent
+		    	  }          
+            else_if = {
+               	limit = {
+                    bem_centralization_value = 5
+                }     
+            activate_law = law_type:bem_law_dum_vhcent
+			}       
+        }
+    }
+    scripted_button = road_building_button
+    progressbar = yes
+	current_value = {
+		value = bem_centralization_value
+	}
+	goal_add_value = {
+		add = 4
+	}
+}
