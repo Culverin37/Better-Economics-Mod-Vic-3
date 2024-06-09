@@ -1,58 +1,84 @@
-check_edu_level = {
-  set_variable = {
-		name = current_trade_post_level
+check_state_edu_level = {
+	set_variable = {
+		name = state_school_level
+		value = 0
+	}
+	set_variable = {
+		name = state_edu_pop_level
 		value = 0
 	}
 	every_scope_building = {
 		limit = {
-			is_building_type = building_trade_post
+			is_building_type = building_secondary_school
 		}
 		state = {
 			change_variable = {
-				name = current_trade_post_level
+				name = state_school_level
 				add = prev.level
 			}
 		}
 	}
+	change_variable = {
+		name = state_edu_pop_level
+		add = state_population
+	}
+	change_variable = {
+		name = state_edu_pop_level
+		divide = 1000000
+	}
+	change_variable = {
+		name = state_school_level
+		divide = state_edu_pop_level
+	}
 	if = {
-		limit = {
-			has_building = building_trade_post
-			var:current_trade_post_level > var:trade_post_level
+       		limit = {
+    			state_school_level < 1
+               	}
+ 		add_modifier = {
+			name = state_edu_0
+			is_decaying = no
 		}
-		if = {
-			limit = {
-				has_variable = num_accumulate
-			}
-			change_variable = {
-				name = num_accumulate
-				add = 1
-			}
-			if = {
-				limit = {
-					var:num_accumulate = 4
-				}
-				remove_variable = num_accumulate
-				remove_building = building_trade_post
-				set_variable = {
-					name = current_trade_post_level
-					value = var:trade_post_level
-				}
-			}
+        }
+        else_if = {
+                imit = {
+                    	state_school_level < 2
+                }
+		add_modifier = {
+			name = state_edu_1
+			is_decaying = no
 		}
-		else = {
-			set_variable = {
-				name = num_accumulate
-				value = 1
-			}
+        }
+    	else_if = {
+        	limit = {
+                    	state_school_level < 3
+                }      
+		add_modifier = {
+			name = state_edu_2
+			is_decaying = no
+		}
+	}      
+        else_if = {
+                limit = {
+                    	state_school_level < 4
+               	}  
+                add_modifier = {
+			name = state_edu_3
+			is_decaying = no
+		}
+	}       
+        else_if = {
+                limit = {
+                    	state_school_level < 5
+               	}  
+                add_modifier = {
+			name = state_edu_4
+			is_decaying = no
 		}
 	}
-	else_if = {
-		limit = {
-			has_building = building_trade_post
-		}
-		remove_variable = num_accumulate
-		set_variable = {
-			name = current_trade_post_level
-			value = var:trade_post_level
+        else = {
+            	add_modifier = {
+			name = state_edu_5
+			is_decaying = no
 		}
 	}
+}
