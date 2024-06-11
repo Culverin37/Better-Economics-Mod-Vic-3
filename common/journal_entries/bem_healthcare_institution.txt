@@ -1,4 +1,4 @@
-bem_education_je = {
+bem_healthcare_je = {
 	group = je_group_internal_affairs
     	is_shown_when_inactive = {
     		always = yes
@@ -9,7 +9,7 @@ bem_education_je = {
 
     	immediate = {
 		set_variable = {
-			name = nat_school_level 
+			name = nat_hospital_level 
 			value = 0
 		}
    	}
@@ -20,14 +20,14 @@ bem_education_je = {
 				limit = {
 					owner = ROOT
 				}
-				check_state_edu_level = yes
+				check_state_health_level = yes
 			}
 			set_variable = {
-				name = bem_education_value
+				name = bem_healthcare_value
 				value = 0
 			}
 			set_variable = {
-				name = nat_edu_pop_level
+				name = nat_health_pop_level
 				value = 0
 			}
 			every_state = {
@@ -36,64 +36,64 @@ bem_education_je = {
 				}
 				every_scope_building = {
 					limit = {
-						is_building_type = building_secondary_school
+						is_building_type = building_hospital
 					}
 					change_variable = {
-							name = nat_school_level
+							name = nat_hospital_level
 							add = prev.level
 					}
 				}
 			}
 			change_variable = {
-				name = nat_edu_pop_level
+				name = nat_health_pop_level
 				add = total_population
 			}
 			change_variable = {
-				name = nat_edu_pop_level
+				name = nat_health_pop_level
 				divide = 1000000
 			}
 			change_variable = {
-				name = nat_school_level
-				divide = nat_edu_pop_level
+				name = nat_hospital_level
+				divide = nat_health_pop_level
 			}
             		if = {
        				limit = {
-                    			nat_school_level < 1
+                    			nat_hospital_level < 1
                			}
-                		activate_law = law_type:bem_law_no_edu
+                		activate_law = law_type:bem_law_no_health
             		}
             		else_if = {
                 		limit = {
-                    			nat_school_level < 2
+                    			nat_hospital_level < 2
                 		}
-               			activate_law = law_type:bem_law_very_low_edu
+               			activate_law = law_type:bem_law_very_low_health
             		}
             		else_if = {
                 		limit = {
-                    			nat_school_level < 3
+                    			nat_hospital_level < 3
                 		}      
-                		activate_law = law_type:bem_law_low_edu
+                		activate_law = law_type:bem_law_low_health
            		}      
             		else_if = {
                 		limit = {
-                    			nat_school_level < 4
+                    			nat_hospital_level < 4
                			}  
-                		activate_law = law_type:bem_law_med_edu
+                		activate_law = law_type:bem_law_med_health
 		    	}       
             		else_if = {
                 		limit = {
-                    			nat_school_level < 5
+                    			nat_hospital_level < 5
                			}  
-                		activate_law = law_type:bem_law_high_edu
+                		activate_law = law_type:bem_law_high_health
 		    	}
             		else = {
-            			activate_law = law_type:bem_law_very_high_edu
+            			activate_law = law_type:bem_law_very_high_health
 			}       
         	}
     	}
     	progressbar = yes
 	current_value = {
-		value = bem_education_value
+		value = bem_healthcare_value
 	}
 	goal_add_value = {
 		add = 5
