@@ -69,12 +69,12 @@ law_extensive_secondary_school = {
 	}
 	
 	modifier = {
-		state_laborers_mortality_mult = 0.01
-		state_farmers_mortality_mult = 0.01
-		state_peasants_mortality_mult = 0.01
+		#state_laborers_mortality_mult = 0.01
+		#state_farmers_mortality_mult = 0.01
+		#state_peasants_mortality_mult = 0.01
 		
-		state_dependent_wage_mult = 0.075
-		state_education_access_add = 0.05
+		#state_dependent_wage_mult = 0.075
+		#state_education_access_add = 0.05
 		#country_institution_schools_max_investment_add = 1
 	}
 	
@@ -140,7 +140,7 @@ law_compulsory_secondary_school = {
 	
 	modifier = {
 		#country_institution_schools_max_investment_add = 2
-        #state_education_access_add = 0.1
+        	#state_education_access_add = 0.1
 	}
 
 	pop_support = {
