@@ -97,10 +97,6 @@ bem_pm_civic_school = {
     state_modifiers = {
         workforce_scaled = {
             state_assimilation_mult = 0.1
-        }
-    }
-    country_modifiers = {
-        workforce_scaled = {
             interest_group_in_government_attraction_mult = 0.1
         }
     }
@@ -128,12 +124,7 @@ bem_pm_Technocratic_school = {
     }
     state_modifiers = {
         workforce_scaled = {
-            #state_political_strength_from_wealth_mult	 = 0.1
-        }
-    }
-    country_modifiers = {
-        workforce_scaled = {
-            country_tech_research_speed_mult = 0.1
+            state_political_strength_from_wealth_mult = 0.1
         }
     }
 }
@@ -168,12 +159,7 @@ bem_pm_liberatory_school = {
     }
     state_modifiers = {
         workforce_scaled = {
-            #state_assimilation_mult = 0.1
-        }
-    }
-    country_modifiers = {
-        workforce_scaled = {
-            interest_group_in_government_attraction_mult = 2
+            interest_group_in_government_attraction_mult = 0.2
         }
     }
 }
