@@ -1,0 +1,156 @@
+check_state_health_level = {
+	set_variable = {
+		name = state_hospital_level
+		value = 0
+	}
+	set_variable = {
+		name = state_health_pop_level
+		value = 0
+	}
+	every_scope_building = {
+		limit = {
+			is_building_type = building_hospital
+		}
+		state = {
+			change_variable = {
+				name = state_hospital_level
+				add = prev.level
+			}
+		}
+	}
+	change_variable = {
+		name = state_health_pop_level
+		add = state_population
+	}
+	change_variable = {
+		name = state_health_pop_level
+		divide = 1000000
+	}
+	change_variable = {
+		name = state_hospital_level
+		divide = state_health_pop_level
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_technocratic_hospital
+			}
+		}
+		change_variable = {
+			nmae = state_hospital_level
+			multiply = 1.25
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_Liberatory_hospital
+			}
+		}
+		change_variable = {
+			nmae = state_hospital_level
+			multiply = 1.5
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_Quinine
+			}
+		}
+		change_variable = {
+			nmae = state_hospital_level
+			multiply = 1.5
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_Malaria_prevention
+			}
+		}
+		change_variable = {
+			nmae = state_hospital_level
+			multiply = 2
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_Pharmaceuticals
+			}
+		}
+		change_variable = {
+			nmae = state_hospital_level
+			multiply = 1.5
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_antibotics
+			}
+		}
+		change_variable = {
+			nmae = state_hospital_level
+			multiply = 2
+		}
+	}
+	if = {
+       		limit = {
+    			state_hospital_level < 5
+               	}
+ 		add_modifier = {
+			name = state_health_0
+			is_decaying = no
+			months = 1
+		}
+        }
+        else_if = {
+                imit = {
+                    	state_hospital_level < 10
+                }
+		add_modifier = {
+			name = state_health_1
+			is_decaying = no
+			months = 1
+		}
+        }
+    	else_if = {
+        	limit = {
+                    	state_hospital_level < 15
+                }      
+		add_modifier = {
+			name = state_health_2
+			is_decaying = no
+			months = 1
+		}
+	}      
+        else_if = {
+                limit = {
+                    	state_hospital_level < 20
+               	}  
+                add_modifier = {
+			name = state_health_3
+			is_decaying = no
+			months = 1
+		}
+	}       
+        else_if = {
+                limit = {
+                    	state_hospital_level < 25
+               	}  
+                add_modifier = {
+			name = state_health_4
+			is_decaying = no
+			months = 1
+		}
+	}
+        else = {
+            	add_modifier = {
+			name = state_health_5
+			is_decaying = no
+			months = 1
+		}
+	}
+}
