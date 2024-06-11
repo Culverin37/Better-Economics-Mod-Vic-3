@@ -1,0 +1,101 @@
+bem_education_je = {
+	group = je_group_internal_affairs
+    	is_shown_when_inactive = {
+    		always = yes
+    	}
+   	possible = {
+    		always=yes
+   	}
+
+    	immediate = {
+		set_variable = {
+			name = nat_school_level 
+			value = 0
+		}
+   	}
+
+    	on_monthly_pulse = {
+		effect ={
+			every_state = {
+				limit = {
+					owner = ROOT
+				}
+				check_state_edu_level = yes
+			}
+			set_variable = {
+				name = bem_education_value
+				value = 0
+			}
+			set_variable = {
+				name = nat_edu_pop_level
+				value = 0
+			}
+			every_state = {
+				limit = {
+					owner = ROOT
+				}
+				every_scope_building = {
+					limit = {
+						is_building_type = building_secondary_school
+					}
+					change_variable = {
+							name = nat_school_level
+							add = prev.level
+					}
+				}
+			}
+			change_variable = {
+				name = nat_edu_pop_level
+				add = total_population
+			}
+			change_variable = {
+				name = nat_edu_pop_level
+				divide = 1000000
+			}
+			change_variable = {
+				name = nat_school_level
+				divide = nat_edu_pop_level
+			}
+            		if = {
+       				limit = {
+                    			nat_school_level < 1
+               			}
+                		activate_law = law_type:bem_law_no_edu
+            		}
+            		else_if = {
+                		limit = {
+                    			nat_school_level < 2
+                		}
+               			activate_law = law_type:bem_law_very_low_edu
+            		}
+            		else_if = {
+                		limit = {
+                    			nat_school_level < 3
+                		}      
+                		activate_law = law_type:bem_law_low_edu
+           		}      
+            		else_if = {
+                		limit = {
+                    			nat_school_level < 4
+               			}  
+                		activate_law = law_type:bem_law_med_edu
+		    	}       
+            		else_if = {
+                		limit = {
+                    			nat_school_level < 5
+               			}  
+                		activate_law = law_type:bem_law_high_edu
+		    	}
+            		else = {
+            			activate_law = law_type:bem_law_very_high_edu
+			}       
+        	}
+    	}
+    	progressbar = yes
+	current_value = {
+		value = bem_education_value
+	}
+	goal_add_value = {
+		add = 5
+	}
+}
