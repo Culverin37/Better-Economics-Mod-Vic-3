@@ -63,8 +63,7 @@ bem_pm_private_school = {
     }
     state_modifiers = {
         workforce_scaled = {
-           #state_education_access_add = 0.1
-            state_education_access_wealth_add = 0.2
+            state_education_access_wealth_add = 0.05
         }
     }
     country_modifiers  = {
