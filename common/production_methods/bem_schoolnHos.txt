@@ -71,7 +71,6 @@ bem_pm_private_school = {
             interest_group_ig_industrialists_pop_attraction_mult = 0.1
         }	
     }
-
 }
 bem_pm_civic_school = {
     unlocking_laws = {
@@ -96,8 +95,12 @@ bem_pm_civic_school = {
     state_modifiers = {
         workforce_scaled = {
             state_assimilation_mult = 0.1
-            interest_group_in_government_attraction_mult = 0.1
         }
+    }
+    country_modifiers  = {
+        workforce_scaled = {
+            interest_group_in_government_attraction_mult = 0.1
+        }	
     }
 }
 
@@ -118,8 +121,7 @@ bem_pm_Technocratic_school = {
             building_employment_bureaucrats_add = 250
         }
         workforce_scaled = {
-           # goods_input_paper_add = 10
-        }
+	}
     }
     state_modifiers = {
         workforce_scaled = {
@@ -157,9 +159,11 @@ bem_pm_liberatory_school = {
         }
     }
     state_modifiers = {
+    }
+    country_modifiers  = {
         workforce_scaled = {
             interest_group_in_government_attraction_mult = 0.2
-        }
+        }	
     }
 }
 bem_pm_socratic = {
@@ -380,13 +384,9 @@ bem_pm_technocratic_hospital = {
     state_modifiers = {
         workforce_scaled = {
             #state_pollution_reduction_health_mult = -0.075
-            state_standard_of_living_add = 0.25
+            state_poor_standard_of_living_add = -0.1
+            state_rich_standard_of_living_add = 0.5
             #state_mortality_mult = -0.02
-        }
-    }
-    country_modifiers = {
-        workforce_scaled = {
-            country_tech_research_speed_mult = 0.1
         }
     }
 }
@@ -413,13 +413,8 @@ bem_pm_Liberatory_hospital = {
     state_modifiers = {
         workforce_scaled = {
             #state_pollution_reduction_health_mult = -0.075
-            state_standard_of_living_add = 0.75
+            state_standard_of_living_add = 0.5
             #state_mortality_mult = -0.02
-        }
-    }
-    country_modifiers = {
-        workforce_scaled = {
-            #country_tech_research_speed_mult = 1.1
         }
     }
 }
