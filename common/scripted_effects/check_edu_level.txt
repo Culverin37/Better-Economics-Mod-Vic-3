@@ -31,54 +31,126 @@ check_state_edu_level = {
 		divide = state_edu_pop_level
 	}
 	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_Technocratic_school
+			}
+		}
+		change_variable = {
+			nmae = state_school_level
+			multiply = 1.25
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_liberatory_school
+			}
+		}
+		change_variable = {
+			nmae = state_school_level
+			multiply = 1.5
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_herbetian
+			}
+		}
+		change_variable = {
+			nmae = state_school_level
+			multiply = 1.5
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_progressive
+			}
+		}
+		change_variable = {
+			nmae = state_school_level
+			multiply = 2
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_Expanded_attendence
+			}
+		}
+		change_variable = {
+			nmae = state_school_level
+			multiply = 1.5
+		}
+	}
+	if = {
+		limit = {
+			every_scope_building = {
+				has_active_production_method = bem_pm_universal_attendence
+			}
+		}
+		change_variable = {
+			nmae = state_school_level
+			multiply = 2
+		}
+	}
+	if = {
        		limit = {
-    			state_school_level < 1
+    			state_school_level < 5
                	}
  		add_modifier = {
 			name = state_edu_0
 			is_decaying = no
+			months = 1
 		}
         }
         else_if = {
                 imit = {
-                    	state_school_level < 2
+                    	state_school_level < 10
                 }
 		add_modifier = {
 			name = state_edu_1
 			is_decaying = no
+			months = 1
 		}
         }
     	else_if = {
         	limit = {
-                    	state_school_level < 3
+                    	state_school_level < 15
                 }      
 		add_modifier = {
 			name = state_edu_2
 			is_decaying = no
+			months = 1
 		}
 	}      
         else_if = {
                 limit = {
-                    	state_school_level < 4
+                    	state_school_level < 20
                	}  
                 add_modifier = {
 			name = state_edu_3
 			is_decaying = no
+			months = 1
 		}
 	}       
         else_if = {
                 limit = {
-                    	state_school_level < 5
+                    	state_school_level < 25
                	}  
                 add_modifier = {
 			name = state_edu_4
 			is_decaying = no
+			months = 1
 		}
 	}
         else = {
             	add_modifier = {
 			name = state_edu_5
 			is_decaying = no
+			months = 1
 		}
 	}
 }
