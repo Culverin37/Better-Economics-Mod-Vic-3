@@ -9,7 +9,7 @@ bem_education_je = {
 
     	immediate = {
 		set_variable = {
-			name = nat_school_level # check scripted effects for road buidling
+			name = nat_school_level 
 			value = 0
 		}
    	}
@@ -38,11 +38,9 @@ bem_education_je = {
 					limit = {
 						is_building_type = building_secondary_school
 					}
-					state = {
-						change_variable = {
+					change_variable = {
 							name = nat_school_level
 							add = prev.level
-						}
 					}
 				}
 			}
