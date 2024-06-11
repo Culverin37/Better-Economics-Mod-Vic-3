@@ -1741,3 +1741,55 @@ bem_health_huge = {
 	interest_group_approval_add = 2
 }
 
+state_edu_0 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+}
+state_edu_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_education_access_add = 0.1
+}
+state_edu_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_education_access_add = 0.2
+}
+state_edu_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_education_access_add = 0.3
+}
+state_edu_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_education_access_add = 0.4
+}
+state_edu_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_education_access_add = 0.5
+}
+
+state_health_0 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+}
+state_health_1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_pollution_reduction_health_mult = -0.150
+        state_mortality_mult = -0.04
+}
+state_health_2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_pollution_reduction_health_mult = -0.300
+        state_mortality_mult = -0.08
+}
+state_health_3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_pollution_reduction_health_mult = -0.450
+        state_mortality_mult = -0.12
+}
+state_health_4 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_pollution_reduction_health_mult = -0.600
+        state_mortality_mult = -0.16
+}
+state_health_5 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	state_pollution_reduction_health_mult = -0.750
+        state_mortality_mult = -0.20
+}
