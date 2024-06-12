@@ -26,6 +26,15 @@ check_state_edu_level = {
 		name = state_edu_pop_level
 		divide = 1000000
 	}
+	if = {
+		limit = {
+			root.var.nat_edu_pop_level < 1
+		}
+		set_variable = {
+			name = nat_edu_pop_level
+			add = 1
+		}
+	}
 	change_variable = {
 		name = state_school_level
 		divide = state_edu_pop_level
