@@ -52,6 +52,15 @@ bem_education_je = {
 				name = nat_edu_pop_level
 				divide = 1000000
 			}
+			if = {
+				limit = {
+					root.var.nat_edu_pop_level < 1
+				}
+				change_variable = {
+					name = nat_edu_pop_level
+					add = 1
+				}
+			}
 			change_variable = {
 				name = nat_school_level
 				divide = nat_edu_pop_level
