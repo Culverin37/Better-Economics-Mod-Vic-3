@@ -58,7 +58,7 @@ bem_education_je = {
 				}
 				set_variable = {
 					name = nat_edu_pop_level
-					add = 1
+					value = 1
 				}
 			}
 			change_variable = {
