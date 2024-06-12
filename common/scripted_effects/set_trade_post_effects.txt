@@ -3,6 +3,14 @@ set_trade_post = {
 		name = trade_post_level
 		value = 0
 	}
+	set_variable = {
+		name = total_trade_size
+		value = 0
+	}
+	set_variable = {
+		name = total_trade_value
+		value = 0
+	}
 	every_scope_building = {
 		limit = {
 			is_building_type = building_urban_center
