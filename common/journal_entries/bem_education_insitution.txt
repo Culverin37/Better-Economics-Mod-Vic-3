@@ -56,7 +56,7 @@ bem_education_je = {
 				limit = {
 					root.var.nat_edu_pop_level < 1
 				}
-				change_variable = {
+				set_variable = {
 					name = nat_edu_pop_level
 					add = 1
 				}
