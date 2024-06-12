@@ -58,7 +58,7 @@ bem_healthcare_je = {
 				}
 				set_variable = {
 					name = nat_health_pop_level
-					add = 1
+					value = 1
 				}
 			}
 			change_variable = {
