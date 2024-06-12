@@ -52,6 +52,15 @@ bem_healthcare_je = {
 				name = nat_health_pop_level
 				divide = 1000000
 			}
+			if = {
+				limit = {
+					root.var.nat_health_pop_level < 1
+				}
+				set_variable = {
+					name = nat_health_pop_level
+					add = 1
+				}
+			}
 			change_variable = {
 				name = nat_hospital_level
 				divide = nat_health_pop_level
