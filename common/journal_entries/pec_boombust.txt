@@ -40,6 +40,7 @@
 		effect = {
 			pec_boombust_weekly_pulse_volatility_progress = yes
 			pec_boombust_weekly_pulse_confidence_progress = yes
+			pec_boombust_weekly_pulse_supply_progress = yes
 		}
 	}
 
@@ -70,8 +71,10 @@
 		effect = {
 			change_variable = { name = pec_market_volatility add = var:pec_market_volatility_progress }
 			change_variable = { name = pec_market_confidence add = var:pec_market_confidence_progress }
+			change_varaible = { name = pec_money_supply add = var:pec_money_supply_progress }
 			clamp_variable = { name = pec_market_volatility max = 25 min = -25 } 
 			clamp_variable = { name = pec_market_confidence max = 25 min = -25 }
+			clamp_variable = { name = pec_money_supply max = 25 min = -25 }
 			pec_boombust_hyperinflation_check = yes
 			if = {
 				limit = {

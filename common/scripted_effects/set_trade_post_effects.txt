@@ -3,14 +3,14 @@ set_trade_post = {
 		name = trade_post_level
 		value = 0
 	}
-#	set_variable = {
-#		name = total_trade_size
-#		value = 0
-#	}
-#	set_variable = {
-#		name = total_trade_value
-#		value = 0
-#	}
+	set_variable = {
+		name = total_trade_size
+		value = 0
+	}
+	set_variable = {
+		name = total_trade_value
+		value = 0
+	}
 	every_scope_building = {
 		limit = {
 			is_building_type = building_urban_center
@@ -22,11 +22,11 @@ set_trade_post = {
 			}
 		}
 	}
-#	list_add_good_trade = yes
+	list_add_good_trade = yes
 	create_trade_post = yes
-#	remove_modifier = state_trade_value_modifier_calibration
-#	add_modifier = {
-#		name = state_trade_value_modifier_calibration
-#		multiplier = count_trade_post_modifier_level
-#	}
+	remove_modifier = state_trade_value_modifier_calibration
+	add_modifier = {
+		name = state_trade_value_modifier_calibration
+		multiplier = count_trade_post_modifier_level
+	}
 }

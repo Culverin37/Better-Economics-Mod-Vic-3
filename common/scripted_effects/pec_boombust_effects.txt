@@ -5,7 +5,7 @@
 		limit = {
 			total_population < 1000000
 		}
-		set_variable = { name = pec_market_population value = 10000000 }
+	set_variable = { name = pec_market_population value = 10000000 }
 	}
 	change_variable = { name = pec_market_population divide = 1000000 }
 
@@ -39,11 +39,22 @@
 	set_variable = { name = pec_market_confidence_events value = 0 }
 	set_variable = { name = pec_market_confidence_interest value = 0 }
 
+# Money Supply
+	set_variable = { name = pec_money_supply value = 0 }
+	set_variable = { name = pec_money_supply_progress value = 0 }
+	set_variable = { name = pec_money_supply_current value = 0 }
+	set_variable = { name = pec_money_supply_laws value = 0 }
+	set_variable = { name = pec_money_supply_banks value = 0 }
+	set_variable = { name = pec_money_supply_minting value = 0 }
+	set_variable = { name = pec_money_supply_interest value = 0 }
+	set_variable = { name = pec_money_supply_events value = 0 }
+	set_variable = { name = pec_money_supply_growth value = 0 }
+
 # Interest rate
 	set_variable = { name = pec_interest_rate value = 0 }
 }
 
-# Check for hyperinflation
+# Check for hyperinflation (REWORK THIS)
 pec_boombust_hyperinflation_check = {
 	if = {
 		limit = {
@@ -931,4 +942,132 @@ pec_boombust_weekly_pulse_confidence_progress = {
 	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_vol }
 	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_events }
 	change_variable = { name = pec_market_confidence_progress add = var:pec_market_confidence_interest }
+}
+
+# Supply Progress
+pec_boombust_weekly_pulse_supply_progress = {
+	set_variable = { name = pec_money_supply value = 0 }
+	set_variable = { name = pec_money_supply_progress value = 0 }
+	set_variable = { name = pec_money_supply_current value = 0 }
+	set_variable = { name = pec_money_supply_laws value = 0 }
+	set_variable = { name = pec_money_supply_banks value = 0 }
+	set_variable = { name = pec_money_supply_minting value = 0 }
+	set_variable = { name = pec_money_supply_interest value = 0 }
+	set_variable = { name = pec_money_supply_events value = 0 }
+	set_variable = { name = pec_money_supply_growth value = 0 }
+
+# Current Value (trend towards 0)
+	set_variable = { name = pec_money_supply_current value = root.var:pec_money_supply }
+	change_variable = { name = pec_money_supply_current divide = 5 } # value -5 to 5
+	change_variable = { name = pec_money_supply_current multiply = -1 } # flips value
+
+# Laws effect on supply
+	if = {
+		limit = {
+			OR = {
+				has_law = law_type:law_bem_silver_standard
+			}
+		}
+		change_variable = { name = pec_money_supply_laws add = 2.00 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_bem_bimetal_standard
+		}
+		change_variable = { name = pec_money_supply_laws add = 1.50 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_bem_gold_standard
+		}
+		change_variable = { name = pec_money_supply_laws add = 1.00 }
+	}
+	if = {
+		limit = {
+			has_law = law_type:law_bem_fiat
+		}
+		change_variable = { name = pec_money_supply_laws add = 2.00 }
+	}
+
+	if = {
+		limit = {
+			NOT = { has_law = law_type:law_bem_silver_standard }
+			NOT = { has_law = law_type:law_bem_bimetal_standard }
+			NOT = { has_law = law_type:law_bem_gold_standard }
+			NOT = { has_law = law_type:law_bem_fiat }
+		}
+		change_variable = { name = pec_money_supply_laws add = 1.5 }
+	}
+
+# Financial Sector effects on supply - value from -1 to 1
+	every_scope_building = { 
+		limit = {
+			is_building_type = building_pec_banks
+			occupancy >= 0.5
+		}
+		ROOT = {
+			change_variable = { name = pec_money_supply_banks add = prev.level }
+		}
+	}
+	change_variable = { name = pec_money_supply_banks divide = var:pec_market_population } # per 1 million
+	change_variable = { name = pec_money_supply_banks divide = 1.25 }
+	change_variable = { name = pec_money_supply_banks subtract = 1 }
+	if = {
+		limit = {
+			var:pec_money_supply_banks > 1
+		}
+		set_variable = { name = pec_money_supply_banks value = 1 }
+	}
+
+# Minting rate effect on supply
+	if = {
+		limit = {
+			has_modifier = pec_minting_low
+		}
+		set_variable = { name = pec_money_supply_minting value = -0.50 }
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_minting_high
+		}
+		set_variable = { name = pec_money_supply_minting value = 0.50 }
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_minting_very_high
+		}
+		set_variable = { name = pec_money_supply_minting value = 1.0 }
+	}
+	else_if = {
+		limit = {
+			has_modifier = pec_minting_extremely_high
+		}
+		set_variable = { name = pec_money_supply_minting value = 1.50 }
+	}
+	else = {
+		set_variable = { name = pec_money_supply_minting value = 0 }
+	}
+
+# Interest rate effect on supply
+	set_variable = { name = pec_money_supply_interest value = root.var:pec_interest_rate } # value between -1 to 1
+	change_variable = { name = pec_money_supply_interest multiply = 2 } # value between -2 to 2
+	change_variable = { name = pec_money_supply_interest multiply = -1 } # flips value
+
+# Event effects on market confidence
+
+# GDP Growth and volatility
+	change_variable = { name = pec_money_supply_growth add = root.var:pec_gdp_growth }
+	change_variable = { name = pec_money_supply_growth divide = 20 }
+	clamp_variable = { name = pec_money_supply_growth max = 2 min = -0.5 }
+	change_variable = { name = pec_money_supply_growth multiply = -1 } # flips value
+
+# final calculation
+	change_variable = { name = pec_money_supply_progress add = var:pec_money_supply_current }
+	change_variable = { name = pec_money_supply_progress add = var:pec_money_supply_laws }
+	change_variable = { name = pec_money_supply_progress add = var:pec_money_supply_banks }
+	change_variable = { name = pec_money_supply_progress add = var:pec_money_supply_minting }
+	change_variable = { name = pec_money_supply_progress add = var:pec_money_supply_interest }
+	change_variable = { name = pec_money_supply_progress add = var:pec_money_supply_events }
+	change_variable = { name = pec_money_supply_progress add = var:pec_money_supply_growth }
+	
 }

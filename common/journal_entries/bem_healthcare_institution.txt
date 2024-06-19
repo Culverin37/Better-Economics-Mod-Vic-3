@@ -4,18 +4,13 @@ bem_healthcare_je = {
     		always = yes
     	}
    	possible = {
-    		is_player = yes # temporary bug fixing measure
 		has_technology_researched = medical_degrees
    	}
 
-    	immediate = {
-		set_variable = {
-			name = nat_hospital_level 
-			value = 0
-		}
+    immediate = {
    	}
 
-    	on_monthly_pulse = {
+    on_monthly_pulse = {
 		effect ={
 			every_state = {
 				limit = {
@@ -24,30 +19,24 @@ bem_healthcare_je = {
 				check_state_health_level = yes
 			}
 			set_variable = {
-				name = bem_healthcare_value
+				name = nat_hospital_level 
 				value = 0
 			}
 			set_variable = {
 				name = nat_health_pop_level
-				value = 0
+				value = value = root.total_population
 			}
-			every_state = {
+			every_scope_building = {
 				limit = {
-					owner = ROOT
+					is_building_type = building_hospital
+					occupancy >= 0.5
 				}
-				every_scope_building = {
-					limit = {
-						is_building_type = building_hospital
-					}
-					change_variable = {
-							name = nat_hospital_level
-							add = prev.level
+				ROOT = {
+					change_variable = { 
+						name = nat_hospital_level
+						add = prev.level
 					}
 				}
-			}
-			change_variable = {
-				name = nat_health_pop_level
-				add = total_population
 			}
 			change_variable = {
 				name = nat_health_pop_level
@@ -66,44 +55,44 @@ bem_healthcare_je = {
 				name = nat_hospital_level
 				divide = nat_health_pop_level
 			}
-            		if = {
-       				limit = {
-                    			nat_hospital_level < 1
-               			}
-                		activate_law = law_type:bem_law_no_health
-            		}
-            		else_if = {
-                		limit = {
-                    			nat_hospital_level < 2
-                		}
-               			activate_law = law_type:bem_law_very_low_health
-            		}
-            		else_if = {
-                		limit = {
-                    			nat_hospital_level < 3
-                		}      
-                		activate_law = law_type:bem_law_low_health
-           		}      
-            		else_if = {
-                		limit = {
-                    			nat_hospital_level < 4
-               			}  
-                		activate_law = law_type:bem_law_med_health
-		    	}       
-            		else_if = {
-                		limit = {
-                    			nat_hospital_level < 5
-               			}  
-                		activate_law = law_type:bem_law_high_health
-		    	}
-            		else = {
-            			activate_law = law_type:bem_law_very_high_health
-			}       
+            if = {
+       			limit = {
+            		nat_hospital_level < 1
+               	}
+                activate_law = law_type:bem_law_no_health
         	}
-    	}
-    	progressbar = yes
+        	else_if = {
+                limit = {
+                	nat_hospital_level < 2
+                }
+               	activate_law = law_type:bem_law_very_low_health
+            }
+            else_if = {
+                limit = {
+                    nat_hospital_level < 3
+                }      
+                activate_law = law_type:bem_law_low_health
+           	}      
+            else_if = {
+                limit = {
+                    nat_hospital_level < 4
+               	}  
+                activate_law = law_type:bem_law_med_health
+		    }       
+            else_if = {
+                limit = {
+                	nat_hospital_level < 5
+               	}  
+                activate_law = law_type:bem_law_high_health
+		    }
+            else = {
+            	activate_law = law_type:bem_law_very_high_health
+			}       
+        }
+    }
+    progressbar = yes
 	current_value = {
-		value = bem_healthcare_value
+		value = nat_hospital_level
 	}
 	goal_add_value = {
 		add = 5
