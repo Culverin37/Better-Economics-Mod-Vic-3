@@ -4,7 +4,7 @@ bem_education_je = {
     		always = yes
     	}
    	possible = {
-    		always=yes
+    		is_player = yes
    	}
 
     	immediate = {
