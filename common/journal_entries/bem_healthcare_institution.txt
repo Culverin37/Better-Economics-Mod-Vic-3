@@ -5,7 +5,7 @@ bem_healthcare_je = {
     	}
    	possible = {
     		is_player = yes # temporary bug fixing measure
-		has_technology_researched = rationalism
+		has_technology_researched = medical_degrees
    	}
 
     	immediate = {
