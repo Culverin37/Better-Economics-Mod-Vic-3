@@ -962,9 +962,9 @@
  law_pec_merchant_banks_desc:0 "The Financial System is primitive, archaic laws inhibiting lending and interest."
  law_pec_free_banking:0 "Free Banking"
  law_pec_free_banking_desc:0 "Banks are free to operate, lend and issue currencies backed by the bank itself or through metallism. The government has limited control over the Financial System."
- law_pec_central_bank_metallic:0 "Divorced Banking"
+ law_pec_central_bank_metallic:0 "Regulatory Central Banking"
  law_pec_central_bank_metallic_desc:0 "A Central or National Bank is established to have not only overarching control over interests rates and the issuing of currency, but also of regulating Commericial and Investment Banks."
- law_pec_central_bank_fiat:0 "Central Banking"
+ law_pec_central_bank_fiat:0 "Stability Central Banking"
  law_pec_central_bank_fiat_desc:0 "A Central or National Bank is established to have overarching control over interests rates and the issuing of currency."
 
  pec_merchant_banks_enact_from_free_tt:0 "Decreases Market Confidence and decreases Market Volatility."
