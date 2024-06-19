@@ -10,7 +10,10 @@ bem_land_dev_je = {
     invalid = {
 	}
     immediate = {
-        set_variable  = {name = dev_current_value_var value = 0}
+        set_variable  = {
+		name = dev_current_value_var 
+		value = 0
+	}
     }
     on_weeky_pulse = {
         effect ={
