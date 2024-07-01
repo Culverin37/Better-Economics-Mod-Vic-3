@@ -1,0 +1,87 @@
+state_bureaucrats_mortality_mult ={
+    color=bad
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+
+country_soldiers_pol_str_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+country_shopkeepers_pol_str_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+state_academics_investment_pool_efficiency_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+state_engineers_investment_pool_efficiency_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+
+}
+state_officers_investment_pool_efficiency_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+
+}
+state_clerks_investment_pool_efficiency_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+state_machinists_investment_pool_efficiency_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+building_peasants_mortality_mult = {
+    color = bad 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+state_academics_investment_pool_efficiency_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+state_laborers_investment_pool_efficiency_mult = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}
+state_pop_support_law_state_religion_add = {
+    color = good 
+    percent = yes
+    game_data={
+		ai_value=0
+	}
+}

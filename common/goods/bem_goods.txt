@@ -15,14 +15,14 @@ bem_charity = {
 	texture = "gfx/interface/icons/invention_icons/stock_exchanges.dds"
 	cost = 100
 	category = luxury 
-	tradable = no 
+	tradeable = no 
 	prestige_factor = 10
 }
 bem_private = {
 	texture = "gfx/interface/icons/invention_icons/stock_exchanges.dds"
 	cost = 100
 	category = staple 
-	tradable = no 
+	tradeable = no 
 	prestige_factor =10 
 }
 pec_hospitality = {
