@@ -28,17 +28,6 @@ pmg_pec_hospitality_automation = {
 	}
 }
 
-pmg_pec_ownership_hospitality = {
-	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
-	production_methods = {
-		pm_pec_merchant_guilds_building_hospitality
-		pm_pec_privately_owned_building_hospitality
-		pm_pec_publicly_traded_building_hospitality
-		pm_technocratic_light_industry
-		pm_government_run_industry
-		pm_worker_cooperative_industry
-	}
-}
 
 # Entertainment
 pmg_pec_entertainment_venues = {
@@ -85,17 +74,6 @@ pmg_pec_speech = {
 	}
 }
 
-pmg_pec_ownership_entertainment = {
-	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
-	production_methods = {
-		pm_pec_merchant_guilds_building_entertainment
-		pm_pec_privately_owned_building_entertainment
-		pm_pec_publicly_traded_building_entertainment
-		pm_technocratic_light_industry
-		pm_government_run_industry
-		pm_worker_cooperative_industry
-	}
-}
 
 # Media
 pmg_pec_publishing = {
@@ -127,16 +105,3 @@ pmg_pec_propaganda = {
 	}
 }
 
-pmg_pec_ownership_media = {
-	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
-	production_methods = {
-		pm_pec_merchant_guilds_building_media
-		pm_pec_privately_owned_building_media
-		pm_pec_publicly_traded_building_media
-		pm_pec_independent_publishing_building_media
-		pm_technocratic_light_industry
-		pm_mixed_ownership_industry
-		pm_government_run_industry
-		pm_worker_cooperative_industry
-	}
-}
