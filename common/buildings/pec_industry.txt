@@ -11,7 +11,6 @@
 
 	production_method_groups = {
 		pmg_fertilizer_production
-		pmg_ownership_capital_building_chemical_plants
 	}
 
 	required_construction = construction_cost_very_high
@@ -30,7 +29,7 @@ building_synthetics_plants = {
 	production_method_groups = {
 		pmg_synthetic_dyes
 		pmg_synthetic_silk
-		pmg_ownership_capital_building_synthetics_plants
+		
 	}
 	
 	required_construction = construction_cost_very_high
@@ -49,7 +48,7 @@ building_steel_mills = {
 	production_method_groups = {
 		pmg_steelmaking_process
 		pmg_automation_building_steel_mills
-		pmg_ownership_capital_building_steel_mills
+		
 	}
 	
 	required_construction = construction_cost_very_high
@@ -69,7 +68,7 @@ building_motor_industry = {
 		pmg_base_building_motor_industry
 		pmg_automobile_production
 		pmg_automation_building_motor_industry
-		pmg_ownership_capital_building_motor_industry
+		
 	}
 	
 	required_construction = construction_cost_very_high
@@ -88,7 +87,7 @@ building_war_machine_industry = {
 	production_method_groups = {
 		pmg_aeroplanes
 		pmg_tanks
-		pmg_ownership_capital_building_war_machine_industry
+		
 	}
 	
 	required_construction = construction_cost_very_high
@@ -108,7 +107,7 @@ building_electrics_industry = {
 	production_method_groups = {
 		pmg_telephones_category
 		pmg_radios_category
-		pmg_ownership_capital_building_electrics_industry
+		
 	}
 	
 	required_construction = construction_cost_very_high
@@ -127,7 +126,7 @@ building_munition_plants = {
 	production_method_groups = {
 		pmg_base_building_munition_plants
 		pmg_automation_building_munition_plants
-		pmg_ownership_capital_building_munition_plants
+		
 	}
 	
 	required_construction = construction_cost_very_high
@@ -144,7 +143,7 @@ building_shipyards = {
 
 	production_method_groups = {
 		pmg_base_building_shipyards
-		pmg_ownership_capital_building_shipyards
+		
 	}
 
 	required_construction = construction_cost_high
@@ -173,7 +172,7 @@ building_explosives_factory = {
 
 	production_method_groups = {
 		pmg_explosives_building_chemical_plants
-		pmg_ownership_capital_building_explosives_factory
+		
 	}
 
 	required_construction = construction_cost_very_high

@@ -9,7 +9,6 @@ building_pec_riverdevelopment = {
 		pmg_riverdev_canals
 		pmg_riverdev_boats
 		pmg_riverdev_hydropower
-		pmg_ownership_capital_building_riverdev
 	}
 
 	required_construction = construction_cost_low

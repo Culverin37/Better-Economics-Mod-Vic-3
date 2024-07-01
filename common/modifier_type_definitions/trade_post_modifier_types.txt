@@ -1,5 +1,5 @@
 goods_output_trade_value_add = {
-	good = yes
+	color= good
 	percent = no
 }
 
@@ -9,6 +9,6 @@ goods_input_trade_value_add = {
 }
 
 goods_output_trade_value_mult = {
-	good = yes
+	color= good
 	percent = yes
 }
