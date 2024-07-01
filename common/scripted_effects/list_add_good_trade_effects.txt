@@ -166,8 +166,8 @@ list_add_good_trade = {
 
 	### 马与畜力
 
-	add_good_trade = {
-		GOOD = "horse"
-	}
+	#add_good_trade = {
+	#	GOOD = "horse"
+	#}
 }
 #

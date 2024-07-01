@@ -48,14 +48,14 @@ bem_police_je = {
                 limit = {
                     bem_police_insitution_value = 4
                 }  
-                trigger_event = {id = bem_workhouse_pm_change.4 }
+               #trigger_event = {id = bem_workhouse_pm_change.4 }
                 activate_law = law_type:bem_law_dum_hpol
             }          
             else_if = {
                 limit = {
                     bem_police_insitution_value = 5
                 }     
-                trigger_event = {id = bem_workhouse_pm_change.5 }
+                #trigger_event = {id = bem_workhouse_pm_change.5 }
                 activate_law = law_type:bem_law_dum_vhpol
 
             }       

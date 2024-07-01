@@ -48,14 +48,14 @@ bem_poor_law_je = {
                 limit = {
                     bem_poor_law_insitution_value = 4
                 }  
-                trigger_event = {id = bem_workhouse_pm_change.4 }
+                #trigger_event = {id = bem_workhouse_pm_change.4 }
                 activate_law = law_type:bem_law_high_welfare
             }          
             else_if = {
                 limit = {
                     bem_poor_law_insitution_value = 5
                 }     
-                trigger_event = {id = bem_workhouse_pm_change.5 }
+                #trigger_event = {id = bem_workhouse_pm_change.5 }
                 activate_law = law_type:bem_law_very_high_welfare
 
             }       
