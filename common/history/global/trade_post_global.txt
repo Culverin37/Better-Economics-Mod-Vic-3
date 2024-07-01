@@ -1,6 +1,6 @@
 # This is executed last among all history
 GLOBAL = {
 	every_state = {
-		set_trade_post = yes
+		#set_trade_post = yes
 	}
 }
